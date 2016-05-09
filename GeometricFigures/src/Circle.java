@@ -1,37 +1,36 @@
-public class Circle extends Shape {
+class Circle extends Shape {
 
     private double diameterCircle;
 
-    public Circle(double diameterCircle) {
+    Circle(double diameterCircle) {
         this.diameterCircle = diameterCircle;
     }
 
     double getWidth() {
-        return 0;
+        return diameterCircle;
+    }
+
+    void setWidth(double diameterCircle) {
+        if (diameterCircle >= 0) {
+            this.diameterCircle = diameterCircle;
+        } else {
+            System.out.println("Размеры круга не могут быть отрицательными");
+        }
     }
 
     double getHeight() {
-        return 0;
+        return diameterCircle;
+    }
+
+    void setHeight(double diameterCircle) {
+        if (diameterCircle >= 0) {
+            this.diameterCircle = diameterCircle;
+        } else {
+            System.out.println("Размеры круга не могут быть отрицательными");
+        }
     }
 
     double getArea() {
-        return 0;
+        return Math.PI * diameterCircle * diameterCircle / 4;
     }
-
-    /*
-    @Override
-    private double getWidth() {
-        return diameterCircle / 2;
-    }
-
-    @Override
-    private double getHeight() {
-        return diameterCircle / 2;
-    }
-
-    @Override
-    double getArea() {
-        return Math.PI * getWidth() * getHeight();
-    }
-    */
 }

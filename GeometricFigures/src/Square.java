@@ -1,41 +1,40 @@
 class Square extends Shape {
 
-    private double heightSquare;
-    private double widthSquare;
+    private double sideOfSquare;
 
-    Square(double widthSquare) {
-        if (widthSquare >= 0) {
-            this.widthSquare = widthSquare;
+    Square(double sideOfSquare) {
+        if (sideOfSquare >= 0) {
+            this.sideOfSquare = sideOfSquare;
         } else {
             System.out.println("Размеры квадрата не могут быть отрицательными");
         }
     }
 
     public double getWidth() {
-        return widthSquare;
+        return sideOfSquare;
     }
 
-    public void setWidth(double widthSquare) {
-        if (widthSquare < 0) {
+    void setWidth(double sideOfSquare) {
+        if (sideOfSquare < 0) {
             System.out.println("Размеры квадрата не могут быть отрицательными");
         } else {
-            this.widthSquare = widthSquare;
+            this.sideOfSquare = sideOfSquare;
         }
     }
 
     public double getHeight() {
-        return heightSquare;
+        return sideOfSquare;
     }
 
-    public void setHeight(double heightSquare) {
-        if (heightSquare < 0) {
+    void setHeight(double sideOfSquare) {
+        if (sideOfSquare < 0) {
             System.out.println("Размеры квадрата не могут быть отрицательными");
         } else {
-            this.heightSquare = heightSquare;
+            this.sideOfSquare = sideOfSquare;
         }
     }
 
     double getArea() {
-        return widthSquare * widthSquare;
+        return sideOfSquare * sideOfSquare;
     }
 }
