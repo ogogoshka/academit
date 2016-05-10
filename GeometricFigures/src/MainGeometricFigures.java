@@ -1,4 +1,5 @@
-import Shapes.Triangle;
+import ru.academit.novikov.shapes.Square;
+import ru.academit.novikov.shapes.Triangle;
 
 public class MainGeometricFigures {
 
@@ -11,6 +12,8 @@ public class MainGeometricFigures {
         System.out.println(triangle.getHeight());
 
         Triangle triangle2 = new Triangle(2, 1, 3, 1, 6, 1);
+
+        Square square = new Square(-10);
 
     }
 }

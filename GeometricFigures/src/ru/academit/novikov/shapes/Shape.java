@@ -1,4 +1,4 @@
-package Shapes;
+package ru.academit.novikov.shapes;
 
 public abstract class Shape {
     abstract double getWidth();
