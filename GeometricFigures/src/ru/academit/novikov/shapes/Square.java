@@ -2,23 +2,24 @@ package ru.academit.novikov.shapes;
 
 public class Square extends Shape {
 
-    private double sideOfSquare;
+    private double width;
 
-    public Square(double sideOfSquare) {
-        if (sideOfSquare < 0)
+    public Square(double width) {
+        if (width < 0) {
             throw new IllegalArgumentException("Размеры квадрата не могут быть отрицательными");
-        this.sideOfSquare = sideOfSquare;
+        }
+        this.width = width;
     }
 
     public double getWidth() {
-        return sideOfSquare;
+        return width;
     }
 
     public double getHeight() {
-        return sideOfSquare;
+        return width;
     }
 
     public double getArea() {
-        return sideOfSquare * sideOfSquare;
+        return width * width;
     }
 }

@@ -17,8 +17,9 @@ public class Triangle extends Shape {
         double b = getLength(x2, y2, x3, y3);
         double c = getLength(x1, y1, x3, y3);
 
-        if (a + b <= c || a + c <= b || a + c <= b)
+        if (a + b <= c || a + c <= b || a + c <= b) {
             throw new IllegalArgumentException("Треугольник не существует");
+        }
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;

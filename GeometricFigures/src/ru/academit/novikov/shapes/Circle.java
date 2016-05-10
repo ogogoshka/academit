@@ -2,23 +2,24 @@ package ru.academit.novikov.shapes;
 
 public class Circle extends Shape {
 
-    private double diameterCircle;
+    private double diameter;
 
-    public Circle(double diameterCircle) {
-        if (diameterCircle < 0)
+    public Circle(double diameter) {
+        if (diameter < 0) {
             throw new IllegalArgumentException("Диаметр не могжет быть отрицательным");
-        this.diameterCircle = diameterCircle;
+        }
+        this.diameter = diameter;
     }
 
     public double getWidth() {
-        return diameterCircle;
+        return diameter;
     }
 
     public double getHeight() {
-        return diameterCircle;
+        return diameter;
     }
 
     public double getArea() {
-        return Math.PI * diameterCircle * diameterCircle / 4;
+        return Math.PI * diameter * diameter / 4;
     }
 }

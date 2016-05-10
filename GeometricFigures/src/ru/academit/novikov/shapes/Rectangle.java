@@ -2,25 +2,26 @@ package ru.academit.novikov.shapes;
 
 public class Rectangle extends Shape {
 
-    private double heightRectangle;
-    private double widthRectangle;
+    private double height;
+    private double width;
 
-    public Rectangle(double heightRectangle, double widthRectangle) {
-        if (heightRectangle < 0 || widthRectangle < 0)
+    public Rectangle(double height, double width) {
+        if (height < 0 || width < 0) {
             throw new IllegalArgumentException("Размеры прямоугольника не могут быть отрицательными");
-        this.heightRectangle = heightRectangle;
-        this.widthRectangle = widthRectangle;
+        }
+        this.height = height;
+        this.width = width;
     }
 
     public double getHeight() {
-        return heightRectangle;
+        return height;
     }
 
     public double getWidth() {
-        return widthRectangle;
+        return width;
     }
 
     public double getArea() {
-        return heightRectangle * widthRectangle;
+        return height * width;
     }
 }
