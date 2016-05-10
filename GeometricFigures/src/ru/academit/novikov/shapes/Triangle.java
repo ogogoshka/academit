@@ -29,24 +29,12 @@ public class Triangle extends Shape {
 
     //ширина треугольника
     public double getWidth() {
-        if (x1 >= x2 && x2 >= x3) {
-            return x1 - x3;
-        } else if (x2 >= x3 && x3 >= x1) {
-            return x2 - x1;
-        } else {
-            return x3 - x2;
-        }
+        return Math.max(Math.max(x1, x2), x3) - Math.min(Math.min(x1, x2), x3);
     }
 
     //длина треугольника
     public double getHeight() {
-        if (y1 >= y2 && y2 >= y3) {
-            return y1 - y3;
-        } else if (y2 >= y3 && y3 >= y1) {
-            return y2 - y1;
-        } else {
-            return y3 - y2;
-        }
+        return Math.max(Math.max(y1, y2), y3) - Math.min(Math.min(y1, y2), y3);
     }
 
     public double getArea() {
