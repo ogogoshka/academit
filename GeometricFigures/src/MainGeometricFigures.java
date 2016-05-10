@@ -1,8 +1,10 @@
+import Shapes.Triangle;
+
 public class MainGeometricFigures {
 
     public static void main(String[] args) {
 
-/*        Square square = new Square(5);
+/*        Shapes.Square square = new Shapes.Square(5);
         System.out.println(square.getArea());
 
         square.setWidth(-10);
@@ -16,7 +18,7 @@ public class MainGeometricFigures {
         System.out.println(square.getArea());
 
 
-        Rectangle rectangle = new Rectangle(5, 6);
+        Shapes.Rectangle rectangle = new Shapes.Rectangle(5, 6);
         System.out.println(rectangle.getArea());
 
         rectangle.setHeight(5);
@@ -25,9 +27,9 @@ public class MainGeometricFigures {
         System.out.println(rectangle.getHeight());
         System.out.println(rectangle.getWidth());
         System.out.println(rectangle.getArea());
-*/
 
-        Circle circle = new Circle(6);
+
+        Shapes.Circle circle = new Shapes.Circle(6);
         System.out.println(circle.getArea());
 
         circle.setHeight(5);
@@ -37,6 +39,11 @@ public class MainGeometricFigures {
         System.out.println(circle.getWidth());
 
         System.out.println(circle.getArea());
+        */
+
+        Triangle triangle = new Triangle(2, 1, 2, 5, 6, 1);
+        System.out.println(triangle.getArea());
+
 
     }
 }

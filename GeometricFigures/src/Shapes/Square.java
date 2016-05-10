@@ -1,3 +1,5 @@
+package Shapes;
+
 class Square extends Shape {
 
     private double sideOfSquare;

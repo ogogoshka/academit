@@ -1,3 +1,5 @@
+package Shapes;
+
 class Rectangle extends Shape {
 
     private double heightRectangle;
