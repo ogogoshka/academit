@@ -1,10 +1,10 @@
 package Shapes;
 
-class Square extends Shape {
+public class Square extends Shape {
 
     private double sideOfSquare;
 
-    Square(double sideOfSquare) {
+    public Square(double sideOfSquare) {
         if (sideOfSquare >= 0) {
             this.sideOfSquare = sideOfSquare;
         } else {
@@ -16,7 +16,7 @@ class Square extends Shape {
         return sideOfSquare;
     }
 
-    void setWidth(double sideOfSquare) {
+    public void setWidth(double sideOfSquare) {
         if (sideOfSquare < 0) {
             System.out.println("Размеры квадрата не могут быть отрицательными");
         } else {
@@ -28,7 +28,7 @@ class Square extends Shape {
         return sideOfSquare;
     }
 
-    void setHeight(double sideOfSquare) {
+    public void setHeight(double sideOfSquare) {
         if (sideOfSquare < 0) {
             System.out.println("Размеры квадрата не могут быть отрицательными");
         } else {
@@ -36,7 +36,7 @@ class Square extends Shape {
         }
     }
 
-    double getArea() {
+    public double getArea() {
         return sideOfSquare * sideOfSquare;
     }
 }

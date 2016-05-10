@@ -1,11 +1,11 @@
 package Shapes;
 
-class Rectangle extends Shape {
+public class Rectangle extends Shape {
 
     private double heightRectangle;
     private double widthRectangle;
 
-    Rectangle(double heightRectangle, double widthRectangle) {
+    public Rectangle(double heightRectangle, double widthRectangle) {
         if (heightRectangle >= 0 || widthRectangle >= 0) {
             this.heightRectangle = heightRectangle;
             this.widthRectangle = widthRectangle;
@@ -14,11 +14,11 @@ class Rectangle extends Shape {
         }
     }
 
-    double getHeight() {
+    public double getHeight() {
         return heightRectangle;
     }
 
-    void setHeight(double heightRectangle) {
+    public void setHeight(double heightRectangle) {
         if (heightRectangle >= 0) {
             this.heightRectangle = heightRectangle;
         } else {
@@ -26,11 +26,11 @@ class Rectangle extends Shape {
         }
     }
 
-    double getWidth() {
+    public double getWidth() {
         return widthRectangle;
     }
 
-    void setWidth(double widthRectangle) {
+    public void setWidth(double widthRectangle) {
         if (widthRectangle >= 0) {
             this.widthRectangle = widthRectangle;
         } else {
@@ -38,7 +38,7 @@ class Rectangle extends Shape {
         }
     }
 
-    double getArea() {
+    public double getArea() {
         return heightRectangle * widthRectangle;
     }
 }

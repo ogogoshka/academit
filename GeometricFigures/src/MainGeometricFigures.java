@@ -44,6 +44,8 @@ public class MainGeometricFigures {
         Triangle triangle = new Triangle(2, 1, 2, 5, 6, 1);
         System.out.println(triangle.getArea());
 
+        System.out.println(triangle.getWidth());
+        System.out.println(triangle.getHeight());
 
     }
 }

@@ -1,18 +1,18 @@
 package Shapes;
 
-class Circle extends Shape {
+public class Circle extends Shape {
 
     private double diameterCircle;
 
-    Circle(double diameterCircle) {
+    public Circle(double diameterCircle) {
         this.diameterCircle = diameterCircle;
     }
 
-    double getWidth() {
+    public double getWidth() {
         return diameterCircle;
     }
 
-    void setWidth(double diameterCircle) {
+    public void setWidth(double diameterCircle) {
         if (diameterCircle >= 0) {
             this.diameterCircle = diameterCircle;
         } else {
@@ -20,11 +20,11 @@ class Circle extends Shape {
         }
     }
 
-    double getHeight() {
+    public double getHeight() {
         return diameterCircle;
     }
 
-    void setHeight(double diameterCircle) {
+    public void setHeight(double diameterCircle) {
         if (diameterCircle >= 0) {
             this.diameterCircle = diameterCircle;
         } else {
@@ -32,7 +32,7 @@ class Circle extends Shape {
         }
     }
 
-    double getArea() {
+    public double getArea() {
         return Math.PI * diameterCircle * diameterCircle / 4;
     }
 }
