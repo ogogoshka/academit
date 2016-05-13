@@ -1,4 +1,4 @@
-package ru.academit.novikov.shapes;
+package ru.academit.novikov.vector;
 
 public abstract class Shape {
     public abstract double getWidth();

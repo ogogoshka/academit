@@ -1,4 +1,4 @@
-package ru.academit.novikov.shapes;
+package ru.academit.novikov.vector;
 
 public class Triangle extends Shape {
     private double x1;

@@ -1,5 +1,5 @@
-import ru.academit.novikov.shapes.Square;
-import ru.academit.novikov.shapes.Triangle;
+import ru.academit.novikov.vector.Square;
+import ru.academit.novikov.vector.Triangle;
 
 public class MainGeometricFigures {
 

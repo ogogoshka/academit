@@ -1,4 +1,4 @@
-package ru.academit.novikov.shapes;
+package ru.academit.novikov.vector;
 
 public class Square extends Shape {
 
