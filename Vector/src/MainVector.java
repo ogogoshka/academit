@@ -11,10 +11,10 @@ public class MainVector {
 
         System.out.println(vector.getSize());
 
-        System.out.println(vector.toString());
+        System.out.println("vector = " + vector.toString());
 
         v2.getMultiplicationVectorByScalar(5);
-        System.out.println(v2.toString());
+        System.out.println("v2 = " + v2.toString());
 
         v3.getVectorReversal();
         System.out.println("v3 = " + v3.toString());
@@ -23,7 +23,6 @@ public class MainVector {
         v4.getAdditionOfVector(v4, v3);
 
         System.out.println("v4 = " + v4.toString());
-
 
 
     }

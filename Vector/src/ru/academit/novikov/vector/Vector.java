@@ -9,9 +9,9 @@ public class Vector {
             throw new IllegalArgumentException("размерность вектора не может быть <= 0");
         }
         arrayOfComponents = new int[size];
-        for (int i = 0; i < size; i++) {
-            arrayOfComponents[i] = 2;
-        }
+        //for (int i = 0; i < size; i++) {
+//            arrayOfComponents[i] = 2;
+//        }
     }
 
     public int getSize() {
