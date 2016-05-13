@@ -9,9 +9,9 @@ public class Vector {
             throw new IllegalArgumentException("размерность вектора не может быть <= 0");
         }
         arrayOfComponents = new int[size];
-        //for (int i = 0; i < size; i++) {
-//            arrayOfComponents[i] = 2;
-//        }
+        for (int i = 0; i < size; i++) {
+            arrayOfComponents[i] = 2;
+        }
     }
 
     public int getSize() {
@@ -31,7 +31,7 @@ public class Vector {
         return resultString;
     }
 
-
+    //прибавление к вектору другого вектора
     public int[] getAdditionOfVector(Vector v1, Vector v2) {
 
         if (v2.getSize() < v1.getSize()) {
@@ -62,6 +62,16 @@ public class Vector {
         }
     }
 
+    //вычитание из вектора другого вектора
+    public int[] getSubtractAnotherVector(Vector v1, Vector v2) {
+
+
+        return v1.arrayOfComponents;
+
+
+    }
+
+    //умноженеи вектора на скаляр
     public int[] getMultiplicationVectorByScalar(int scalar) {
         for (int i = 0; i < arrayOfComponents.length; i++) {
             arrayOfComponents[i] = scalar * arrayOfComponents[i];
@@ -69,7 +79,7 @@ public class Vector {
         return arrayOfComponents;
     }
 
-
+    //разворот вектора
     public int[] getVectorReversal() {
         for (int i = 0; i < arrayOfComponents.length; i++) {
             arrayOfComponents[i] = (-1) * arrayOfComponents[i];
@@ -77,15 +87,21 @@ public class Vector {
         return arrayOfComponents;
     }
 
-    public int getSubtractAnotherVector() {
-        return 0;
+
+    public int[] getScalarProductOfVectors(Vector v1, Vector v2) {
+
+        return v1.arrayOfComponents;
     }
 
-    public static int getScalarProductOfVectors(Vector v1, Vector v2) {
-
-        return 0;
+    //получение длины вектора
+    public double getVectorLength() {
+        int sum = 0;
+        //Vector v1;
+        for (int i = 0; i < arrayOfComponents.length; i++) {
+            sum = sum + arrayOfComponents[i] * arrayOfComponents[i];
+        }
+        return Math.sqrt(sum);
     }
-
 
     public Vector(int size, double[] array) {
 

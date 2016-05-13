@@ -8,6 +8,10 @@ public class MainVector {
         Vector v2 = new Vector(3);
         Vector v3 = new Vector(3);
         Vector v4 = new Vector(4);
+        Vector v5 = new Vector(5);
+
+        Vector v6 = new Vector(4);
+        Vector v7 = new Vector(3);
 
         System.out.println(vector.getSize());
 
@@ -24,7 +28,10 @@ public class MainVector {
 
         System.out.println("v4 = " + v4.toString());
 
+        System.out.println("v5 = " + v5.toString());
 
+        v6.getVectorLength();
+        System.out.println("v6 = " + v6.getVectorLength());
     }
 }
 /*
