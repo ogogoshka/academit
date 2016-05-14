@@ -47,9 +47,7 @@ public class Vector {
         } else if (size > array.length) {
             int[] temp = new int[size];
 
-            for (int i = 0; i < array.length; i++) {
-                temp[i] = array[i];
-            }
+            System.arraycopy(array, 0, temp, 0, array.length);
 
             for (int i = array.length; i < size; i++) {
                 temp[i] = 0;
@@ -234,13 +232,12 @@ public class Vector {
         return this;
     }
 
-
+  /*
     public int[] getScalarProductOfVectors(Vector v1, Vector v2) {
-
         return v1.components;
     }
 
-  /*
+
     public Vector(int size, double[] array) {
 
         //(double)this.components[] = array[];

@@ -86,12 +86,12 @@ public class MainVector {
 
         Vector vector = new Vector(7);
         Vector v2 = new Vector(3);
-        Vector v3 = new Vector(3);
+        //Vector v3 = new Vector(3);
         Vector v4 = new Vector(4);
         Vector v5 = new Vector(5);
 
         Vector v6 = new Vector(4);
-        Vector v7 = new Vector(3);
+        //Vector v7 = new Vector(3);
 
         System.out.println(vector.getSize());
 
