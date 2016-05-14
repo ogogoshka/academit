@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Vector {
 
-    final static double EPSILON = 0.0001;
+    private final static double EPSILON = 0.0001;
     private double[] components;
 
     public Vector(int size) {
@@ -24,13 +24,15 @@ public class Vector {
     }
 
     public Vector(int size, double[] array) {
+        int minLength = Math.min(size, array.length);
+        int maxLength = Math.max(size, array.length);
         if (size < array.length) {
-            double[] temp = new double[size];
-            System.arraycopy(array, 0, temp, 0, size);
+            double[] temp = new double[minLength];
+            System.arraycopy(array, 0, temp, 0, minLength);
             this.components = temp;
         } else if (size > array.length) {
-            double[] temp = new double[size];
-            System.arraycopy(array, 0, temp, 0, array.length);
+            double[] temp = new double[maxLength];
+            System.arraycopy(array, 0, temp, 0, minLength);
             this.components = temp;
         } else {
             double[] temp;
@@ -56,7 +58,22 @@ public class Vector {
         return resultString.append(" }").toString();
     }
 
+    public int hashCode() {
+        final int prime = 37;
+        int hash = 1;
+        hash = prime * hash + Arrays.hashCode(components);
+        return hash;
+    }
+
+    public boolean equals(Vector v) {
+        for (int i = 0; i < this.getSize(); i++) {
+            return (this.getSize() == v.getSize()) && (Math.abs(this.components[i] - v.components[i]) < EPSILON);
+        }
+        return false;
+    }
+
     public Vector add(Vector v2) {
+        //int minLength = Math.min(this.getSize(), v2.getSize());
         if (this.getSize() < v2.getSize()) {
             double[] temp = new double[v2.getSize()];
             for (int j = 0; j < this.getSize(); j++) {
@@ -111,9 +128,7 @@ public class Vector {
     }
 
     public void reverse() {
-        for (int i = 0; i < this.components.length; i++) {
-            this.components[i] = (-1) * this.components[i];
-        }
+        this.multiplicationByScalar(-1);
     }
 
     public double getVectorLength() {
@@ -184,34 +199,10 @@ public class Vector {
 
     public static double scalarMultiplication(Vector v1, Vector v2) {
         double multiplication = 0;
-        if (v1.getSize() < v2.getSize()) {
-            for (int j = 0; j < v1.getSize(); j++) {
-                multiplication += v1.components[j] * v2.components[j];
-            }
-            return Math.sqrt(multiplication);
-        } else if (v1.getSize() > v2.getSize()) {
-            for (int j = 0; j < v2.getSize(); j++) {
-                multiplication += v1.components[j] * v2.components[j];
-            }
-            return Math.sqrt(multiplication);
-        } else {
-            for (int j = 0; j < v1.getSize(); j++) {
-                multiplication += v1.components[j] * v2.components[j];
-            }
-            return Math.sqrt(multiplication);
+        int minLength = Math.min(v1.getSize(), v2.getSize());
+        for (int j = 0; j < minLength; j++) {
+            multiplication += v1.components[j] * v2.components[j];
         }
-    }
-
-    public int hashCode() {
-        final int prime = 37;
-        int hash = 1;
-        hash = prime * hash + Arrays.hashCode(components);
-        return hash;
-    }
-
-    public boolean equals(Vector v) {
-
-
-        return true;
+        return Math.sqrt(multiplication);
     }
 }
