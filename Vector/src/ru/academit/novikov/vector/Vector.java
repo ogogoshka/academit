@@ -179,6 +179,30 @@ public class Vector {
         }
     }
 
+    public static double scalarMultiplication(Vector v1, Vector v2) {
+        double multiplication = 0;
+        if (v1.getSize() < v2.getSize()) {
+            for (int j = 0; j < v1.getSize(); j++) {
+                multiplication += v1.components[j] * v2.components[j];
+            }
+            return Math.sqrt(multiplication);
+        } else if (v1.getSize() > v2.getSize()) {
+            for (int j = 0; j < v2.getSize(); j++) {
+                multiplication += v1.components[j] * v2.components[j];
+            }
+            return Math.sqrt(multiplication);
+        } else {
+            for (int j = 0; j < v1.getSize(); j++) {
+                multiplication += v1.components[j] * v2.components[j];
+            }
+            return Math.sqrt(multiplication);
+        }
+    }
+
+
+
+
+
 
 
 
@@ -296,7 +320,7 @@ public class Vector {
         return this.components;
     }
 
- */
+
 
     //return v1.components;
 
@@ -308,7 +332,7 @@ public class Vector {
         }
         return this;
     }
-
+ */
   /*
     public double[] getScalarProductOfVectors(Vector v1, Vector v2) {
         return v1.components;

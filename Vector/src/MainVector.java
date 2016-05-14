@@ -3,6 +3,7 @@ import ru.academit.novikov.vector.Vector;
 import java.util.Arrays;
 
 import static ru.academit.novikov.vector.Vector.difference;
+import static ru.academit.novikov.vector.Vector.scalarMultiplication;
 import static ru.academit.novikov.vector.Vector.sum;
 
 public class MainVector {
@@ -28,8 +29,12 @@ public class MainVector {
         System.out.println(sum(v30, v44).toString());
 
         Vector v2 = new Vector(4, array);
-        Vector v3 = new Vector(2);
+        Vector v3 = new Vector(4);
         System.out.println(Arrays.toString(difference(v2, v3)));
+
+
+        scalarMultiplication(v2, v3);
+        System.out.println(scalarMultiplication(v2, v3));
 
     }
 }
