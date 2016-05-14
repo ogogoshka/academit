@@ -51,7 +51,7 @@ public class MainVector {
 
         int[] array = {1, 2, 3, 4};
 
-        Vector v77 = new Vector(4, array);
+        Vector v77 = new Vector(6, array);
         System.out.println(v77.toString());
 
         Vector v20 = new Vector(2);

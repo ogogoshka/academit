@@ -33,14 +33,33 @@ public class Vector {
     }
 
     //c.Vector(n, double[]) – заполнение вектора значениями из массива.
-    public Vector(int size, int[] array) {
-        //int size2;
-        //array = new double[10];
 
-        for (int i = 0; i < size - 1; i++) {
-            this.components[i] = this.components[i] + array[i];
+    //for (int i = 0; i < size; i++) {
+//            this.components[i] = this.components[i] + array[i];
+//        }
+    //this.components = v1.components;
+
+    public Vector(int size, int[] array) {
+
+        if (size < array.length) {
+            this.components = array;
+
+        } else if (size > array.length) {
+            int[] temp = new int[size];
+
+            for (int i = 0; i < array.length; i++) {
+                temp[i] = array[i];
+            }
+
+            for (int i = array.length; i < size; i++) {
+                temp[i] = 0;
+            }
+
+            this.components = temp;
+
+        } else {
+            this.components = array;
         }
-        //this.components = v1.components;
     }
 
 
