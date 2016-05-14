@@ -11,10 +11,10 @@ public class Vector {
         if (size <= 0) {
             throw new IllegalArgumentException("размерность вектора не может быть <= 0");
         }
-        components = new int[size];
-        for (int i = 0; i < size; i++) {
-            components[i] = 2;
-        }
+        //components = new int[size];
+        //for (int i = 0; i < size; i++) {
+            //components[i] = 2;
+        //}
     }
 
     //b.Vector(Vector) – конструктор копирования
