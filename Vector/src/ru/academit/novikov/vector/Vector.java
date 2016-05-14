@@ -1,5 +1,7 @@
 package ru.academit.novikov.vector;
 
+import java.util.Arrays;
+
 public class Vector {
 
     private double[] components;
@@ -199,7 +201,12 @@ public class Vector {
         }
     }
 
-
+    public int hashCode() {
+        final int prime = 37;
+        int hash = 1;
+        hash = prime * hash + Arrays.hashCode(components);
+        return hash;
+    }
 
 
 
