@@ -3,7 +3,7 @@ package ru.academit.novikov.vector;
 
 public class Vector {
 
-    private int[] components;
+    private double[] components;
 
     //1.Конструкторы
     //a.Vector(n) – размерность n, все компоненты равны 0
@@ -11,25 +11,27 @@ public class Vector {
         if (size <= 0) {
             throw new IllegalArgumentException("размерность вектора не может быть <= 0");
         }
-        //components = new int[size];
-        //for (int i = 0; i < size; i++) {
-            //components[i] = 2;
-        //}
+        components = new double[size];
+        for (int i = 0; i < size; i++) {
+            components[i] = 2;
+        }
     }
 
     //b.Vector(Vector) – конструктор копирования
     public Vector(Vector v1) {
-        this.components = v1.components;
+        double[] temp = new double[v1.getSize()];
+        System.arraycopy(v1.components, 0, temp, 0, v1.getSize());
+        this.components = temp;
     }
 
     //c.Vector(n, double[]) – заполнение вектора значениями из массива.
-    public Vector(int size, int[] array) {
+    public Vector(int size, double[] array) {
 
         if (size < array.length) {
             this.components = array;
 
         } else if (size > array.length) {
-            int[] temp = new int[size];
+            double[] temp = new double[size];
 
             System.arraycopy(array, 0, temp, 0, array.length);
 
@@ -68,7 +70,7 @@ public class Vector {
 
         if (this.getSize() < v2.getSize()) {
 
-            int[] temp = new int[v2.getSize()];
+            double[] temp = new double[v2.getSize()];
 
             for (int j = 0; j < this.getSize(); j++) {
                 temp[j] = this.components[j] + v2.components[j];
@@ -82,7 +84,7 @@ public class Vector {
 
         } else if (this.getSize() > v2.getSize()) {
 
-            int[] temp = new int[this.getSize()];
+            double[] temp = new double[this.getSize()];
 
             for (int j = 0; j < v2.getSize(); j++) {
                 temp[j] = this.components[j] + v2.components[j];
@@ -105,7 +107,7 @@ public class Vector {
 
         if (this.getSize() < v2.getSize()) {
 
-            int[] temp = new int[v2.getSize()];
+            double[] temp = new double[v2.getSize()];
 
             for (int j = 0; j < this.getSize(); j++) {
                 temp[j] = this.components[j] - v2.components[j];
@@ -119,7 +121,7 @@ public class Vector {
 
         } else if (this.getSize() > v2.getSize()) {
 
-            int[] temp = new int[this.getSize()];
+            double[] temp = new double[this.getSize()];
 
             for (int j = 0; j < v2.getSize(); j++) {
                 temp[j] = this.components[j] - v2.components[j];
@@ -154,7 +156,7 @@ public class Vector {
     //e.Получение длины вектора
     public double getVectorLength() {
         double sum = 0;
-        for (int component : this.components) {
+        for (double component : this.components) {
             sum = sum + component * component;
         }
         return Math.sqrt(sum);
@@ -168,6 +170,67 @@ public class Vector {
     public void setComponent(int newComponent, int i) {
         this.components[i] = newComponent;
     }
+
+
+    //5.Реализовать статические методы – должны создаваться новые векторы
+
+    //a.Сложение двух векторов
+    public Vector sum(Vector v1, Vector v2) {
+
+
+        if (v1.getSize() < v2.getSize()) {
+
+            Vector v3 = new Vector(v2.getSize());
+            double[] temp = new double[v2.getSize()];
+
+            for (int j = 0; j < v1.getSize(); j++) {
+                temp[j] = v1.components[j] + v2.components[j];
+            }
+
+            System.arraycopy(v2.components, v1.getSize(), temp, v1.getSize(), v2.getSize() - v1.getSize());
+            //v1.components = temp;
+            v3.components = temp;
+            this.components = temp;
+            //this.components=temp;
+            return this;
+
+        } else if (v1.getSize() > v2.getSize()) {
+
+            Vector v3 = new Vector(v1.getSize());
+            double[] temp = new double[v1.getSize()];
+
+            for (int j = 0; j < v2.getSize(); j++) {
+                temp[j] = v1.components[j] + v2.components[j];
+            }
+
+            System.arraycopy(v1.components, v2.getSize(), temp, v2.getSize(), v1.getSize() - v2.getSize());
+            //v1.components = temp;
+            v3.components = temp;
+            this.components = temp;
+            //this.components=temp;
+            return this;
+
+        } else {
+
+            //Vector v3 = new Vector(v1.getSize());
+            double[] temp = new double[v1.getSize()];
+
+            for (int j = 0; j < v1.getSize(); j++) {
+                temp[j] = v1.components[j] + v2.components[j];
+            }
+            this.components = temp;
+            //this.components=temp;
+            return this;
+        }
+
+        //return this.v3.components;
+    }
+
+
+    //b.Вычитание векторов
+
+
+    //c.Скалярное произведение векторов
 
 
 
@@ -195,7 +258,7 @@ public class Vector {
         }
 
     //умноженеи вектора на скаляр
-    public int[] multiplicationByScalar2(int scalar) {
+    public double[] multiplicationByScalar2(int scalar) {
         for (int i = 0; i < this.components.length; i++) {
             this.components[i] = scalar * this.components[i];
         }
@@ -216,7 +279,7 @@ public class Vector {
     }
 
   /*
-    public int[] getScalarProductOfVectors(Vector v1, Vector v2) {
+    public double[] getScalarProductOfVectors(Vector v1, Vector v2) {
         return v1.components;
     }
 
@@ -231,7 +294,7 @@ public class Vector {
 
 
 
-        int[] size = new int[n];
+        double[] size = new int[n];
 
         for (int i = 1; i < n; i++) {
             size[i] = array[i];
@@ -286,10 +349,10 @@ public class Vector {
 //    private double[] array;
 
 
-    //private int[] size;
+    //private double[] size;
 
 
-    //int[] components = new int[size];
+    //double[] components = new int[size];
 
 
 }
