@@ -146,30 +146,6 @@ public class Vector {
         this.components[i] = newComponent;
     }
 
-    public static double[] sum(Vector v1, Vector v2) {
-        if (v1.getSize() < v2.getSize()) {
-            double[] temp = new double[v2.getSize()];
-            for (int j = 0; j < v1.getSize(); j++) {
-                temp[j] = v1.components[j] + v2.components[j];
-            }
-            System.arraycopy(v2.components, v1.getSize(), temp, v1.getSize(), v2.getSize() - v1.getSize());
-            return temp;
-        } else if (v1.getSize() > v2.getSize()) {
-            double[] temp = new double[v1.getSize()];
-            for (int j = 0; j < v2.getSize(); j++) {
-                temp[j] = v1.components[j] + v2.components[j];
-            }
-            System.arraycopy(v1.components, v2.getSize(), temp, v2.getSize(), v1.getSize() - v2.getSize());
-            return temp;
-        } else {
-            double[] temp = new double[v2.getSize()];
-            for (int j = 0; j < v1.getSize(); j++) {
-                temp[j] = v1.components[j] + v2.components[j];
-            }
-            return temp;
-        }
-    }
-
     public static double scalarMultiplication(Vector v1, Vector v2) {
         double multiplication = 0;
         int minLength = Math.min(v1.getSize(), v2.getSize());
