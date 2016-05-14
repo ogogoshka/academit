@@ -12,9 +12,9 @@ public class Vector {
             throw new IllegalArgumentException("размерность вектора не может быть <= 0");
         }
         components = new double[size];
-        for (int i = 0; i < size; i++) {
-            components[i] = 2;
-        }
+//        for (int i = 0; i < size; i++) {
+//            components[i] = 2;
+//        }
     }
 
     public Vector(Vector v1) {
@@ -73,7 +73,6 @@ public class Vector {
     }
 
     public Vector add(Vector v2) {
-        //int minLength = Math.min(this.getSize(), v2.getSize());
         if (this.getSize() < v2.getSize()) {
             double[] temp = new double[v2.getSize()];
             for (int j = 0; j < this.getSize(); j++) {
@@ -171,32 +170,6 @@ public class Vector {
         }
     }
 
-    public static double[] difference(Vector v1, Vector v2) {
-        if (v1.getSize() < v2.getSize()) {
-            double[] temp = new double[v2.getSize()];
-            for (int j = 0; j < v1.getSize(); j++) {
-                temp[j] = v1.components[j] - v2.components[j];
-            }
-            for (int j = v1.getSize(); j < v2.getSize(); j++) {
-                temp[j] = -v2.components[j];
-            }
-            return temp;
-        } else if (v1.getSize() > v2.getSize()) {
-            double[] temp = new double[v1.getSize()];
-            for (int j = 0; j < v2.getSize(); j++) {
-                temp[j] = v1.components[j] - v2.components[j];
-            }
-            System.arraycopy(v1.components, v2.getSize(), temp, v2.getSize(), v1.getSize() - v2.getSize());
-            return temp;
-        } else {
-            double[] temp = new double[v1.getSize()];
-            for (int j = 0; j < v1.getSize(); j++) {
-                temp[j] = v1.components[j] - v2.components[j];
-            }
-            return temp;
-        }
-    }
-
     public static double scalarMultiplication(Vector v1, Vector v2) {
         double multiplication = 0;
         int minLength = Math.min(v1.getSize(), v2.getSize());
@@ -204,5 +177,13 @@ public class Vector {
             multiplication += v1.components[j] * v2.components[j];
         }
         return Math.sqrt(multiplication);
+    }
+
+    public static Vector add(Vector v1, Vector v2) {
+        return v1.add(v2);
+    }
+
+    public static Vector minus(Vector v1, Vector v2) {
+        return v1.minus(v2);
     }
 }
