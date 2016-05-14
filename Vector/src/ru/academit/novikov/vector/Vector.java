@@ -4,7 +4,6 @@ package ru.academit.novikov.vector;
 public class Vector {
 
     private int[] components;
-    //private double[] array;
 
     //1.Конструкторы
     //a.Vector(n) – размерность n, все компоненты равны 0
@@ -17,15 +16,6 @@ public class Vector {
             components[i] = 2;
         }
     }
-/*
-    public Vector(Vector v) {
-
-        //this(v.getSize());
-                //this.size=v1.size;
-        //return components;
-        //this(v1.getSize());
-    }
- */
 
     //b.Vector(Vector) – конструктор копирования
     public Vector(Vector v1) {
@@ -33,12 +23,6 @@ public class Vector {
     }
 
     //c.Vector(n, double[]) – заполнение вектора значениями из массива.
-
-    //for (int i = 0; i < size; i++) {
-//            this.components[i] = this.components[i] + array[i];
-//        }
-    //this.components = v1.components;
-
     public Vector(int size, int[] array) {
 
         if (size < array.length) {
@@ -59,7 +43,6 @@ public class Vector {
             this.components = array;
         }
     }
-
 
     //2.Метод getSize() для получения размерности вектора
     public int getSize() {
@@ -340,3 +323,11 @@ public class Vector {
         }
 
  */
+
+
+//c.Vector(n, double[]) – заполнение вектора значениями из массива.
+
+//for (int i = 0; i < size; i++) {
+//            this.components[i] = this.components[i] + array[i];
+//        }
+//this.components = v1.components;
