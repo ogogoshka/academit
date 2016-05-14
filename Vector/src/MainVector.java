@@ -4,21 +4,19 @@ public class MainVector {
     public static void main(String[] args) {
 
 
-        int[] array = {1, 2, 3, 4};
+        double[] array = {1, 2, 3, 4};
 
+        Vector v44 = new Vector(4, array);
+        System.out.println(v44.toString());
 
         Vector v30 = new Vector(3);
-        System.out.println(v30.toString());
-
-        Vector v20 = new Vector(v30);
-
-        v30.reverse();
+        v30.add(v44);
+        //v30.minus(v44);
 
         System.out.println(v30.toString());
-        System.out.println(v20.toString());
 
 
-        System.out.println(v20.toString());
+
 
         Vector vSum = new Vector(1);
         System.out.println(vSum);
@@ -27,7 +25,6 @@ public class MainVector {
         Vector v10 = new Vector(6);
         Vector v11 = new Vector(4);
 
-        v10.deduct(v11);
         //v10.add(v10, v11);
         System.out.println(v10.toString());
 
@@ -37,61 +34,8 @@ public class MainVector {
 
         System.out.println();
 
-        v10.setComponent(11, 0);
-
-        System.out.println(v10.getComponent(0));
-        System.out.println(v10.getComponent(1));
-        System.out.println(v10.getComponent(2));
-        System.out.println(v10.getComponent(3));
-        System.out.println(v10.getComponent(4));
-        System.out.println(v10.getComponent(5));
 
 
-        Vector vector = new Vector(7);
-        Vector v2 = new Vector(3);
-        //Vector v3 = new Vector(3);
-        Vector v4 = new Vector(4);
-        Vector v5 = new Vector(5);
-
-        Vector v6 = new Vector(4);
-        //Vector v7 = new Vector(3);
-
-        System.out.println(vector.getSize());
-
-        System.out.println("vector = " + vector.toString());
-
-        //v2.getMultiplicationVectorByScalar(5);
-        //System.out.println("v2 = " + v2.toString());
-
-        //v3.getVectorReversal();
-        //System.out.println("v3 = " + v3.toString());
-
-        //System.out.println("v4 = " + v4.toString());
-        //v4.getAdditionOfVector(v4, v3);
-
-        System.out.println("v4 = " + v4.toString());
-
-        System.out.println("v5 = " + v5.toString());
-
-        v6.getVectorLength();
-        System.out.println("v6 = " + v6.getVectorLength());
-
-        v6.reverse();
-        System.out.println("v6 = " + v6.toString());
-        //v2.getSubtractAnotherVector(v2, v4);
-        //System.out.println("v2 = " + v2.toString());
-
-        v6.multiplicationByScalar(11);
-        System.out.println("v6 = " + v6.toString());
-
-        v2.reverse();
-        System.out.println("v2 = " + v2.toString());
-
-        v4.reverse2();
-        System.out.println("v4 = " + v4.toString());
-
-        //v2.multiplicationByScalar2(-7);
-        System.out.println("v2 = " + v2.toString());
 
     }
 }
