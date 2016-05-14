@@ -116,7 +116,7 @@ public class Vector {
     public double getVectorLength() {
         double sum = 0;
         for (double component : this.components) {
-            sum = sum + component * component;
+            sum += component * component;
         }
         return Math.sqrt(sum);
     }
