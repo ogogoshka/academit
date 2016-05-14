@@ -15,30 +15,10 @@ public class MainVector {
 
         System.out.println(v30.toString());
 
-
-
-
-        Vector vSum = new Vector(1);
-        System.out.println(vSum);
-
-
-        Vector v10 = new Vector(6);
-        Vector v11 = new Vector(4);
-
-        //v10.add(v10, v11);
-        System.out.println(v10.toString());
-
-        Vector v33 = new Vector(v10);
-        System.out.println(v33.toString());
-
-
-        System.out.println();
-
-
-
-
     }
 }
+
+
 /*
 
         int[] size = new int[5];
