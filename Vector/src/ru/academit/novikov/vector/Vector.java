@@ -130,7 +130,6 @@ public class Vector {
     }
 
     public static double[] sum(Vector v1, Vector v2) {
-
         if (v1.getSize() < v2.getSize()) {
             double[] temp = new double[v2.getSize()];
             for (int j = 0; j < v1.getSize(); j++) {
