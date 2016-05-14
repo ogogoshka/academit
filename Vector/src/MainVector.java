@@ -1,5 +1,9 @@
 import ru.academit.novikov.vector.Vector;
 
+import java.util.Arrays;
+
+import static ru.academit.novikov.vector.Vector.sum2;
+
 public class MainVector {
     public static void main(String[] args) {
 
@@ -9,11 +13,22 @@ public class MainVector {
         Vector v44 = new Vector(4, array);
         System.out.println(v44.toString());
 
-        Vector v30 = new Vector(3);
-        v30.add(v44);
+        Vector v30 = new Vector(4);
+        System.out.println(v30.toString());
+        //v30.add(v44);
         //v30.minus(v44);
 
-        System.out.println(v30.toString());
+        Vector v1 = new Vector(4);
+
+        sum2(v30, v44);
+        sum2(v30, v44).toString();
+
+        System.out.println(Arrays.toString(sum2(v30, v44)));
+        System.out.println(sum2(v30, v44).toString());
+
+        Vector v2 = new Vector(4, array);
+        Vector v3 = new Vector(2);
+        System.out.println(Arrays.toString(sum2(v2, v3)));
 
     }
 }

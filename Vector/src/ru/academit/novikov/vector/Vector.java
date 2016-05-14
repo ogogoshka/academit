@@ -129,30 +129,57 @@ public class Vector {
         this.components[i] = newComponent;
     }
 
+    public static double[] sum(Vector v1, Vector v2) {
+
+        if (v1.getSize() < v2.getSize()) {
+            double[] temp = new double[v2.getSize()];
+            for (int j = 0; j < v1.getSize(); j++) {
+                temp[j] = v1.components[j] + v2.components[j];
+            }
+            System.arraycopy(v2.components, v1.getSize(), temp, v1.getSize(), v2.getSize() - v1.getSize());
+            return temp;
+        } else if (v1.getSize() > v2.getSize()) {
+            double[] temp = new double[v1.getSize()];
+            for (int j = 0; j < v2.getSize(); j++) {
+                temp[j] = v1.components[j] + v2.components[j];
+            }
+            System.arraycopy(v1.components, v2.getSize(), temp, v2.getSize(), v1.getSize() - v2.getSize());
+            return temp;
+        } else {
+            double[] temp = new double[v2.getSize()];
+            for (int j = 0; j < v1.getSize(); j++) {
+                temp[j] = v1.components[j] + v2.components[j];
+            }
+            return temp;
+        }
+    }
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    //5.Реализовать статические методы – должны создаваться новые векторы
+/*
 
     //a.Сложение двух векторов
-    public Vector sum(Vector v1, Vector v2) {
+    public static double[] sum2(Vector v1, Vector v2) {
+
+        //double[] components;
+        double[] temp = new double[v2.getSize()];
+
+        for (int i = 0; i < v2.getSize(); i++) {
+            temp[i] = v1.components[i] + v2.components[i];
+            //this.components[i] = v1.components[i] + v2.components[i];
+
+        }
+        return temp;
+        //this.components = temp;
+        //return this;
+        //this.components = temp;
+
+    }
+
+
 
 
         if (v1.getSize() < v2.getSize()) {
@@ -202,6 +229,8 @@ public class Vector {
 
         //return this.v3.components;
     }
+
+ */
 
 
     //b.Вычитание векторов
