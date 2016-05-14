@@ -153,6 +153,32 @@ public class Vector {
         }
     }
 
+    public static double[] difference(Vector v1, Vector v2) {
+        if (v1.getSize() < v2.getSize()) {
+            double[] temp = new double[v2.getSize()];
+            for (int j = 0; j < v1.getSize(); j++) {
+                temp[j] = v1.components[j] - v2.components[j];
+            }
+            for (int j = v1.getSize(); j < v2.getSize(); j++) {
+                temp[j] = -v2.components[j];
+            }
+            return temp;
+        } else if (v1.getSize() > v2.getSize()) {
+            double[] temp = new double[v1.getSize()];
+            for (int j = 0; j < v2.getSize(); j++) {
+                temp[j] = v1.components[j] - v2.components[j];
+            }
+            System.arraycopy(v1.components, v2.getSize(), temp, v2.getSize(), v1.getSize() - v2.getSize());
+            return temp;
+        } else {
+            double[] temp = new double[v1.getSize()];
+            for (int j = 0; j < v1.getSize(); j++) {
+                temp[j] = v1.components[j] - v2.components[j];
+            }
+            return temp;
+        }
+    }
+
 
 
 

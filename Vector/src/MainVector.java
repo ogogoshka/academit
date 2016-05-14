@@ -2,6 +2,7 @@ import ru.academit.novikov.vector.Vector;
 
 import java.util.Arrays;
 
+import static ru.academit.novikov.vector.Vector.difference;
 import static ru.academit.novikov.vector.Vector.sum;
 
 public class MainVector {
@@ -28,7 +29,7 @@ public class MainVector {
 
         Vector v2 = new Vector(4, array);
         Vector v3 = new Vector(2);
-        System.out.println(Arrays.toString(sum(v2, v3)));
+        System.out.println(Arrays.toString(difference(v2, v3)));
 
     }
 }
