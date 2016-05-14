@@ -12,9 +12,6 @@ public class Vector {
             throw new IllegalArgumentException("размерность вектора не может быть <= 0");
         }
         components = new double[size];
-//        for (int i = 0; i < size; i++) {
-//            components[i] = 2;
-//        }
     }
 
     public Vector(Vector v1) {
