@@ -9,12 +9,15 @@ public class Range {
     }
 
     public Range(double from, double to) {
+        if (to < from) {
+            throw new IllegalArgumentException("считаем что второе число всегда >= чем первое");
+        }
         this.from = from;
         this.to = to;
     }
 
     public double lengthRange() {
-        return Math.abs(to - from);
+        return to - from;
     }
 
     public boolean isInside(double number) {
@@ -37,62 +40,74 @@ public class Range {
         this.to = to;
     }
 
-    //пересечение
     public Range intersection(Range r1, Range r2) {
+        double newFrom;
+        double newTo;
         if (r1.to < r2.from || r2.to < r1.from) {
             return null;
         } else if (r2.from <= r1.to && r1.to <= r2.to) {
-            this.from = r2.from;
-            this.to = r1.to;
+            newFrom = r2.from;
+            newTo = r1.to;
+            this.from = newFrom;
+            this.to = newTo;
         } else if (r1.from <= r2.to && r2.to <= r1.to) {
-            this.from = r1.from;
-            this.to = r2.to;
+            newFrom = r1.from;
+            newTo = r2.to;
+            this.from = newFrom;
+            this.to = newTo;
         }
         return this;
     }
 
-    //объединение
-    public Range association(Range r1, Range r2) {
+    @Override
+    public String toString() {
+        return "(" + this.from + " , " + this.to + ")";
 
-        if (r2.from <= r1.to || r1.from <= r2.to) {
-            this.from = Math.min(r1.from, r2.from);
-            this.to = Math.max(r1.to, r2.to);
-            return this;
-        } else if (r1.to < r2.from || r2.to < r1.from) {
-            //this.from = Math.min(r1.from, r2.from);
-            //this.to = Math.max(r1.to, r2.to);
-            return null;
-        }
-
-
-        //this.from = Math.min(r1.from, r2.from);
-        //this.to = Math.max(r1.to, r2.to);
-
-        return null;
     }
 
-    //объединение2
-    public static void association2(Range r1, Range r2) {
+    public Range[] association(Range r1, Range r2) {
+        Range r3 = new Range();
+        Range r4 = new Range();
+        Range[] newRange = new Range[1];
         if (r2.from <= r1.to && r1.from <= r2.to) {
-            System.out.println("(" + Math.min(r1.from, r2.from) + " , " + Math.max(r1.to, r2.to) + ")");
+            r3.from = Math.min(r1.from, r2.from);
+            r3.to = Math.max(r1.to, r2.to);
+            newRange[0] = r3;
         } else if (r2.to < r1.from || r1.to < r2.from) {
-            System.out.println("(" + Math.min(r1.from, r2.from) + "," + Math.min(r1.to, r2.to) + ") U (" + Math.max(r1.from, r2.from) + "," + Math.max(r1.to, r2.to) + ")");
+            Range[] newRange2 = new Range[2];
+            r3.from = Math.min(r1.from, r2.from);
+            r3.to = Math.min(r1.to, r2.to);
+            r4.from = Math.max(r1.from, r2.from);
+            r4.to = Math.max(r1.to, r2.to);
+            newRange2[0] = r3;
+            newRange2[1] = r4;
+            return newRange2;
         }
-    }
-
-    //разность2
-    public static void difference2(Range r1, Range r2) {
-        if (r1.to < r2.from || r2.to < r1.from) {
-            System.out.println("(" + r1.from + " , " + r1.to + ")");
-        } else if (r2.to <= r1.from || r1.to <= r2.from) {
-            System.out.println("(" + Math.min(r1.from, r2.from) + "," + Math.max(r1.from, r2.from) + ") U (" + Math.min(r1.to, r2.to) + "," + Math.max(r1.to, r2.to) + ")");
-        }
+        return newRange;
     }
 
     //разность
-    public Range difference(Range r1, Range r2) {
-        this.from = Math.min(r1.from, r2.from);
-        this.to = Math.max(r1.to, r2.to);
-        return this;
+    public Range[] difference(Range r2) {
+        double[] temp = new double[2];
+
+        Range[] newRange = new Range[2];
+        newRange[0] = r2;
+        newRange[1] = this;
+        newRange[0].from = 1;
+        newRange[0].to = 11;
+
+        //Range r3;
+        temp[0] = 0;
+        temp[1] = 1;
+
+
+        if (this.to < r2.from || r2.to < this.from) {
+            return newRange;
+        }
+
+        //this=temp;
+//        this.from = Math.min(r1.from, r2.from);
+//        this.to = Math.max(r1.to, r2.to);
+        return newRange;
     }
 }

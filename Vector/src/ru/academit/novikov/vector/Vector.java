@@ -42,6 +42,7 @@ public class Vector {
         return components.length;
     }
 
+    @Override
     public String toString() {
         StringBuilder resultString = new StringBuilder();
         resultString.append("{ ");
@@ -55,19 +56,23 @@ public class Vector {
         return resultString.append(" }").toString();
     }
 
+    @Override
     public int hashCode() {
         final int prime = 37;
         int hash = 1;
         hash = prime * hash + Arrays.hashCode(components);
         return hash;
     }
-
-    public boolean equals(Vector v) {
+/*
+    @Override
+    public boolean equals(Object v) {
         for (int i = 0; i < this.getSize(); i++) {
             return (this.getSize() == v.getSize()) && (Math.abs(this.components[i] - v.components[i]) < EPSILON);
         }
         return false;
     }
+ */
+
 
     public Vector add(Vector v2) {
         if (this.getSize() < v2.getSize()) {
