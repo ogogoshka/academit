@@ -65,7 +65,7 @@ public class Range {
 
     }
 
-    public Range[] association(Range r1, Range r2) {
+    public Range[] combination(Range r1, Range r2) {
         Range r3 = new Range();
         Range r4 = new Range();
         Range[] newRange = new Range[1];

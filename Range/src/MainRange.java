@@ -10,7 +10,7 @@ public class MainRange {
         Range r3 = new Range();
         Range[] r4;
 
-        r4 = r3.association(r1, r2);
+        r4 = r3.combination(r1, r2);
         System.out.println(Arrays.toString(r4));
     }
 }
