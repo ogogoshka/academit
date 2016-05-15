@@ -39,38 +39,36 @@ public class Range {
 
     //пересечение
     public Range intersection(Range r1, Range r2) {
-
         if (r1.to < r2.from || r2.to < r1.from) {
             return null;
-        } else if (r1.from < r2.from && r2.to < r1.to) {
-            this.from = r2.from;
-            this.to = r2.to;
-            //return this;
-        } else if (r2.from < r1.from && r1.to < r2.to) {
-            this.from = r1.from;
-            this.to = r1.to;
-            //return this;
         } else if (r2.from <= r1.to && r1.to <= r2.to) {
             this.from = r2.from;
             this.to = r1.to;
-            //return this;
         } else if (r1.from <= r2.to && r2.to <= r1.to) {
             this.from = r1.from;
             this.to = r2.to;
-            //return this;
-        } else {
-            this.from = r1.from;
-            this.to = r1.to;
-            //return this;
         }
         return this;
     }
 
     //объединение
     public Range association(Range r1, Range r2) {
-        this.from = Math.min(r1.from, r2.from);
-        this.to = Math.max(r1.to, r2.to);
-        return this;
+
+        if (r2.from <= r1.to || r1.from <= r2.to) {
+            this.from = Math.min(r1.from, r2.from);
+            this.to = Math.max(r1.to, r2.to);
+            return this;
+        } else if (r1.to < r2.from || r2.to < r1.from) {
+            //this.from = Math.min(r1.from, r2.from);
+            //this.to = Math.max(r1.to, r2.to);
+            return null;
+        }
+
+
+        //this.from = Math.min(r1.from, r2.from);
+        //this.to = Math.max(r1.to, r2.to);
+
+        return null;
     }
 
     //разность

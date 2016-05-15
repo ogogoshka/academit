@@ -10,7 +10,7 @@ public class MainRange {
         System.out.println(range.isInside(7));
 
         Range r1 = new Range(7, 11);
-        Range r2 = new Range(8, 9);
+        Range r2 = new Range(12, 15);
         Range r3 = new Range();
 
         r3.intersection(r1, r2);
