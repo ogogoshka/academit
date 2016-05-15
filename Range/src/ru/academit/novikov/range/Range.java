@@ -71,6 +71,24 @@ public class Range {
         return null;
     }
 
+    //объединение2
+    public static void association2(Range r1, Range r2) {
+        if (r2.from <= r1.to && r1.from <= r2.to) {
+            System.out.println("(" + Math.min(r1.from, r2.from) + " , " + Math.max(r1.to, r2.to) + ")");
+        } else if (r2.to < r1.from || r1.to < r2.from) {
+            System.out.println("(" + Math.min(r1.from, r2.from) + "," + Math.min(r1.to, r2.to) + ") U (" + Math.max(r1.from, r2.from) + "," + Math.max(r1.to, r2.to) + ")");
+        }
+    }
+
+    //разность2
+    public static void difference2(Range r1, Range r2) {
+        if (r1.to < r2.from || r2.to < r1.from) {
+            System.out.println("(" + r1.from + " , " + r1.to + ")");
+        } else if (r2.to <= r1.from || r1.to <= r2.from) {
+            System.out.println("(" + Math.min(r1.from, r2.from) + "," + Math.max(r1.from, r2.from) + ") U (" + Math.min(r1.to, r2.to) + "," + Math.max(r1.to, r2.to) + ")");
+        }
+    }
+
     //разность
     public Range difference(Range r1, Range r2) {
         this.from = Math.min(r1.from, r2.from);
