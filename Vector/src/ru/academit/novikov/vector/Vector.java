@@ -7,6 +7,9 @@ public class Vector {
     private final static double EPSILON = 0.0001;
     private double[] components;
 
+    public Vector() {
+    }
+
     public Vector(int size) {
         if (size <= 0) {
             throw new IllegalArgumentException("размерность вектора не может быть <= 0");
@@ -59,18 +62,18 @@ public class Vector {
     @Override
     public int hashCode() {
         final int prime = 37;
-        int hash = 1;
-        hash = prime * hash + Arrays.hashCode(components);
-        return hash;
+        return prime + Arrays.hashCode(components);
     }
 /*
     @Override
-    public boolean equals(Object v) {
+    public boolean equals(Object obj) {
         for (int i = 0; i < this.getSize(); i++) {
-            return (this.getSize() == v.getSize()) && (Math.abs(this.components[i] - v.components[i]) < EPSILON);
+            return (this.getSize() == obj.getSize()) && (Math.abs(this.components[i] - obj.components[i]) < EPSILON);
         }
         return false;
     }
+
+
  */
 
 
@@ -158,10 +161,12 @@ public class Vector {
     }
 
     public static Vector add(Vector v1, Vector v2) {
-        return v1.add(v2);
+        Vector v3 = v1.add(v2);
+        return v3;
     }
 
     public static Vector minus(Vector v1, Vector v2) {
-        return v1.minus(v2);
+        Vector v3 = v1.minus(v2);
+        return v3;
     }
 }
