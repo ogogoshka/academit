@@ -52,7 +52,6 @@ public class Range {
         return resultString.toString();
     }
 
-    //пересечение
     public Range intersection(Range r2) {
         Range r3 = new Range();
         if (this.to < r2.from || r2.to < this.from) {
@@ -69,7 +68,7 @@ public class Range {
         }
         return r3;
     }
-    //разность
+
     public Range[] difference(Range r2) {
         Range r3 = new Range();
         Range r4 = new Range();
@@ -111,26 +110,33 @@ public class Range {
         return newRange;
     }
 
+    //объединение
     public Range[] combination(Range r2) {
         Range r3 = new Range();
-        Range r4 = new Range();
+        Range r4;
         Range[] newRange = new Range[1];
-        if (r2.from <= this.to && this.from <= r2.to) {
+
+        if (isInside(r2.from) || isInside(r2.to)) {
             r3.from = Math.min(this.from, r2.from);
-            r3.to = Math.max(this.to, r2.to);
+            r3.to = Math.max(r2.to, this.to);
             newRange[0] = r3;
-        } else if (r2.to < this.from || this.to < r2.from) {
+            //return newRange;
+        } else if (this.to < r2.from || r2.to < this.from) {
             Range[] newRange2 = new Range[2];
-            r3.from = Math.min(this.from, r2.from);
-            r3.to = Math.min(this.to, r2.to);
-            r4.from = Math.max(this.from, r2.from);
-            r4.to = Math.max(this.to, r2.to);
-            newRange2[0] = r3;
-            newRange2[1] = r4;
-            return newRange2;
+            if (this.to < r2.to) {
+                r3 = this;
+                r4 = r2;
+                newRange2[0] = r3;
+                newRange2[1] = r4;
+                return newRange2;
+            } else {
+                r3 = r2;
+                r4 = this;
+                newRange2[0] = r3;
+                newRange2[1] = r4;
+                return newRange2;
+            }
         }
         return newRange;
     }
-
-
 }

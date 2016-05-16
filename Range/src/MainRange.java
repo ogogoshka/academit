@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class MainRange {
     public static void main(String[] args) {
         Range r1 = new Range(7, 17);
-        Range r2 = new Range(1, 11);
+        Range r2 = new Range(1, 2);
         Range r3 = new Range();
 
         r1.lengthRange();
