@@ -21,7 +21,7 @@ public class MainRange {
         r1.difference(r2);
         System.out.println(Arrays.toString(r1.difference(r2)));
 
-        r1.combination(r2);
-        System.out.println(Arrays.toString(r1.combination(r2)));
+        r1.union(r2);
+        System.out.println(Arrays.toString(r1.union(r2)));
     }
 }

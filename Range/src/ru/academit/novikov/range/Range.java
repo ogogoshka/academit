@@ -42,66 +42,51 @@ public class Range {
 
     @Override
     public String toString() {
-        StringBuilder resultString = new StringBuilder();
-        resultString.append("( ");
-        resultString.append(this.from);
-        resultString.append(" , ");
-        resultString.append(this.to);
-        resultString.append(" )");
-        //resultString.append("( " + this.from + " , " + this.to + " )");
-        return resultString.toString();
+        return String.format("(%.2f, %.2f)", this.from, this.to);
     }
 
     public Range intersection(Range r2) {
         Range r3 = new Range();
         if (this.to < r2.from || r2.to < this.from) {
-            return r3;
+            //Range r3 = new Range();
+            return null;
         } else if (this.from <= r2.from && r2.to <= this.to) {
-            r3.from = Math.max(this.from, r2.from);
-            r3.to = Math.min(r2.to, this.to);
+            return new Range(Math.max(this.from, r2.from), Math.min(r2.to, this.to));
         } else if (isInside(r2.from) && !isInside(r2.to)) {
-            r3.from = r2.from;
-            r3.to = this.to;
+            return new Range(r2.from, this.to);
         } else if (!isInside(r2.from) && isInside(r2.to)) {
-            r3.from = this.from;
-            r3.to = r2.to;
+            return new Range(this.from, r2.to);
         }
         return r3;
     }
 
     public Range[] difference(Range r2) {
-        Range r3 = new Range();
-        Range r4 = new Range();
+        //Range r3 = new Range();
+        //Range r4 = new Range();
         Range[] newRange = new Range[1];
         if (this.to < r2.from || r2.to < this.from) {
-            r3.from = this.from;
-            r3.to = this.to;
+            Range r3 = new Range(this.from, this.to);
             newRange[0] = r3;
         } else if (this.from < r2.from && r2.to < this.to) {
-            r3.from = this.from;
-            r3.to = r2.from;
-            r4.from = r2.to;
-            r4.to = this.to;
+            Range r3 = new Range(this.from, r2.from);
+            Range r4 = new Range(r2.to, this.to);
             Range[] newRange2 = new Range[2];
             newRange2[0] = r3;
             newRange2[1] = r4;
             return newRange2;
         } else if (this.from == r2.from && r2.to == this.to) {
+            Range r3 = new Range();
             newRange[0] = r3;
         } else if (isInside(r2.from) && !isInside(r2.to)) {
-            r3.from = this.from;
-            r3.to = r2.from;
-            r4.from = this.to;
-            r4.to = r2.to;
+            Range r3 = new Range(this.from, r2.from);
+            Range r4 = new Range(this.to, r2.to);
             Range[] newRange2 = new Range[2];
             newRange2[0] = r3;
             newRange2[1] = r4;
             return newRange2;
         } else if (!isInside(r2.from) && isInside(r2.to)) {
-            r3.from = r2.from;
-            r3.to = this.from;
-            r4.from = r2.to;
-            r4.to = this.to;
+            Range r3 = new Range(r2.from, this.from);
+            Range r4 = new Range(r2.to, this.to);
             Range[] newRange2 = new Range[2];
             newRange2[0] = r3;
             newRange2[1] = r4;
@@ -111,29 +96,20 @@ public class Range {
     }
 
     //объединение
-    public Range[] combination(Range r2) {
-        Range r3 = new Range();
-        Range r4;
+    public Range[] union(Range r2) {
         Range[] newRange = new Range[1];
-
         if (isInside(r2.from) || isInside(r2.to)) {
-            r3.from = Math.min(this.from, r2.from);
-            r3.to = Math.max(r2.to, this.to);
+            Range r3 = new Range(Math.min(this.from, r2.from), Math.max(r2.to, this.to));
             newRange[0] = r3;
-            //return newRange;
         } else if (this.to < r2.from || r2.to < this.from) {
             Range[] newRange2 = new Range[2];
             if (this.to < r2.to) {
-                r3 = this;
-                r4 = r2;
-                newRange2[0] = r3;
-                newRange2[1] = r4;
+                newRange2[0] = this;
+                newRange2[1] = r2;
                 return newRange2;
             } else {
-                r3 = r2;
-                r4 = this;
-                newRange2[0] = r3;
-                newRange2[1] = r4;
+                newRange2[0] = r2;
+                newRange2[1] = this;
                 return newRange2;
             }
         }
