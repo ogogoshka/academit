@@ -65,31 +65,23 @@ public class Range {
         //Range r4 = new Range();
         Range[] newRange = new Range[1];
         if (this.to < r2.from || r2.to < this.from) {
-            Range r3 = new Range(this.from, this.to);
-            newRange[0] = r3;
+            newRange[0] = new Range(this.from, this.to);
         } else if (this.from < r2.from && r2.to < this.to) {
-            Range r3 = new Range(this.from, r2.from);
-            Range r4 = new Range(r2.to, this.to);
             Range[] newRange2 = new Range[2];
-            newRange2[0] = r3;
-            newRange2[1] = r4;
+            newRange2[0] = new Range(this.from, r2.from);
+            newRange2[1] = new Range(r2.to, this.to);
             return newRange2;
         } else if (this.from == r2.from && r2.to == this.to) {
-            Range r3 = new Range();
-            newRange[0] = r3;
+            newRange[0] = new Range(this.from, this.to);
         } else if (isInside(r2.from) && !isInside(r2.to)) {
-            Range r3 = new Range(this.from, r2.from);
-            Range r4 = new Range(this.to, r2.to);
             Range[] newRange2 = new Range[2];
-            newRange2[0] = r3;
-            newRange2[1] = r4;
+            newRange2[0] = new Range(this.from, r2.from);
+            newRange2[1] = new Range(this.to, r2.to);
             return newRange2;
         } else if (!isInside(r2.from) && isInside(r2.to)) {
-            Range r3 = new Range(r2.from, this.from);
-            Range r4 = new Range(r2.to, this.to);
             Range[] newRange2 = new Range[2];
-            newRange2[0] = r3;
-            newRange2[1] = r4;
+            newRange2[0] = new Range(r2.from, this.from);
+            newRange2[1] = new Range(r2.to, this.to);
             return newRange2;
         }
         return newRange;
