@@ -83,7 +83,7 @@ public class Range {
             return newRange;
         }
     }
-    
+
     public Range[] difference(Range r2) {
         if (this.from > r2.from && r2.to < this.to) {
             Range[] newRange2 = new Range[2];

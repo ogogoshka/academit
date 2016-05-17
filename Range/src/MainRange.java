@@ -8,6 +8,9 @@ public class MainRange {
         Range r2 = new Range(11, 12);
         Range r3 = new Range();
 
+        r1.isInside(0);
+
+        r1.isIntersection(r2);
         r1.lengthRange();
         r1.getFrom();
         r1.getTo();
