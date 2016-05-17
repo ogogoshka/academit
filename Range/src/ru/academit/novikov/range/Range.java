@@ -85,11 +85,11 @@ public class Range {
     }
 
     public Range[] difference(Range range) {
-        if (this.from > range.from && range.to < this.to) {
+        if (range.from < this.from && this.from < range.to) {
             Range[] newRange = new Range[1];
             newRange[0] = new Range(range.to, this.to);
             return newRange;
-        } else if (this.to < range.to && this.from < range.from) {
+        } else if (this.to < range.to && range.from < this.to) {
             Range[] newRange = new Range[1];
             newRange[0] = new Range(this.from, range.from);
             return newRange;
@@ -101,7 +101,9 @@ public class Range {
             newRange[1] = new Range(range.to, this.to);
             return newRange;
         } else {
-            return new Range[0];
+            Range[] newRange = new Range[1];
+            newRange[0] = new Range(this.from, this.to);
+            return newRange;
         }
     }
 }
