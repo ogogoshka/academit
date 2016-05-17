@@ -54,9 +54,9 @@ public class Range {
             return null;
         } else {
             if (this.from > range.from && range.to <= this.to) {
-                return new Range(this.from, Math.min(range.to, this.to));
+                return new Range(this.from, range.to);
             } else if (this.to <= range.to && this.from < range.from) {
-                return new Range(Math.max(range.from, this.from), this.to);
+                return new Range(range.from, this.to);
             } else if (range.from < this.from && range.to > this.to) {
                 return new Range(this.from, this.to);
             } else {
@@ -65,48 +65,48 @@ public class Range {
         }
     }
 
-    public Range[] union(Range r2) {
-        if (r2.from > this.to) {
-            Range[] newRange2 = new Range[2];
-            newRange2[0] = this;
-            newRange2[1] = r2;
-            return newRange2;
-        } else if (this.from > r2.to) {
-            Range[] newRange2 = new Range[2];
-            newRange2[0] = r2;
-            newRange2[1] = this;
-            return newRange2;
+    public Range[] union(Range range) {
+        if (range.from > this.to) {
+            Range[] newRange = new Range[2];
+            newRange[0] = new Range(this.from, this.to);
+            newRange[1] = new Range(range.from, range.to);
+            return newRange;
+        } else if (this.from > range.to) {
+            Range[] newRange = new Range[2];
+            newRange[0] = new Range(range.from, range.to);
+            newRange[1] = new Range(this.from, this.to);
+            return newRange;
         } else {
             Range[] newRange = new Range[1];
-            Range r3 = new Range(Math.min(this.from, r2.from), Math.max(r2.to, this.to));
+            Range r3 = new Range(Math.min(this.from, range.from), Math.max(range.to, this.to));
             newRange[0] = r3;
             return newRange;
         }
     }
 
-    public Range[] difference(Range r2) {
-        if (this.from > r2.from && r2.to < this.to) {
+    public Range[] difference(Range range) {
+        if (this.from > range.from && range.to < this.to) {
             Range[] newRange2 = new Range[2];
-            newRange2[0] = new Range(r2.from, this.from);
-            newRange2[1] = new Range(r2.to, this.to);
+            newRange2[0] = new Range(range.from, this.from);
+            newRange2[1] = new Range(range.to, this.to);
             return newRange2;
-        } else if (this.to < r2.to && this.from < r2.from) {
+        } else if (this.to < range.to && this.from < range.from) {
             Range[] newRange2 = new Range[2];
-            newRange2[0] = new Range(this.from, r2.from);
-            newRange2[1] = new Range(this.to, r2.to);
+            newRange2[0] = new Range(this.from, range.from);
+            newRange2[1] = new Range(this.to, range.to);
             return newRange2;
-        } else if (r2.from > this.from && r2.from < this.to) {
+        } else if (range.from > this.from && range.from < this.to) {
             Range[] newRange2 = new Range[2];
-            newRange2[0] = new Range(this.from, r2.from);
-            newRange2[1] = new Range(Math.min(r2.to, this.to), Math.max(r2.to, this.to));
+            newRange2[0] = new Range(this.from, range.from);
+            newRange2[1] = new Range(Math.min(range.to, this.to), Math.max(range.to, this.to));
             return newRange2;
-        } else if (r2.to < this.to && this.from < r2.to) {
+        } else if (range.to < this.to && this.from < range.to) {
             Range[] newRange2 = new Range[2];
-            newRange2[0] = new Range(r2.from, this.from);
-            newRange2[1] = new Range(Math.min(r2.to, this.to), Math.max(r2.to, this.to));
+            newRange2[0] = new Range(range.from, this.from);
+            newRange2[1] = new Range(Math.min(range.to, this.to), Math.max(range.to, this.to));
             return newRange2;
         } else {
-            return new Range[1];
+            return new Range[0];
         }
     }
 }
