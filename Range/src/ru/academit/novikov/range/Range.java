@@ -86,25 +86,25 @@ public class Range {
 
     public Range[] difference(Range range) {
         if (this.from > range.from && range.to < this.to) {
-            Range[] newRange2 = new Range[2];
-            newRange2[0] = new Range(range.from, this.from);
-            newRange2[1] = new Range(range.to, this.to);
-            return newRange2;
+            Range[] newRange = new Range[2];
+            newRange[0] = new Range(range.from, this.from);
+            newRange[1] = new Range(range.to, this.to);
+            return newRange;
         } else if (this.to < range.to && this.from < range.from) {
-            Range[] newRange2 = new Range[2];
-            newRange2[0] = new Range(this.from, range.from);
-            newRange2[1] = new Range(this.to, range.to);
-            return newRange2;
+            Range[] newRange = new Range[2];
+            newRange[0] = new Range(this.from, range.from);
+            newRange[1] = new Range(this.to, range.to);
+            return newRange;
         } else if (range.from > this.from && range.from < this.to) {
-            Range[] newRange2 = new Range[2];
-            newRange2[0] = new Range(this.from, range.from);
-            newRange2[1] = new Range(Math.min(range.to, this.to), Math.max(range.to, this.to));
-            return newRange2;
+            Range[] newRange = new Range[2];
+            newRange[0] = new Range(this.from, range.from);
+            newRange[1] = new Range(Math.min(range.to, this.to), Math.max(range.to, this.to));
+            return newRange;
         } else if (range.to < this.to && this.from < range.to) {
-            Range[] newRange2 = new Range[2];
-            newRange2[0] = new Range(range.from, this.from);
-            newRange2[1] = new Range(Math.min(range.to, this.to), Math.max(range.to, this.to));
-            return newRange2;
+            Range[] newRange = new Range[2];
+            newRange[0] = new Range(range.from, this.from);
+            newRange[1] = new Range(Math.min(range.to, this.to), Math.max(range.to, this.to));
+            return newRange;
         } else {
             return new Range[0];
         }
