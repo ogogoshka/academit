@@ -83,7 +83,7 @@ public class Range {
             return newRange;
         }
     }
-
+    
     public Range[] difference(Range r2) {
         if (this.from > r2.from && r2.to < this.to) {
             Range[] newRange2 = new Range[2];
@@ -95,19 +95,18 @@ public class Range {
             newRange2[0] = new Range(this.from, r2.from);
             newRange2[1] = new Range(this.to, r2.to);
             return newRange2;
-        } else if (r2.from > this.from && r2.to < this.to) {
+        } else if (r2.from > this.from && r2.from < this.to) {
             Range[] newRange2 = new Range[2];
             newRange2[0] = new Range(this.from, r2.from);
-            newRange2[1] = new Range(r2.to, this.to);
+            newRange2[1] = new Range(Math.min(r2.to, this.to), Math.max(r2.to, this.to));
             return newRange2;
-        } else if (this.from > r2.from && this.to < r2.to) {
+        } else if (r2.to < this.to && this.from < r2.to) {
             Range[] newRange2 = new Range[2];
             newRange2[0] = new Range(r2.from, this.from);
-            newRange2[1] = new Range(this.to, r2.to);
+            newRange2[1] = new Range(Math.min(r2.to, this.to), Math.max(r2.to, this.to));
             return newRange2;
         } else {
-            Range[] newRange = new Range[1];
-            return newRange;
+            return new Range[1];
         }
     }
 }
