@@ -19,10 +19,10 @@ public class MainRange {
         r3.setTo(11);
 
         r1.intersection(range);
-        //System.out.println(r1.intersection(range).toString());
+        System.out.println(r1.intersection(range).toString());
 
         r1.union(range);
-        //System.out.println(Arrays.toString(r1.union(range)));
+        System.out.println(Arrays.toString(r1.union(range)));
 
         r1.difference(range);
         System.out.println(Arrays.toString(r1.difference(range)));
