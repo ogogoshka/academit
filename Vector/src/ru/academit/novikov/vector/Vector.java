@@ -25,7 +25,26 @@ public class Vector {
 
     public Vector(int size, double[] array) {
         int minLength = Math.min(size, array.length);
-        int maxLength = Math.max(size, array.length);
+        double[] temp = new double[size];
+        System.arraycopy(array, 0, temp, 0, minLength);
+        this.components = temp;
+
+        //int maxLength = Math.max(size, array.length);
+        //Vector v3 = new Vector(minLength);
+        //this.components = v3.components;
+        //temp = array;
+        //double[] temp = new double[array.length];
+        //v3.components = array;
+        //System.arraycopy(array, 0, temp, 0, minLength);
+        //temp = array;
+        //double[] temp = new double[minLength];
+        //System.arraycopy(array, 0, temp, 0, minLength);
+        //this.components = temp;
+        //System.arraycopy(array, 0, temp, 0, minLength);
+        /*
+        for (int i = 0; i < Math.min(size, array.length); i++) {
+            this.components[i] = array[i];
+        }
         if (size < array.length) {
             double[] temp = new double[minLength];
             System.arraycopy(array, 0, temp, 0, minLength);
@@ -39,6 +58,9 @@ public class Vector {
             temp = array;
             this.components = temp;
         }
+ */
+
+
     }
 
     private int getSize() {
@@ -166,7 +188,7 @@ public class Vector {
     }
 
     public static Vector minus(Vector v1, Vector v2) {
-        Vector v3 = v1.minus(v2);
-        return v3;
+        Vector v3 = new Vector(v1);
+        return v3.minus(v2);
     }
 }

@@ -21,7 +21,7 @@ public class Range {
     }
 
     public boolean isInside(double number) {
-        return this.from <= number && number <= this.to;
+        return this.from < number && number < this.to;
     }
 
     public double getFrom() {
@@ -45,9 +45,50 @@ public class Range {
         return String.format("(%.2f, %.2f)", this.from, this.to);
     }
 
+    public boolean isIntersection(Range r2) {
+        return isInside(r2.from) || isInside(r2.to);
+    }
+
     public Range intersection(Range r2) {
+        if (this.to <= r2.from || r2.to <= this.from) {
+            return null;
+        } else {
+            if (this.from > r2.from && r2.to <= this.to) {
+                return new Range(this.from, Math.min(r2.to, this.to));
+            } else if (this.to <= r2.to && this.from < r2.from) {
+                return new Range(Math.max(r2.from, this.from), this.to);
+            } else if (r2.from < this.from && r2.to > this.to) {
+                return new Range(this.from, this.to);
+            } else {
+                return new Range(r2.from, r2.to);
+            }
+        }
+    }
+
+    /*
+
+        public Range intersection(Range r2) {
+        if (!isIntersection(r2)) {
+            return null;
+        } else {
+            if (this.from < r2.to && r2.to < this.to) {
+                return new Range(this.from, Math.min(r2.to, this.to));
+            } else if (this.to < r2.to && this.to > r2.from) {
+                return new Range(Math.min(r2.from, this.from), this.to);
+            } else {
+                return null;
+            }
+        }
+    }
+
+
+     */
+    /*
+
+        public Range intersection(Range r2) {
         Range r3 = new Range();
-        if (this.to < r2.from || r2.to < this.from) {
+
+        if (this.to <= r2.from || r2.to <= this.from) {
             //Range r3 = new Range();
             return null;
         } else if (this.from <= r2.from && r2.to <= this.to) {
@@ -59,6 +100,9 @@ public class Range {
         }
         return r3;
     }
+
+     */
+
 
     public Range[] difference(Range r2) {
         //Range r3 = new Range();
