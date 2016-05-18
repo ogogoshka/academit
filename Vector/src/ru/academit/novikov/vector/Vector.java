@@ -53,15 +53,32 @@ public class Vector {
         return Arrays.hashCode(components);
     }
 
-/*
     @Override
+    public boolean equals(Object o) {
+        if (o == null || o.getClass() != this.getClass())
+            return false;
+        if (o == this)
+            return true;
+        Vector v2 = (Vector) o;
+        for (int i = 0; i < this.getSize(); i++) {
+            if (!((Math.abs(this.components[i] - v2.components[i]) < EPSILON) && this.getSize() == v2.getSize())) //{
+                //} //else {
+                return false;
+            //}
+        }
+        return true;
+    }
+    /*
+        @Override
     public boolean equals(Object obj) {
+        }
         for (int i = 0; i < this.getSize(); i++) {
             return (this.getSize() == obj.getSize()) && (Math.abs(this.components[i] - obj.components[i]) < EPSILON);
         }
         return false;
     }
- */
+     */
+
 
     public Vector add(Vector v2) {
         int maxLength = Math.max(this.getSize(), v2.getSize());
