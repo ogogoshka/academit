@@ -2,7 +2,6 @@ import ru.academit.novikov.vector.Vector;
 
 public class MainVector {
     public static void main(String[] args) {
-
         double[] array = {1, 2, 3, 4};
         double[] array2 = {1, 2, 3, 4};
 
@@ -14,7 +13,6 @@ public class MainVector {
 
         System.out.println(v1.add(v2).toString());
         System.out.println(v1.minus(v2).toString());
-
         System.out.println(v1.equals(v2));
     }
 }
