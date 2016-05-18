@@ -9,7 +9,7 @@ public class Range {
     }
 
     public Range(double from, double to) {
-        if (to < from) {
+        if (from > to) {
             throw new IllegalArgumentException("считаем что второе число всегда >= чем первое");
         }
         this.from = from;
@@ -90,13 +90,14 @@ public class Range {
             newRange[0] = new Range(this.from, this.to);
             return newRange;
         } else {
-            if (range.from < this.from && this.from < range.to) {
-                Range[] newRange = new Range[1];
-                newRange[0] = new Range(range.to, this.to);
-                return newRange;
-            } else if (this.to < range.to && range.from < this.to) {
+
+            if (this.from < range.from && this.to <= range.to) {
                 Range[] newRange = new Range[1];
                 newRange[0] = new Range(this.from, range.from);
+                return newRange;
+            } else if (range.from <= this.from && range.to < this.to) {
+                Range[] newRange = new Range[1];
+                newRange[0] = new Range(range.to, this.to);
                 return newRange;
             } else if (this.from < range.from && range.to < this.to) {
                 Range[] newRange = new Range[2];
