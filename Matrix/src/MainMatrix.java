@@ -21,6 +21,10 @@ public class MainMatrix {
 
         System.out.println(arr1.length + " x " + arr1[0].length);
 
+        Matrix m3 = new Matrix(m2);
+
+        System.out.println(m3.toString());
+
         //System.out.println(Arrays.toString(arr1));
         //System.out.println(Arrays.toString(temp));
 

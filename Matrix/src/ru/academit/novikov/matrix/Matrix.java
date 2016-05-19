@@ -14,15 +14,9 @@ public class Matrix {
     }
 
     public Matrix(Matrix m2) {
-
         double[][] temp = new double[m2.components.length][];
-        temp = m2.components;
-
         System.arraycopy(m2.components, 0, temp, 0, m2.components.length);
-
-        //double[] temp = new double[v1.getSize()];
-        //System.arraycopy(m2.components, 0, temp, 0, m2.length());
-        //this.components = temp;
+        this.components = temp;
 
     }
 
