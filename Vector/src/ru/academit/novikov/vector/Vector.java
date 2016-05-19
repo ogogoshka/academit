@@ -30,7 +30,7 @@ public class Vector {
         this.components = temp;
     }
 
-    private int getSize() {
+    public int getSize() {
         return components.length;
     }
 
