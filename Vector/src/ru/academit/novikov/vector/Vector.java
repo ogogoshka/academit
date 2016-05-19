@@ -60,11 +60,11 @@ public class Vector {
         if (o == this)
             return true;
         Vector vector = (Vector) o;
-        if (!(this.getSize() == vector.getSize())) {
+        if (this.getSize() != vector.getSize()) {
             return false;
         }
         for (int i = 0; i < this.getSize(); i++) {
-            if (!(Math.abs(this.components[i] - vector.components[i]) < EPSILON)) {
+            if (Math.abs(this.components[i] - vector.components[i]) > EPSILON) {
                 return false;
             }
         }
@@ -78,8 +78,8 @@ public class Vector {
         for (int i = 0; i < this.getSize(); i++) {
             temp[i] = temp[i] + this.components[i];
         }
-        vector.components = temp;
-        return vector;
+        this.components = temp;
+        return this;
     }
 
     public Vector minus(Vector vector) {
@@ -89,8 +89,8 @@ public class Vector {
         for (int i = 0; i < vector.getSize(); i++) {
             temp[i] = temp[i] - vector.components[i];
         }
-        vector.components = temp;
-        return vector;
+        this.components = temp;
+        return this;
     }
 
     public void multiplicationByScalar(int scalar) {
