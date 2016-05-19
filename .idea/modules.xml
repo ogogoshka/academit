@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GeometricFigures/GeometricFigures.iml" filepath="$PROJECT_DIR$/GeometricFigures/GeometricFigures.iml" />
       <module fileurl="file://$PROJECT_DIR$/HolaAmigos/HolaAmigos.iml" filepath="$PROJECT_DIR$/HolaAmigos/HolaAmigos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Matrix/Matrix.iml" filepath="$PROJECT_DIR$/Matrix/Matrix.iml" />
       <module fileurl="file://$PROJECT_DIR$/Range/Range.iml" filepath="$PROJECT_DIR$/Range/Range.iml" />
       <module fileurl="file://$PROJECT_DIR$/Vector/Vector.iml" filepath="$PROJECT_DIR$/Vector/Vector.iml" />
       <module fileurl="file://$PROJECT_DIR$/academit.iml" filepath="$PROJECT_DIR$/academit.iml" />
