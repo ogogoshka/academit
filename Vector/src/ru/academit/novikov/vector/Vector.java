@@ -17,9 +17,9 @@ public class Vector {
         components = new double[size];
     }
 
-    public Vector(Vector v1) {
-        double[] temp = new double[v1.getSize()];
-        System.arraycopy(v1.components, 0, temp, 0, v1.getSize());
+    public Vector(Vector vector) {
+        double[] temp = new double[vector.getSize()];
+        System.arraycopy(vector.components, 0, temp, 0, vector.getSize());
         this.components = temp;
     }
 
@@ -59,36 +59,38 @@ public class Vector {
             return false;
         if (o == this)
             return true;
-        Vector v2 = (Vector) o;
+        Vector vector = (Vector) o;
+        if (!(this.getSize() == vector.getSize())) {
+            return false;
+        }
         for (int i = 0; i < this.getSize(); i++) {
-            if (!((Math.abs(this.components[i] - v2.components[i]) < EPSILON) && this.getSize() == v2.getSize()))
+            if (!(Math.abs(this.components[i] - vector.components[i]) < EPSILON)) {
                 return false;
+            }
         }
         return true;
     }
 
-    public Vector add(Vector v2) {
-        int maxLength = Math.max(this.getSize(), v2.getSize());
+    public Vector add(Vector vector) {
+        int maxLength = Math.max(this.getSize(), vector.getSize());
         double[] temp = new double[maxLength];
-        System.arraycopy(v2.components, 0, temp, 0, v2.getSize());
+        System.arraycopy(vector.components, 0, temp, 0, vector.getSize());
         for (int i = 0; i < this.getSize(); i++) {
             temp[i] = temp[i] + this.components[i];
         }
-        Vector v3 = new Vector();
-        v3.components = temp;
-        return v3;
+        vector.components = temp;
+        return vector;
     }
 
-    public Vector minus(Vector v2) {
-        int maxLength = Math.max(this.getSize(), v2.getSize());
+    public Vector minus(Vector vector) {
+        int maxLength = Math.max(this.getSize(), vector.getSize());
         double[] temp = new double[maxLength];
         System.arraycopy(this.components, 0, temp, 0, this.getSize());
-        for (int i = 0; i < v2.getSize(); i++) {
-            temp[i] = temp[i] - v2.components[i];
+        for (int i = 0; i < vector.getSize(); i++) {
+            temp[i] = temp[i] - vector.components[i];
         }
-        Vector v3 = new Vector();
-        v3.components = temp;
-        return v3;
+        vector.components = temp;
+        return vector;
     }
 
     public void multiplicationByScalar(int scalar) {
