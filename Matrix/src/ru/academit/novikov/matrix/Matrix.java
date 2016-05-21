@@ -108,8 +108,8 @@ public class Matrix {
     }
 
     public void multiplicationByScalar(double scalar) {
-        for (int i = 0; i < this.components.length; i++) {
-            this.components[i].multiplicationByScalar(scalar);
+        for (Vector component : this.components) {
+            component.multiplicationByScalar(scalar);
         }
     }
 
