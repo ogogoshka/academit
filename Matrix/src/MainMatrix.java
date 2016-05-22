@@ -1,9 +1,6 @@
 import ru.academit.novikov.matrix.Matrix;
 import ru.academit.novikov.vector.Vector;
 
-import static ru.academit.novikov.matrix.Matrix.minus;
-import static ru.academit.novikov.matrix.Matrix.multiplication;
-
 public class MainMatrix {
     public static void main(String[] args) {
         Matrix test = new Matrix();
@@ -13,12 +10,6 @@ public class MainMatrix {
         double[][] array3 = {{1, 2, 3}, {4, 5, 6}};
 
         Matrix m1 = new Matrix(3, 3);
-        System.out.println(m1.toString());
-
-        Matrix m2 = new Matrix(array);
-        Matrix m3 = new Matrix(array2);
-        Matrix m4 = new Matrix(array3);
-        Matrix m5 = new Matrix(m3);
 
         double[] arr = {1, 2, -1};
 
@@ -27,35 +18,27 @@ public class MainMatrix {
         newVector[1] = new Vector(3, arr);
 
         Matrix m6 = new Matrix(newVector);
-        System.out.println(m6.toString());
 
         double[] array6 = {6, 7, 8};
-        Vector v6 = new Vector(3, array6);
 
-        m6.setVectorLine(0, v6);
-        System.out.println(m6.toString());
-        m6.multiplicationByScalar(2);
-        System.out.println(m6.toString());
-        System.out.println(m3.toString());
+
         //System.out.println(m4.toString());
         //m6.add(m4);
         //System.out.println(m6.add(m3).toString());
-        System.out.println(m6.minus(m3).toString());
+
 
         //m3.getVectorColumn(1);
-        System.out.println(m3.getVectorColumn(1).toString());
 
-        System.out.println(m6.transpose().toString());
 
         double[][] arrayTestM = {{2, 4, 0}, {-2, 1, 3}, {-1, 0, 1}};
         double[] arrayTestV = {1, 2, -1};
         Vector v7 = new Vector(3, arrayTestV);
         Matrix m7 = new Matrix(arrayTestM);
         //m7.multiplicationByVector(v7);
-        System.out.println(m7.multiplicationByVector(v7).toString());
+
 
         //add(m6, m7);
-        minus(m6, m7);
+        //minus(m6, m7);
 
         double[][] array8 = {{3, 1, 2}, {0, -1, 4}};
         double[][] array9 = {{-1, 1}, {2, 0}, {0, 3}};
@@ -64,25 +47,27 @@ public class MainMatrix {
         Matrix m9 = new Matrix(array9);
 
         m8.getRowsNumber();
-        m8.getNumbersOfColumn();
+        m8.getColumnsNumber();
         m8.getVectorLine(0);
 
-        System.out.println(multiplication(m8, m9).toString());
 
         double[][] array10 = {{-6, -3}, {-10, -4}};
         Matrix m10 = new Matrix(array10);
-        System.out.println(m10.getDeterminant());
 
-        System.out.println(m10.transpose().toString());
 
         Matrix m11 = new Matrix(m10);
         System.out.println(m11.toString());
+
 
         double[][] array12 = {{-6, -3, 2, 3}, {-10, -4}};
         Matrix m12 = new Matrix(array12);
         System.out.println(m12.toString());
 
-        System.out.println(m11.add(m12).toString());
+        System.out.println(m12.transpose().toString());
+
+        //System.out.println(m11.minus(m12).toString());
+        //System.out.println(m11.add(m12).toString());
+
 
 /*
 

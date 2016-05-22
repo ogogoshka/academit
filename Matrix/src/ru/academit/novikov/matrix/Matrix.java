@@ -9,25 +9,23 @@ public class Matrix {
     public Matrix() {
     }
 
-    public Matrix(int rowsNumber, int numbersColumn) {
+    public Matrix(int rowsNumber, int columnsNumber) {
         if (rowsNumber <= 0) {
             throw new IllegalArgumentException("кол-во строк не может быть <= 0");
-        } else if (numbersColumn <= 0) {
+        } else if (columnsNumber <= 0) {
             throw new IllegalArgumentException("кол-во столбцов не может быть <= 0");
-        } else {
+        } else
             this.components = new Vector[rowsNumber];
-            for (int i = 0; i < rowsNumber; i++) {
-                this.components[i] = new Vector(numbersColumn);
-            }
+        for (int i = 0; i < rowsNumber; i++) {
+            this.components[i] = new Vector(columnsNumber);
         }
+
     }
 
     public Matrix(Matrix matrix) {
-        Vector[] vector = new Vector[matrix.getRowsNumber()];
         this.components = new Vector[matrix.getRowsNumber()];
         for (int i = 0; i < matrix.getRowsNumber(); i++) {
-            vector[i] = matrix.components[i];
-            this.components[i] = new Vector(vector[i]);
+            this.components[i] = new Vector(matrix.components[i]);
         }
     }
 
@@ -53,7 +51,7 @@ public class Matrix {
         return this.components.length;
     }
 
-    public int getNumbersOfColumn() {
+    public int getColumnsNumber() {
         return this.components[0].getSize();
     }
 
@@ -79,29 +77,29 @@ public class Matrix {
     }
 
     public void setVectorLine(int rowsNumber, Vector vector) {
+        if (rowsNumber > this.getRowsNumber() || rowsNumber < 0) {
+            throw new IllegalArgumentException("такой строки не существует");
+        }
         this.components[rowsNumber] = new Vector(vector);
     }
 
-    public Vector getVectorColumn(int numberColumn) {
-        if (numberColumn > this.getNumbersOfColumn() || numberColumn < 0) {
+    public Vector getVectorColumn(int columnsNumber) {
+        if (columnsNumber > this.getColumnsNumber() || columnsNumber < 0) {
             throw new IllegalArgumentException("такого столбца не существует");
         }
         double[] temp = new double[this.getRowsNumber()];
         for (int i = 0; i < this.getRowsNumber(); i++) {
-            temp[i] = this.components[i].getComponent(numberColumn);
+            temp[i] = this.components[i].getComponent(columnsNumber);
         }
         return new Vector(this.getRowsNumber(), temp);
     }
 
     public Matrix transpose() {
-        Vector[] arrayOfVectors = new Vector[this.getNumbersOfColumn()];
-        for (int j = 0; j < this.getNumbersOfColumn(); j++) {
+        Vector[] arrayOfVectors = new Vector[this.getColumnsNumber()];
+        for (int j = 0; j < this.getColumnsNumber(); j++) {
             arrayOfVectors[j] = this.getVectorColumn(j);
         }
-        this.components = new Vector[this.getRowsNumber()];
-        for (int j = 0; j < this.getRowsNumber(); j++) {
-            this.components[j] = arrayOfVectors[j];
-        }
+        this.components = arrayOfVectors;
         return this;
     }
 
@@ -113,35 +111,31 @@ public class Matrix {
 
     public Matrix add(Matrix matrix) {
         int maxRowsNumber = Math.max(matrix.getRowsNumber(), this.getRowsNumber());
-        Vector[] arrayOfVectors = new Vector[maxRowsNumber];
         for (int i = 0; i < maxRowsNumber; i++) {
-            arrayOfVectors[i] = Vector.add(this.components[i], matrix.components[i]);
+            this.components[i].add(matrix.components[i]);
         }
-        return new Matrix(arrayOfVectors);
+        return this;
     }
 
     public Matrix minus(Matrix matrix) {
-
         int maxRowsNumber = Math.max(matrix.getRowsNumber(), this.getRowsNumber());
-        Vector[] arrayOfVectors = new Vector[maxRowsNumber];
         for (int i = 0; i < maxRowsNumber; i++) {
-            arrayOfVectors[i] = Vector.minus(this.components[i], matrix.components[i]);
+            this.components[i].minus(matrix.components[i]);
         }
-        return new Matrix(arrayOfVectors);
+        return this;
     }
 
     public Vector multiplicationByVector(Vector vector) {
-        if (this.getNumbersOfColumn() != vector.getSize()) {
+        if (this.getColumnsNumber() != vector.getSize()) {
             throw new IllegalArgumentException("нельзя умножать, кол-во столбцов в матрице должно совпадать с кол-вом элементов в векторе");
-        } else {
-            double[] temp = new double[this.getRowsNumber()];
-            for (int i = 0; i < this.getRowsNumber(); i++) {
-                for (int j = 0; j < this.getNumbersOfColumn(); j++) {
-                    temp[i] += this.components[i].getComponent(j) * vector.getComponent(j);
-                }
-            }
-            return new Vector(this.getRowsNumber(), temp);
         }
+        double[] temp = new double[this.getRowsNumber()];
+        for (int i = 0; i < this.getRowsNumber(); i++) {
+            for (int j = 0; j < this.getColumnsNumber(); j++) {
+                temp[i] += this.components[i].getComponent(j) * vector.getComponent(j);
+            }
+        }
+        return new Vector(this.getRowsNumber(), temp);
     }
 
     public static Matrix add(Matrix m1, Matrix m2) {
@@ -155,16 +149,14 @@ public class Matrix {
     }
 
     public static Matrix multiplication(Matrix m1, Matrix m2) {
-        if (m1.getNumbersOfColumn() != m2.getRowsNumber()) {
+        if (m1.getColumnsNumber() != m2.getRowsNumber()) {
             throw new IllegalArgumentException("нельзя умножать. число столбцов в первой матрице должно совпадать с числом строк во второй");
-        } else {
-            Vector[] vector = new Vector[m2.getNumbersOfColumn()];
-            for (int i = 0; i < m2.getNumbersOfColumn(); i++) {
-                vector[i] = m1.multiplicationByVector(m2.getVectorColumn(i));
-            }
-
-            return new Matrix(vector).transpose();
         }
+        Vector[] vector = new Vector[m2.getColumnsNumber()];
+        for (int i = 0; i < m2.getColumnsNumber(); i++) {
+            vector[i] = m1.multiplicationByVector(m2.getVectorColumn(i));
+        }
+        return new Matrix(vector).transpose();
     }
 
     //f. Вычисление определителя матрицы
