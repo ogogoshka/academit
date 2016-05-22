@@ -61,8 +61,8 @@ public class Matrix {
     public String toString() {
         StringBuilder resultString = new StringBuilder();
         resultString.append("{ ");
-        for (int i = 0; i < this.components.length; i++) {
-            if (i == this.components.length - 1) {
+        for (int i = 0; i < this.getRowsNumber(); i++) {
+            if (i == this.getRowsNumber() - 1) {
                 resultString.append(this.components[i].toString());
             } else {
                 resultString.append(this.components[i].toString()).append(" , ");
@@ -112,7 +112,7 @@ public class Matrix {
     }
 
     public Matrix add(Matrix matrix) {
-        int maxRowsNumber = Math.max(matrix.components.length, this.components.length);
+        int maxRowsNumber = Math.max(matrix.getRowsNumber(), this.getRowsNumber());
         Vector[] arrayOfVectors = new Vector[maxRowsNumber];
         for (int i = 0; i < maxRowsNumber; i++) {
             arrayOfVectors[i] = Vector.add(this.components[i], matrix.components[i]);
@@ -122,7 +122,7 @@ public class Matrix {
 
     public Matrix minus(Matrix matrix) {
 
-        int maxRowsNumber = Math.max(matrix.components.length, this.components.length);
+        int maxRowsNumber = Math.max(matrix.getRowsNumber(), this.getRowsNumber());
         Vector[] arrayOfVectors = new Vector[maxRowsNumber];
         for (int i = 0; i < maxRowsNumber; i++) {
             arrayOfVectors[i] = Vector.minus(this.components[i], matrix.components[i]);
