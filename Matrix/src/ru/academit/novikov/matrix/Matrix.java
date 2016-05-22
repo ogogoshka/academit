@@ -168,7 +168,7 @@ public class Matrix {
     }
 
     //f. Вычисление определителя матрицы
-
+/*
     public double getDeterminant() {
         double determinant = 0;
         if (this.components.length != this.getNumbersOfColumn()) {
@@ -182,5 +182,7 @@ public class Matrix {
         }
         return determinant;
     }
+ */
+
 
 }
