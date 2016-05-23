@@ -10,7 +10,6 @@ public class MainMatrix {
         System.out.println(m22.toString());
 
 
-
         System.out.println(m22.toString());
 
         System.out.println("m22.getDeterminant()=" + m22.getDeterminant());
@@ -30,14 +29,14 @@ public class MainMatrix {
         Matrix m10 = new Matrix(array10);
 
         Matrix m11 = new Matrix(m10);
-        //System.out.println(m11.toString());
+        System.out.println(m11.toString());
 
         double[][] array12 = {{-6, -3, 2, 3}, {-10, -4}};
         Matrix m12 = new Matrix(array12);
-        //System.out.println(m12.toString());
+        System.out.println(m12.toString());
 
         //System.out.println(m11.minus(m12).toString());
-        //System.out.println(m11.add(m12).toString());
+        System.out.println("ADD = " + m12.add(m11).toString());
         //System.out.println(Matrix.add(m11, m12).toString());
 
 

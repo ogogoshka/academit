@@ -118,44 +118,18 @@ public class Matrix {
     }
 
     public Matrix add(Matrix matrix) {
-        int maxRowsNumber = Math.max(matrix.getRowsNumber(), this.getRowsNumber());
-        int minRowsNumber = Math.min(matrix.getRowsNumber(), this.getRowsNumber());
-
-        Vector[] v2 = new Vector[maxRowsNumber];
-        Vector[] v3 = new Vector[maxRowsNumber];
-
-        //Matrix m2 = new Matrix(maxRowsNumber, maxRowsNumber);
-        //v2 = this.components;
-        for (int i = 0; i < this.getRowsNumber(); i++) {
-            v2[i] = new Vector(this.components[i]);
-            //this.components[i].add(matrix.components[i]);
-            //v2[i].add(matrix.components[i]);
-            //v2[i] = new Vector(matrix.components[i]);
-            //v2[i] = null;
-            //v2[i].add(matrix.components[i]);
-            //this.components[i] = Vector.add(this.components[i], matrix.components[i]);
+        if (this.getRowsNumber() >= matrix.getRowsNumber()) {
+            for (int i = 0; i < matrix.getRowsNumber(); i++) {
+                this.components[i].add(matrix.components[i]);
+            }
+            return this;
+        } else {
+            for (int i = 0; i < this.getRowsNumber(); i++) {
+                matrix.components[i].add(this.components[i]);
+            }
+            this.components = matrix.components;
+            return this;
         }
-
-        this.components = new Vector[maxRowsNumber];
-
-        for (int i = 0; i < matrix.getRowsNumber(); i++) {
-            //this.components[i].add(v2[i]);
-            v2[i].add(matrix.components[i]);
-            //v3[i] = new Vector(this.components[i]);
-        }
-
-        //Vector[]this.components = new Vector[maxRowsNumber];
-        //for (int i = 0; i < maxRowsNumber; i++) {
-        //this.components[i].add(v2[i]);
-        //v2[i].add(this.components[i]);
-        //this.components[i] = new Vector(v2[i]);
-
-        //v2[i].add(v3[i]);
-        //this.components[i] = new Vector(v2[i]);
-        //}
-        this.components = v2;
-
-        return this;
     }
 
     public Matrix minus(Matrix matrix) {
@@ -219,3 +193,72 @@ public class Matrix {
         return determinant;
     }
 }
+
+/*
+
+    public Matrix add(Matrix matrix) {
+        int maxRowsNumber = Math.max(matrix.getRowsNumber(), this.getRowsNumber());
+        int minRowsNumber = Math.min(matrix.getRowsNumber(), this.getRowsNumber());
+
+        Vector[] v2 = new Vector[maxRowsNumber];
+        Vector[] v3 = new Vector[maxRowsNumber];
+
+        //Matrix m2 = new Matrix(maxRowsNumber, maxRowsNumber);
+        //v2 = this.components;
+
+        if (this.getRowsNumber() >= matrix.getRowsNumber()) {
+            for (int i = 0; i < this.getRowsNumber(); i++) {
+                //v2[i] = new Vector(this.components[i]);
+            }
+            for (int i = 0; i < matrix.getRowsNumber(); i++) {
+                //v2[i].add(matrix.components[i]);
+                this.components[i].add(matrix.components[i]);
+            }
+            return this;
+        } else {
+            for (int i = 0; i < matrix.getRowsNumber(); i++) {
+                //v2[i] = new Vector(matrix.components[i]);
+            }
+            for (int i = 0; i < this.getRowsNumber(); i++) {
+                //v2[i].add(this.components[i]);
+                matrix.components[i].add(this.components[i]);
+            }
+            this.components = matrix.components;
+            return this;
+        }
+
+
+        for (int i = 0; i < this.getRowsNumber(); i++) {
+            v2[i] = new Vector(this.components[i]);
+            //this.components[i].add(matrix.components[i]);
+            //v2[i].add(matrix.components[i]);
+            //v2[i] = new Vector(matrix.components[i]);
+            //v2[i] = null;
+            //v2[i].add(matrix.components[i]);
+            //this.components[i] = Vector.add(this.components[i], matrix.components[i]);
+        }
+
+        //this.components = new Vector[maxRowsNumber];
+
+        for (int i = 0; i < matrix.getRowsNumber(); i++) {
+            //this.components[i].add(v2[i]);
+            v2[i].add(matrix.components[i]);
+            //v3[i] = new Vector(this.components[i]);
+        }
+
+
+
+//Vector[]this.components = new Vector[maxRowsNumber];
+//for (int i = 0; i < maxRowsNumber; i++) {
+//this.components[i].add(v2[i]);
+//v2[i].add(this.components[i]);
+//this.components[i] = new Vector(v2[i]);
+
+//v2[i].add(v3[i]);
+//this.components[i] = new Vector(v2[i]);
+//}
+//        this.components = v2;
+
+
+
+*/
