@@ -4,7 +4,7 @@ import ru.academit.novikov.vector.*;
 
 public class Matrix {
 
-    private Vector[] components;
+    public Vector[] components;
 
     public Matrix() {
     }
@@ -14,19 +14,27 @@ public class Matrix {
             throw new IllegalArgumentException("кол-во строк не может быть <= 0");
         } else if (columnsNumber <= 0) {
             throw new IllegalArgumentException("кол-во столбцов не может быть <= 0");
-        } else
-            this.components = new Vector[rowsNumber];
+        }
+        this.components = new Vector[rowsNumber];
         for (int i = 0; i < rowsNumber; i++) {
             this.components[i] = new Vector(columnsNumber);
         }
-
     }
 
     public Matrix(Matrix matrix) {
-        this.components = new Vector[matrix.getRowsNumber()];
-        for (int i = 0; i < matrix.getRowsNumber(); i++) {
-            this.components[i] = new Vector(matrix.components[i]);
-        }
+        Matrix m2 = new Matrix(matrix.components);
+        this.components = m2.components;
+        //this.components = new Vector[matrix.getRowsNumber()];
+        //for (int i = 0; i < matrix.getRowsNumber(); i++) {
+        //this(matrix.components[i]);
+        //this.components[i] = new Vector(matrix.components[i]);
+        //}
+        //Matrix this.components = new Matrix(matrix.components);
+        //this.components = new Matrix((new Vector[matrix.getRowsNumber()]) new Vector(matrix.components));
+        //this.components = new Matrix(matrix.components);
+        //matrix.components = new Vector[matrix.getRowsNumber()];
+        //this.components = new Matrix(matrix.components);
+        //this.components(matrix.components);
     }
 
     public Matrix(double[][] array) {
@@ -111,9 +119,40 @@ public class Matrix {
 
     public Matrix add(Matrix matrix) {
         int maxRowsNumber = Math.max(matrix.getRowsNumber(), this.getRowsNumber());
-        for (int i = 0; i < maxRowsNumber; i++) {
-            this.components[i].add(matrix.components[i]);
+        int minRowsNumber = Math.min(matrix.getRowsNumber(), this.getRowsNumber());
+
+        Vector[] v2 = new Vector[maxRowsNumber];
+        Vector[] v3 = new Vector[maxRowsNumber];
+
+        //Matrix m2 = new Matrix(maxRowsNumber, maxRowsNumber);
+        //v2 = this.components;
+        for (int i = 0; i < matrix.getRowsNumber(); i++) {
+            v2[i] = new Vector(matrix.components[i]);
+            //this.components[i].add(matrix.components[i]);
+            //v2[i].add(matrix.components[i]);
+            //v2[i] = new Vector(matrix.components[i]);
+            //v2[i] = null;
+            //v2[i].add(matrix.components[i]);
+            //this.components[i] = Vector.add(this.components[i], matrix.components[i]);
         }
+
+        for (int i = 0; i < this.getRowsNumber(); i++) {
+            //this.components[i].add(v2[i]);
+            v2[i].add(this.components[i]);
+            //v3[i] = new Vector(this.components[i]);
+        }
+
+        //Vector[]this.components = new Vector[maxRowsNumber];
+        //for (int i = 0; i < maxRowsNumber; i++) {
+        //this.components[i].add(v2[i]);
+        //v2[i].add(this.components[i]);
+        //this.components[i] = new Vector(v2[i]);
+
+        //v2[i].add(v3[i]);
+        //this.components[i] = new Vector(v2[i]);
+        //}
+        this.components = v2;
+
         return this;
     }
 
@@ -160,21 +199,21 @@ public class Matrix {
     }
 
     //f. Вычисление определителя матрицы
-/*
     public double getDeterminant() {
-        double determinant = 0;
-        if (this.components.length != this.getNumbersOfColumn()) {
+        double determinant = 1;
+        if (this.components.length != this.getColumnsNumber()) {
             throw new IllegalArgumentException("матрица не имеет определителя");
-        } else if (this.components.length == 2) {
-            determinant = this.components[0].getComponent(0) * this.components[1].getComponent(1) - this.components[0].getComponent(1) * this.components[1].getComponent(0);
-        } else if (this.components.length == 3) {
-
-        } else {
-
+        }
+        for (int i = 0; i < this.getRowsNumber() - 1; i++) {
+            double diagonalComponent = this.components[i].getComponent(i);
+            for (int j = i + 1; j < this.getColumnsNumber(); j++) {
+                double k = this.components[j].getComponent(i) / diagonalComponent;
+                this.setVectorLine(j, this.getVectorLine(j).minus(this.getVectorLine(i).multiplicationByScalar2(k)));
+            }
+        }
+        for (int i = 0; i < this.getRowsNumber(); i++) {
+            determinant = determinant * this.components[i].getComponent(i);
         }
         return determinant;
     }
- */
-
-
 }

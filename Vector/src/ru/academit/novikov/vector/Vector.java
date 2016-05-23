@@ -23,6 +23,13 @@ public class Vector {
         this.components = temp;
     }
 
+    public Vector(double[] array) {
+        //this();
+        //Vector vector = new Vector(array.length, array);
+        //this.components = vector.components;
+        //this(array.length, array);
+    }
+
     public Vector(int size, double[] array) {
         int minLength = Math.min(size, array.length);
         double[] temp = new double[size];
@@ -97,6 +104,13 @@ public class Vector {
         for (int i = 0; i < this.components.length; i++) {
             this.components[i] = scalar * this.components[i];
         }
+    }
+
+    public Vector multiplicationByScalar2(double scalar) {
+        for (int i = 0; i < this.components.length; i++) {
+            this.components[i] = scalar * this.components[i];
+        }
+        return this;
     }
 
     public void reverse() {
