@@ -10,43 +10,12 @@ public class MainMatrix {
         System.out.println(m22.toString());
 
 
-        double[][] temp3 = new double[m22.getRowsNumber()][m22.getColumnsNumber()];
-        double[] temp4 = new double[m22.getColumnsNumber()];
-        for (int i = 0; i < 3; i++) {
-
-            double first = m22.components[i].getComponent(i);
-
-            //m22.getVectorColumn(i + 1).minus(m22.getVectorColumn(i));
-            //m22.getVectorLine(i + 1).minus(m22.getVectorLine(i));
-            //m22.setVectorLine(i + 1, m22.getVectorLine(i + 1).minus(m22.getVectorLine(0)));
-
-
-            for (int j = i + 1; j < 4; j++) {
-                double k = m22.components[j].getComponent(i) / first;
-
-                //m22.getVectorLine(i).multiplicationByScalar2(k);
-
-                m22.setVectorLine(j, m22.getVectorLine(j).minus(m22.getVectorLine(i).multiplicationByScalar2(k)));
-                //m22.getVectorLine(j).minus(m22.getVectorLine(i));
-
-                //temp3[i][j + 1] = m22.components[i].getComponent(j) - first * k;
-            }
-
-            temp3[i][i] = m22.components[i].getComponent(i);
-
-        }
-        double temp5 = 1;
-        for (int i = 0; i < 4; i++) {
-            temp5 = temp5 * m22.components[i].getComponent(i);
-            //double temp5 = temp5 * 10;
-        }
-        //System.out.println("temp5 = " + temp5);
 
         System.out.println(m22.toString());
 
         System.out.println("m22.getDeterminant()=" + m22.getDeterminant());
 
-        Matrix m33 = new Matrix(temp3);
+        //Matrix m33 = new Matrix(temp3);
         //System.out.println(m33.toString());
         //Vector v22 = new Vector(temp4);
         //m22.setVectorLine(0, v22);
@@ -210,5 +179,38 @@ public class MainMatrix {
             //double temp5 = temp5 * 10;
         }
         System.out.println("temp5 = " + temp5);
+
+        double[][] temp3 = new double[m22.getRowsNumber()][m22.getColumnsNumber()];
+        double[] temp4 = new double[m22.getColumnsNumber()];
+        for (int i = 0; i < 3; i++) {
+
+            double first = m22.components[i].getComponent(i);
+
+            //m22.getVectorColumn(i + 1).minus(m22.getVectorColumn(i));
+            //m22.getVectorLine(i + 1).minus(m22.getVectorLine(i));
+            //m22.setVectorLine(i + 1, m22.getVectorLine(i + 1).minus(m22.getVectorLine(0)));
+
+
+            for (int j = i + 1; j < 4; j++) {
+                double k = m22.components[j].getComponent(i) / first;
+
+                //m22.getVectorLine(i).multiplicationByScalar2(k);
+
+                m22.setVectorLine(j, m22.getVectorLine(j).minus(m22.getVectorLine(i).multiplicationByScalar2(k)));
+                //m22.getVectorLine(j).minus(m22.getVectorLine(i));
+
+                //temp3[i][j + 1] = m22.components[i].getComponent(j) - first * k;
+            }
+
+            temp3[i][i] = m22.components[i].getComponent(i);
+
+        }
+        double temp5 = 1;
+        for (int i = 0; i < 4; i++) {
+            temp5 = temp5 * m22.components[i].getComponent(i);
+            //double temp5 = temp5 * 10;
+        }
+        //System.out.println("temp5 = " + temp5);
+
 
  */

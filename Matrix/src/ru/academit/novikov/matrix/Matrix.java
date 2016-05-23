@@ -34,7 +34,7 @@ public class Matrix {
         //this.components = new Matrix(matrix.components);
         //matrix.components = new Vector[matrix.getRowsNumber()];
         //this.components = new Matrix(matrix.components);
-        //this.components(matrix.components);
+        //this(Vector[matrix.components.length]matrix.components);
     }
 
     public Matrix(double[][] array) {
@@ -126,8 +126,8 @@ public class Matrix {
 
         //Matrix m2 = new Matrix(maxRowsNumber, maxRowsNumber);
         //v2 = this.components;
-        for (int i = 0; i < matrix.getRowsNumber(); i++) {
-            v2[i] = new Vector(matrix.components[i]);
+        for (int i = 0; i < this.getRowsNumber(); i++) {
+            v2[i] = new Vector(this.components[i]);
             //this.components[i].add(matrix.components[i]);
             //v2[i].add(matrix.components[i]);
             //v2[i] = new Vector(matrix.components[i]);
@@ -136,9 +136,11 @@ public class Matrix {
             //this.components[i] = Vector.add(this.components[i], matrix.components[i]);
         }
 
-        for (int i = 0; i < this.getRowsNumber(); i++) {
+        this.components = new Vector[maxRowsNumber];
+
+        for (int i = 0; i < matrix.getRowsNumber(); i++) {
             //this.components[i].add(v2[i]);
-            v2[i].add(this.components[i]);
+            v2[i].add(matrix.components[i]);
             //v3[i] = new Vector(this.components[i]);
         }
 
