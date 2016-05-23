@@ -127,7 +127,11 @@ public class Matrix {
             for (int i = 0; i < this.getRowsNumber(); i++) {
                 matrix.components[i].add(this.components[i]);
             }
-            this.components = matrix.components;
+            this.components = new Vector[matrix.getRowsNumber()];
+            for (int i = 0; i < this.getRowsNumber(); i++) {
+                this.components[i] = new Vector(matrix.components[i]);
+            }
+            //this.components = matrix.components;
             return this;
         }
     }
