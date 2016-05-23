@@ -133,12 +133,26 @@ public class Matrix {
     }
 
     public Matrix minus(Matrix matrix) {
-        int maxRowsNumber = Math.max(matrix.getRowsNumber(), this.getRowsNumber());
-        for (int i = 0; i < maxRowsNumber; i++) {
-            this.components[i].minus(matrix.components[i]);
+        if (this.getRowsNumber() >= matrix.getRowsNumber()) {
+            for (int i = 0; i < matrix.getRowsNumber(); i++) {
+                this.components[i].minus(matrix.components[i]);
+            }
+            return this;
+        } else {
+            for (int i = 0; i < this.getRowsNumber(); i++) {
+                matrix.components[i].minus(this.components[i]);
+            }
+            this.components = matrix.components;
+            return this;
         }
-        return this;
     }
+
+    //int maxRowsNumber = Math.max(matrix.getRowsNumber(), this.getRowsNumber());
+    //for (int i = 0; i < maxRowsNumber; i++) {
+    //this.components[i].minus(matrix.components[i]);
+    //}
+    //return this;
+    //}
 
     public Vector multiplicationByVector(Vector vector) {
         if (this.getColumnsNumber() != vector.getSize()) {
