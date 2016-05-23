@@ -35,8 +35,8 @@ public class MainMatrix {
         Matrix m12 = new Matrix(array12);
         System.out.println(m12.toString());
 
-        //System.out.println("MINUS = " + m12.minus(m11).toString());
-        System.out.println("ADD = " + m12.add(m11).toString());
+        System.out.println("MINUS = " + m12.minus(m11).toString());
+        //System.out.println("ADD = " + m12.add(m11).toString());
         //System.out.println(Matrix.add(m11, m12).toString());
 
 

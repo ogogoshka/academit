@@ -145,8 +145,15 @@ public class Matrix {
         } else {
             for (int i = 0; i < this.getRowsNumber(); i++) {
                 matrix.components[i].minus(this.components[i]);
+
             }
-            this.components = matrix.components;
+            this.components = new Vector[matrix.getRowsNumber()];
+            for (int i = 0; i < this.getRowsNumber(); i++) {
+                this.components[i] = new Vector(matrix.components[i].multiplicationByScalar2(-1));
+            }
+            //this.components = matrix.components;
+            //return matrix;
+            //this.components = matrix.components;
             return this;
         }
     }
