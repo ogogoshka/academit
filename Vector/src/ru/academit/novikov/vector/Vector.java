@@ -24,10 +24,7 @@ public class Vector {
     }
 
     public Vector(double[] array) {
-        //this();
-        //Vector vector = new Vector(array.length, array);
-        //this.components = vector.components;
-        //this(array.length, array);
+        this(array.length, array);
     }
 
     public Vector(int size, double[] array) {

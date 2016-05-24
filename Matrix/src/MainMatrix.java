@@ -7,36 +7,24 @@ public class MainMatrix {
 
         double[][] array22 = {{-2, 1, 3, 2}, {3, 0, -1, 2}, {-5, 2, 3, 0}, {4, -1, 2, -3}};
         Matrix m22 = new Matrix(array22);
-        System.out.println(m22.toString());
-
-
-        System.out.println(m22.toString());
-
-        System.out.println("m22.getDeterminant()=" + m22.getDeterminant());
-
-        //Matrix m33 = new Matrix(temp3);
-        //System.out.println(m33.toString());
-        //Vector v22 = new Vector(temp4);
-        //m22.setVectorLine(0, v22);
-        //System.out.println(m22.toString());
-
 
         double[][] array44 = {{-6, -3, 5, 6}, {-10, 2, 7, 8}, {11, 7, 8, 1}, {11, 7, 8, 9}};
         Matrix m44 = new Matrix(array44);
-        //System.out.println("m44.getDeterminant() = " + m44.getDeterminant());
 
         double[][] array10 = {{-6, -3}, {-10, -4}, {11, 7, 8}};
         Matrix m10 = new Matrix(array10);
 
         Matrix m11 = new Matrix(m10);
-        System.out.println(m11.toString());
+        //System.out.println("m11 = " + m11.toString());
 
-        double[][] array12 = {{-6, -3, 2, 3}, {-10, -4}};
+        double[][] array12 = {{-6, -3, 2, 3}, {-10, -4}, {5}};
         Matrix m12 = new Matrix(array12);
-        System.out.println(m12.toString());
+        System.out.println("m12 = " + m12.toString());
+        System.out.println("m11 = " + m11.toString());
+        //System.out.println("ADD = " + m12.add(m11).toString());
 
         System.out.println("MINUS = " + m12.minus(m11).toString());
-        //System.out.println("ADD = " + m12.add(m11).toString());
+
         //System.out.println(Matrix.add(m11, m12).toString());
 
 
