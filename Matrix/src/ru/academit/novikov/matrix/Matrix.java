@@ -110,8 +110,6 @@ public class Matrix {
         Vector[] arrayOfVectors = new Vector[maxRowsNumber];
         if (this.getRowsNumber() < matrix.getRowsNumber()) {
             for (int i = 0; i < this.getRowsNumber(); i++) {
-                //arrayOfVectors[i] = new Vector(this.components[i]);
-                //arrayOfVectors[i].add(matrix.components[i]);
                 arrayOfVectors[i] = Vector.add(this.components[i], matrix.components[i]);
             }
             for (int i = this.getRowsNumber(); i < matrix.getRowsNumber(); i++) {
@@ -132,15 +130,11 @@ public class Matrix {
         Vector[] arrayOfVectors = new Vector[maxRowsNumber];
         if (this.getRowsNumber() < matrix.getRowsNumber()) {
             for (int i = 0; i < this.getRowsNumber(); i++) {
-                //arrayOfVectors[i] = new Vector(this.components[i]);
                 arrayOfVectors[i] = Vector.minus(this.components[i], matrix.components[i]);
             }
             for (int i = this.getRowsNumber(); i < matrix.getRowsNumber(); i++) {
                 arrayOfVectors[i] = new Vector(matrix.components[i]);
             }
-            //for (int i = 0; i < this.getRowsNumber(); i++) {
-                //arrayOfVectors[i].minus(matrix.components[i]);
-            //}
             this.components = arrayOfVectors;
             return this;
         } else {
@@ -185,7 +179,6 @@ public class Matrix {
         return new Matrix(vector).transpose();
     }
 
-    //f. Вычисление определителя матрицы
     public double getDeterminant() {
         double determinant = 1;
         if (this.components.length != this.getColumnsNumber()) {
