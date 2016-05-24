@@ -21,9 +21,9 @@ public class MainMatrix {
         Matrix m12 = new Matrix(array12);
         System.out.println("m12 = " + m12.toString());
         System.out.println("m11 = " + m11.toString());
-        //System.out.println("ADD = " + m12.add(m11).toString());
+        System.out.println("ADD = " + m11.add(m12).toString());
 
-        System.out.println("MINUS = " + m11.minus(m12).toString());
+        //System.out.println("MINUS = " + m11.minus(m12).toString());
 
         //System.out.println(Matrix.add(m11, m12).toString());
 
