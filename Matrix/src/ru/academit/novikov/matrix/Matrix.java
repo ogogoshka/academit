@@ -108,27 +108,47 @@ public class Matrix {
     public Matrix add(Matrix matrix) {
         int maxRowsNumber = Math.max(matrix.getRowsNumber(), this.getRowsNumber());
         Vector[] arrayOfVectors = new Vector[maxRowsNumber];
-        for (int i = 0; i < this.getRowsNumber(); i++) {
-            arrayOfVectors[i] = new Vector(this.components[i]);
+        if (this.getRowsNumber() <= matrix.getRowsNumber()) {
+            for (int i = 0; i < this.getRowsNumber(); i++) {
+                arrayOfVectors[i] = new Vector(this.components[i]);
+            }
+            for (int i = this.getRowsNumber(); i < matrix.getRowsNumber(); i++) {
+                arrayOfVectors[i] = new Vector(matrix.components[i]);
+            }
+            for (int i = 0; i < this.getRowsNumber(); i++) {
+                arrayOfVectors[i].add(matrix.components[i]);
+            }
+            this.components = arrayOfVectors;
+            return this;
+        } else {
+            for (int i = 0; i < matrix.getRowsNumber(); i++) {
+                this.components[i].add(matrix.components[i]);
+            }
+            return this;
         }
-        for (int i = 0; i < matrix.getRowsNumber(); i++) {
-            arrayOfVectors[i].add(matrix.components[i]);
-        }
-        this.components = arrayOfVectors;
-        return this;
     }
 
     public Matrix minus(Matrix matrix) {
         int maxRowsNumber = Math.max(matrix.getRowsNumber(), this.getRowsNumber());
         Vector[] arrayOfVectors = new Vector[maxRowsNumber];
-        for (int i = 0; i < this.getRowsNumber(); i++) {
-            arrayOfVectors[i] = new Vector(this.components[i]);
+        if (this.getRowsNumber() <= matrix.getRowsNumber()) {
+            for (int i = 0; i < this.getRowsNumber(); i++) {
+                arrayOfVectors[i] = new Vector(this.components[i]);
+            }
+            for (int i = this.getRowsNumber(); i < matrix.getRowsNumber(); i++) {
+                arrayOfVectors[i] = new Vector(matrix.components[i]);
+            }
+            for (int i = 0; i < this.getRowsNumber(); i++) {
+                arrayOfVectors[i].minus(matrix.components[i]);
+            }
+            this.components = arrayOfVectors;
+            return this;
+        } else {
+            for (int i = 0; i < matrix.getRowsNumber(); i++) {
+                this.components[i].minus(matrix.components[i]);
+            }
+            return this;
         }
-        for (int i = 0; i < matrix.getRowsNumber(); i++) {
-            arrayOfVectors[i].minus(matrix.components[i]);
-        }
-        this.components = arrayOfVectors;
-        return this;
     }
 
     public Vector multiplicationByVector(Vector vector) {

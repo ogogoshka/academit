@@ -11,7 +11,7 @@ public class MainMatrix {
         double[][] array44 = {{-6, -3, 5, 6}, {-10, 2, 7, 8}, {11, 7, 8, 1}, {11, 7, 8, 9}};
         Matrix m44 = new Matrix(array44);
 
-        double[][] array10 = {{-6, -3}, {-10, -4}, {11, 7, 8}};
+        double[][] array10 = {{-6, -3}, {-10, -4}, {11, 7, 8}, {22}};
         Matrix m10 = new Matrix(array10);
 
         Matrix m11 = new Matrix(m10);
@@ -23,7 +23,7 @@ public class MainMatrix {
         System.out.println("m11 = " + m11.toString());
         //System.out.println("ADD = " + m12.add(m11).toString());
 
-        System.out.println("MINUS = " + m12.minus(m11).toString());
+        System.out.println("MINUS = " + m11.minus(m12).toString());
 
         //System.out.println(Matrix.add(m11, m12).toString());
 
