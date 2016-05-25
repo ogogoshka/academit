@@ -17,22 +17,15 @@ public class Vector {
         components = new double[size];
     }
 
-    public Vector(int size, Vector vector) {
-        double[] temp = new double[size];
-        if (size < vector.getSize()) {
-            System.arraycopy(vector.components, 0, temp, 0, size);
-        } else {
-            System.arraycopy(vector.components, 0, temp, 0, vector.getSize());
-        }
-        this.components = temp;
-    }
-
     public Vector(Vector vector) {
         double[] temp = new double[vector.getSize()];
         System.arraycopy(vector.components, 0, temp, 0, vector.getSize());
         this.components = temp;
     }
 
+    public Vector(int size, Vector vector) {
+        this(size, vector.components);
+    }
 
     public Vector(double[] array) {
         this(array.length, array);

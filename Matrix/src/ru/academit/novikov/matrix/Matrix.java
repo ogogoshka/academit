@@ -27,11 +27,9 @@ public class Matrix {
         for (Vector aVector : vector) {
             maxLength = Math.max(maxLength, aVector.getSize());
         }
-        Vector[] vectorsMaxLength = new Vector[vector.length];
         this.components = new Vector[vector.length];
         for (int i = 0; i < vector.length; i++) {
-            vectorsMaxLength[i] = new Vector(maxLength);
-            this.components[i] = Vector.add(vectorsMaxLength[i], vector[i]);
+            this.components[i] = new Vector(maxLength, vector[i]);
         }
     }
 

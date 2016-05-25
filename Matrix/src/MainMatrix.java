@@ -16,7 +16,7 @@ public class MainMatrix {
         //Matrix mV2 = new Matrix(3, 3);
         Matrix mV2 = new Matrix(newVector);
         System.out.println(mV2.toString());
-        System.out.println(mV2.getVectorColumn(0));
+        //System.out.println(mV2.getVectorColumn(0));
 
 
         int maxLength = 0;
@@ -63,9 +63,11 @@ public class MainMatrix {
         //System.out.println(mV2.toString());
 
 
-        //Vector vvv3 = new Vector(7, arr2);
-        //System.out.println(vvv3.toString());
+        Vector vvv3 = new Vector(5, arr2);
+        System.out.println(vvv3.toString());
 
+        Vector vvv5 = new Vector(7, vvv3);
+        System.out.println(vvv5.toString());
 
         double[][] array22 = {{-2, 1, 3, 2}, {3, 0, -1, 2}, {-5, 2, 3, 0}, {4, -1, 2, -3}};
         Matrix m22 = new Matrix(array22);
@@ -77,14 +79,14 @@ public class MainMatrix {
         Matrix m10 = new Matrix(array10);
         System.out.println(m10.toString());
 
-        Matrix m11 = new Matrix(m10);
+        //Matrix m11 = new Matrix(m10);
         //System.out.println("m11 = " + m11.toString());
 
         double[][] array12 = {{-6, -3, 2, 3}, {-10, -4}, {5}};
         Matrix m12 = new Matrix(array12);
-        System.out.println("m12 = " + m12.toString());
-        System.out.println("m11 = " + m11.toString());
-        System.out.println("ADD = " + m11.add(m12).toString());
+        //System.out.println("m12 = " + m12.toString());
+        //System.out.println("m11 = " + m11.toString());
+        //System.out.println("ADD = " + m11.add(m12).toString());
 
         //System.out.println("MINUS = " + m11.minus(m12).toString());
 
@@ -98,7 +100,7 @@ public class MainMatrix {
         Matrix m1 = new Matrix(3, 3);
 
 
-        Matrix m6 = new Matrix(newVector);
+        //Matrix m6 = new Matrix(newVector);
 
         double[] array6 = {6, 7, 8};
 
