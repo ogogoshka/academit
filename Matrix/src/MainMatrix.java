@@ -16,6 +16,8 @@ public class MainMatrix {
         //Matrix mV2 = new Matrix(3, 3);
         Matrix mV2 = new Matrix(newVector);
         System.out.println(mV2.toString());
+        System.out.println(mV2.getVectorColumn(0));
+
 
         int maxLength = 0;
 
@@ -37,7 +39,6 @@ public class MainMatrix {
             //this.components[i] = new Vector(vector[i]);
         }
  */
-
 
 
         //Matrix m23 = new Matrix(newVector.length, maxLength);
@@ -74,6 +75,7 @@ public class MainMatrix {
 
         double[][] array10 = {{-6, -3}, {-10, -4}, {11, 7, 8}, {22}};
         Matrix m10 = new Matrix(array10);
+        System.out.println(m10.toString());
 
         Matrix m11 = new Matrix(m10);
         //System.out.println("m11 = " + m11.toString());
@@ -113,8 +115,8 @@ public class MainMatrix {
         double[] arrayTestV = {1, 2, -1};
         Vector v7 = new Vector(3, arrayTestV);
         Matrix m7 = new Matrix(arrayTestM);
-        //m7.multiplicationByVector(v7);
-
+        m7.multiplicationByVector(v7);
+        System.out.println("m7.multiplicationByVector(v7) = " + m7.multiplicationByVector(v7).toString());
 
         //add(m6, m7);
         //minus(m6, m7);

@@ -90,7 +90,7 @@ public class Matrix {
         for (int i = 0; i < this.getRowsNumber(); i++) {
             temp[i] = this.components[i].getComponent(columnsNumber);
         }
-        return new Vector(this.getRowsNumber(), temp);
+        return new Vector(temp);
     }
 
     public Matrix transpose() {
@@ -158,7 +158,7 @@ public class Matrix {
                 temp[i] += this.components[i].getComponent(j) * vector.getComponent(j);
             }
         }
-        return new Vector(this.getRowsNumber(), temp);
+        return new Vector(temp);
     }
 
     public static Matrix add(Matrix m1, Matrix m2) {
