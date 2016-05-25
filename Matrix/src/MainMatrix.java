@@ -3,7 +3,68 @@ import ru.academit.novikov.vector.Vector;
 
 public class MainMatrix {
     public static void main(String[] args) {
-        Matrix test = new Matrix();
+
+        double[] arr = {1, 2, -1};
+        double[] arr2 = {1, 2, -1, 5, 7};
+        double[] arr3 = {1, 2};
+
+        Vector[] newVector = new Vector[3];
+        newVector[0] = new Vector(3, arr);
+        newVector[1] = new Vector(5, arr2);
+        newVector[2] = new Vector(2, arr3);
+
+        //Matrix mV2 = new Matrix(3, 3);
+        Matrix mV2 = new Matrix(newVector);
+        System.out.println(mV2.toString());
+
+        int maxLength = 0;
+
+
+        for (int i = 0; i < newVector.length; i++) {
+            maxLength = Math.max(maxLength, newVector[i].getSize());
+        }
+
+        //Vector[] vMax = new Vector[newVector.length];
+
+        //mV2.components = new Vector[newVector.length];
+/*
+        for (int i = 0; i < vMax.length; i++) {
+            vMax[i] = new Vector(maxLength);
+            //vMax[i].add(newVector[i]);
+            //mV2.components[i] = vMax[i];
+            mV2.components[i] = Vector.add(vMax[i], newVector[i]);
+            //mV2.components[i] = new Vector(newVector[i].getSize(), newVector[i]);
+            //this.components[i] = new Vector(vector[i]);
+        }
+ */
+
+
+
+        //Matrix m23 = new Matrix(newVector.length, maxLength);
+        System.out.println("maxLength = " + maxLength);
+
+
+        //System.out.println(mV2.toString());
+        //for (int i = 0; i < newVector.length; i++) {
+        //mV2.components[i] = new Vector(newVector[i].getSize(), newVector[i]);
+        //this.components[i] = new Vector(vector[i]);
+        //}
+
+        //for (int i = 0; i < newVector.length; i++) {
+        //for (int j = newVector[i].getSize(); j < maxLength; j++) {
+        //mV2.components[i] = new Vector(newVector[i].getSize(), newVector[i]);
+        //this.components[i] = new Vector(vector[i]);
+        //mV2.components[i].getComponent(j) = 0;
+        //}
+        //}
+
+
+        //System.out.println(mV2.toString());
+
+
+        //Vector vvv3 = new Vector(7, arr2);
+        //System.out.println(vvv3.toString());
+
 
         double[][] array22 = {{-2, 1, 3, 2}, {3, 0, -1, 2}, {-5, 2, 3, 0}, {4, -1, 2, -3}};
         Matrix m22 = new Matrix(array22);
@@ -34,16 +95,6 @@ public class MainMatrix {
 
         Matrix m1 = new Matrix(3, 3);
 
-        double[] arr = {1, 2, -1};
-
-        Vector[] newVector = new Vector[2];
-        newVector[0] = new
-
-                Vector(3, arr);
-
-        newVector[1] = new
-
-                Vector(3, arr);
 
         Matrix m6 = new Matrix(newVector);
 

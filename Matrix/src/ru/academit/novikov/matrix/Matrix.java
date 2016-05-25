@@ -4,10 +4,7 @@ import ru.academit.novikov.vector.*;
 
 public class Matrix {
 
-    public Vector[] components;
-
-    public Matrix() {
-    }
+    private Vector[] components;
 
     public Matrix(int rowsNumber, int columnsNumber) {
         if (rowsNumber <= 0) {
@@ -26,9 +23,15 @@ public class Matrix {
     }
 
     public Matrix(Vector[] vector) {
+        int maxLength = 0;
+        for (Vector aVector : vector) {
+            maxLength = Math.max(maxLength, aVector.getSize());
+        }
+        Vector[] vectorsMaxLength = new Vector[vector.length];
         this.components = new Vector[vector.length];
         for (int i = 0; i < vector.length; i++) {
-            this.components[i] = new Vector(vector[i]);
+            vectorsMaxLength[i] = new Vector(maxLength);
+            this.components[i] = Vector.add(vectorsMaxLength[i], vector[i]);
         }
     }
 
