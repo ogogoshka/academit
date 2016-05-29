@@ -1,19 +1,14 @@
-import ru.academit.novikov.flowlayout.Flow;
+import ru.academit.novikov.flowlayout.TemperatureGUI;
 
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import javax.swing.*;
 
 public class MainConvertTemperatureSwing {
 
     public static void main(String[] args) {
-        Frame frame = new Flow("Тулза для перевода температур");
-        Panel panel = new Panel();
-        frame.add(panel);
 
-        frame.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent event) {
-                System.exit(0);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                TemperatureGUI test = new TemperatureGUI();
             }
         });
     }

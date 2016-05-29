@@ -3,14 +3,28 @@ package ru.academit.novikov.flowlayout;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Flow extends Frame {
     private TextField text1 = new TextField(50);
     private TextField text2 = new TextField(50);
 
+    private Frame frame = new Flow("Тулза для перевода температур");
+
     public Flow(String s) {
         super(s);
         setLayout(new FlowLayout(FlowLayout.CENTER, 10, 20));
+
+
+        Panel panel = new Panel();
+        frame.add(panel);
+
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent event) {
+                System.exit(0);
+            }
+        });
 
         Choice temperatureIn = new Choice();
         temperatureIn.add("Фаренгейтах");
