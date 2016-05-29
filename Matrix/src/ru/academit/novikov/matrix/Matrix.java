@@ -44,6 +44,10 @@ public class Matrix {
         }
     }
 
+    public double getComponent(int i, int j) {
+        return this.components[i].getComponent(j);
+    }
+
     public int getRowsNumber() {
         return this.components.length;
     }
@@ -78,6 +82,15 @@ public class Matrix {
             throw new IllegalArgumentException("такой строки не существует");
         }
         this.components[rowsNumber] = new Vector(vector);
+    }
+
+    public void setVectorColumn(int columnNumber, Vector vector) {
+        if (columnNumber > this.getColumnsNumber() || columnNumber < 0) {
+            throw new IllegalArgumentException("такого столюца не существует");
+        }
+        for (int i = 0; i < this.getRowsNumber(); i++) {
+            this.components[i].setComponent(columnNumber, vector.getComponent(i));
+        }
     }
 
     public Vector getVectorColumn(int columnsNumber) {
@@ -197,4 +210,12 @@ public class Matrix {
         }
         return determinant;
     }
+
+    public Matrix replaceLine(int i, int j) {
+        Vector temp = new Vector(this.getVectorLine(i));
+        this.setVectorLine(i, this.getVectorLine(j));
+        this.setVectorLine(j, temp);
+        return this;
+    }
+
 }

@@ -152,4 +152,24 @@ public class Vector {
         Vector v3 = new Vector(v1);
         return v3.minus(v2);
     }
+
+    public boolean zeroElementsExceptLast() {
+        for (int i = 0; i < this.getSize() - 1; i++) {
+            if (this.components[i] > EPSILON) {
+                return false;
+            }
+        }
+        return this.components[this.getSize() - 1] >= EPSILON;
+    }
+
+    public boolean allZeroElements() {
+        for (int i = 0; i < this.getSize(); i++) {
+            if (this.components[i] > EPSILON) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 }

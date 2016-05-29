@@ -74,10 +74,10 @@ public class MainMatrix {
 
         double[][] array44 = {{-6, -3, 5, 6}, {-10, 2, 7, 8}, {11, 7, 8, 1}, {11, 7, 8, 9}};
         Matrix m44 = new Matrix(array44);
-
         double[][] array10 = {{-6, -3}, {-10, -4}, {11, 7, 8}, {22}};
         Matrix m10 = new Matrix(array10);
         System.out.println(m10.toString());
+
 
         //Matrix m11 = new Matrix(m10);
         //System.out.println("m11 = " + m11.toString());
@@ -132,7 +132,6 @@ public class MainMatrix {
         m8.getRowsNumber();
         m8.getColumnsNumber();
         m8.getVectorLine(0);
-
 
 
 
