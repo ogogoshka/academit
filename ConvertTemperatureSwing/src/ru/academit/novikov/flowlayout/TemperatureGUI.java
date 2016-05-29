@@ -49,7 +49,7 @@ public class TemperatureGUI {
 
     private class ConvertActionListener implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent event) {
             temperatureOut();
         }
     }
