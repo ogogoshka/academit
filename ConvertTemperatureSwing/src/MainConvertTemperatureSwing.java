@@ -1,4 +1,4 @@
-import ru.academit.novikov.flowlayout.TemperatureGUI;
+import ru.academit.novikov.converttemperatureswing.TemperatureGUI;
 
 import javax.swing.*;
 

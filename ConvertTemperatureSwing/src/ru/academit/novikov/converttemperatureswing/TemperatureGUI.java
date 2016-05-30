@@ -1,4 +1,7 @@
-package ru.academit.novikov.flowlayout;
+package ru.academit.novikov.converttemperatureswing;
+
+import ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert.FahrenheitConverter;
+import ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert.KelvinConverter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -65,49 +68,36 @@ public class TemperatureGUI {
     private void temperatureOut() {
 
         String entryString = entryField.getText();
-        Fahrenheit far = new Fahrenheit();
-        Kelvin kel = new Kelvin();
-        
+        FahrenheitConverter far = new FahrenheitConverter();
+        KelvinConverter kel = new KelvinConverter();
+
         if (comboBoxIn.getSelectedIndex() == comboBoxOut.getSelectedIndex()) {
             outField.setText(String.valueOf(entryString));
 
         } else {
             if (comboBoxIn.getSelectedIndex() == 0) {
                 if (comboBoxOut.getSelectedIndex() == 1) {
-                    outField.setText(String.valueOf(far.inCelsius(Double.valueOf(entryString))));
+                    outField.setText(String.valueOf(far.currentToCelsius(Double.valueOf(entryString))));
                 } else {
-                    outField.setText(String.valueOf(kel.fromCelsius(far.inCelsius(Double.valueOf(entryString)))));
+                    outField.setText(String.valueOf(kel.currentFromCelsius(far.currentToCelsius(Double.valueOf(entryString)))));
                 }
 
             } else if (comboBoxIn.getSelectedIndex() == 1) {
                 if (comboBoxOut.getSelectedIndex() == 0) {
-                    outField.setText(String.valueOf(far.fromCelsius(Double.valueOf(entryString))));
+                    outField.setText(String.valueOf(far.currentFromCelsius(Double.valueOf(entryString))));
                 } else {
-                    outField.setText(String.valueOf(kel.fromCelsius(Double.valueOf(entryString))));
+                    outField.setText(String.valueOf(kel.currentFromCelsius(Double.valueOf(entryString))));
                 }
 
             } else {
                 if (comboBoxOut.getSelectedIndex() == 0) {
-                    outField.setText(String.valueOf(far.fromCelsius(kel.inCelsius(Double.valueOf(entryString)))));
+                    outField.setText(String.valueOf(far.currentFromCelsius(kel.currentToCelsius(Double.valueOf(entryString)))));
                 } else {
-                    outField.setText(String.valueOf(kel.inCelsius(Double.valueOf(entryString))));
+                    outField.setText(String.valueOf(kel.currentToCelsius(Double.valueOf(entryString))));
                 }
             }
         }
     }
-
-
-
-
-/*
-    public int getOutIndex(int outIndex) {
-
-
-        return 1;
-
-    }
- */
-
 
     private boolean isStringOrNumber() {
         String entryString = entryField.getText();
@@ -118,6 +108,4 @@ public class TemperatureGUI {
         }
         return true;
     }
-
-
 }
