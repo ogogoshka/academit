@@ -27,6 +27,7 @@ public class TemperatureGUI {
     public TemperatureGUI() {
         JFrame frame = new JFrame("Тулза для перевода температур");
         frame.setSize(410, 270);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -182,4 +183,6 @@ public class TemperatureGUI {
         }
         return true;
     }
+
+
 }
