@@ -8,7 +8,7 @@ public class MainConvertTemperatureSwing {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                TemperatureGUI test = new TemperatureGUI();
+                new TemperatureGUI();
             }
         });
     }
