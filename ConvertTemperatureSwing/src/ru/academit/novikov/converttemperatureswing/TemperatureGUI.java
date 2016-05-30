@@ -19,10 +19,10 @@ public class TemperatureGUI {
     private JTextField entryField = new JTextField(30);
     private JTextField outField = new JTextField(30);
 
-    private String[] elementsIn = new String[]{FAHRENHEIT_OUT, CELSIUS_OUT, KELVIN_OUT};
+    private String[] elementsIn = new String[]{FAHRENHEIT_IN, CELSIUS_IN, KELVIN_IN};
     private JComboBox<String> comboBoxIn = new JComboBox<>(elementsIn);
 
-    private String[] elementsOut = new String[]{FAHRENHEIT_IN, CELSIUS_IN, KELVIN_IN};
+    private String[] elementsOut = new String[]{FAHRENHEIT_OUT, CELSIUS_OUT, KELVIN_OUT};
     private JComboBox<String> comboBoxOut = new JComboBox<>(elementsOut);
 
     public TemperatureGUI() {
@@ -68,8 +68,9 @@ public class TemperatureGUI {
     private void temperatureOut() {
 
         String entryString = entryField.getText();
-        FahrenheitConverter far = new FahrenheitConverter();
-        KelvinConverter kel = new KelvinConverter();
+        
+        FahrenheitConverter fahrenheit = new FahrenheitConverter();
+        KelvinConverter kelvin = new KelvinConverter();
 
         if (comboBoxIn.getSelectedIndex() == comboBoxOut.getSelectedIndex()) {
             outField.setText(String.valueOf(entryString));
@@ -77,23 +78,23 @@ public class TemperatureGUI {
         } else {
             if (comboBoxIn.getSelectedIndex() == 0) {
                 if (comboBoxOut.getSelectedIndex() == 1) {
-                    outField.setText(String.valueOf(far.currentToCelsius(Double.valueOf(entryString))));
+                    outField.setText(String.valueOf(fahrenheit.currentToCelsius(Double.valueOf(entryString))));
                 } else {
-                    outField.setText(String.valueOf(kel.currentFromCelsius(far.currentToCelsius(Double.valueOf(entryString)))));
+                    outField.setText(String.valueOf(kelvin.currentFromCelsius(fahrenheit.currentToCelsius(Double.valueOf(entryString)))));
                 }
 
             } else if (comboBoxIn.getSelectedIndex() == 1) {
                 if (comboBoxOut.getSelectedIndex() == 0) {
-                    outField.setText(String.valueOf(far.currentFromCelsius(Double.valueOf(entryString))));
+                    outField.setText(String.valueOf(fahrenheit.currentFromCelsius(Double.valueOf(entryString))));
                 } else {
-                    outField.setText(String.valueOf(kel.currentFromCelsius(Double.valueOf(entryString))));
+                    outField.setText(String.valueOf(kelvin.currentFromCelsius(Double.valueOf(entryString))));
                 }
 
             } else {
                 if (comboBoxOut.getSelectedIndex() == 0) {
-                    outField.setText(String.valueOf(far.currentFromCelsius(kel.currentToCelsius(Double.valueOf(entryString)))));
+                    outField.setText(String.valueOf(fahrenheit.currentFromCelsius(kelvin.currentToCelsius(Double.valueOf(entryString)))));
                 } else {
-                    outField.setText(String.valueOf(kel.currentToCelsius(Double.valueOf(entryString))));
+                    outField.setText(String.valueOf(kelvin.currentToCelsius(Double.valueOf(entryString))));
                 }
             }
         }
