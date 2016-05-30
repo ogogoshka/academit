@@ -67,7 +67,36 @@ public class TemperatureGUI {
 
         String entryString = entryField.getText();
 
-        if (comboBoxIn.getSelectedIndex() == 0) {
+        if (comboBoxIn.getSelectedIndex() == comboBoxOut.getSelectedIndex()) {
+            outField.setText(String.valueOf(entryString));
+        } else {
+            if (comboBoxIn.getSelectedIndex() == 0) {
+                Double inF = Double.valueOf(entryString);
+                if (comboBoxOut.getSelectedIndex() == 1) {
+                    outField.setText(String.valueOf(fahrenheitToCelsius(inF)));
+                } else {
+                    outField.setText(String.valueOf(fahrenheitToKelvin(inF)));
+                }
+
+            } else if (comboBoxIn.getSelectedIndex() == 1) {
+                Double inC = Double.valueOf(entryString);
+                if (comboBoxOut.getSelectedIndex() == 0) {
+                    outField.setText(String.valueOf(celsiusToFahrenheit(inC)));
+                } else {
+                    outField.setText(String.valueOf(celsiusToKelvin(inC)));
+                }
+
+            } else {
+                Double inK = Double.valueOf(entryString);
+                if (comboBoxOut.getSelectedIndex() == 0) {
+                    outField.setText(String.valueOf(kelvinToFahrenheit(inK)));
+                } else {
+                    outField.setText(String.valueOf(kelvinToCelsius(inK)));
+                }
+            }
+        }
+        /*
+                if (comboBoxIn.getSelectedIndex() == 0) {
             Double inF = Double.valueOf(entryString);
             if (comboBoxOut.getSelectedIndex() == 0) {
                 outField.setText(String.valueOf(inF));
@@ -97,6 +126,16 @@ public class TemperatureGUI {
                 outField.setText(String.valueOf(inK));
             }
         }
+         */
+
+    }
+
+    public int getOutIndex(int outIndex) {
+
+
+        return 1;
+
+    }
 
 /*
         if (comboBoxIn.getSelectedItem().equals(FAHRENHEIT_IN)) {
@@ -131,9 +170,6 @@ public class TemperatureGUI {
             }
         }
  */
-
-
-    }
 
 
     private boolean isStringOrNumber() {
