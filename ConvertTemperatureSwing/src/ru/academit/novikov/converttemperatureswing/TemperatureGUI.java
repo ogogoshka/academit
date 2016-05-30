@@ -1,5 +1,6 @@
 package ru.academit.novikov.converttemperatureswing;
 
+import ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert.CelsiusConverter;
 import ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert.FahrenheitConverter;
 import ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert.KelvinConverter;
 
@@ -7,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TemperatureGUI {
     private static final String FAHRENHEIT_IN = "Фаренгейтах";
@@ -16,7 +19,7 @@ public class TemperatureGUI {
     private static final String FAHRENHEIT_OUT = "Фаренгейты";
     private static final String CELSIUS_OUT = "Цельсии";
     private static final String KELVIN_OUT = "Кельвины";
-    
+
     private JTextField entryField = new JTextField(30);
     private JTextField outField = new JTextField(30);
 
@@ -25,6 +28,7 @@ public class TemperatureGUI {
 
     private String[] elementsOut = new String[]{FAHRENHEIT_OUT, CELSIUS_OUT, KELVIN_OUT};
     private JComboBox<String> comboBoxOut = new JComboBox<>(elementsOut);
+
 
     public TemperatureGUI() {
         JFrame frame = new JFrame("Тулза для перевода температур");
@@ -51,6 +55,14 @@ public class TemperatureGUI {
         panel.add(labelTemperatureOut);
 
         panel.add(comboBoxOut);
+//java.io.Serializable
+        String entryString = entryField.getText();
+
+        Map<Integer, Object> convertMap = new HashMap<>();
+
+        convertMap.put(0, new FahrenheitConverter().currentToCelsius(Double.valueOf(entryString)));
+        convertMap.put(1, new CelsiusConverter().currentToCelsius(Double.valueOf(entryString)));
+        convertMap.put(2, new KelvinConverter().currentToCelsius(Double.valueOf(entryString)));
 
         convertButton.addActionListener(new ActionListener() {
             @Override
