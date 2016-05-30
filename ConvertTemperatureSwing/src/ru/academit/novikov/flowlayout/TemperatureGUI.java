@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static ru.academit.novikov.flowlayout.TemperatureConvert.*;
+
 public class TemperatureGUI {
     private static final String FAHRENHEIT_IN = "Фаренгейтах";
     private static final String KELVIN_IN = "Кельвинах";
@@ -15,6 +17,12 @@ public class TemperatureGUI {
 
     private JTextField entryField = new JTextField(30);
     private JTextField outField = new JTextField(30);
+
+    private String[] elementsIn = new String[]{FAHRENHEIT_OUT, CELSIUS_OUT, KELVIN_OUT};
+    private JComboBox<String> comboBoxIn = new JComboBox<>(elementsIn);
+
+    private String[] elementsOut = new String[]{FAHRENHEIT_IN, CELSIUS_IN, KELVIN_IN};
+    private JComboBox<String> comboBoxOut = new JComboBox<>(elementsOut);
 
     public TemperatureGUI() {
         JFrame frame = new JFrame("Тулза для перевода температур");
@@ -28,8 +36,7 @@ public class TemperatureGUI {
 
         JLabel labelTemperatureIn = new JLabel("Вы ввели Температуру в");
         panel.add(labelTemperatureIn);
-        String[] elementsIn = new String[]{FAHRENHEIT_OUT, CELSIUS_OUT, KELVIN_OUT};
-        JComboBox<String> comboBoxIn = new JComboBox<>(elementsIn);
+
         panel.add(comboBoxIn);
         panel.add(entryField);
 
@@ -39,27 +46,97 @@ public class TemperatureGUI {
         panel.add(outField);
         JLabel labelTemperatureOut = new JLabel("Перевести Температуру в");
         panel.add(labelTemperatureOut);
-        String[] elementsOut = new String[]{FAHRENHEIT_IN, CELSIUS_IN, KELVIN_IN};
-        JComboBox<String> comboBoxOut = new JComboBox<>(elementsOut);
+
         panel.add(comboBoxOut);
 
         convertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
                 if (isStringOrNumber()) {
-                    outField.setText("ALL OK!!!");
+                    temperatureOut();
                 } else {
                     JOptionPane.showMessageDialog(convertButton, "Вы ввели не число!!!", "Информация", JOptionPane.WARNING_MESSAGE);
                     entryField.setText(null);
                     outField.setText(null);
                 }
-                //new SimpleWindow();
-                //temperatureOut();
             }
         });
     }
 
-    public boolean isStringOrNumber() {
+    private void temperatureOut() {
+
+        String entryString = entryField.getText();
+
+        if (comboBoxIn.getSelectedIndex() == 0) {
+            Double inF = Double.valueOf(entryString);
+            if (comboBoxOut.getSelectedIndex() == 0) {
+                outField.setText(String.valueOf(inF));
+            } else if (comboBoxOut.getSelectedIndex() == 1) {
+                outField.setText(String.valueOf(fahrenheitToCelsius(inF)));
+            } else {
+                outField.setText(String.valueOf(fahrenheitToKelvin(inF)));
+            }
+
+        } else if (comboBoxIn.getSelectedIndex() == 1) {
+            Double inC = Double.valueOf(entryString);
+            if (comboBoxOut.getSelectedIndex() == 0) {
+                outField.setText(String.valueOf(celsiusToFahrenheit(inC)));
+            } else if (comboBoxOut.getSelectedIndex() == 1) {
+                outField.setText(String.valueOf(inC));
+            } else {
+                outField.setText(String.valueOf(celsiusToKelvin(inC)));
+            }
+
+        } else {
+            Double inK = Double.valueOf(entryString);
+            if (comboBoxOut.getSelectedIndex() == 0) {
+                outField.setText(String.valueOf(kelvinToFahrenheit(inK)));
+            } else if (comboBoxOut.getSelectedIndex() == 1) {
+                outField.setText(String.valueOf(kelvinToCelsius(inK)));
+            } else {
+                outField.setText(String.valueOf(inK));
+            }
+        }
+
+/*
+        if (comboBoxIn.getSelectedItem().equals(FAHRENHEIT_IN)) {
+            //String entryString = entryField.getText();
+            Double inF = Double.valueOf(entryString);
+            if (comboBoxOut.getSelectedItem().equals(FAHRENHEIT_OUT)) {
+                outField.setText(String.valueOf(inF));
+            } else if (comboBoxOut.getSelectedItem().equals(CELSIUS_OUT)) {
+                outField.setText(String.valueOf(fahrenheitToCelsius(inF)));
+            } else {
+                outField.setText(String.valueOf(fahrenheitToKelvin(inF)));
+            }
+
+        } else if (comboBoxIn.getSelectedItem().equals(CELSIUS_IN)) {
+            Double inC = Double.valueOf(entryString);
+            if (comboBoxOut.getSelectedItem().equals(FAHRENHEIT_OUT)) {
+                outField.setText(String.valueOf(celsiusToFahrenheit(inC)));
+            } else if (comboBoxOut.getSelectedItem().equals(CELSIUS_OUT)) {
+                outField.setText(String.valueOf(inC));
+            } else {
+                outField.setText(String.valueOf(celsiusToKelvin(inC)));
+            }
+
+        } else {
+            Double inK = Double.valueOf(entryString);
+            if (comboBoxOut.getSelectedItem().equals(FAHRENHEIT_OUT)) {
+                outField.setText(String.valueOf(kelvinToFahrenheit(inK)));
+            } else if (comboBoxOut.getSelectedItem().equals(CELSIUS_OUT)) {
+                outField.setText(String.valueOf(kelvinToCelsius(inK)));
+            } else {
+                outField.setText(String.valueOf(inK));
+            }
+        }
+ */
+
+
+    }
+
+
+    private boolean isStringOrNumber() {
         String entryString = entryField.getText();
         try {
             Double.parseDouble(entryString);
@@ -68,47 +145,4 @@ public class TemperatureGUI {
         }
         return true;
     }
-/*
-    private void temperatureOut() {
-        String entryString = entryField.getText();
-
-        try {
-            double temperature = Double.parseDouble(entryString);
-        } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException("Температура должна быть числом!!!");
-        }
-
-        if (choiceTemperatureIn.getSelectedItem().equals(FAHRENHEIT_IN)) {
-            Double inF = Double.valueOf(entryString);
-            if (choiceTemperatureOut.getSelectedItem().equals(FAHRENHEIT_OUT)) {
-                outField.setText(String.valueOf(inF));
-            } else if (choiceTemperatureOut.getSelectedItem().equals(CELSIUS_OUT)) {
-                outField.setText(String.valueOf(fahrenheitToCelsius(inF)));
-            } else {
-                outField.setText(String.valueOf(fahrenheitToKelvin(inF)));
-            }
-
-        } else if (choiceTemperatureIn.getSelectedItem().equals(CELSIUS_IN)) {
-            Double inC = Double.valueOf(entryString);
-            if (choiceTemperatureOut.getSelectedItem().equals(FAHRENHEIT_OUT)) {
-                outField.setText(String.valueOf(celsiusToFahrenheit(inC)));
-            } else if (choiceTemperatureOut.getSelectedItem().equals(CELSIUS_OUT)) {
-                outField.setText(String.valueOf(inC));
-            } else {
-                outField.setText(String.valueOf(celsiusToKelvin(inC)));
-            }
-
-        } else {
-            Double inK = Double.valueOf(entryString);
-            if (choiceTemperatureOut.getSelectedItem().equals(FAHRENHEIT_OUT)) {
-                outField.setText(String.valueOf(kelvinToFahrenheit(inK)));
-            } else if (choiceTemperatureOut.getSelectedItem().equals(CELSIUS_OUT)) {
-                outField.setText(String.valueOf(kelvinToCelsius(inK)));
-            } else {
-                outField.setText(String.valueOf(inK));
-            }
-        }
-    }
- */
-
 }
