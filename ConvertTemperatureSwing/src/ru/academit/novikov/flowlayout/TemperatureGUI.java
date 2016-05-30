@@ -69,6 +69,7 @@ public class TemperatureGUI {
 
         if (comboBoxIn.getSelectedIndex() == comboBoxOut.getSelectedIndex()) {
             outField.setText(String.valueOf(entryString));
+
         } else {
             if (comboBoxIn.getSelectedIndex() == 0) {
                 Double inF = Double.valueOf(entryString);
