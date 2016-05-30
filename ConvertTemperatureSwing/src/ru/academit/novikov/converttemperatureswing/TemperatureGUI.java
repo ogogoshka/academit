@@ -3,6 +3,7 @@ package ru.academit.novikov.converttemperatureswing;
 import ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert.CelsiusConverter;
 import ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert.FahrenheitConverter;
 import ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert.KelvinConverter;
+import ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert.TemperatureConverter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -79,11 +80,13 @@ public class TemperatureGUI {
         CelsiusConverter celsius = new CelsiusConverter();
         KelvinConverter kelvin = new KelvinConverter();
 
-        Map<Integer, Object> convertMap = new HashMap<>();
+        Map<Integer, TemperatureConverter> convertMap = new HashMap<>();
 
-        convertMap.put(0, fahrenheit.currentToCelsius(Double.valueOf(entryString)));
-        convertMap.put(1, celsius.currentToCelsius(Double.valueOf(entryString)));
-        convertMap.put(2, kelvin.currentToCelsius(Double.valueOf(entryString)));
+        convertMap.put(0, new FahrenheitConverter());
+        convertMap.put(1, new CelsiusConverter());
+        convertMap.put(2, new KelvinConverter());
+
+        convertMap.get(0).currentToCelsius(Double.valueOf(entryString));
 
 
         if (comboBoxIn.getSelectedIndex() == comboBoxOut.getSelectedIndex()) {
