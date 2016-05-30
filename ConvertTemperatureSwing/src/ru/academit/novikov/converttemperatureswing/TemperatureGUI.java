@@ -10,12 +10,13 @@ import java.awt.event.ActionListener;
 
 public class TemperatureGUI {
     private static final String FAHRENHEIT_IN = "Фаренгейтах";
-    private static final String KELVIN_IN = "Кельвинах";
     private static final String CELSIUS_IN = "Цельсиях";
-    private static final String FAHRENHEIT_OUT = "Фаренгейты";
-    private static final String KELVIN_OUT = "Кельвины";
-    private static final String CELSIUS_OUT = "Цельсии";
+    private static final String KELVIN_IN = "Кельвинах";
 
+    private static final String FAHRENHEIT_OUT = "Фаренгейты";
+    private static final String CELSIUS_OUT = "Цельсии";
+    private static final String KELVIN_OUT = "Кельвины";
+    
     private JTextField entryField = new JTextField(30);
     private JTextField outField = new JTextField(30);
 
@@ -68,7 +69,7 @@ public class TemperatureGUI {
     private void temperatureOut() {
 
         String entryString = entryField.getText();
-        
+
         FahrenheitConverter fahrenheit = new FahrenheitConverter();
         KelvinConverter kelvin = new KelvinConverter();
 
