@@ -45,16 +45,21 @@ public class TemperatureGUI {
         JComboBox<String> comboBoxOut = new JComboBox<>(elementsOut);
         panel.add(comboBoxOut);
 
-        convertButton.addActionListener(new ConvertActionListener());
+        convertButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                temperatureOut();
+            }
+        });
     }
-
+/*
     private class ConvertActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent event) {
             temperatureOut();
         }
     }
-
+ */
 
     private void temperatureOut() {
         String entryString = entryField.getText();
