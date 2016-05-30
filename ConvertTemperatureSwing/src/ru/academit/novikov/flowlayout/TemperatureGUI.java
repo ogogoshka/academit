@@ -8,30 +8,18 @@ import java.awt.event.ActionListener;
 import static ru.academit.novikov.flowlayout.TemperatureConvert.*;
 
 public class TemperatureGUI {
-
     private static final String FAHRENHEIT_IN = "Фаренгейтах";
     private static final String KELVIN_IN = "Кельвинах";
     private static final String CELSIUS_IN = "Цельсиях";
-
     private static final String FAHRENHEIT_OUT = "Фаренгейты";
     private static final String KELVIN_OUT = "Кельвины";
     private static final String CELSIUS_OUT = "Цельсии";
 
-    private JFrame frame = new JFrame("Тулза для перевода температур");
     private JTextField entryField = new JTextField(30);
     private JTextField outField = new JTextField(30);
-    private JButton convertButton = new JButton("Перевести");
-
-    private String[] elementsIn = new String[]{FAHRENHEIT_OUT, CELSIUS_OUT, KELVIN_OUT};
-    private JComboBox comboBoxIn = new JComboBox(elementsIn);
-
-    private String[] elementsOut = new String[]{FAHRENHEIT_IN, CELSIUS_IN, KELVIN_IN};
-    private JComboBox comboBoxOut = new JComboBox(elementsOut);
-
-    private JLabel labelTemperatureIn = new JLabel("Вы ввели Температуру в");
-    private JLabel labelTemperatureOut = new JLabel("Перевести Температуру в");
 
     public TemperatureGUI() {
+        JFrame frame = new JFrame("Тулза для перевода температур");
         frame.setSize(410, 270);
         frame.setVisible(true);
         frame.setResizable(false);
@@ -40,18 +28,21 @@ public class TemperatureGUI {
         panel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
         frame.add(panel);
 
+        JLabel labelTemperatureIn = new JLabel("Вы ввели Температуру в");
         panel.add(labelTemperatureIn);
-
+        String[] elementsIn = new String[]{FAHRENHEIT_OUT, CELSIUS_OUT, KELVIN_OUT};
+        JComboBox<String> comboBoxIn = new JComboBox<>(elementsIn);
         panel.add(comboBoxIn);
-
-
         panel.add(entryField);
 
+        JButton convertButton = new JButton("Перевести");
         panel.add(convertButton);
 
         panel.add(outField);
-
+        JLabel labelTemperatureOut = new JLabel("Перевести Температуру в");
         panel.add(labelTemperatureOut);
+        String[] elementsOut = new String[]{FAHRENHEIT_IN, CELSIUS_IN, KELVIN_IN};
+        JComboBox<String> comboBoxOut = new JComboBox<>(elementsOut);
         panel.add(comboBoxOut);
 
         convertButton.addActionListener(new ConvertActionListener());
