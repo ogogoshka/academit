@@ -56,13 +56,6 @@ public class TemperatureGUI {
 
         panel.add(comboBoxOut);
 //java.io.Serializable
-        String entryString = entryField.getText();
-
-        Map<Integer, Object> convertMap = new HashMap<>();
-
-        convertMap.put(0, new FahrenheitConverter().currentToCelsius(Double.valueOf(entryString)));
-        convertMap.put(1, new CelsiusConverter().currentToCelsius(Double.valueOf(entryString)));
-        convertMap.put(2, new KelvinConverter().currentToCelsius(Double.valueOf(entryString)));
 
         convertButton.addActionListener(new ActionListener() {
             @Override
@@ -83,7 +76,15 @@ public class TemperatureGUI {
         String entryString = entryField.getText();
 
         FahrenheitConverter fahrenheit = new FahrenheitConverter();
+        CelsiusConverter celsius = new CelsiusConverter();
         KelvinConverter kelvin = new KelvinConverter();
+
+        Map<Integer, Object> convertMap = new HashMap<>();
+
+        convertMap.put(0, fahrenheit.currentToCelsius(Double.valueOf(entryString)));
+        convertMap.put(1, celsius.currentToCelsius(Double.valueOf(entryString)));
+        convertMap.put(2, kelvin.currentToCelsius(Double.valueOf(entryString)));
+
 
         if (comboBoxIn.getSelectedIndex() == comboBoxOut.getSelectedIndex()) {
             outField.setText(String.valueOf(entryString));
