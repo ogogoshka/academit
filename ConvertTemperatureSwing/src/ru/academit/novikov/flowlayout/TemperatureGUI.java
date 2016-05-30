@@ -5,8 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static ru.academit.novikov.flowlayout.TemperatureConvert.*;
-
 public class TemperatureGUI {
     private static final String FAHRENHEIT_IN = "Фаренгейтах";
     private static final String KELVIN_IN = "Кельвинах";
@@ -48,19 +46,29 @@ public class TemperatureGUI {
         convertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                temperatureOut();
+                if (isStringOrNumber()) {
+                    outField.setText("ALL OK!!!");
+                } else {
+                    JOptionPane.showMessageDialog(convertButton, "Вы ввели не число!!!", "Информация", JOptionPane.WARNING_MESSAGE);
+                    entryField.setText(null);
+                    outField.setText(null);
+                }
+                //new SimpleWindow();
+                //temperatureOut();
             }
         });
     }
-/*
-    private class ConvertActionListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent event) {
-            temperatureOut();
-        }
-    }
- */
 
+    public boolean isStringOrNumber() {
+        String entryString = entryField.getText();
+        try {
+            Double.parseDouble(entryString);
+        } catch (NumberFormatException exception) {
+            return false;
+        }
+        return true;
+    }
+/*
     private void temperatureOut() {
         String entryString = entryField.getText();
 
@@ -101,4 +109,6 @@ public class TemperatureGUI {
             }
         }
     }
+ */
+
 }
