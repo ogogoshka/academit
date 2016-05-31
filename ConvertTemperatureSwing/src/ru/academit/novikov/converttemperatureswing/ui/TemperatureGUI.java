@@ -1,9 +1,9 @@
-package ru.academit.novikov.converttemperatureswing;
+package ru.academit.novikov.converttemperatureswing.ui;
 
-import ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert.CelsiusConverter;
-import ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert.FahrenheitConverter;
-import ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert.KelvinConverter;
-import ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert.TemperatureConverter;
+import ru.academit.novikov.converttemperatureswing.logic.CelsiusConverter;
+import ru.academit.novikov.converttemperatureswing.logic.FahrenheitConverter;
+import ru.academit.novikov.converttemperatureswing.logic.KelvinConverter;
+import ru.academit.novikov.converttemperatureswing.logic.TemperatureConverter;
 
 import javax.swing.*;
 import java.awt.*;

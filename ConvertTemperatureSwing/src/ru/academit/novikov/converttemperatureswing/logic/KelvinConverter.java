@@ -1,4 +1,4 @@
-package ru.academit.novikov.converttemperatureswing.ru.academit.novikov.temperatureconvert;
+package ru.academit.novikov.converttemperatureswing.logic;
 
 public class KelvinConverter implements TemperatureConverter {
     @Override
