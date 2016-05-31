@@ -56,7 +56,6 @@ public class TemperatureGUI {
         panel.add(labelTemperatureOut);
 
         panel.add(comboBoxOut);
-//java.io.Serializable
 
         convertButton.addActionListener(new ActionListener() {
             @Override
@@ -73,47 +72,18 @@ public class TemperatureGUI {
     }
 
     private void temperatureOut() {
-
-        String entryString = entryField.getText();
-
-        FahrenheitConverter fahrenheit = new FahrenheitConverter();
-        CelsiusConverter celsius = new CelsiusConverter();
-        KelvinConverter kelvin = new KelvinConverter();
-
         Map<Integer, TemperatureConverter> convertMap = new HashMap<>();
-
         convertMap.put(0, new FahrenheitConverter());
         convertMap.put(1, new CelsiusConverter());
         convertMap.put(2, new KelvinConverter());
 
-        convertMap.get(0).currentToCelsius(Double.valueOf(entryString));
-
-
+        String entryString = entryField.getText();
         if (comboBoxIn.getSelectedIndex() == comboBoxOut.getSelectedIndex()) {
             outField.setText(String.valueOf(entryString));
-
         } else {
-            if (comboBoxIn.getSelectedIndex() == 0) {
-                if (comboBoxOut.getSelectedIndex() == 1) {
-                    outField.setText(String.valueOf(fahrenheit.currentToCelsius(Double.valueOf(entryString))));
-                } else {
-                    outField.setText(String.valueOf(kelvin.currentFromCelsius(fahrenheit.currentToCelsius(Double.valueOf(entryString)))));
-                }
-
-            } else if (comboBoxIn.getSelectedIndex() == 1) {
-                if (comboBoxOut.getSelectedIndex() == 0) {
-                    outField.setText(String.valueOf(fahrenheit.currentFromCelsius(Double.valueOf(entryString))));
-                } else {
-                    outField.setText(String.valueOf(kelvin.currentFromCelsius(Double.valueOf(entryString))));
-                }
-
-            } else {
-                if (comboBoxOut.getSelectedIndex() == 0) {
-                    outField.setText(String.valueOf(fahrenheit.currentFromCelsius(kelvin.currentToCelsius(Double.valueOf(entryString)))));
-                } else {
-                    outField.setText(String.valueOf(kelvin.currentToCelsius(Double.valueOf(entryString))));
-                }
-            }
+            double anyCurrentTemperatureToCelsius = convertMap.get(comboBoxIn.getSelectedIndex()).currentToCelsius(Double.valueOf(entryString));
+            double fromCelsiusToTargetTemperature = convertMap.get(comboBoxOut.getSelectedIndex()).currentFromCelsius(anyCurrentTemperatureToCelsius);
+            outField.setText(String.valueOf(fromCelsiusToTargetTemperature));
         }
     }
 
