@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TemperatureGUI {
+    private static Map<Integer, TemperatureConverter> convertMap = new HashMap<>();
+
     private static final String FAHRENHEIT_IN = "Фаренгейтах";
     private static final String CELSIUS_IN = "Цельсиях";
     private static final String KELVIN_IN = "Кельвинах";
@@ -57,11 +59,15 @@ public class TemperatureGUI {
 
         panel.add(comboBoxOut);
 
+        convertMap.put(0, new FahrenheitConverter());
+        convertMap.put(1, new CelsiusConverter());
+        convertMap.put(2, new KelvinConverter());
+
         convertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                if (isStringOrNumber()) {
-                    temperatureOut();
+                if (isNumber()) {
+                    getTargetTemperature();
                 } else {
                     JOptionPane.showMessageDialog(convertButton, "Вы ввели не число!!!", "Информация", JOptionPane.WARNING_MESSAGE);
                     entryField.setText(null);
@@ -71,12 +77,7 @@ public class TemperatureGUI {
         });
     }
 
-    private void temperatureOut() {
-        Map<Integer, TemperatureConverter> convertMap = new HashMap<>();
-        convertMap.put(0, new FahrenheitConverter());
-        convertMap.put(1, new CelsiusConverter());
-        convertMap.put(2, new KelvinConverter());
-
+    private void getTargetTemperature() {
         String entryString = entryField.getText();
         if (comboBoxIn.getSelectedIndex() == comboBoxOut.getSelectedIndex()) {
             outField.setText(String.valueOf(entryString));
@@ -87,7 +88,7 @@ public class TemperatureGUI {
         }
     }
 
-    private boolean isStringOrNumber() {
+    private boolean isNumber() {
         String entryString = entryField.getText();
         try {
             Double.parseDouble(entryString);
