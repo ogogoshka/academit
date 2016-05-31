@@ -12,12 +12,6 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class TemperatureGUI {
-    //private static final Map<Integer, TemperatureConverter> convertMap = new HashMap<Integer, TemperatureConverter>() {{
-        //put(0, new FahrenheitConverter());
-        //put(1, new CelsiusConverter());
-        //put(2, new KelvinConverter());
-    //}};
-
     private final static HashMap<Integer, TemperatureConverter> convertMap;
     static {
         convertMap = new HashMap<>();
@@ -25,7 +19,6 @@ public class TemperatureGUI {
         convertMap.put(1, new CelsiusConverter());
         convertMap.put(2, new KelvinConverter());
     }
-    //final HashMap<Integer, TemperatureConverter> convertMap = new HashMap<>();
 
     private static final String FAHRENHEIT_IN = "Фаренгейтах";
     private static final String CELSIUS_IN = "Цельсиях";
