@@ -52,5 +52,17 @@ public class HashTable<E> {
         return false;
     }
 
+    public void remove(E element) {
+        int index = hashCode(element);
+        if (hashTable[index] == null) {
+            return;
+        }
+        for (int i = 0; i < hashTable[index].size(); i++) {
+            if (hashTable[index].get(i).equals(element)) {
+                hashTable[index].remove(i);
+            }
+        }
+    }
+
 
 }
