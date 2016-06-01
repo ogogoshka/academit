@@ -41,8 +41,15 @@ public class HashTable<E> {
 
     public boolean isContainsElement(E element) {
         int index = hashCode(element);
-        //hashTable[index]=
-        return hashTable[index].equals(element);
+        if (hashTable[index] == null) {
+            return false;
+        }
+        for (int i = 0; i < hashTable[index].size(); i++) {
+            if (hashTable[index].get(i).equals(element)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
