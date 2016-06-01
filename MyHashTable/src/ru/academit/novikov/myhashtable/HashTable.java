@@ -64,5 +64,13 @@ public class HashTable<E> {
         }
     }
 
+    public int getNumberOfElements() {
+        int numberOfElements = 0;
+        for (ArrayList<E> aHashTable : hashTable) {
+            numberOfElements += aHashTable.size();
+        }
+        return numberOfElements;
+    }
+
 
 }
