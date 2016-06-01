@@ -16,15 +16,34 @@ public class HashTable<E> {
             throw new IllegalArgumentException("Некорректный размер таблицы");
         }
         this.hashTable = new ArrayList[sizeOfTable];
-    }
-
-    public boolean isContainsElement(E element) {
-        int index = hashCode(element);
-        return hashTable[index].equals(element);
+        //for (int i = 0; i < hashTable.length; i++) {
+        //hashTable[i] = new ArrayList<>();
+        //}
     }
 
     private int hashCode(E element) {
         return Math.abs(element.hashCode()) % hashTable.length;
     }
+
+    public void add(E element) {
+        int index = hashCode(element);
+        if (hashTable[index] == null) {
+            hashTable[index] = new ArrayList<E>();
+            hashTable[index].add(element);
+        } else {
+            for (int i = 0; i < hashTable[index].size(); i++) {
+                if (!(hashTable[index].get(i).equals(element)) && i == hashTable[index].size()) {
+                    hashTable[index].add(hashTable[index].size(), element);
+                }
+            }
+        }
+    }
+
+    public boolean isContainsElement(E element) {
+        int index = hashCode(element);
+        //hashTable[index]=
+        return hashTable[index].equals(element);
+    }
+
 
 }
