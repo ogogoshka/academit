@@ -4,23 +4,27 @@ import java.util.ArrayList;
 
 public class HashTable<E> {
 
-    private ArrayList[] hashTable;
+    private static final int DEFAULT_CAPACITY = 20;
+    private ArrayList<E>[] hashTable;
+
+    public HashTable() {
+        hashTable = new ArrayList[DEFAULT_CAPACITY];
+    }
 
     public HashTable(int sizeOfTable) {
+        if (sizeOfTable <= 0) {
+            throw new IllegalArgumentException("Некорректный размер таблицы");
+        }
         this.hashTable = new ArrayList[sizeOfTable];
     }
 
-    private void add(E element) {
-        if (element != null) {
-            add(element);
-        }
+    public boolean isContainsElement(E element) {
+        int index = hashCode(element);
+        return hashTable[index].equals(element);
     }
-
 
     private int hashCode(E element) {
-        //return element.hashCode() % hashTable.length;
-        return 1;
+        return Math.abs(element.hashCode()) % hashTable.length;
     }
-
 
 }
