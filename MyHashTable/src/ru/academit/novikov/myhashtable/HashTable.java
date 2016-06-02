@@ -21,8 +21,39 @@ public class HashTable<E> implements Collection<E> {
         this.hashTable = new ArrayList[sizeOfTable];
     }
 
-    private int hashCode(E element) {
+    public int hashCode(E element) {
         return Math.abs(element.hashCode()) % hashTable.length;
+    }
+
+    @Override
+    public boolean add(E element) {
+        if (element == null) {
+            throw new NullPointerException();
+        } else {
+            int index = hashCode(element);
+            if (hashTable[index] == null) {
+                hashTable[index] = new ArrayList<>();
+                hashTable[index].add(element);
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        if (o == null) {
+            throw new NullPointerException();
+        } else {
+            int index = o.hashCode();
+            if (hashTable[index] == null) {
+                return false;
+            } else {
+                hashTable[index].remove(o);
+                return true;
+            }
+        }
     }
 
     @Override
@@ -37,7 +68,7 @@ public class HashTable<E> implements Collection<E> {
     @Override
     public boolean isEmpty() {
         for (ArrayList<E> aHashTable : hashTable) {
-            if (!aHashTable.isEmpty()) {
+            if (aHashTable.size() != 0) {
                 return false;
             }
         }
@@ -83,23 +114,6 @@ public class HashTable<E> implements Collection<E> {
         return newList.toArray(a);
     }
 
-    @Override
-    public boolean add(E element) {
-        int index = hashCode(element);
-        hashTable[index].lastIndexOf(element);
-        if (hashTable[index].contains(element)) {
-            return false;
-        } else {
-            hashTable[index].add(element);
-            return true;
-        }
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        int index = o.hashCode();
-        return hashTable[index].remove(o);
-    }
 
     @Override
     public boolean containsAll(Collection<?> c) {
@@ -113,7 +127,14 @@ public class HashTable<E> implements Collection<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        for (int i = 0; i < hashTable.length; i++) {
+        boolean modified = false;
+        for (E e : c)
+            if (add(e))
+                modified = true;
+        return modified;
+    }
+    /*
+            for (int i = 0; i < hashTable.length; i++) {
             if (!hashTable[i].addAll(c)) {
                 return false;
             }
@@ -121,6 +142,9 @@ public class HashTable<E> implements Collection<E> {
         }
         return true;
     }
+     */
+
+
 /*
         if (this.containsAll(c)) {
             return false;

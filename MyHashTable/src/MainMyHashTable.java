@@ -32,5 +32,35 @@ public class MainMyHashTable {
         //System.out.println(a1[1].toString());
         //System.out.println(a1[1].get(1));
 
+
+        HashTable ht1 = new HashTable(3);
+        HashTable ht2 = new HashTable(3);
+        //ht1.size();
+        //String str2 = "pop";
+        //int index = ht1.hashCode(str2);
+
+        //HashTable ht1[ 1]=new ArrayList<>();
+        //ht1.add("lol");
+        //System.out.println("ht1.size()=" + ht1.isEmpty());
+        //System.out.println("ht1.size() = " + ht1.size());
+        //System.out.println("ht1.isEmpty() = " + ht1.isEmpty());
+        //System.out.println(ht1.add(str2));
+        //System.out.println(ht1.hashCode(str2));
+        ht1.add("pop");
+        ht1.add("lol");
+        ht1.add("kok");
+        ht1.add("tot");
+
+
+        Object[] array2 = ht1.toArray(new Object[ht1.size()]);
+        for (int i = 0; i < 3; i++) {
+            System.out.println(array2[i]);
+        }
+        System.out.println("ht1.size() = " + ht1.size());
+        System.out.println("ht1.isEmpty() = " + ht1.isEmpty());
+
+        System.out.println(ht2.add("elem1"));
+
+
     }
 }
