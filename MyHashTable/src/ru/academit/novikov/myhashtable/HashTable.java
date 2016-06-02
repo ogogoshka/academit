@@ -52,6 +52,12 @@ public class HashTable<E> implements Collection<E> {
 
     @Override
     public Iterator<E> iterator() {
+        /*
+        for (ArrayList<E> aHashTable : hashTable) {
+            aHashTable.iterator();
+        }
+         */
+
         return null;
     }
 
@@ -69,11 +75,12 @@ public class HashTable<E> implements Collection<E> {
     @Override
     public <T> T[] toArray(T[] a) {
         List<E> newList = new ArrayList<E>();
-        //Integer a[] = new Integer[newList.size()];
-        //a = newList.toArray(ia);
-        //T[] a = new (T[]) a.toArray(new T[0]);
-        //Object[] y = a.toArray(new Object[0]);
-        return null;
+        for (ArrayList<E> aHashTable : hashTable) {
+            for (E anAHashTable : aHashTable) {
+                newList.add(anAHashTable);
+            }
+        }
+        return newList.toArray(a);
     }
 
     @Override
@@ -106,8 +113,14 @@ public class HashTable<E> implements Collection<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-
-
+        for (int i = 0; i < hashTable.length; i++) {
+            if (!hashTable[i].addAll(c)) {
+                return false;
+            }
+            hashTable[i].addAll(c);
+        }
+        return true;
+    }
 /*
         if (this.containsAll(c)) {
             return false;
@@ -130,8 +143,6 @@ public class HashTable<E> implements Collection<E> {
         //this.addAll(c);
  */
 
-        return false;
-    }
 
     @Override
     public boolean removeAll(Collection<?> c) {
