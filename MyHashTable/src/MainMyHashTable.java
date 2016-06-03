@@ -33,8 +33,8 @@ public class MainMyHashTable {
         //System.out.println(a1[1].get(1));
 
 
-        HashTable ht1 = new HashTable(3);
-        HashTable ht2 = new HashTable(3);
+        HashTable ht1 = new HashTable(5);
+        HashTable ht2 = new HashTable(5);
         //ht1.size();
         //String str2 = "pop";
         //int index = ht1.hashCode(str2);
@@ -46,21 +46,35 @@ public class MainMyHashTable {
         //System.out.println("ht1.isEmpty() = " + ht1.isEmpty());
         //System.out.println(ht1.add(str2));
         //System.out.println(ht1.hashCode(str2));
-        ht1.add("pop");
+        System.out.println(ht1.add("pop"));
+        System.out.println(ht1.add("pop"));
+        //ht1.add("pop");
         ht1.add("lol");
         ht1.add("kok");
         ht1.add("tot");
+        ht1.add("tok");
+        //System.out.println(ht1.hashCode("pop"));
+        System.out.println(ht1.hashCode("lol"));
+        System.out.println(ht1.hashCode("kok"));
+        System.out.println(ht1.hashCode("tot"));
+        System.out.println(ht1.hashCode("tok"));
 
-
-        Object[] array2 = ht1.toArray(new Object[ht1.size()]);
-        for (int i = 0; i < 3; i++) {
-            System.out.println(array2[i]);
-        }
+        //Object[] array2 = ht1.toArray(new Object[ht1.size()]);
+        //for (int i = 0; i < 2; i++) {
+        //System.out.println(array2[i]);
+        //}
         System.out.println("ht1.size() = " + ht1.size());
         System.out.println("ht1.isEmpty() = " + ht1.isEmpty());
 
         System.out.println(ht2.add("elem1"));
+        System.out.println("ht2.size() = " + ht2.size());
+        //ht2.clear();
+        System.out.println("ht2.size() = " + ht2.size());
+        System.out.println(ht2.contains("elem1"));
+        System.out.println(ht2.isEmpty());
+        //System.out.println(ht2.addAll(ht1));
 
+        //System.out.println(ht1.remove("lol"));
 
     }
 }
