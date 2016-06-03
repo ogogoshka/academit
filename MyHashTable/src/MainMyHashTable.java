@@ -71,10 +71,20 @@ public class MainMyHashTable {
         //ht2.clear();
         System.out.println("ht2.size() = " + ht2.size());
         System.out.println(ht2.contains("elem1"));
+        System.out.println(ht2.remove("elem1"));
         System.out.println(ht2.isEmpty());
         //System.out.println(ht2.addAll(ht1));
 
+        //ht1.toArray();
         //System.out.println(ht1.remove("lol"));
+
+        //Object[] array2 = ht1.toArray(new Object[ht1.size()]);
+        Object[] array2 = new Object[ht1.size()];
+        ht1.toArray(array2);
+        for (int i = 0; i < ht1.size(); i++) {
+            System.out.println(array2[i]);
+        }
+
 
     }
 }
