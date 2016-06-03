@@ -37,7 +37,7 @@ public class MainMyHashTable {
         HashTable ht2 = new HashTable(5);
         //ht1.size();
         //String str2 = "pop";
-        //int index = ht1.hashCode(str2);
+        //int index = ht1.positionInMainArray(str2);
 
         //HashTable ht1[ 1]=new ArrayList<>();
         //ht1.add("lol");
@@ -45,7 +45,7 @@ public class MainMyHashTable {
         //System.out.println("ht1.size() = " + ht1.size());
         //System.out.println("ht1.isEmpty() = " + ht1.isEmpty());
         //System.out.println(ht1.add(str2));
-        //System.out.println(ht1.hashCode(str2));
+        //System.out.println(ht1.positionInMainArray(str2));
         System.out.println(ht1.add("pop"));
         System.out.println(ht1.add("pop"));
         //ht1.add("pop");
@@ -53,11 +53,11 @@ public class MainMyHashTable {
         ht1.add("kok");
         ht1.add("tot");
         ht1.add("tok");
-        //System.out.println(ht1.hashCode("pop"));
-        System.out.println(ht1.hashCode("lol"));
-        System.out.println(ht1.hashCode("kok"));
-        System.out.println(ht1.hashCode("tot"));
-        System.out.println(ht1.hashCode("tok"));
+        //System.out.println(ht1.positionInMainArray("pop"));
+        System.out.println(ht1.positionInMainArray("lol"));
+        System.out.println(ht1.positionInMainArray("kok"));
+        System.out.println(ht1.positionInMainArray("tot"));
+        System.out.println(ht1.positionInMainArray("tok"));
 
         //Object[] array2 = ht1.toArray(new Object[ht1.size()]);
         //for (int i = 0; i < 2; i++) {

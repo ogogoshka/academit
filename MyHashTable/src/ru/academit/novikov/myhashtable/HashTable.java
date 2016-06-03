@@ -21,7 +21,10 @@ public class HashTable<E> implements Collection<E> {
         this.hashTable = new ArrayList[sizeOfTable];
     }
 
-    public int hashCode(E element) {
+    
+
+
+    public int positionInMainArray(E element) {
         return Math.abs(element.hashCode()) % hashTable.length;
     }
 
@@ -46,7 +49,7 @@ public class HashTable<E> implements Collection<E> {
         if (element == null) {
             throw new NullPointerException();
         } else {
-            int index = hashCode(element);
+            int index = positionInMainArray(element);
             if (hashTable[index] == null) {
                 hashTable[index] = new ArrayList<>();
                 hashTable[index].add(element);
@@ -65,7 +68,7 @@ public class HashTable<E> implements Collection<E> {
     @Override
     public boolean remove(Object o) {
 
-        //int index = o.hashCode();
+        //int index = o.positionInMainArray();
         //hashTable[index];
 
         if (o == null) {
@@ -106,8 +109,8 @@ public class HashTable<E> implements Collection<E> {
 
     */
         //return true;
-        //return hashTable[o.hashCode()].remove(o);
-        //int index = o.hashCode();
+        //return hashTable[o.positionInMainArray()].remove(o);
+        //int index = o.positionInMainArray();
         //if (hashTable[index] != null) {
         //hashTable[index].remove(o);
         //return true;
@@ -117,7 +120,7 @@ public class HashTable<E> implements Collection<E> {
         if (o == null) {
             throw new NullPointerException();
         } else {
-            int index = o.hashCode();
+            int index = o.positionInMainArray();
             hashTable[index].remove(o);
             return true;
         }
@@ -128,11 +131,11 @@ public class HashTable<E> implements Collection<E> {
     @Override
     public boolean contains(Object obj) {
         E newElement = (E) obj;
-        int index = hashCode(newElement);
+        int index = positionInMainArray(newElement);
         if (hashTable[index].size() == 0) {
             return false;
         } else {
-            //if (obj.hashCode() != null) {
+            //if (obj.positionInMainArray() != null) {
             for (int i = 0; i < hashTable[index].size(); i++) {
                 if (hashTable[index].get(i).equals(obj)) {
                     return true;
@@ -180,7 +183,7 @@ public class HashTable<E> implements Collection<E> {
         }
 //(o==null ? e==null : o.equals(e))
 
-        int index = o.hashCode();
+        int index = o.positionInMainArray();
         for (int i = 0; i < hashTable[index].size(); i++) {
             E element = hashTable[index].get(i);
             if ((o == null) ? element == null : o.equals(element))
@@ -205,7 +208,7 @@ public class HashTable<E> implements Collection<E> {
     @Override
     public Iterator<E> iterator() {
         //E e = new E();
-        //int index = e.hashCode();
+        //int index = e.positionInMainArray();
         int length = hashTable.length;
         //hashTable[index].size();
         //hashTable[index].iterator();
@@ -302,13 +305,13 @@ public class HashTable<E> implements Collection<E> {
 
 
         for (int i = 0; i < hashTable.length; i++) {
-            //hashCode(c.[i]);
+            //positionInMainArray(c.[i]);
             hashTable[i].addAll(c);
             hashTable[i].containsAll(c);
         }
 
 
-        //int index = c.hashCode();
+        //int index = c.positionInMainArray();
         //hashTable[index].size();
         //c.toArray();
 
