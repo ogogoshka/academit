@@ -77,14 +77,49 @@ public class MainMyHashTable {
 
         //ht1.toArray();
         //System.out.println(ht1.remove("lol"));
-
-        //Object[] array2 = ht1.toArray(new Object[ht1.size()]);
-        Object[] array2 = new Object[ht1.size()];
-        ht1.toArray(array2);
-        for (int i = 0; i < ht1.size(); i++) {
+        //Object[] array3 = new Object[ht1.size()];
+        Object[] array2 = ht1.toArray(new Object[ht1.size()]);
+        //Object[] array2 = new Object[ht1.size()];
+        //ht1.toArray(array2);
+        for (int i = 0; i < 2; i++) {
+            //array3[i] = ht1.toArray();
             System.out.println(array2[i]);
+            //array2[i].toString();
         }
+        //for (Object value : array2) {
+        //System.out.println("Number = " + value);
+        //}
 
+        //System.out.println(ht1.addAll(ht2));
+
+        //ArrayList<String> newList = new ArrayList<>();
+
+        //for ((Object)aHashTable : ht1) {
+        //if (aHashTable != null) {
+        //newList.addAll(aHashTable);
+        //}
+        //}
+        //return newList.toArray();
+        //return newList.toArray();
+
+        ArrayList<String> newList = new ArrayList<>();
+
+        for (int i = 0; i < ht1.size(); i++) {
+            if (ht1.isEmpty()) {
+                //for (int j = 0; j < ht1[i].size(); j++) {
+                //}
+            }
+        }
+        newList.toArray();
+
+        //for (ArrayList<Type> aHashTable : ht1) {
+        //if (aHashTable != null) {
+        //for (String anAHashTable : aHashTable) {
+        //newList.add(anAHashTable);
+        //}
+        //}
+        //}
+        //return newList.toArray();
 
     }
 }

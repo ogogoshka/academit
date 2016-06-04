@@ -71,8 +71,8 @@ public class HashTable<E> implements Collection<E> {
             if (hashTable[index] == null) {
                 return false;
             } else {
-                    hashTable[index].remove(o);
-                    return true;
+                hashTable[index].remove(o);
+                return true;
             }
         }
     }
@@ -86,7 +86,6 @@ public class HashTable<E> implements Collection<E> {
             for (int i = 0; i < hashTable[index].size(); i++) {
                 if (hashTable[index].get(i).equals(obj)) {
                     return true;
-
                 }
             }
         }
@@ -198,13 +197,33 @@ public class HashTable<E> implements Collection<E> {
     @Override
     public Object[] toArray() {
         List<E> newList = new ArrayList<E>();
-        for (ArrayList<E> aHashTable : hashTable) {
-            for (E anAHashTable : aHashTable) {
-                newList.add(anAHashTable);
+        //Collection<E> newList  = new ArrayList<E>();
+        /*
+            for (ArrayList<E> aHashTable : hashTable) {
+            if (aHashTable != null) {
+                for (E anAHashTable : aHashTable) {
+                    newList.add(anAHashTable);
+                }
             }
         }
         return newList.toArray();
+         */
+
+        for (ArrayList<E> aHashTable : hashTable) {
+            //if (!aHashTable.isEmpty()) {
+            if (aHashTable != null) {
+                //aHashTable.toArray();
+                //for (int j = 0; j < hashTable[i].size(); j++) {
+                //newList.add(hashTable[i].get(j));
+                newList.addAll(aHashTable);
+                //}
+            }
+        }
+        return newList.toArray();
+        //return newList.toArray();
+
     }
+
 
     @Override
     public <T> T[] toArray(T[] a) {
@@ -230,6 +249,47 @@ public class HashTable<E> implements Collection<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
+
+
+        //Collection<? extends E> c;
+        for (Object o : c) {
+            int index = positionInMainArray(o);
+            E e = (E) o;
+            hashTable[index].add(e);
+        }
+
+
+        //Iterator iter = c.iterator();
+        //Iterator<? extends E> i = c.iterator();
+
+        //for (Iterator<? extends E> i = c.iterator(); i.hasNext(); ) {
+        //E e = i.next();
+        //int index = positionInMainArray(e);
+        //hashTable[index].add(e);
+        //}
+
+/*
+        for (int i = 0; iter.hasNext(); i++) {
+            E e = (E) iter.next();
+            //iter.next();
+            //int index = positionInMainArray(iter.next());
+            int index = positionInMainArray(e);
+            hashTable[index].add(e);
+            //if( i%6 == 0 )
+            //res += "\n";
+            //res += " " + iter.next().toString();   // !!!
+        }
+ */
+
+
+        //c.iterator();
+
+
+        //for (int i = 0; i < hashTable.length; i++) {
+        //hashTable[i].addAll(c);
+        //}
+
+
         //boolean modified = false;
         //for (E e : c)
         //if (add(e))
