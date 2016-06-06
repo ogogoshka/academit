@@ -169,11 +169,14 @@ public class HashTable<E> implements Collection<E> {
 
         for (Object currentElement : c) {
             int index = positionInMainArray(currentElement);
-            if (hashTable[index].remove(currentElement)) {
-                count++;
+
+            for (int i = 0; i < hashTable[index].size(); i++) {
+                if(hashTable[index].get(i).equals(currentElement)){
+                    hashTable[index].remove(i);
+                    count++;
+                }
             }
         }
-
         return count > 0;
     }
 
@@ -185,7 +188,7 @@ public class HashTable<E> implements Collection<E> {
         for (Object currentElement : c) {
             int index = positionInMainArray(currentElement);
             //if (hashTable[index].retainAll(currentElement)) {
-                //count++;
+            count++;
             //}
         }
 
