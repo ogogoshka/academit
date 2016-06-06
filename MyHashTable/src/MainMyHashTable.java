@@ -84,7 +84,9 @@ public class MainMyHashTable {
 
         Iterator iterator = ht1.iterator();
 
+        System.out.println(Arrays.toString(ht1.toArray()));
         System.out.println("iterator.hasNext() = " + iterator.hasNext());
+        System.out.println("iterator.next() = " + iterator.next());
 
     }
 }
