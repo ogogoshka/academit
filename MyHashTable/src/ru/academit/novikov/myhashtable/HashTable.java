@@ -178,11 +178,6 @@ public class HashTable<E> implements Collection<E> {
 
     @Override
     public Iterator<E> iterator() {
-        //E e = new E();
-        //int index = positionInMainArray(e);
-        //int length = hashTable.length;
-        //hashTable[index].size();
-        //hashTable[index].iterator();
         return new MyHashTablesIterator();
     }
 
