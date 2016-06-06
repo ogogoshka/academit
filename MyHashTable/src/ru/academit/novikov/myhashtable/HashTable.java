@@ -70,13 +70,12 @@ public class HashTable<E> implements Collection<E> {
 
     @Override
     public boolean contains(Object obj) {
-        int index = positionInMainArray(obj);
-        if (hashTable[index] == null) {
-            return false;
-        } else {
-            hashTable[index].contains(obj);
-            return true;
+        //нужно ли здесь бросать исключение?
+        if (obj == null) {
+            throw new NullPointerException();
         }
+        int index = positionInMainArray(obj);
+        return hashTable[index] != null && hashTable[index].contains(obj);
     }
 
     @Override
@@ -108,9 +107,9 @@ public class HashTable<E> implements Collection<E> {
         for (int i = 0; i < thisArray.length; i++) {
             a[i] = (T) thisArray[i];
         }
-        for (int i = thisArray.length; i < a.length; i++) {
-            a[i] = null;
-        }
+        //for (int i = thisArray.length; i < a.length; i++) {
+        a[thisArray.length] = null;
+        //}
         return a;
     }
     //a = (T[]) Arrays.copyOf(this.toArray(), this.size());
