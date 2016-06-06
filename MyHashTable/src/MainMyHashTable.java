@@ -59,5 +59,27 @@ public class MainMyHashTable {
         }
 
 
+        ArrayList<String> test = new ArrayList<>(4);
+        ArrayList<String> test2 = new ArrayList<>(4);
+
+        test.add("pop");
+        test.add("lol");
+        test.add("kot");
+        test.add("tok");
+
+        test2.add("pop");
+        test2.add("lol");
+        test2.add("kok");
+        test2.add("wow");
+
+        System.out.println(Arrays.toString(test.toArray()));
+        System.out.println(Arrays.toString(test2.toArray()));
+
+        System.out.println(test.retainAll(test2));
+        System.out.println(Arrays.toString(test.toArray()));
+
+        System.out.println(test.retainAll(test2));
+        System.out.println(Arrays.toString(test.toArray()));
+
     }
 }
