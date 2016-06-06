@@ -99,7 +99,7 @@ public class HashTable<E> implements Collection<E> {
 
     @Override
     public <T> T[] toArray(T[] a) {
-        if (a.length < this.size()) {
+        if (a.length <= this.size()) {
             return (T[]) Arrays.copyOf(this.toArray(), this.size(), a.getClass());
         }
         Object[] thisArray = this.toArray();
@@ -114,7 +114,6 @@ public class HashTable<E> implements Collection<E> {
     //a = (T[]) Arrays.copyOf(this.toArray(), this.size());
     //return a;
     //return (T[]) Arrays.copyOf(this.toArray(), this.size());
-
     //Object[] thisArray = this.toArray();
     //T[] result = Arrays.copyOf(a, thisArray.length);
     //for (int i = 0; i < thisArray.length; i++) {
@@ -145,8 +144,14 @@ public class HashTable<E> implements Collection<E> {
     @Override
     public boolean addAll(Collection<? extends E> c) {
         int count = 0;
-        for (ArrayList<E> aHashTable : hashTable) {
-            if (aHashTable != null && aHashTable.addAll(c)) {
+        //for (ArrayList<E> aHashTable : hashTable) {
+        //if (aHashTable != null && aHashTable.addAll(c)) {
+        //count++;
+        //}
+        //}
+        for (E currentElement : c) {
+            int index = positionInMainArray(currentElement);
+            if (hashTable[index].add(currentElement)) {
                 count++;
             }
         }
@@ -156,11 +161,19 @@ public class HashTable<E> implements Collection<E> {
     @Override
     public boolean removeAll(Collection<?> c) {
         int count = 0;
-        for (ArrayList<E> aHashTable : hashTable) {
-            if (aHashTable != null && aHashTable.retainAll(c)) {
+        //for (ArrayList<E> aHashTable : hashTable) {
+        //if (aHashTable != null && aHashTable.retainAll(c)) {
+        //count++;
+        //}
+        //}
+
+        for (Object currentElement : c) {
+            int index = positionInMainArray(currentElement);
+            if (hashTable[index].remove(currentElement)) {
                 count++;
             }
         }
+
         return count > 0;
     }
 
@@ -168,11 +181,23 @@ public class HashTable<E> implements Collection<E> {
     @Override
     public boolean retainAll(Collection<?> c) {
         int count = 0;
-        for (ArrayList<E> aHashTable : hashTable) {
+
+        for (Object currentElement : c) {
+            int index = positionInMainArray(currentElement);
+            //if (hashTable[index].retainAll(currentElement)) {
+                //count++;
+            //}
+        }
+
+
+        /*
+                for (ArrayList<E> aHashTable : hashTable) {
             if (aHashTable != null && aHashTable.retainAll(c)) {
                 count++;
             }
         }
+         */
+
         return count > 0;
     }
 
