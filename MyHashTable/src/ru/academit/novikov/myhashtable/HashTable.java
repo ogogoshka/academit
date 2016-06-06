@@ -202,8 +202,15 @@ public class HashTable<E> implements Collection<E> {
         public E next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
+            } else {
+                Object[] thisArray = HashTable.this.toArray();
+                return (E) thisArray[currentIndex++];
+                //if (currentBucket < hashTable.length) {
+                //return hashTable[currentBucket++].get(currentIndex++);
+                //}else{
+                //return hashTable[currentBucket].get(currentIndex);
+                //}
             }
-            return hashTable[currentBucket++].get(currentIndex++);
         }
     }
     //return (E) HashTable.this.hashTable[currentIndex++];
