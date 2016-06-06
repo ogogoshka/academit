@@ -203,13 +203,14 @@ public class HashTable<E> implements Collection<E> {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            //return (E) HashTable.this.hashTable[currentIndex++];
-            return (E) hashTable[currentBucket++].get(currentIndex++);
-            //E el = hashTable[currentBucket].get(currentIndex);
-            //currentIndex++;
-            //return null;
+            return hashTable[currentBucket++].get(currentIndex++);
         }
     }
+    //return (E) HashTable.this.hashTable[currentIndex++];
+    //E el = hashTable[currentBucket].get(currentIndex);
+    //currentIndex++;
+    //return null;
+
 
  /*
         Iterator<E> it = new Iterator<E>() {
