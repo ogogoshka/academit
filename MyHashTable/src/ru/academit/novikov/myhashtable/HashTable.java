@@ -70,7 +70,6 @@ public class HashTable<E> implements Collection<E> {
 
     @Override
     public boolean contains(Object obj) {
-        //нужно ли здесь бросать исключение?
         if (obj == null) {
             throw new NullPointerException();
         }
