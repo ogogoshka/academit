@@ -2,6 +2,7 @@ import ru.academit.novikov.myhashtable.HashTable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class MainMyHashTable {
     public static void main(String[] args) {
@@ -80,6 +81,10 @@ public class MainMyHashTable {
 
         System.out.println(test.retainAll(test2));
         System.out.println(Arrays.toString(test.toArray()));
+
+        Iterator iterator = ht1.iterator();
+
+        System.out.println("iterator.hasNext() = " + iterator.hasNext());
 
     }
 }

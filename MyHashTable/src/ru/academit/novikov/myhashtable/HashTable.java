@@ -104,14 +104,12 @@ public class HashTable<E> implements Collection<E> {
         if (a.length < this.size()) {
             return (T[]) Arrays.copyOf(this.toArray(), this.size(), a.getClass());
         }
-        int i = 0;
-        for (Object object : this) {
-            a[i] = (T) object;
-            i++;
+        Object[] thisArray = this.toArray();
+        for (int i = 0; i < thisArray.length; i++) {
+            a[i] = (T) thisArray[i];
         }
-        while (i < a.length) {
+        for (int i = thisArray.length; i < a.length; i++) {
             a[i] = null;
-            i++;
         }
         return a;
     }
