@@ -86,15 +86,15 @@ public class MainMyHashTable {
 
         System.out.println(Arrays.toString(ht1.toArray()));
         System.out.println("iterator.hasNext() = " + iterator.hasNext());
-        //System.out.println("iterator.next() = " + iterator.next());
+        System.out.println("iterator.next() = " + iterator.next());
 
         System.out.println(Arrays.toString(ht1.toArray()));
 
         while (iterator.hasNext()) {
             System.out.println("iterator.next() = " + iterator.next());
         }
-        System.out.println("ht1.contains(\"pop\") = " + ht1.contains("pop"));
-        System.out.println("ht1.contains(\"joj\") = " + ht1.contains("joj"));
+        //System.out.println("ht1.contains(\"pop\") = " + ht1.contains("pop"));
+        //System.out.println("ht1.contains(\"joj\") = " + ht1.contains("joj"));
         //System.out.println("ht1.contains(\"null\") = " + ht1.contains(null));
 
     }
