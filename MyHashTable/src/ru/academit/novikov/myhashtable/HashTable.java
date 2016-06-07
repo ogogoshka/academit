@@ -99,14 +99,20 @@ public class HashTable<E> implements Collection<E> {
 
     @Override
     public <T> T[] toArray(T[] a) {
+/*
+        if (a.length < this.size())
+            return (T[]) Arrays.copyOf(this.toArray(), this.size(), a.getClass());
+        System.arraycopy(this.toArray(), 0, a, 0, this.size());
+        if (a.length > this.size())
+            a[this.size()] = null;
+        return a;
+ */
         if (a.length <= this.size()) {
             return (T[]) Arrays.copyOf(this.toArray(), this.size(), a.getClass());
         }
-        Object[] thisArray = this.toArray();
-        for (int i = 0; i < thisArray.length; i++) {
-            a[i] = (T) thisArray[i];
+        if (a.length > this.size()) {
+            a[this.size()] = null;
         }
-        a[thisArray.length] = null;
         return a;
     }
 
@@ -146,14 +152,19 @@ public class HashTable<E> implements Collection<E> {
     @Override
     public boolean retainAll(Collection<?> c) {
         int count = 0;
+        /*
+        if (this.retainAll(c)) {
+            count++;
+        }
+*/
         for (Object currentElement : c) {
-            if (this.retainAll(c)) {
+            int index = positionInMainArray(currentElement);
+            if (hashTable[index].retainAll(c)) {
                 count++;
             }
         }
         return count > 0;
     }
-    //удаляет из списка THIS все его элементы, которые не содержатся в C
 
     @Override
     public Iterator<E> iterator() {
@@ -256,6 +267,13 @@ public class HashTable<E> implements Collection<E> {
             }
              */
 
+            ListIterator<E> listIter = hashTable[currentBucket].listIterator();
+
+            //int nextEl = listIter.nextIndex();
+
+            return hashTable[currentBucket].get(currentIndex++);
+
+/*
             E el = hashTable[currentBucket].get(currentIndex);
 
             for (ArrayList<E> aHashTable : hashTable) {
@@ -266,6 +284,8 @@ public class HashTable<E> implements Collection<E> {
                 el = aHashTable.get(currentIndex++);
             }
             return el;
+ */
+
 
             //return hashTable[currentBucket].get(currentIndex++);
 
