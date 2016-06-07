@@ -125,8 +125,7 @@ public class HashTable<E> implements Collection<E> {
     public boolean addAll(Collection<? extends E> c) {
         int count = 0;
         for (E currentElement : c) {
-            int index = positionInMainArray(currentElement);
-            if (hashTable[index].add(currentElement)) {
+            if (this.add(currentElement)) {
                 count++;
             }
         }
@@ -137,28 +136,24 @@ public class HashTable<E> implements Collection<E> {
     public boolean removeAll(Collection<?> c) {
         int count = 0;
         for (Object currentElement : c) {
-            int index = positionInMainArray(currentElement);
-
-            if (hashTable[index].removeAll(c)) {
+            if (this.remove(currentElement)) {
                 count++;
             }
         }
         return count > 0;
     }
 
-    //удаляет из списка THIS все его элементы, которые не содержатся в C
     @Override
     public boolean retainAll(Collection<?> c) {
         int count = 0;
-
         for (Object currentElement : c) {
-            int index = positionInMainArray(currentElement);
-            if (hashTable[index].retainAll(c)) {
+            if (this.retainAll(c)) {
                 count++;
             }
         }
         return count > 0;
     }
+    //удаляет из списка THIS все его элементы, которые не содержатся в C
 
     @Override
     public Iterator<E> iterator() {
@@ -203,11 +198,92 @@ public class HashTable<E> implements Collection<E> {
             //currentElement[currentIndex++];
             //}
 
-
+            //HashTable.this.hashTable[currentBucket].get(currentIndex++);
             //hashTable[currentBucket].iterator().next();
 
+            //while (hashTable.length < currentBucket) {
 
-            for (Iterator<E> i = hashTable[currentBucket].iterator(); i.hasNext(); ) {
+            //if (currentIndex < hashTable[currentBucket].size()) {
+            //return HashTable.this.hashTable[currentBucket].get(currentIndex++);
+            //} else {
+            //currentBucket++;
+            //}
+/*
+                Iterator<E> iter = HashTable.this.hashTable[currentBucket].iterator();
+                if (iter.hasNext()) {
+                    return HashTable.this.hashTable[currentBucket].get(currentIndex++);
+                } else {
+                    currentBucket++;
+                    //return HashTable.this.hashTable[currentBucket].get(currentIndex++);
+                }
+ */
+
+
+            //}
+
+            //Iterator<E> iter = HashTable.this.hashTable[currentBucket].iterator();
+            //if (iter.hasNext()) {
+            //return HashTable.this.hashTable[currentBucket].get(currentIndex++);
+            //} else {
+            //currentBucket++;
+            //return HashTable.this.hashTable[currentBucket].get(currentIndex++);
+            //}
+            /*
+                    E item = this.next.getData();
+			this.last = this.next;
+			//advance all 3 instance variables through the list
+			this.next = this.next.getNext();
+			this.nextIndex++;
+			this.previous = this.previous.getNext();
+
+			return item;
+
+            Iterator<E> iter = HashTable.this.hashTable[currentBucket].iterator();
+
+            for (int i = 0; iter.hasNext(); i++) {
+
+            }
+
+
+            for (ArrayList<E> aHashTable : hashTable) {
+                Iterator<E> iters = aHashTable.iterator();
+                if (!iters.hasNext()) {
+                    aHashTable.listIterator();
+                } else {
+                    return aHashTable.get(currentIndex++);
+                }
+
+            }
+             */
+
+            E el = hashTable[currentBucket].get(currentIndex);
+
+            for (ArrayList<E> aHashTable : hashTable) {
+                //Iterator<E> iters = aHashTable.iterator();
+                //if (!iters.hasNext()) {
+                aHashTable.listIterator();
+                //} else {
+                el = aHashTable.get(currentIndex++);
+            }
+            return el;
+
+            //return hashTable[currentBucket].get(currentIndex++);
+
+
+            //return HashTable.this.hashTable[currentBucket].get(currentIndex++);
+            //return HashTable.this.hashTable[currentBucket].get(currentIndex++);
+            //return (E) HashTable.this.hashTable[currentBucket++].get(currentIndex++);
+        }
+    }
+}
+            /*
+                        for (Iterator<E> i = hashTable[currentBucket].iterator(); i.hasNext(); ) {
+
+                //if(hashTable[currentBucket].size()){
+
+                //}
+
+
                 if (i.hasNext()) {
                     return i.next();
                 } else {
@@ -219,58 +295,59 @@ public class HashTable<E> implements Collection<E> {
             }
             return null;
         }
-        //Iterator<E> iterator = hashTable[currentBucket].iterator();
+             */
 
-        //if (currentBucket < hashTable.length) {
-        //return (E) iterator.next();
-        //}
-        //Iterator iterator = hashTable[currentBucket].iterator();
-        //currentBucket++;
-        //return (E) iterator.next();
-        //return (E) iterator.next();
-        //E el = hashTable[currentBucket].get(currentIndex);
-        //currentIndex++;
-        //return el;
+//Iterator<E> iterator = hashTable[currentBucket].iterator();
 
-        //Iterator iterator = HashTable.this.iterator();
-        //return (E) iterator.next();
-        //E returnValue = HashTable.this.iterator().next();
+//if (currentBucket < hashTable.length) {
+//return (E) iterator.next();
+//}
+//Iterator iterator = hashTable[currentBucket].iterator();
+//currentBucket++;
+//return (E) iterator.next();
+//return (E) iterator.next();
+//E el = hashTable[currentBucket].get(currentIndex);
+//currentIndex++;
+//return el;
 
-        //return returnValue;
-        //return hashTable[currentBucket++].iterator().next();
-        //while(iterator.hasNext()){
+//Iterator iterator = HashTable.this.iterator();
+//return (E) iterator.next();
+//E returnValue = HashTable.this.iterator().next();
 
-        //return (E) iterator.next();
-        //}
+//return returnValue;
+//return hashTable[currentBucket++].iterator().next();
+//while(iterator.hasNext()){
 
-
-        //for (int currentBucket = 0; currentBucket < hashTable.length; currentBucket++) {
-        //Iterator iterator = hashTable[currentBucket].iterator();
-        //while (iterator.hasNext()) {
-        //return (E) iterator.next();
-        //}
-        //if (iterator.hasNext()) {
-        //return (E) iterator.next();
-        //}
-        //}
+//return (E) iterator.next();
+//}
 
 
-        //if (iterator.hasNext()) {
-        //return (E) iterator.next();
-        //} else {
-        //currentBucket++;
-        //return (E) iterator.next();
-        //}
+//for (int currentBucket = 0; currentBucket < hashTable.length; currentBucket++) {
+//Iterator iterator = hashTable[currentBucket].iterator();
+//while (iterator.hasNext()) {
+//return (E) iterator.next();
+//}
+//if (iterator.hasNext()) {
+//return (E) iterator.next();
+//}
+//}
 
 
-        //if (currentBucket < hashTable.length) {
+//if (iterator.hasNext()) {
+//return (E) iterator.next();
+//} else {
+//currentBucket++;
+//return (E) iterator.next();
+//}
+
+
+//if (currentBucket < hashTable.length) {
 //                return hashTable[currentBucket++].get(currentIndex++);
 //            }
-        //return null;
-        //}
+//return null;
+//}
 
-    }
-}
+
 //return (E) HashTable.this.hashTable[currentIndex++];
 //E el = hashTable[currentBucket].get(currentIndex);
 //currentIndex++;
