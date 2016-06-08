@@ -99,6 +99,16 @@ public class HashTable<E> implements Collection<E> {
 
     @Override
     public <T> T[] toArray(T[] a) {
+        if (a.length <= this.size()) {
+            return (T[]) Arrays.copyOf(this.toArray(), this.size(), a.getClass());
+        }
+        System.arraycopy(this.toArray(), 0, a, 0, this.size());
+        if (a.length > this.size()) {
+            a[this.size()] = null;
+        }
+        return a;
+    }
+
 /*
         if (a.length < this.size())
             return (T[]) Arrays.copyOf(this.toArray(), this.size(), a.getClass());
@@ -107,14 +117,6 @@ public class HashTable<E> implements Collection<E> {
             a[this.size()] = null;
         return a;
  */
-        if (a.length <= this.size()) {
-            return (T[]) Arrays.copyOf(this.toArray(), this.size(), a.getClass());
-        }
-        if (a.length > this.size()) {
-            a[this.size()] = null;
-        }
-        return a;
-    }
 
     @Override
     public boolean containsAll(Collection<?> c) {
@@ -152,11 +154,6 @@ public class HashTable<E> implements Collection<E> {
     @Override
     public boolean retainAll(Collection<?> c) {
         int count = 0;
-        /*
-        if (this.retainAll(c)) {
-            count++;
-        }
-*/
         for (Object currentElement : c) {
             int index = positionInMainArray(currentElement);
             if (hashTable[index].retainAll(c)) {
@@ -186,6 +183,18 @@ public class HashTable<E> implements Collection<E> {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
+            if (currentIndex == hashTable[currentBucket].size()) {
+                if (hashTable[currentBucket] == null) {
+                    currentBucket++;
+                    return hashTable[currentBucket].get(currentIndex);
+                }
+                currentIndex = 0;
+                currentBucket++;
+                return hashTable[currentBucket++].get(currentIndex);
+            } else {
+                return hashTable[currentBucket].get(currentIndex++);
+            }
+
             //else {
             //Object[] thisArray = HashTable.this.toArray();
             //E el;
@@ -265,15 +274,34 @@ public class HashTable<E> implements Collection<E> {
                 }
 
             }
-             */
+
+
+
+            Iterator<E> iters = HashTable.this.iterator();
+
+            for (ArrayList<E> aHashTable : hashTable) {
+                Iterator<E> iterat = aHashTable.iterator();
+                //if (iterat.hasNext()) {
+                //return iterat.next();
+                //}
+            }
+
+
+            if (iters.hasNext()) {
+
+            }
 
             ListIterator<E> listIter = hashTable[currentBucket].listIterator();
-
+ */
             //int nextEl = listIter.nextIndex();
+            //}
+            //currentIndex = 0;
+            //currentBucket = 0;
 
-            return hashTable[currentBucket].get(currentIndex++);
 
+            //return hashTable[currentBucket].get(currentIndex++);
 /*
+
             E el = hashTable[currentBucket].get(currentIndex);
 
             for (ArrayList<E> aHashTable : hashTable) {
@@ -529,3 +557,33 @@ public class HashTable<E> implements Collection<E> {
  */
 
 
+
+/*
+
+            if (currentIndex == hashTable[currentBucket].size()) {
+
+
+                //if (hashTable[currentBucket] != null) {
+                //return hashTable[currentBucket++].get(currentIndex);
+                //} else {
+
+                //}
+
+
+                //currentBucket = 1;
+                //currentBucket++;
+
+                if (hashTable[currentBucket] == null) {
+                    currentBucket++;
+                    return hashTable[currentBucket].get(currentIndex);
+                }
+
+                currentIndex = 0;
+                currentBucket++;
+
+                return hashTable[currentBucket++].get(currentIndex);
+            } else {
+                return hashTable[currentBucket].get(currentIndex++);
+            }
+
+ */

@@ -30,6 +30,9 @@ public class MainMyHashTable {
         HashTable ht1 = new HashTable(5);
         HashTable ht2 = new HashTable(5);
 
+        System.out.println("ADD");
+        
+        ht1.add("ppp");
         ht1.add("pop");
         ht1.add("lol");
         ht1.add("kok");
@@ -88,7 +91,8 @@ public class MainMyHashTable {
         System.out.println("iterator.hasNext() = " + iterator.hasNext());
         System.out.println("iterator.next() = " + iterator.next());
         System.out.println("iterator.next() = " + iterator.next());
-        //System.out.println("iterator.next() = " + iterator.next());
+        System.out.println("iterator.next() = " + iterator.next());
+        System.out.println("iterator.next() = " + iterator.next());
 
         System.out.println(Arrays.toString(ht1.toArray()));
 
@@ -101,3 +105,31 @@ public class MainMyHashTable {
 
     }
 }
+
+
+/*
+        ArrayList<String> namesTest = new ArrayList<String>();
+
+        namesTest.add("one");
+        namesTest.add("two");
+        namesTest.add("three");
+
+        String[] namesArray = namesTest.toArray(new String[namesTest.size()]);
+        String[] namesArray2 = new String[3];
+        //namesArray2 = namesTest.toArray();
+
+        Object[] namesArray3 = new Object[1];
+        namesArray3 = namesTest.toArray();
+
+        System.out.println(Arrays.toString(namesArray));
+        System.out.println(Arrays.toString(namesArray3));
+
+
+        Object[] arrTest3 = ht1.toArray(new Object[ht1.size()]);
+        System.out.println(Arrays.toString(arrTest3));
+
+        Object[] arrTest4 = new Object[5];
+        arrTest4 = ht1.toArray();
+
+        System.out.println(Arrays.toString(arrTest4));
+ */
