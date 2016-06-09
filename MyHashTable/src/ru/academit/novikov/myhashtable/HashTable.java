@@ -99,11 +99,21 @@ public class HashTable<E> implements Collection<E> {
 
     @Override
     public <T> T[] toArray(T[] a) {
-        if (a.length <= this.size()) {
+        if (a.length < this.size()) {
+            //Object[] newArray = new Object[this.size()];
+            //System.arraycopy(this.toArray(), 0, newArray, 0, this.size());
+            //return (T[]) newArray;
             return (T[]) Arrays.copyOf(this.toArray(), this.size(), a.getClass());
         }
-        System.arraycopy(this.toArray(), 0, a, 0, this.size());
-        if (a.length > this.size()) {
+        //System.arraycopy(this.toArray(), 0, a, 0, this.size());
+        int k = 0;
+        if (a.length >= this.size()) {
+            for (ArrayList<E> currentBucket : hashTable) {
+                for (E currentElement : currentBucket) {
+                    a[k] = (T) currentElement;
+                    k++;
+                }
+            }
             a[this.size()] = null;
         }
         return a;
@@ -111,10 +121,10 @@ public class HashTable<E> implements Collection<E> {
 
 /*
         if (a.length < this.size())
-            return (T[]) Arrays.copyOf(this.toArray(), this.size(), a.getClass());
+        return (T[]) Arrays.copyOf(this.toArray(), this.size(), a.getClass());
         System.arraycopy(this.toArray(), 0, a, 0, this.size());
         if (a.length > this.size())
-            a[this.size()] = null;
+        a[this.size()] = null;
         return a;
  */
 
@@ -172,25 +182,72 @@ public class HashTable<E> implements Collection<E> {
 
         private int currentIndex;
         private int currentBucket;
+        private int currentIndex2;
+        private HashTable<E> eHashTable;
+        private ArrayList<E> eArrayList;
 
         @Override
         public boolean hasNext() {
-            return currentIndex < HashTable.this.size();
+
+
+            int lastEl;
+            lastEl = HashTable.this.hashTable[currentBucket].size();
+            int lastBuck;
+            lastBuck = HashTable.this.hashTable.length;
+
+            int endEl;
+
+            E endElem = hashTable[hashTable.length].get(hashTable[hashTable.length].size());
+
+            if (currentIndex > lastEl || currentBucket > lastBuck) {
+                return false;
+            }
+
+
+            //this.currentIndex = HashTable.this.size();
+            return true;
+            //return currentIndex < HashTable.this.size() && currentBucket < hashTable.length;
+            //&& hashTable[currentBucket].get(currentIndex2) != null;
+            //arrayList[currentIndex] != null;
+            //int currentIndex2 = hashTable[currentBucket].get(currentIndex);
+
+            //hashTable[currentIndex].listIterator(1);
+            //Iterator<E> iterator = hashTable[currentBucket].iterator();
+
+            //Iterator<E> iteratorer = hashTable[currentBucket].listIterator();
+
+            //ListIterator<E> listIts = hashTable[currentBucket].listIterator(HashTable.this.size());
+            //System.out.println(listIts.nextIndex());
+
+            //return null;
+            //return iterator.hasNext();
+            //iterator.hasNext();
+            //if (HashTable.this.iterator()) {
+            //return true;
+            //}
+
+            //return currentIndex2 < HashTable.this.size();
         }
 
         @Override
         public E next() {
-            if (!hasNext()) {
-                throw new NoSuchElementException();
+            //if (!hasNext()) {
+            //throw new NoSuchElementException();
+            //}
+
+            if (currentBucket > hashTable.length) {
+                throw new NoSuchElementException("конец массива");
             }
+
             if (currentIndex == hashTable[currentBucket].size()) {
                 if (hashTable[currentBucket] == null) {
                     currentBucket++;
                     return hashTable[currentBucket].get(currentIndex);
+                } else {
+                    currentIndex = 0;
+                    currentBucket++;
+                    return hashTable[currentBucket++].get(currentIndex);
                 }
-                currentIndex = 0;
-                currentBucket++;
-                return hashTable[currentBucket++].get(currentIndex);
             } else {
                 return hashTable[currentBucket].get(currentIndex++);
             }

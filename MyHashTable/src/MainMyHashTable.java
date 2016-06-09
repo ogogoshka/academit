@@ -3,6 +3,7 @@ import ru.academit.novikov.myhashtable.HashTable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.ListIterator;
 
 public class MainMyHashTable {
     public static void main(String[] args) {
@@ -90,9 +91,8 @@ public class MainMyHashTable {
         System.out.println(Arrays.toString(ht1.toArray()));
         System.out.println("iterator.hasNext() = " + iterator.hasNext());
         System.out.println("iterator.next() = " + iterator.next());
-        System.out.println("iterator.next() = " + iterator.next());
-        System.out.println("iterator.next() = " + iterator.next());
-        System.out.println("iterator.next() = " + iterator.next());
+        System.out.println("iterator.hasNext() = " + iterator.hasNext());
+
 
         System.out.println(Arrays.toString(ht1.toArray()));
 
@@ -102,6 +102,22 @@ public class MainMyHashTable {
         //System.out.println("ht1.contains(\"pop\") = " + ht1.contains("pop"));
         //System.out.println("ht1.contains(\"joj\") = " + ht1.contains("joj"));
         //System.out.println("ht1.contains(\"null\") = " + ht1.contains(null));
+
+        ListIterator<String> listIts = test.listIterator(test.size());
+        System.out.println(listIts.nextIndex());
+
+        System.out.println("iterator.next() = " + iterator.next());
+        System.out.println("iterator.hasNext() = " + iterator.hasNext());
+        System.out.println("iterator.next() = " + iterator.next());
+        System.out.println("iterator.hasNext() = " + iterator.hasNext());
+        System.out.println("iterator.next() = " + iterator.next());
+        System.out.println("iterator.hasNext() = " + iterator.hasNext());
+        System.out.println("iterator.next() = " + iterator.next());
+        System.out.println("iterator.hasNext() = " + iterator.hasNext());
+
+        System.out.println("iterator.next() = " + iterator.next());
+        System.out.println("iterator.hasNext() = " + iterator.hasNext());
+
 
     }
 }
