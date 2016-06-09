@@ -8,9 +8,7 @@ import java.util.ListIterator;
 public class MainMyHashTable {
     public static void main(String[] args) {
 
-        //String str1 = "Hello";
-        //HashTable table = new HashTable(5);
-        //HashTable table2 = new HashTable();
+        HashTable table2 = new HashTable();
         System.out.println();
 
         ArrayList<Integer>[] a1 = new ArrayList[3];
@@ -51,18 +49,13 @@ public class MainMyHashTable {
         System.out.println(ht2.remove("elem1"));
         System.out.println(ht2.isEmpty());
 
-        //Object[] array2 = ht1.toArray(new Object[ht1.size()]);
-
         System.out.println(Arrays.toString(ht1.toArray()));
-
-        //Object[] array7 = ht1.toArray();
 
         Object[] array5;
         array5 = ht1.toArray();
         for (int i = 0; i < ht1.size(); i++) {
             System.out.println(array5[i]);
         }
-
 
         ArrayList<String> test = new ArrayList<>(4);
         ArrayList<String> test2 = new ArrayList<>(4);
@@ -93,7 +86,6 @@ public class MainMyHashTable {
         System.out.println("iterator.next() = " + iterator.next());
         System.out.println("iterator.hasNext() = " + iterator.hasNext());
 
-
         System.out.println(Arrays.toString(ht1.toArray()));
 
         //while (iterator.hasNext()) {
@@ -119,34 +111,5 @@ public class MainMyHashTable {
         System.out.println("iterator.hasNext() = " + iterator.hasNext());
 
 
-
     }
 }
-
-
-/*
-        ArrayList<String> namesTest = new ArrayList<String>();
-
-        namesTest.add("one");
-        namesTest.add("two");
-        namesTest.add("three");
-
-        String[] namesArray = namesTest.toArray(new String[namesTest.size()]);
-        String[] namesArray2 = new String[3];
-        //namesArray2 = namesTest.toArray();
-
-        Object[] namesArray3 = new Object[1];
-        namesArray3 = namesTest.toArray();
-
-        System.out.println(Arrays.toString(namesArray));
-        System.out.println(Arrays.toString(namesArray3));
-
-
-        Object[] arrTest3 = ht1.toArray(new Object[ht1.size()]);
-        System.out.println(Arrays.toString(arrTest3));
-
-        Object[] arrTest4 = new Object[5];
-        arrTest4 = ht1.toArray();
-
-        System.out.println(Arrays.toString(arrTest4));
- */
