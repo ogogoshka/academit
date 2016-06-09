@@ -100,12 +100,8 @@ public class HashTable<E> implements Collection<E> {
     @Override
     public <T> T[] toArray(T[] a) {
         if (a.length < this.size()) {
-            //Object[] newArray = new Object[this.size()];
-            //System.arraycopy(this.toArray(), 0, newArray, 0, this.size());
-            //return (T[]) newArray;
             return (T[]) Arrays.copyOf(this.toArray(), this.size(), a.getClass());
         }
-        //System.arraycopy(this.toArray(), 0, a, 0, this.size());
         int k = 0;
         if (a.length >= this.size()) {
             for (ArrayList<E> currentBucket : hashTable) {
@@ -118,6 +114,11 @@ public class HashTable<E> implements Collection<E> {
         }
         return a;
     }
+    //Object[] newArray = new Object[this.size()];
+    //System.arraycopy(this.toArray(), 0, newArray, 0, this.size());
+    //return (T[]) newArray;
+
+    //System.arraycopy(this.toArray(), 0, a, 0, this.size());
 
 /*
         if (a.length < this.size())
@@ -191,44 +192,42 @@ public class HashTable<E> implements Collection<E> {
             int lastPosition = HashTable.this.hashTable[currentBucket].size();
             int lastBucket = hashTable.length - 1;
             return !(currentBucket == lastBucket && currentIndex == lastPosition);
-
-            //E endElem = hashTable[hashTable.length].get(hashTable[hashTable.length].size());
-            //int lastPosition = hashTable[lastBucket].size();
-
-            //if (currentIndex > lastEl || currentBucket > lastBuck) {
-            //this.currentIndex = HashTable.this.size();
-
-            //return currentIndex < HashTable.this.size() && currentBucket < hashTable.length;
-            //&& hashTable[currentBucket].get(currentIndex2) != null;
-            //arrayList[currentIndex] != null;
-            //int currentIndex2 = hashTable[currentBucket].get(currentIndex);
-
-            //hashTable[currentIndex].listIterator(1);
-            //Iterator<E> iterator = hashTable[currentBucket].iterator();
-
-            //Iterator<E> iteratorer = hashTable[currentBucket].listIterator();
-
-            //ListIterator<E> listIts = hashTable[currentBucket].listIterator(HashTable.this.size());
-            //System.out.println(listIts.nextIndex());
-
-            //return null;
-            //return iterator.hasNext();
-            //iterator.hasNext();
-            //if (HashTable.this.iterator()) {
-            //return true;
-            //}
-
-            //return currentIndex2 < HashTable.this.size();
         }
+        //int lastBucket = hashTable.length;
+
+        //E endElem = hashTable[hashTable.length].get(hashTable[hashTable.length].size());
+        //int lastPosition = hashTable[lastBucket].size();
+
+        //if (currentIndex > lastEl || currentBucket > lastBuck) {
+        //this.currentIndex = HashTable.this.size();
+
+        //return currentIndex < HashTable.this.size() && currentBucket < hashTable.length;
+        //&& hashTable[currentBucket].get(currentIndex2) != null;
+        //arrayList[currentIndex] != null;
+        //int currentIndex2 = hashTable[currentBucket].get(currentIndex);
+
+        //hashTable[currentIndex].listIterator(1);
+        //Iterator<E> iterator = hashTable[currentBucket].iterator();
+
+        //Iterator<E> iteratorer = hashTable[currentBucket].listIterator();
+
+        //ListIterator<E> listIts = hashTable[currentBucket].listIterator(HashTable.this.size());
+        //System.out.println(listIts.nextIndex());
+
+        //return null;
+        //return iterator.hasNext();
+        //iterator.hasNext();
+        //if (HashTable.this.iterator()) {
+        //return true;
+        //}
+
+        //return currentIndex2 < HashTable.this.size();
+
 
         @Override
         public E next() {
-            //if (!hasNext()) {
-            //throw new NoSuchElementException();
-            //}
-
-            if (currentBucket > hashTable.length) {
-                throw new NoSuchElementException("конец массива");
+            if (!hasNext()) {
+                throw new NoSuchElementException("конец хеш-таблицы");
             }
 
             if (currentIndex == hashTable[currentBucket].size()) {
