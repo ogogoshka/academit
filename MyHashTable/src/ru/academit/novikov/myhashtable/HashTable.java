@@ -186,6 +186,8 @@ public class HashTable<E> implements Collection<E> {
         private int currentIndex2;
         private HashTable<E> eHashTable;
         private ArrayList<E> eArrayList;
+        //private int lastPosition = hashTable[currentBucket].size();
+        //private int lastBucket = hashTable.length - 1;
 
         @Override
         public boolean hasNext() {
@@ -223,13 +225,29 @@ public class HashTable<E> implements Collection<E> {
 
         //return currentIndex2 < HashTable.this.size();
 
-
         @Override
         public E next() {
+            int lastPosition = hashTable[currentBucket].size();
+            int lastBucket = hashTable.length - 1;
+            //int currentPosition=hashTable[bucket].get(index);
+            //int currentBucket;
             if (!hasNext()) {
                 throw new NoSuchElementException("конец хеш-таблицы");
             }
+            if (currentIndex < lastPosition) {
+                return hashTable[currentBucket].get(currentIndex++);
+            } else if (currentBucket < lastBucket && currentIndex == lastPosition) {
+                currentBucket++;
+                currentIndex = 0;
+                if (hashTable[currentBucket] == null) {
+                    return hashTable[currentBucket++].get(currentIndex);
+                }
+                return hashTable[currentBucket++].get(currentIndex);
+            } else {
+                return hashTable[currentBucket].get(currentIndex++);
+            }
 
+/*
             if (currentIndex == hashTable[currentBucket].size()) {
                 if (hashTable[currentBucket] == null) {
                     currentBucket++;
@@ -242,6 +260,8 @@ public class HashTable<E> implements Collection<E> {
             } else {
                 return hashTable[currentBucket].get(currentIndex++);
             }
+ */
+
 
             //else {
             //Object[] thisArray = HashTable.this.toArray();
