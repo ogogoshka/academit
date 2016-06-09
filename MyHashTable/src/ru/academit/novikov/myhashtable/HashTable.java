@@ -188,24 +188,16 @@ public class HashTable<E> implements Collection<E> {
 
         @Override
         public boolean hasNext() {
+            int lastPosition = HashTable.this.hashTable[currentBucket].size();
+            int lastBucket = hashTable.length - 1;
+            return !(currentBucket == lastBucket && currentIndex == lastPosition);
 
+            //E endElem = hashTable[hashTable.length].get(hashTable[hashTable.length].size());
+            //int lastPosition = hashTable[lastBucket].size();
 
-            int lastEl;
-            lastEl = HashTable.this.hashTable[currentBucket].size();
-            int lastBuck;
-            lastBuck = HashTable.this.hashTable.length;
-
-            int endEl;
-
-            E endElem = hashTable[hashTable.length].get(hashTable[hashTable.length].size());
-
-            if (currentIndex > lastEl || currentBucket > lastBuck) {
-                return false;
-            }
-
-
+            //if (currentIndex > lastEl || currentBucket > lastBuck) {
             //this.currentIndex = HashTable.this.size();
-            return true;
+
             //return currentIndex < HashTable.this.size() && currentBucket < hashTable.length;
             //&& hashTable[currentBucket].get(currentIndex2) != null;
             //arrayList[currentIndex] != null;
