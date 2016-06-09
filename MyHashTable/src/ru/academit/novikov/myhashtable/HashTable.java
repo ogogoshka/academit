@@ -189,7 +189,7 @@ public class HashTable<E> implements Collection<E> {
 
         @Override
         public boolean hasNext() {
-            int lastPosition = HashTable.this.hashTable[currentBucket].size();
+            int lastPosition = hashTable[currentBucket].size();
             int lastBucket = hashTable.length - 1;
             return !(currentBucket == lastBucket && currentIndex == lastPosition);
         }
