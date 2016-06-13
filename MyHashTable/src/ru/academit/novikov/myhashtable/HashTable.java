@@ -99,20 +99,22 @@ public class HashTable<E> implements Collection<E> {
 
     @Override
     public <T> T[] toArray(T[] a) {
-        if (this.hashTable == null) {
-            throw new NullPointerException();
-        }
         if (a.length < this.size()) {
             return (T[]) Arrays.copyOf(this.toArray(), this.size(), a.getClass());
         }
+
         int k = 0;
         for (ArrayList<E> currentBucket : hashTable) {
-            for (E currentElement : currentBucket) {
-                a[k] = (T) currentElement;
-                k++;
+            if (currentBucket != null) {
+                for (E currentElement : currentBucket) {
+                    a[k] = (T) currentElement;
+                    k++;
+                }
             }
         }
-        a[this.size()] = null;
+        if (a.length > this.size()) {
+            a[this.size()] = null;
+        }
         return a;
     }
 
@@ -168,8 +170,8 @@ public class HashTable<E> implements Collection<E> {
 
     private class MyHashTablesIterator implements Iterator<E> {
 
-        private int currentIndex;
-        private int currentBucket;
+        private int currentIndex = 0;
+        private int currentBucket = 0;
 
         @Override
         public boolean hasNext() {
@@ -180,21 +182,25 @@ public class HashTable<E> implements Collection<E> {
 
         @Override
         public E next() {
-            int lastPosition = hashTable[currentBucket].size();
-            int lastBucket = hashTable.length - 1;
-
             if (!hasNext()) {
                 throw new NoSuchElementException("конец хеш-таблицы");
             }
 
+            int lastPosition = hashTable[currentBucket].size();
+            int lastBucket = hashTable.length - 1;
+            //currentBucket = 0;
+            //currentIndex = 0;
+
             if (currentBucket < lastBucket && currentIndex == lastPosition) {
                 currentBucket++;
                 currentIndex = 0;
+                /*
                 if (hashTable[currentBucket] == null) {
                     return hashTable[currentBucket++].get(currentIndex);
                 } else {
-                    return hashTable[currentBucket++].get(currentIndex);
-                }
+                 */
+                return hashTable[currentBucket++].get(currentIndex);
+                //}
             } else {
                 return hashTable[currentBucket].get(currentIndex++);
             }

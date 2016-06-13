@@ -110,6 +110,18 @@ public class MainMyHashTable {
         System.out.println("iterator.next() = " + iterator.next());
         System.out.println("iterator.hasNext() = " + iterator.hasNext());
 
+        //Object[] arrr = new Object[11];
 
+        //ht1.toArray(new Object[11]);
+
+        System.out.println(Arrays.toString(ht1.toArray(new String[7])));
+
+        HashTable<Integer> table3 = new HashTable<>();
+        table3.add(3);
+        table3.add(4);
+
+        Integer[] result = table3.toArray(new Integer[5]);
+
+        System.out.println(Arrays.toString(result));
     }
 }
