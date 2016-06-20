@@ -9,7 +9,7 @@ public class MainGaussMethod {
         double[] arr2 = {1, 2, -1, 5, 7};
         double[] arr3 = {1, 2};
 
-
+        Vector vS = new Vector(3, arr);
         Vector v1 = new Vector(3, arr2);
         Vector v2 = new Vector(4);
         //getExtendedMatrix(m10);
@@ -21,7 +21,7 @@ public class MainGaussMethod {
         //System.out.println(m10.toString());
 
         double[][] array10 = {{0, 0, 1, 2}, {0, 3, 4, 0}, {5, 6, 0, 0}, {7, 0, 0, 0}};
-        double[][] array11 = {{0, 1, 2}, {3, 4, 0}, {6, 1, 2}};
+        double[][] array11 = {{1, 1, 2}, {3, 4, 2}, {6, 1, 2}};
         Matrix m10 = new Matrix(array10);
         Matrix m11 = new Matrix(array11);
         System.out.println(m11.toString());
@@ -49,10 +49,18 @@ public class MainGaussMethod {
         System.out.println(m10.toString());
 
 
-        GaussMethod solves = new GaussMethod(m11, v1);
-        solves.result();
+        GaussMethod solves = new GaussMethod(m11, vS);
+
+        //solves.bottomTriangular();
+
+        Matrix m111 = new Matrix(solves.bottomTriangular());
+        System.out.println(m111.toString());
 
 
+        //solves.result();
+        //solves.getVectorSolves();
+        //Vector mV = new Vector(solves.getVectorSolves());
+        //System.out.println(mV.toString());
 /*
         //прямой ход
         for (int i = 0; i < m10.getRowsNumber() - 1; i++) {

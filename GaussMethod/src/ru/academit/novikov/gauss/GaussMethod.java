@@ -41,14 +41,17 @@ public class GaussMethod {
     public Matrix bottomTriangular() {
         Matrix bottomTriangular = getExtendedMatrix();
         for (int i = 0; i < bottomTriangular.getRowsNumber() - 1; i++) {
+
             double diagonalComponent = bottomTriangular.getComponent(i, i);
-            for (int j = i + 1; j < bottomTriangular.getColumnsNumber(); j++) {
+
+            for (int j = i + 1; j < bottomTriangular.getColumnsNumber() - 1; j++) {
+
                 double k2 = bottomTriangular.getComponent(j, i) / diagonalComponent;
                 bottomTriangular.setVectorLine(j, bottomTriangular.getVectorLine(j).minus(bottomTriangular.getVectorLine(i).multiplicationByScalar2(k2)));
             }
         }
-        return bottomTriangular;
-        //return new Matrix(extendedMatrix);
+        //return bottomTriangular;
+        return new Matrix(bottomTriangular);
     }
 
     //обратный ход - получение диагональной матрицы
@@ -93,6 +96,19 @@ public class GaussMethod {
         System.out.print(vectorSolutions.getComponent(i) + " ");
         }
          */
+        if (this.matrix == null && this.vector == null) {
+            System.out.println(EnumSolves.MANY_SOLVES.getMessage());
+            //EnumSolves solves = EnumSolves.MANY_SOLVES;
+            //EnumSolves solves = EnumSolves.MANY_SOLVES;
+            //System.out.println(solves.getMessage());
+            return null;
+        }
+        if (this.matrix == null) {
+            EnumSolves solves = EnumSolves.NO_SOLVES;
+            System.out.println(solves.getMessage());
+            return null;
+        }
+        System.out.println(EnumSolves.ONE_SOLVE.getMessage());
         return vectorSolutions;
     }
 
