@@ -8,11 +8,13 @@ public class GaussMethod {
     public Matrix matrix;
 
     public GaussMethod(Matrix matrix, Vector vector) {
+
         if (matrix.getRowsNumber() != vector.getSize()) {
             throw new IllegalArgumentException("некорректные данные. кол-во строк в матрице должно совпадать с кол-вом элементов вектора");
         }
         this.vector = vector;
         this.matrix = matrix;
+
     }
 
     //получение расширенной матрицы
@@ -75,7 +77,56 @@ public class GaussMethod {
     }
 
     //получение вектора решений
-    public Vector getSolve() {
+    public Vector getVectorSolves() {
+        Matrix matrix = identityMatrix();
+        Vector vectorSolutions = new Vector(matrix.getRowsNumber());
+        for (int i = 0; i < matrix.getRowsNumber(); i++) {
+            vectorSolutions.setComponent(i, matrix.getComponent(i, matrix.getColumnsNumber() - 1));
+        }
+        /*
+        System.out.println(enumSolves.ONE_SOLVE);
+        for (int i = 0; i < vectorSolutions.getVectorLength(); i++) {
+        System.out.print(vectorSolutions.getComponent(i) + " ");
+        }
+         */
+        return vectorSolutions;
+    }
+
+    public void result() {
+
+        if (this.matrix == null && this.vector == null) {
+            enumSolves solves = enumSolves.MANY_SOLVES;
+            System.out.println(solves.getMessage());
+            return;
+        }
+
+        if (this.matrix == null) {
+            enumSolves solves = enumSolves.NO_SOLVES;
+            System.out.println(solves.getMessage());
+            return;
+        }
+
+        enumSolves solves = enumSolves.ONE_SOLVE;
+        System.out.println(solves.getMessage());
+        //for (int i = 0; i < getVectorSolves().getVectorLength(); i++) {
+            //System.out.print(getVectorSolves().getComponent(i) + " ");
+        //}
+    }
+
+
+
+
+    /*
+    //получение вектора решений
+    public Vector getVectorSolves() {
+        if (this.matrix == null && this.vector == null) {
+            return enumSolves.MANY_SOLVES;
+        }
+
+        if (this.matrix == null) {
+            return new enumSolves.NO_SOLVES;
+        }
+
         Matrix matrix = identityMatrix();
         Vector vectorSolutions = new Vector(identityMatrix().getRowsNumber());
         for (int i = 0; i < matrix.getRowsNumber(); i++) {
@@ -83,7 +134,7 @@ public class GaussMethod {
         }
         return new Vector(vectorSolutions);
     }
-/*
+
     public Vector getSolve2(Matrix matrix2, Vector vector2) {
         Vector v2 = new Vector(matrix2.getRowsNumber());
         for (int i = 0; i < matrix2.getRowsNumber(); i++) {

@@ -1,3 +1,4 @@
+import ru.academit.novikov.gauss.GaussMethod;
 import ru.academit.novikov.matrix.Matrix;
 import ru.academit.novikov.vector.Vector;
 
@@ -20,9 +21,10 @@ public class MainGaussMethod {
         //System.out.println(m10.toString());
 
         double[][] array10 = {{0, 0, 1, 2}, {0, 3, 4, 0}, {5, 6, 0, 0}, {7, 0, 0, 0}};
+        double[][] array11 = {{0, 1, 2}, {3, 4, 0}, {6, 1, 2}};
         Matrix m10 = new Matrix(array10);
-        System.out.println(m10.toString());
-
+        Matrix m11 = new Matrix(array11);
+        System.out.println(m11.toString());
 
 
         //отсортировать перед прямым ходом
@@ -47,6 +49,8 @@ public class MainGaussMethod {
         System.out.println(m10.toString());
 
 
+        GaussMethod solves = new GaussMethod(m11, v1);
+        solves.result();
 
 
 /*
@@ -103,8 +107,8 @@ public class MainGaussMethod {
         }
         System.out.println(m10.toString());
 
-        //getSolve(m10, v1);
-        System.out.println(getSolve(m10, v1).toString());
+        //getVectorSolves(m10, v1);
+        System.out.println(getVectorSolves(m10, v1).toString());
 
         double[] arr4 = {0, 0, 0, 3};
         Vector v3 = new Vector(2, arr4);
@@ -118,10 +122,6 @@ public class MainGaussMethod {
         //isProportionalLines
 
 
-
-
-
-
-}
+    }
 
 }
