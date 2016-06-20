@@ -7,5 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="GeometricFigures1" />
+    <orderEntry type="module" module-name="Vector1" />
   </component>
 </module>
