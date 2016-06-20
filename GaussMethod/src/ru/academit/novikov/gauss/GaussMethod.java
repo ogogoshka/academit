@@ -4,11 +4,11 @@ import ru.academit.novikov.matrix.Matrix;
 import ru.academit.novikov.vector.Vector;
 
 public class GaussMethod {
+    private static final double EPSILON = 1e-10;
     public Vector vector;
     public Matrix matrix;
 
     public GaussMethod(Matrix matrix, Vector vector) {
-
         if (matrix.getRowsNumber() != vector.getSize()) {
             throw new IllegalArgumentException("некорректные данные. кол-во строк в матрице должно совпадать с кол-вом элементов вектора");
         }
@@ -56,9 +56,11 @@ public class GaussMethod {
         Matrix diagonalMatrix = bottomTriangular();
         for (int i = 0; i < diagonalMatrix.getRowsNumber() - 1; i++) {
             double diagonalComponent = diagonalMatrix.getComponent(i, i);
-            for (int j = i + 1; j < diagonalMatrix.getColumnsNumber(); j++) {
-                double k2 = diagonalMatrix.getComponent(j, i) / diagonalComponent;
-                diagonalMatrix.setVectorLine(j, diagonalMatrix.getVectorLine(j).minus(diagonalMatrix.getVectorLine(i).multiplicationByScalar2(k2)));
+            if (Math.abs(diagonalComponent) > EPSILON) {
+                for (int j = i + 1; j < diagonalMatrix.getColumnsNumber(); j++) {
+                    double k2 = diagonalMatrix.getComponent(j, i) / diagonalComponent;
+                    diagonalMatrix.setVectorLine(j, diagonalMatrix.getVectorLine(j).minus(diagonalMatrix.getVectorLine(i).multiplicationByScalar2(k2)));
+                }
             }
         }
         return diagonalMatrix;
