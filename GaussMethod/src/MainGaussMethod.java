@@ -103,8 +103,8 @@ public class MainGaussMethod {
         }
         System.out.println(m10.toString());
 
-        //getReshenie(m10, v1);
-        System.out.println(getReshenie(m10, v1).toString());
+        //getSolve(m10, v1);
+        System.out.println(getSolve(m10, v1).toString());
 
         double[] arr4 = {0, 0, 0, 3};
         Vector v3 = new Vector(2, arr4);
