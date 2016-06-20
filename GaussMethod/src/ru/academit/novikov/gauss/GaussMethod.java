@@ -88,7 +88,7 @@ public class GaussMethod {
             vectorSolutions.setComponent(i, matrix.getComponent(i, matrix.getColumnsNumber() - 1));
         }
         /*
-        System.out.println(enumSolves.ONE_SOLVE);
+        System.out.println(EnumSolves.ONE_SOLVE);
         for (int i = 0; i < vectorSolutions.getVectorLength(); i++) {
         System.out.print(vectorSolutions.getComponent(i) + " ");
         }
@@ -98,19 +98,19 @@ public class GaussMethod {
 
     public void result() {
         if (this.matrix == null && this.vector == null) {
-            System.out.println(enumSolves.MANY_SOLVES.getMessage());
-            //enumSolves solves = enumSolves.MANY_SOLVES;
-            //enumSolves solves = enumSolves.MANY_SOLVES;
+            System.out.println(EnumSolves.MANY_SOLVES.getMessage());
+            //EnumSolves solves = EnumSolves.MANY_SOLVES;
+            //EnumSolves solves = EnumSolves.MANY_SOLVES;
             //System.out.println(solves.getMessage());
             return;
         }
         if (this.matrix == null) {
-            enumSolves solves = enumSolves.NO_SOLVES;
+            EnumSolves solves = EnumSolves.NO_SOLVES;
             System.out.println(solves.getMessage());
             return;
         }
-        System.out.println(enumSolves.ONE_SOLVE.getMessage());
-        //enumSolves solves = enumSolves.ONE_SOLVE;
+        System.out.println(EnumSolves.ONE_SOLVE.getMessage());
+        //EnumSolves solves = EnumSolves.ONE_SOLVE;
         //System.out.println(solves.getMessage());
         //for (int i = 0; i < getVectorSolves().getVectorLength(); i++) {
         //System.out.print(getVectorSolves().getComponent(i) + " ");
@@ -124,11 +124,11 @@ public class GaussMethod {
     //получение вектора решений
     public Vector getVectorSolves() {
         if (this.matrix == null && this.vector == null) {
-            return enumSolves.MANY_SOLVES;
+            return EnumSolves.MANY_SOLVES;
         }
 
         if (this.matrix == null) {
-            return new enumSolves.NO_SOLVES;
+            return new EnumSolves.NO_SOLVES;
         }
 
         Matrix matrix = identityMatrix();

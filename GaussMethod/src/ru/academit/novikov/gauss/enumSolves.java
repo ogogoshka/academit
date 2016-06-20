@@ -1,13 +1,13 @@
 package ru.academit.novikov.gauss;
 
-public enum enumSolves {
+public enum EnumSolves {
     NO_SOLVES("СЛАУ не имеет решений"),
     ONE_SOLVE("СЛАУ имеет одно решение"),
     MANY_SOLVES("СЛАУ имеет бесконечное множество решений");
 
     private String message;
 
-    enumSolves(String message) {
+    EnumSolves(String message) {
         this.message = message;
     }
 
