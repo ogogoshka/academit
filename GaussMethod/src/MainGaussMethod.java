@@ -24,6 +24,15 @@ public class MainGaussMethod {
         System.out.println(m10.toString());
 
 
+
+        //отсортировать перед прямым ходом
+
+        //после прямого хода проверить есть ли нулевые строки
+        //если есть то вычеркнуть
+        //если нулевая строка кроме последнего элемента то решений нет
+        //если 1 0 0 | 0 то х=0
+
+
         for (int i = 0; i < m10.getRowsNumber(); i++) {
             int max = i;
 
@@ -105,6 +114,14 @@ public class MainGaussMethod {
         System.out.println(v3.allZeroElements());
 
  */
-    }
+
+        //isProportionalLines
+
+
+
+
+
+
+}
 
 }

@@ -3,7 +3,6 @@ import ru.academit.novikov.myhashtable.HashTable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.ListIterator;
 
 public class MainMyHashTable {
     public static void main(String[] args) {
@@ -13,18 +12,20 @@ public class MainMyHashTable {
 
         ArrayList<Integer>[] a1 = new ArrayList[3];
         int st1 = a1.length;
-        System.out.println(st1);
+        //System.out.println(st1);
 
         a1[0] = new ArrayList<>();
 
         a1[0].add(0, 100);
         a1[0].add(1, 200);
         a1[0].add(2, 300);
-
+/*
         Integer[] array = a1[0].toArray(new Integer[a1[0].size()]);
         for (int i = 0; i < 3; i++) {
             System.out.println(array[i]);
         }
+ */
+
 
         HashTable ht1 = new HashTable(5);
         HashTable ht2 = new HashTable(5);
@@ -32,12 +33,13 @@ public class MainMyHashTable {
         System.out.println("ADD");
 
         ht1.add("ppp");
-        ht1.add("pop");
-        ht1.add("lol");
-        ht1.add("kok");
-        ht1.add("tot");
+        //ht1.add("pop");
+        //ht1.add("lol");
+        //ht1.add("kok");
+        //ht1.add("tot");
         ht1.add("tok");
-
+        ht1.add("kot");
+/*
         System.out.println("ht1.size() = " + ht1.size());
         System.out.println("ht1.isEmpty() = " + ht1.isEmpty());
 
@@ -82,11 +84,8 @@ public class MainMyHashTable {
         Iterator iterator = ht1.iterator();
 
         System.out.println(Arrays.toString(ht1.toArray()));
-        System.out.println("iterator.hasNext() = " + iterator.hasNext());
-        System.out.println("iterator.next() = " + iterator.next());
-        System.out.println("iterator.hasNext() = " + iterator.hasNext());
-
-        System.out.println(Arrays.toString(ht1.toArray()));
+ */
+        Iterator<String> iterator = ht1.iterator();
 
         //while (iterator.hasNext()) {
         //System.out.println("iterator.next() = " + iterator.next());
@@ -95,27 +94,21 @@ public class MainMyHashTable {
         //System.out.println("ht1.contains(\"joj\") = " + ht1.contains("joj"));
         //System.out.println("ht1.contains(\"null\") = " + ht1.contains(null));
 
-        ListIterator<String> listIts = test.listIterator(test.size());
-        System.out.println(listIts.nextIndex());
+        //ListIterator<String> listIts = test.listIterator(test.size());
+        //System.out.println(listIts.nextIndex());
 
         System.out.println("iterator.next() = " + iterator.next());
-        System.out.println("iterator.hasNext() = " + iterator.hasNext());
         System.out.println("iterator.next() = " + iterator.next());
-        System.out.println("iterator.hasNext() = " + iterator.hasNext());
         System.out.println("iterator.next() = " + iterator.next());
-        System.out.println("iterator.hasNext() = " + iterator.hasNext());
-        System.out.println("iterator.next() = " + iterator.next());
-        System.out.println("iterator.hasNext() = " + iterator.hasNext());
+        //System.out.println("iterator.hasNext() = " + iterator.hasNext());
 
-        System.out.println("iterator.next() = " + iterator.next());
-        System.out.println("iterator.hasNext() = " + iterator.hasNext());
 
         //Object[] arrr = new Object[11];
 
         //ht1.toArray(new Object[11]);
 
         System.out.println(Arrays.toString(ht1.toArray(new String[7])));
-
+/*
         HashTable<Integer> table3 = new HashTable<>();
         table3.add(3);
         table3.add(4);
@@ -123,5 +116,11 @@ public class MainMyHashTable {
         Integer[] result = table3.toArray(new Integer[5]);
 
         System.out.println(Arrays.toString(result));
+ */
+
+        //System.out.println(ht1.positionInMainArray("ppp"));
+        //System.out.println(ht1.positionInMainArray("tok"));
+        //System.out.println(ht1.positionInMainArray("kot"));
+
     }
 }
