@@ -71,8 +71,10 @@ public class GaussMethod {
     public Matrix identityMatrix() {
         Matrix identityMatrix = diagonalMatrix();
         for (int i = 0; i < identityMatrix.getRowsNumber(); i++) {
-            double diagonalComponent = 1 / identityMatrix.getComponent(i, i);
-            identityMatrix.setVectorLine(i, identityMatrix.getVectorLine(i).multiplicationByScalar2(diagonalComponent));
+            if (Math.abs(identityMatrix.getComponent(i, i)) > EPSILON) {
+                double diagonalComponent = 1 / identityMatrix.getComponent(i, i);
+                identityMatrix.setVectorLine(i, identityMatrix.getVectorLine(i).multiplicationByScalar2(diagonalComponent));
+            }
         }
         //return new Matrix(diagonalMatrix());
         return identityMatrix;
