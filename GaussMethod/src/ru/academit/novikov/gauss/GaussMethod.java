@@ -86,7 +86,7 @@ public class GaussMethod {
     }
      */
 
-
+/*
     //получение единиц у диагональной матрицы
     public Matrix identityMatrix() {
         Matrix identityMatrix = diagonalMatrix();
@@ -99,10 +99,12 @@ public class GaussMethod {
         //return new Matrix(diagonalMatrix());
         return identityMatrix;
     }
+ */
+
 
     //получение вектора решений
     public Vector getVectorSolves() {
-        Matrix matrix = identityMatrix();
+        Matrix matrix = diagonalMatrix();
         Vector vectorSolutions = new Vector(matrix.getRowsNumber());
         for (int i = 0; i < matrix.getRowsNumber(); i++) {
             vectorSolutions.setComponent(i, matrix.getComponent(i, matrix.getColumnsNumber() - 1));
