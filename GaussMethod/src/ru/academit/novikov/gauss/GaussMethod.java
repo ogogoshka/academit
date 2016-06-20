@@ -14,7 +14,6 @@ public class GaussMethod {
         }
         this.vector = vector;
         this.matrix = matrix;
-
     }
 
     //получение расширенной матрицы
@@ -32,8 +31,6 @@ public class GaussMethod {
                 extendedMatrix.replaceLine(i, max);
             }
         }
-        //this.matrix = new Matrix(extendedMatrix);
-        //return this.matrix;
         return extendedMatrix;
     }
 
@@ -41,20 +38,38 @@ public class GaussMethod {
     public Matrix bottomTriangular() {
         Matrix bottomTriangular = getExtendedMatrix();
         for (int i = 0; i < bottomTriangular.getRowsNumber() - 1; i++) {
-
             double diagonalComponent = bottomTriangular.getComponent(i, i);
-
             for (int j = i + 1; j < bottomTriangular.getColumnsNumber() - 1; j++) {
-
-                double k2 = bottomTriangular.getComponent(j, i) / diagonalComponent;
-                bottomTriangular.setVectorLine(j, bottomTriangular.getVectorLine(j).minus(bottomTriangular.getVectorLine(i).multiplicationByScalar2(k2)));
+                double k = bottomTriangular.getComponent(j, i) / diagonalComponent;
+                bottomTriangular.setVectorLine(j, bottomTriangular.getVectorLine(j).minus(bottomTriangular.getVectorLine(i).multiplicationByScalar2(k)));
             }
         }
         return bottomTriangular;
-        //return new Matrix(bottomTriangular);
     }
 
     //обратный ход - получение диагональной матрицы
+    public Matrix diagonalMatrix() {
+        Matrix diagonalMatrix = bottomTriangular();
+        for (int i = 0; i < diagonalMatrix.getRowsNumber(); i++) {
+            if (Math.abs(diagonalMatrix.getComponent(i, i)) > EPSILON) {
+                double diagonalComponent = 1 / diagonalMatrix.getComponent(i, i);
+                diagonalMatrix.setVectorLine(i, diagonalMatrix.getVectorLine(i).multiplicationByScalar2(diagonalComponent));
+            }
+        }
+
+        for (int i = diagonalMatrix.getRowsNumber() - 1; i > 0; i--) {
+            double diagonalComponent = diagonalMatrix.getComponent(i, i);
+            for (int j = i - 1; j >= 0; j--) {
+                double k = diagonalMatrix.getComponent(j, i);
+                k = k / diagonalComponent;
+                diagonalMatrix.setVectorLine(j, diagonalMatrix.getVectorLine(j).minus(diagonalMatrix.getVectorLine(i).multiplicationByScalar2(k)));
+            }
+        }
+        return diagonalMatrix;
+    }
+
+/*
+        //обратный ход - получение диагональной матрицы
     public Matrix diagonalMatrix() {
         Matrix diagonalMatrix = bottomTriangular();
         for (int i = 0; i < diagonalMatrix.getRowsNumber() - 1; i++) {
@@ -69,6 +84,8 @@ public class GaussMethod {
         return diagonalMatrix;
         //return new Matrix(bottomTriangular());
     }
+     */
+
 
     //получение единиц у диагональной матрицы
     public Matrix identityMatrix() {
@@ -126,11 +143,13 @@ public class GaussMethod {
             return;
         }
         System.out.println(EnumSolves.ONE_SOLVE.getMessage());
+        //Vector solve = getVectorSolves();
+
         //EnumSolves solves = EnumSolves.ONE_SOLVE;
         //System.out.println(solves.getMessage());
-        //for (int i = 0; i < getVectorSolves().getVectorLength(); i++) {
-        //System.out.print(getVectorSolves().getComponent(i) + " ");
-        //}
+        for (int i = 0; i < getVectorSolves().getVectorLength(); i++) {
+            System.out.print(getVectorSolves().getComponent(i) + " ");
+        }
     }
 
 
