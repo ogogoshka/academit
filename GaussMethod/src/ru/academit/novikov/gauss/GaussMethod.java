@@ -93,23 +93,23 @@ public class GaussMethod {
     }
 
     public void result() {
-
         if (this.matrix == null && this.vector == null) {
-            enumSolves solves = enumSolves.MANY_SOLVES;
-            System.out.println(solves.getMessage());
+            System.out.println(enumSolves.MANY_SOLVES.getMessage());
+            //enumSolves solves = enumSolves.MANY_SOLVES;
+            //enumSolves solves = enumSolves.MANY_SOLVES;
+            //System.out.println(solves.getMessage());
             return;
         }
-
         if (this.matrix == null) {
             enumSolves solves = enumSolves.NO_SOLVES;
             System.out.println(solves.getMessage());
             return;
         }
-
-        enumSolves solves = enumSolves.ONE_SOLVE;
-        System.out.println(solves.getMessage());
+        System.out.println(enumSolves.ONE_SOLVE.getMessage());
+        //enumSolves solves = enumSolves.ONE_SOLVE;
+        //System.out.println(solves.getMessage());
         //for (int i = 0; i < getVectorSolves().getVectorLength(); i++) {
-            //System.out.print(getVectorSolves().getComponent(i) + " ");
+        //System.out.print(getVectorSolves().getComponent(i) + " ");
         //}
     }
 
