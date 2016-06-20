@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Mines/Mines.iml" filepath="$PROJECT_DIR$/Mines/Mines.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/academit.iml" filepath="$PROJECT_DIR$/.idea/academit.iml" />
     </modules>
   </component>
