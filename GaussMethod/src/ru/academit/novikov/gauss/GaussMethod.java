@@ -187,6 +187,6 @@ public class GaussMethod {
         public Vector nulevoiVector() {
         return new Vector(this.matrix.getColumnsNumber() + 1);
     }
-
  */
+
 }
