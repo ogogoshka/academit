@@ -50,8 +50,8 @@ public class GaussMethod {
                 bottomTriangular.setVectorLine(j, bottomTriangular.getVectorLine(j).minus(bottomTriangular.getVectorLine(i).multiplicationByScalar2(k2)));
             }
         }
-        //return bottomTriangular;
-        return new Matrix(bottomTriangular);
+        return bottomTriangular;
+        //return new Matrix(bottomTriangular);
     }
 
     //обратный ход - получение диагональной матрицы
@@ -60,7 +60,7 @@ public class GaussMethod {
         for (int i = 0; i < diagonalMatrix.getRowsNumber() - 1; i++) {
             double diagonalComponent = diagonalMatrix.getComponent(i, i);
             if (Math.abs(diagonalComponent) > EPSILON) {
-                for (int j = i + 1; j < diagonalMatrix.getColumnsNumber(); j++) {
+                for (int j = i + 1; j < diagonalMatrix.getColumnsNumber() - 1; j++) {
                     double k2 = diagonalMatrix.getComponent(j, i) / diagonalComponent;
                     diagonalMatrix.setVectorLine(j, diagonalMatrix.getVectorLine(j).minus(diagonalMatrix.getVectorLine(i).multiplicationByScalar2(k2)));
                 }

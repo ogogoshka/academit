@@ -56,6 +56,8 @@ public class MainGaussMethod {
         Matrix m111 = new Matrix(solves.bottomTriangular());
         System.out.println(m111.toString());
 
+        Matrix m222 = new Matrix(solves.diagonalMatrix());
+        System.out.println(m222.toString());
 
         //solves.result();
         //solves.getVectorSolves();
