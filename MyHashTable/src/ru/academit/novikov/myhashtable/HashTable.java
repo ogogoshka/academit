@@ -18,7 +18,7 @@ public class HashTable<E> implements Collection<E> {
         this.hashTable = new ArrayList[sizeOfTable];
     }
 
-    public int positionInMainArray(Object o) {
+    private int positionInMainArray(Object o) {
         return Math.abs(o.hashCode()) % hashTable.length;
     }
 
@@ -163,208 +163,44 @@ public class HashTable<E> implements Collection<E> {
         return count > 0;
     }
 
+
     @Override
     public Iterator<E> iterator() {
         return new MyHashTablesIterator();
     }
 
+    private int bucketPosition;
+    private Iterator<E> listIterator;
+
     private class MyHashTablesIterator implements Iterator<E> {
-
-        private int currentIndex = 0;
-        private int currentBucket = 0;
-
-        //private int currentIndex;
-        //private int currentBucket;
-
         @Override
         public boolean hasNext() {
-            int lastPosition = hashTable[currentBucket].size();
-            int lastBucket = hashTable.length - 1;
-
-
-            //if (currentBucket == lastBucket && currentIndex > lastPosition) {
-            //return false;
-            //}
-            //return true;
-            return !(currentBucket == lastBucket && currentIndex == lastPosition);
-            //return currentBucket != lastBucket || currentIndex != lastPosition;
+            boolean result = false;
+            if (bucketPosition >= hashTable.length) {
+                return false;
+            }
+            while (bucketPosition < hashTable.length) {
+                if (hashTable[bucketPosition] == null) {
+                    bucketPosition++;
+                } else {
+                    if (listIterator == null) {
+                        listIterator = hashTable[bucketPosition].iterator();
+                    }
+                    result = listIterator.hasNext();
+                    if (result) {
+                        break;
+                    } else {
+                        listIterator = null;
+                        bucketPosition++;
+                    }
+                }
+            }
+            return result;
         }
 
         @Override
         public E next() {
-            //if (!hasNext()) {
-            //throw new NoSuchElementException("конец хеш-таблицы");
-            //}
-
-            int lastBucket = hashTable.length - 1;
-            //currentBucket = 0;
-
-            while (hashTable[currentBucket] == null && currentBucket < lastBucket) {
-                currentBucket++;
-                if (hashTable[currentBucket] != null) {
-                    currentIndex = 0;
-                    return hashTable[currentBucket++].get(currentIndex);
-                }
-            }
-/*
-            if (currentBucket > lastBucket) {
-                throw new NoSuchElementException("конец хеш-таблицы");
-            }
-
- */
-
-            int lastPosition = hashTable[currentBucket].size();
-
-            if (hashTable[currentBucket] != null && currentIndex < lastPosition) {
-                //if (currentIndex < lastPosition) {
-                return hashTable[currentBucket].get(currentIndex++);
-                //} else if (currentIndex == lastPosition) {
-                //currentBucket++;
-                //currentIndex = 0;
-                //if (hashTable[currentBucket] == null) {
-                //return hashTable[currentBucket++].get(currentIndex);
-                //}
-                //return hashTable[currentBucket].get(currentIndex);
-            } else {
-                currentIndex = 0;
-                //throw new NoSuchElementException("конец хеш-таблицы");
-                return hashTable[currentBucket++].get(currentIndex);
-            }
-            //}
-
-            /*
-            if (currentIndex < lastPosition) {
-                return hashTable[currentBucket].get(currentIndex++);
-            } else if (currentBucket < lastBucket && currentIndex == lastPosition) {
-                //currentBucket++;
-                currentIndex = 0;
-                //if (hashTable[currentBucket] == null) {
-                    return hashTable[currentBucket++].get(currentIndex);
-                //}
-                //return hashTable[currentBucket].get(currentIndex);
-            } else {
-                return hashTable[currentBucket].get(currentIndex++);
-            }
-
-
-
-
-            if (hashTable[currentBucket] == null) {
-                currentBucket++;
-                currentIndex = 0;
-                if (currentBucket > lastBucket) {
-                    throw new NoSuchElementException("конец хеш-таблицы");
-                }
-                return hashTable[currentBucket].get(currentIndex);
-            } else {
-
-                int lastPosition = hashTable[currentBucket].size();
-
-                if (currentIndex == lastPosition) {
-                    currentBucket++;
-                    currentIndex = 0;
-                    return hashTable[currentBucket++].get(currentIndex);
-                }
-                return hashTable[currentBucket].get(currentIndex++);
-            }
-
-
-            if (hashTable[currentBucket] == null) {
-                currentBucket++;
-                currentIndex = 0;
-                if (currentBucket == lastBucket) {
-                    return hashTable[currentBucket].get(currentIndex);
-                }
-                return hashTable[currentBucket].get(currentIndex);
-            }
-
-
-            if ((currentBucket == lastBucket && hashTable[currentBucket] == null) || currentBucket > lastBucket) {
-                throw new NoSuchElementException("конец хеш-таблицы");
-            } else {
-                //int lastPosition = hashTable[currentBucket].size();
-                if (currentIndex == lastPosition) {
-                    currentBucket++;
-                    currentIndex = 0;
-                    if (currentBucket == lastBucket) {
-                        return hashTable[currentBucket].get(currentIndex);
-                    } else if (hashTable[currentBucket] == null) {
-                        return hashTable[currentBucket++].get(currentIndex);
-                    }
-                }
-                return hashTable[currentBucket].get(currentIndex++);
-            }
-            */
-/*
-            while (hashTable[currentBucket] == null && currentBucket < lastBucket) {
-                currentBucket++;
-                if (hashTable[currentBucket] != null) {
-                    currentIndex = 0;
-                    return hashTable[currentBucket++].get(currentIndex);
-                }
-            }
-
-            int lastPosition = hashTable[currentBucket].size();
-
-            if (currentIndex >= lastPosition) {
-                E el = hashTable[currentBucket].get(currentIndex);
-                currentBucket++;
-                currentIndex = 0;
-                return el;
-            }
-
-            return hashTable[currentBucket].get(currentIndex++);
-
-            if (hashTable[currentBucket] == null) {
-                if (currentBucket == lastBucket) {
-                    throw new NoSuchElementException("конец хеш-таблицы");
-                } else {
-                    currentBucket++;
-                    currentIndex = 0;
-                    return hashTable[currentBucket].get(currentIndex);
-                }
-            } else {
-
-                int lastPosition = hashTable[currentBucket].size();
-
-                if (currentIndex == lastPosition) {
-                    currentBucket++;
-                    currentIndex = 0;
-                    return hashTable[currentBucket].get(currentIndex);
-                }
-                return hashTable[currentBucket].get(currentIndex++);
-            }
-
-
-            if (currentBucket < lastBucket && currentIndex == lastPosition) {
-                currentBucket++;
-                currentIndex = 0;
-                if (currentBucket == lastBucket) {
-                    return hashTable[currentBucket].get(currentIndex);
-                } else if (hashTable[currentBucket] == null) {
-                    return hashTable[currentBucket++].get(currentIndex);
-                }
-                if (hashTable[currentBucket] == null) {
-                    return hashTable[currentBucket++].get(currentIndex);
-                } else {
-                    return hashTable[currentBucket++].get(currentIndex);
-                }
-            } else {
-                return hashTable[currentBucket].get(currentIndex++);
-            }
-        }
- */
-
-            //return hashTable[currentBucket].get(currentIndex++);
-
-
-            //Про итератор, в методе next:
-            //1. Переменные нужно объявить после проверки на !hasNext, до этого они не нужны
-            //2. Всё равно есть случаи, когда будет падать, тоже потестируйте
-            //3. В if и else сейчас один и тот же код. Либо ошибка, либо можно просто этот код написать.
-
-
+            return listIterator.next();
         }
     }
 }
-
