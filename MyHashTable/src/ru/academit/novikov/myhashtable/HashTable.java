@@ -201,6 +201,9 @@ public class HashTable<E> implements Collection<E> {
 
         @Override
         public E next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
             return listIterator.next();
         }
     }
