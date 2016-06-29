@@ -169,10 +169,11 @@ public class HashTable<E> implements Collection<E> {
         return new MyHashTablesIterator();
     }
 
-    private int bucketPosition;
-    private Iterator<E> listIterator;
-
     private class MyHashTablesIterator implements Iterator<E> {
+
+        private int bucketPosition;
+        private Iterator<E> listIterator;
+
         @Override
         public boolean hasNext() {
             boolean result = false;
