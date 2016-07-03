@@ -5,8 +5,8 @@ import ru.academit.novikov.vector.Vector;
 
 public class GaussMethod {
     private static final double EPSILON = 1e-10;
-    public Vector vector;
-    public Matrix matrix;
+    private Vector vector;
+    private Matrix matrix;
 
     public GaussMethod(Matrix matrix, Vector vector) {
         if (matrix.getRowsNumber() != vector.getSize()) {
@@ -14,13 +14,11 @@ public class GaussMethod {
         }
         this.vector = vector;
         this.matrix = matrix;
-        //betweenResult();
-        //result();
-        endResult();
+        //endResult();
     }
 
     //получение расширенной матрицы
-    public Matrix getExtendedMatrix() {
+    private Matrix getExtendedMatrix() {
         Matrix extendedMatrix = new Matrix(this.matrix.getRowsNumber(), this.matrix.getColumnsNumber() + 1);
         extendedMatrix.add(this.matrix);
         extendedMatrix.setVectorColumn(extendedMatrix.getColumnsNumber() - 1, this.vector);
@@ -38,7 +36,7 @@ public class GaussMethod {
     }
 
     //прямой ход. приведение к нижнетреугольному виду
-    public Matrix bottomTriangular() {
+    private Matrix bottomTriangular() {
         Matrix bottomTriangular = getExtendedMatrix();
         for (int i = 0; i < bottomTriangular.getRowsNumber() - 1; i++) {
             double diagonalComponent = bottomTriangular.getComponent(i, i);
@@ -51,7 +49,7 @@ public class GaussMethod {
     }
 
     //обратный ход - получение диагональной матрицы
-    public Matrix diagonalMatrix() {
+    private Matrix diagonalMatrix() {
         Matrix diagonalMatrix = bottomTriangular();
         for (int i = 0; i < diagonalMatrix.getRowsNumber(); i++) {
             if (Math.abs(diagonalMatrix.getComponent(i, i)) > EPSILON) {
@@ -72,35 +70,13 @@ public class GaussMethod {
     }
 
     //получение вектора решений
-    public Vector getVectorSolves() {
+    private Vector getVectorSolves() {
         Matrix matrix = diagonalMatrix();
         Vector vectorSolutions = new Vector(matrix.getRowsNumber());
         for (int i = 0; i < matrix.getRowsNumber(); i++) {
             vectorSolutions.setComponent(i, matrix.getComponent(i, matrix.getColumnsNumber() - 1));
         }
         return vectorSolutions;
-    }
-
-    public void betweenResult() {
-        Matrix extendedMatrix = getExtendedMatrix();
-        if (extendedMatrix.isMatrixContainZeroLineExceptLastElement()) {
-            System.out.println(EnumSolves.NO_SOLVES.getMessage());
-        } else if (extendedMatrix.isMatrixContainZeroLine()) {
-            System.out.println(EnumSolves.MANY_SOLVES.getMessage());
-        }
-    }
-
-    public void result() {
-        Matrix bottomTriangular = getExtendedMatrix();
-        if (bottomTriangular.isMatrixContainZeroLineExceptLastElement()) {
-            System.out.println(EnumSolves.NO_SOLVES.getMessage());
-        } else if (bottomTriangular.isMatrixContainZeroLine()) {
-            System.out.println(EnumSolves.MANY_SOLVES.getMessage());
-        } else {
-            System.out.println(EnumSolves.ONE_SOLVE.getMessage());
-            Vector vector = getVectorSolves();
-            System.out.println(vector.toString());
-        }
     }
 
     public void endResult() {
@@ -124,27 +100,3 @@ public class GaussMethod {
     }
 
 }
-
-    /*
-        public void result() {
-        Matrix extendedMatrix = getExtendedMatrix();
-        if (extendedMatrix.isMatrixContainZeroLineExceptLastElement()) {
-            System.out.println(EnumSolves.NO_SOLVES.getMessage());
-        } else if (extendedMatrix.isMatrixContainZeroLine()) {
-            System.out.println(EnumSolves.MANY_SOLVES.getMessage());
-        } else {
-            Matrix bottomTriangular = getExtendedMatrix();
-            if (bottomTriangular.isMatrixContainZeroLineExceptLastElement()) {
-                System.out.println(EnumSolves.NO_SOLVES.getMessage());
-            } else if (bottomTriangular.isMatrixContainZeroLine()) {
-                System.out.println(EnumSolves.MANY_SOLVES.getMessage());
-            } else {
-                System.out.println(EnumSolves.ONE_SOLVE.getMessage());
-                Vector vector = getVectorSolves();
-                System.out.println(vector.toString());
-            }
-        }
-    }
-     */
-
-

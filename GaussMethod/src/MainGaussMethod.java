@@ -14,6 +14,7 @@ public class MainGaussMethod {
         Matrix matrG = new Matrix(gaussM);
         Vector vecG = new Vector(gaussV);
         GaussMethod gauss = new GaussMethod(matrG, vecG);
+        gauss.endResult();
 
         double[][] gaussM2 = {
                 {0, 0},
@@ -24,6 +25,7 @@ public class MainGaussMethod {
         Matrix matrG2 = new Matrix(gaussM2);
         Vector vecG2 = new Vector(gaussV2);
         GaussMethod gauss2 = new GaussMethod(matrG2, vecG2);
+        gauss2.endResult();
 
         double[][] gaussM3 = {
                 {0, 0},
@@ -34,6 +36,7 @@ public class MainGaussMethod {
         Matrix matrG3 = new Matrix(gaussM3);
         Vector vecG3 = new Vector(gaussV3);
         GaussMethod gauss3 = new GaussMethod(matrG3, vecG3);
+        gauss3.endResult();
 
         double[][] gaussM4 = {
                 {1, 0},
@@ -44,7 +47,7 @@ public class MainGaussMethod {
         Matrix matrG4 = new Matrix(gaussM4);
         Vector vecG4 = new Vector(gaussV4);
         GaussMethod gauss4 = new GaussMethod(matrG4, vecG4);
-
+        gauss4.endResult();
 
     }
 
