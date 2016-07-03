@@ -9,7 +9,7 @@ public class MainMyHashTable {
 
         HashTable hashTable = new HashTable(5);
 
-        //hashTable.add("mom");
+        hashTable.add("mom");
         hashTable.add("ppp");
         hashTable.add("pop");
         hashTable.add("lol");
@@ -17,7 +17,7 @@ public class MainMyHashTable {
         hashTable.add("tot");
         hashTable.add("tok");
         hashTable.add("kot");
-        //hashTable.add("sos");
+        hashTable.add("sos");
         //pop, kok, ppp, sos, lol, tot, mom, tok, kot
         //pop, kok, ppp, lol, tot, tok, kot
         //System.out.println(hashTable.positionInMainArray("pop"));

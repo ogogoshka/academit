@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class Vector {
 
-    private final static double EPSILON = 0.0001;
+    private final static double EPSILON = 1e-10;
+    //private final static double EPSILON = 0.0001;
     private double[] components;
 
     public Vector() {
@@ -153,18 +154,18 @@ public class Vector {
         return v3.minus(v2);
     }
 
-    public boolean zeroElementsExceptLast() {
+    public boolean isAllZeroElementsExceptLast() {
         for (int i = 0; i < this.getSize() - 1; i++) {
-            if (this.components[i] > EPSILON) {
+            if (Math.abs(this.components[i]) > EPSILON) {
                 return false;
             }
         }
         return this.components[this.getSize() - 1] >= EPSILON;
     }
 
-    public boolean allZeroElements() {
+    public boolean isAllZeroElements() {
         for (int i = 0; i < this.getSize(); i++) {
-            if (this.components[i] > EPSILON) {
+            if (Math.abs(this.components[i]) > EPSILON) {
                 return false;
             }
         }

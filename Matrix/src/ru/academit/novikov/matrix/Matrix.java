@@ -218,4 +218,24 @@ public class Matrix {
         return this;
     }
 
+    //поиск хотя бы одной нулевой строки
+    public boolean isMatrixContainZeroLine() {
+        for (int i = 0; i < this.getRowsNumber(); i++) {
+            if (this.getVectorLine(i).isAllZeroElements()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //поиск хотя бы одной строки где все элементы НУЛИ кроме последнего элемента
+    public boolean isMatrixContainZeroLineExceptLastElement() {
+        for (int i = 0; i < this.getRowsNumber(); i++) {
+            if (this.getVectorLine(i).isAllZeroElementsExceptLast()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

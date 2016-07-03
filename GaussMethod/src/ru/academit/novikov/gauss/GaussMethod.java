@@ -14,6 +14,9 @@ public class GaussMethod {
         }
         this.vector = vector;
         this.matrix = matrix;
+        //betweenResult();
+        //result();
+        endResult();
     }
 
     //получение расширенной матрицы
@@ -21,7 +24,7 @@ public class GaussMethod {
         Matrix extendedMatrix = new Matrix(this.matrix.getRowsNumber(), this.matrix.getColumnsNumber() + 1);
         extendedMatrix.add(this.matrix);
         extendedMatrix.setVectorColumn(extendedMatrix.getColumnsNumber() - 1, this.vector);
-        //swap lines
+        //replace lines
         for (int i = 0; i < extendedMatrix.getRowsNumber(); i++) {
             int max = i;
             for (int j = i + 1; j < extendedMatrix.getRowsNumber(); j++) {
@@ -68,40 +71,6 @@ public class GaussMethod {
         return diagonalMatrix;
     }
 
-/*
-        //обратный ход - получение диагональной матрицы
-    public Matrix diagonalMatrix() {
-        Matrix diagonalMatrix = bottomTriangular();
-        for (int i = 0; i < diagonalMatrix.getRowsNumber() - 1; i++) {
-            double diagonalComponent = diagonalMatrix.getComponent(i, i);
-            if (Math.abs(diagonalComponent) > EPSILON) {
-                for (int j = i + 1; j < diagonalMatrix.getColumnsNumber() - 1; j++) {
-                    double k2 = diagonalMatrix.getComponent(j, i) / diagonalComponent;
-                    diagonalMatrix.setVectorLine(j, diagonalMatrix.getVectorLine(j).minus(diagonalMatrix.getVectorLine(i).multiplicationByScalar2(k2)));
-                }
-            }
-        }
-        return diagonalMatrix;
-        //return new Matrix(bottomTriangular());
-    }
-     */
-
-/*
-    //получение единиц у диагональной матрицы
-    public Matrix identityMatrix() {
-        Matrix identityMatrix = diagonalMatrix();
-        for (int i = 0; i < identityMatrix.getRowsNumber(); i++) {
-            if (Math.abs(identityMatrix.getComponent(i, i)) > EPSILON) {
-                double diagonalComponent = 1 / identityMatrix.getComponent(i, i);
-                identityMatrix.setVectorLine(i, identityMatrix.getVectorLine(i).multiplicationByScalar2(diagonalComponent));
-            }
-        }
-        //return new Matrix(diagonalMatrix());
-        return identityMatrix;
-    }
- */
-
-
     //получение вектора решений
     public Vector getVectorSolves() {
         Matrix matrix = diagonalMatrix();
@@ -109,84 +78,73 @@ public class GaussMethod {
         for (int i = 0; i < matrix.getRowsNumber(); i++) {
             vectorSolutions.setComponent(i, matrix.getComponent(i, matrix.getColumnsNumber() - 1));
         }
-        /*
-        System.out.println(EnumSolves.ONE_SOLVE);
-        for (int i = 0; i < vectorSolutions.getVectorLength(); i++) {
-        System.out.print(vectorSolutions.getComponent(i) + " ");
-        }
-         */
-        if (this.matrix == null && this.vector == null) {
-            System.out.println(EnumSolves.MANY_SOLVES.getMessage());
-            //EnumSolves solves = EnumSolves.MANY_SOLVES;
-            //EnumSolves solves = EnumSolves.MANY_SOLVES;
-            //System.out.println(solves.getMessage());
-            return null;
-        }
-        if (this.matrix == null) {
-            EnumSolves solves = EnumSolves.NO_SOLVES;
-            System.out.println(solves.getMessage());
-            return null;
-        }
-        System.out.println(EnumSolves.ONE_SOLVE.getMessage());
         return vectorSolutions;
     }
 
-    public void result() {
-        if (this.matrix == null && this.vector == null) {
+    public void betweenResult() {
+        Matrix extendedMatrix = getExtendedMatrix();
+        if (extendedMatrix.isMatrixContainZeroLineExceptLastElement()) {
+            System.out.println(EnumSolves.NO_SOLVES.getMessage());
+        } else if (extendedMatrix.isMatrixContainZeroLine()) {
             System.out.println(EnumSolves.MANY_SOLVES.getMessage());
-            //EnumSolves solves = EnumSolves.MANY_SOLVES;
-            //EnumSolves solves = EnumSolves.MANY_SOLVES;
-            //System.out.println(solves.getMessage());
-            return;
-        }
-        if (this.matrix == null) {
-            EnumSolves solves = EnumSolves.NO_SOLVES;
-            System.out.println(solves.getMessage());
-            return;
-        }
-        System.out.println(EnumSolves.ONE_SOLVE.getMessage());
-        //Vector solve = getVectorSolves();
-
-        //EnumSolves solves = EnumSolves.ONE_SOLVE;
-        //System.out.println(solves.getMessage());
-        for (int i = 0; i < getVectorSolves().getVectorLength(); i++) {
-            System.out.print(getVectorSolves().getComponent(i) + " ");
         }
     }
 
-
-
-
-    /*
-    //получение вектора решений
-    public Vector getVectorSolves() {
-        if (this.matrix == null && this.vector == null) {
-            return EnumSolves.MANY_SOLVES;
+    public void result() {
+        Matrix bottomTriangular = getExtendedMatrix();
+        if (bottomTriangular.isMatrixContainZeroLineExceptLastElement()) {
+            System.out.println(EnumSolves.NO_SOLVES.getMessage());
+        } else if (bottomTriangular.isMatrixContainZeroLine()) {
+            System.out.println(EnumSolves.MANY_SOLVES.getMessage());
+        } else {
+            System.out.println(EnumSolves.ONE_SOLVE.getMessage());
+            Vector vector = getVectorSolves();
+            System.out.println(vector.toString());
         }
-
-        if (this.matrix == null) {
-            return new EnumSolves.NO_SOLVES;
-        }
-
-        Matrix matrix = identityMatrix();
-        Vector vectorSolutions = new Vector(identityMatrix().getRowsNumber());
-        for (int i = 0; i < matrix.getRowsNumber(); i++) {
-            vectorSolutions.setComponent(i, matrix.getComponent(i, matrix.getColumnsNumber() - 1));
-        }
-        return new Vector(vectorSolutions);
     }
 
-    public Vector getSolve2(Matrix matrix2, Vector vector2) {
-        Vector v2 = new Vector(matrix2.getRowsNumber());
-        for (int i = 0; i < matrix2.getRowsNumber(); i++) {
-            v2.setComponent(i, matrix2.getComponent(i, matrix2.getColumnsNumber() - 1));
+    public void endResult() {
+        Matrix extendedMatrix = getExtendedMatrix();
+        if (extendedMatrix.isMatrixContainZeroLineExceptLastElement()) {
+            System.out.println(EnumSolves.NO_SOLVES.getMessage());
+        } else if (extendedMatrix.isMatrixContainZeroLine()) {
+            System.out.println(EnumSolves.MANY_SOLVES.getMessage());
+        } else {
+            Matrix bottomTriangular = bottomTriangular();
+            if (bottomTriangular.isMatrixContainZeroLineExceptLastElement()) {
+                System.out.println(EnumSolves.NO_SOLVES.getMessage());
+            } else if (bottomTriangular.isMatrixContainZeroLine()) {
+                System.out.println(EnumSolves.MANY_SOLVES.getMessage());
+            } else {
+                System.out.println(EnumSolves.ONE_SOLVE.getMessage());
+                Vector vector = getVectorSolves();
+                System.out.println(vector.toString());
+            }
         }
-        return new Vector(v2);
     }
-
-        public Vector nulevoiVector() {
-        return new Vector(this.matrix.getColumnsNumber() + 1);
-    }
- */
 
 }
+
+    /*
+        public void result() {
+        Matrix extendedMatrix = getExtendedMatrix();
+        if (extendedMatrix.isMatrixContainZeroLineExceptLastElement()) {
+            System.out.println(EnumSolves.NO_SOLVES.getMessage());
+        } else if (extendedMatrix.isMatrixContainZeroLine()) {
+            System.out.println(EnumSolves.MANY_SOLVES.getMessage());
+        } else {
+            Matrix bottomTriangular = getExtendedMatrix();
+            if (bottomTriangular.isMatrixContainZeroLineExceptLastElement()) {
+                System.out.println(EnumSolves.NO_SOLVES.getMessage());
+            } else if (bottomTriangular.isMatrixContainZeroLine()) {
+                System.out.println(EnumSolves.MANY_SOLVES.getMessage());
+            } else {
+                System.out.println(EnumSolves.ONE_SOLVE.getMessage());
+                Vector vector = getVectorSolves();
+                System.out.println(vector.toString());
+            }
+        }
+    }
+     */
+
+

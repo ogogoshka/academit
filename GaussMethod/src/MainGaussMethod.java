@@ -203,10 +203,10 @@ public class MainGaussMethod {
 
         double[] arr4 = {0, 0, 0, 3};
         Vector v3 = new Vector(2, arr4);
-        //v3.zeroElementsExceptLast();
-        System.out.println(v3.zeroElementsExceptLast());
+        //v3.isAllZeroElementsExceptLast();
+        System.out.println(v3.isAllZeroElementsExceptLast());
 
-        System.out.println(v3.allZeroElements());
+        System.out.println(v3.isAllZeroElements());
 
  */
 
@@ -265,6 +265,68 @@ public class MainGaussMethod {
             }
         }
  */
+
+
+        double[] arrayForVector1 = {0, 0, 0, -1, -1};
+        //double[] arrayForVector2 = {1, 2, -1, 5, 7};
+        //double[] arrayForVector3 = {1, 2, -1, 5, 7};
+        //double[] arrayForVector4 = {1, 2, -1, 5, 7};
+        //double[] arrayForVector5 = {1, 2, -1, 5, 7};
+
+        Vector vec1 = new Vector(arrayForVector1);
+        System.out.println(vec1.isAllZeroElements());
+        System.out.println(vec1.isAllZeroElementsExceptLast());
+
+        double[][] arrayForMatrix = {
+                {1, 4, 9, 11},
+                {0, 0, 0, -1},
+                {-1, 0, 0, 0}
+        };
+
+        Matrix matr1 = new Matrix(arrayForMatrix);
+        System.out.println(matr1.isMatrixContainZeroLine());
+
+        System.out.println(matr1.isMatrixContainZeroLineExceptLastElement());
+
+        double[][] gaussM = {
+                {1, 1},
+                {2, 2}
+        };
+        double[] gaussV = {2, 4};
+
+        Matrix matrG = new Matrix(gaussM);
+        Vector vecG = new Vector(gaussV);
+        GaussMethod gauss = new GaussMethod(matrG, vecG);
+
+        double[][] gaussM2 = {
+                {0, 0},
+                {2, 2}
+        };
+        double[] gaussV2 = {2, 4};
+
+        Matrix matrG2 = new Matrix(gaussM2);
+        Vector vecG2 = new Vector(gaussV2);
+        GaussMethod gauss2 = new GaussMethod(matrG2, vecG2);
+
+        double[][] gaussM3 = {
+                {0, 0},
+                {2, 2}
+        };
+        double[] gaussV3 = {0, 4};
+
+        Matrix matrG3 = new Matrix(gaussM3);
+        Vector vecG3 = new Vector(gaussV3);
+        GaussMethod gauss3 = new GaussMethod(matrG3, vecG3);
+
+        double[][] gaussM4 = {
+                {1, 0},
+                {2, 2}
+        };
+        double[] gaussV4 = {3, 4};
+
+        Matrix matrG4 = new Matrix(gaussM4);
+        Vector vecG4 = new Vector(gaussV4);
+        GaussMethod gauss4 = new GaussMethod(matrG4, vecG4);
 
 
     }
