@@ -86,17 +86,17 @@ public class GaussMethodSolver {
     public void solve() {
         Matrix extendedMatrix = getExtendedMatrix();
         if (isMatrixContainZeroLineExceptLastElement(extendedMatrix)) {
-            System.out.println(Solution.NO_SOLVES.getMessage());
+            System.out.println(Solution.NO_SOLUTION.getMessage());
         } else if (isMatrixContainZeroLine(extendedMatrix)) {
-            System.out.println(Solution.MANY_SOLVES.getMessage());
+            System.out.println(Solution.MANY_SOLUTIONS.getMessage());
         } else {
             Matrix bottomTriangular = bottomTriangular();
             if (isMatrixContainZeroLineExceptLastElement(bottomTriangular)) {
-                System.out.println(Solution.NO_SOLVES.getMessage());
+                System.out.println(Solution.NO_SOLUTION.getMessage());
             } else if (isMatrixContainZeroLine(bottomTriangular)) {
-                System.out.println(Solution.MANY_SOLVES.getMessage());
+                System.out.println(Solution.MANY_SOLUTIONS.getMessage());
             } else {
-                System.out.println(Solution.ONE_SOLVE.getMessage());
+                System.out.println(Solution.ONE_SOLUTION.getMessage());
                 Vector vector = getVectorSolution();
                 System.out.println(vector.toString());
             }
