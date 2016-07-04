@@ -120,13 +120,14 @@ public class GaussMethodSolver {
 
     public void solve() {
         //Matrix extendedMatrix = getExtendedMatrix();
-        Matrix extendedMatrix = getExtendedMatrix();
+        extendedMatrix = getExtendedMatrix();
         if (isMatrixContainZeroLineExceptLastElement(extendedMatrix)) {
             System.out.println(Solution.NO_SOLUTION.getMessage());
         } else if (isMatrixContainZeroLine(extendedMatrix)) {
             System.out.println(Solution.MANY_SOLUTIONS.getMessage());
         } else {
-            Matrix bottomTriangular = bottomTriangular();
+            //Matrix bottomTriangular = bottomTriangular();
+            bottomTriangular = bottomTriangular();
             if (isMatrixContainZeroLineExceptLastElement(bottomTriangular)) {
                 System.out.println(Solution.NO_SOLUTION.getMessage());
             } else if (isMatrixContainZeroLine(bottomTriangular)) {
