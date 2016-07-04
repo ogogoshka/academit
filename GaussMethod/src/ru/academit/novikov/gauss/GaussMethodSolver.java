@@ -7,6 +7,8 @@ public class GaussMethodSolver {
     private static final double EPSILON = 1e-10;
     private Vector vector;
     private Matrix matrix;
+    private Matrix extendedMatrix;
+    private Matrix bottomTriangular;
 
     public GaussMethodSolver(Matrix matrix, Vector vector) {
         if (matrix.getRowsNumber() != vector.getSize()) {
@@ -18,6 +20,24 @@ public class GaussMethodSolver {
     }
 
     //получение расширенной матрицы
+    private Matrix getExtendedMatrix() {
+        extendedMatrix = new Matrix(this.matrix.getRowsNumber(), this.matrix.getColumnsNumber() + 1);
+        extendedMatrix.add(this.matrix);
+        extendedMatrix.setVectorColumn(extendedMatrix.getColumnsNumber() - 1, this.vector);
+        //replace lines
+        for (int i = 0; i < extendedMatrix.getRowsNumber(); i++) {
+            int max = i;
+            for (int j = i + 1; j < extendedMatrix.getRowsNumber(); j++) {
+                if (Math.abs(extendedMatrix.getComponent(j, i)) > Math.abs(extendedMatrix.getComponent(i, i))) {
+                    max = j;
+                }
+                extendedMatrix.replaceLine(i, max);
+            }
+        }
+        return extendedMatrix;
+    }
+    /*
+        //получение расширенной матрицы
     private Matrix getExtendedMatrix() {
         Matrix extendedMatrix = new Matrix(this.matrix.getRowsNumber(), this.matrix.getColumnsNumber() + 1);
         extendedMatrix.add(this.matrix);
@@ -35,9 +55,24 @@ public class GaussMethodSolver {
         return extendedMatrix;
     }
 
-    //прямой ход. приведение к нижнетреугольному виду
+        //прямой ход. приведение к нижнетреугольному виду
     private Matrix bottomTriangular() {
         Matrix bottomTriangular = getExtendedMatrix();
+        for (int i = 0; i < bottomTriangular.getRowsNumber() - 1; i++) {
+            double diagonalComponent = bottomTriangular.getComponent(i, i);
+            for (int j = i + 1; j < bottomTriangular.getColumnsNumber() - 1; j++) {
+                double k = bottomTriangular.getComponent(j, i) / diagonalComponent;
+                bottomTriangular.setVectorLine(j, bottomTriangular.getVectorLine(j).minus(bottomTriangular.getVectorLine(i).multiplicationByScalar2(k)));
+            }
+        }
+        return bottomTriangular;
+    }
+     */
+
+
+    //прямой ход. приведение к нижнетреугольному виду
+    private Matrix bottomTriangular() {
+        bottomTriangular = getExtendedMatrix();
         for (int i = 0; i < bottomTriangular.getRowsNumber() - 1; i++) {
             double diagonalComponent = bottomTriangular.getComponent(i, i);
             for (int j = i + 1; j < bottomTriangular.getColumnsNumber() - 1; j++) {
@@ -84,13 +119,13 @@ public class GaussMethodSolver {
     }
 
     public void solve() {
-        Matrix extendedMatrix = getExtendedMatrix();
+        //Matrix extendedMatrix = getExtendedMatrix();
         if (isMatrixContainZeroLineExceptLastElement(extendedMatrix)) {
             System.out.println(Solution.NO_SOLUTION.getMessage());
         } else if (isMatrixContainZeroLine(extendedMatrix)) {
             System.out.println(Solution.MANY_SOLUTIONS.getMessage());
         } else {
-            Matrix bottomTriangular = bottomTriangular();
+            //Matrix bottomTriangular = bottomTriangular();
             if (isMatrixContainZeroLineExceptLastElement(bottomTriangular)) {
                 System.out.println(Solution.NO_SOLUTION.getMessage());
             } else if (isMatrixContainZeroLine(bottomTriangular)) {
