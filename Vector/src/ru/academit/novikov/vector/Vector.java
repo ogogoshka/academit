@@ -154,15 +154,6 @@ public class Vector {
         return v3.minus(v2);
     }
 
-    public boolean isAllZeroElementsExceptLast() {
-        for (int i = 0; i < this.getSize() - 1; i++) {
-            if (Math.abs(this.components[i]) > EPSILON) {
-                return false;
-            }
-        }
-        return this.components[this.getSize() - 1] >= EPSILON;
-    }
-
     public boolean isAllZeroElements() {
         for (int i = 0; i < this.getSize(); i++) {
             if (Math.abs(this.components[i]) > EPSILON) {
@@ -172,5 +163,15 @@ public class Vector {
         return true;
     }
 
+/*
+    public boolean isAllZeroElementsExceptLast() {
+        for (int i = 0; i < this.getSize() - 1; i++) {
+            if (Math.abs(this.components[i]) > EPSILON) {
+                return false;
+            }
+        }
+        return this.components[this.getSize() - 1] >= EPSILON;
+    }
+ */
 
 }
