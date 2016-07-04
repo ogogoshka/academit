@@ -144,6 +144,12 @@ public class GaussMethodSolver {
         }
     }
 
+
+    public static void printSolution(Vector vector) {
+        System.out.println(vector.toString());
+    }
+
+
     //поиск хотя бы одной нулевой строки
     public static boolean isMatrixContainZeroLine(Matrix matrix) {
         for (int i = 0; i < matrix.getRowsNumber(); i++) {
