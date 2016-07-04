@@ -7,8 +7,8 @@ public class Result {
     private Vector vectorSolution;
     private Solution numberOfSolution;
 
-    public Result() {
-
+    public Result(Solution numberOfSolution) {
+        this.numberOfSolution = numberOfSolution;
     }
 
 
