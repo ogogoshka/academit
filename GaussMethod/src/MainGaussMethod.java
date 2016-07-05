@@ -75,7 +75,7 @@ public class MainGaussMethod {
         System.out.println(GaussMethodSolver.isMatrixContainZeroLineExceptLastElement(mtest));
 
 
-        Result.printSolution(vecG4, Solution.ONE_SOLUTION);
+        Result.printSolution(vecG4, Solution.MANY_SOLUTIONS);
 
     }
 
