@@ -100,7 +100,6 @@ public class GaussMethodSolver {
                 return new Result(vector, Solution.ONE_SOLUTION);
             }
         }
-
     }
 
     public void solve() {
