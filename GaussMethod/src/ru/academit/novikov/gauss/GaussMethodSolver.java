@@ -85,19 +85,19 @@ public class GaussMethodSolver {
         return vectorSolutions;
     }
 
-    public Result solve() {
+    public ResultSystemOfLinearEquations solve() {
         if (isMatrixContainZeroLineExceptLastElement(getExtendedMatrix())) {
-            return new Result(Solution.NO_SOLUTION);
+            return new ResultSystemOfLinearEquations(NumberOfSolutions.NO_SOLUTION);
         } else if (isMatrixContainZeroLine(getExtendedMatrix())) {
-            return new Result(Solution.MANY_SOLUTIONS);
+            return new ResultSystemOfLinearEquations(NumberOfSolutions.MANY_SOLUTIONS);
         } else {
             if (isMatrixContainZeroLineExceptLastElement(bottomTriangular())) {
-                return new Result(Solution.NO_SOLUTION);
+                return new ResultSystemOfLinearEquations(NumberOfSolutions.NO_SOLUTION);
             } else if (isMatrixContainZeroLine(bottomTriangular())) {
-                return new Result(Solution.MANY_SOLUTIONS);
+                return new ResultSystemOfLinearEquations(NumberOfSolutions.MANY_SOLUTIONS);
             } else {
                 Vector vector = getVectorSolution();
-                return new Result(vector);
+                return new ResultSystemOfLinearEquations(vector);
             }
         }
     }
@@ -105,17 +105,17 @@ public class GaussMethodSolver {
     public void solve() {
         //extendedMatrix = getExtendedMatrix();
         if (isMatrixContainZeroLineExceptLastElement(getExtendedMatrix())) {
-            System.out.println(Solution.NO_SOLUTION.getMessage());
+            System.out.println(NumberOfSolutions.NO_SOLUTION.getMessage());
         } else if (isMatrixContainZeroLine(getExtendedMatrix())) {
-            System.out.println(Solution.MANY_SOLUTIONS.getMessage());
+            System.out.println(NumberOfSolutions.MANY_SOLUTIONS.getMessage());
         } else {
             //bottomTriangular = bottomTriangular();
             if (isMatrixContainZeroLineExceptLastElement(bottomTriangular())) {
-                System.out.println(Solution.NO_SOLUTION.getMessage());
+                System.out.println(NumberOfSolutions.NO_SOLUTION.getMessage());
             } else if (isMatrixContainZeroLine(bottomTriangular())) {
-                System.out.println(Solution.MANY_SOLUTIONS.getMessage());
+                System.out.println(NumberOfSolutions.MANY_SOLUTIONS.getMessage());
             } else {
-                System.out.println(Solution.ONE_SOLUTION.getMessage());
+                System.out.println(NumberOfSolutions.ONE_SOLUTION.getMessage());
                 Vector vector = getVectorSolution();
                 System.out.println(vector.toString());
             }
@@ -134,17 +134,34 @@ public class GaussMethodSolver {
         return false;
     }
 
-    //поиск хотя бы одной строки где все элементы НУЛИ кроме последнего элемента
+    /*
+        //поиск хотя бы одной строки где все элементы НУЛИ кроме последнего элемента
     public static boolean isMatrixContainZeroLineExceptLastElement(Matrix matrix) {
         //boolean bool = false;
         for (int i = 0; i < matrix.getRowsNumber(); i++) {
             for (int j = 0; j < matrix.getColumnsNumber() - 1; j++) {
                 if (Math.abs(matrix.getVectorLine(i).getComponent(j)) > EPSILON) {
                     //bool = false;
-                    break;
+                    //break;
+                    return false;
                 }
             }
             //if (Math.abs(matrix.getVectorLine(i).getComponent(matrix.getColumnsNumber())) >= EPSILON) {
+            if (Math.abs(matrix.getVectorLine(i).getComponent(matrix.getColumnsNumber() - 1)) >= EPSILON) {
+                return true;
+            }
+        }
+        return false;
+    }
+     */
+    //поиск хотя бы одной строки где все элементы НУЛИ кроме последнего элемента
+    public static boolean isMatrixContainZeroLineExceptLastElement(Matrix matrix) {
+        for (int i = 0; i < matrix.getRowsNumber(); i++) {
+            for (int j = 0; j < matrix.getColumnsNumber() - 1; j++) {
+                if (Math.abs(matrix.getVectorLine(i).getComponent(j)) > EPSILON) {
+                    return false;
+                }
+            }
             if (Math.abs(matrix.getVectorLine(i).getComponent(matrix.getColumnsNumber() - 1)) >= EPSILON) {
                 return true;
             }
@@ -158,17 +175,17 @@ public class GaussMethodSolver {
     public void solve() {
         extendedMatrix = getExtendedMatrix();
         if (isMatrixContainZeroLineExceptLastElement(extendedMatrix)) {
-            System.out.println(Solution.NO_SOLUTION.getMessage());
+            System.out.println(NumberOfSolutions.NO_SOLUTION.getMessage());
         } else if (isMatrixContainZeroLine(extendedMatrix)) {
-            System.out.println(Solution.MANY_SOLUTIONS.getMessage());
+            System.out.println(NumberOfSolutions.MANY_SOLUTIONS.getMessage());
         } else {
             bottomTriangular = bottomTriangular();
             if (isMatrixContainZeroLineExceptLastElement(bottomTriangular)) {
-                System.out.println(Solution.NO_SOLUTION.getMessage());
+                System.out.println(NumberOfSolutions.NO_SOLUTION.getMessage());
             } else if (isMatrixContainZeroLine(bottomTriangular)) {
-                System.out.println(Solution.MANY_SOLUTIONS.getMessage());
+                System.out.println(NumberOfSolutions.MANY_SOLUTIONS.getMessage());
             } else {
-                System.out.println(Solution.ONE_SOLUTION.getMessage());
+                System.out.println(NumberOfSolutions.ONE_SOLUTION.getMessage());
                 Vector vector = getVectorSolution();
                 System.out.println(vector.toString());
             }

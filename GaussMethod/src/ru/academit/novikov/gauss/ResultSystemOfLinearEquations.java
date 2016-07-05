@@ -2,26 +2,26 @@ package ru.academit.novikov.gauss;
 
 import ru.academit.novikov.vector.Vector;
 
-import static ru.academit.novikov.gauss.Solution.ONE_SOLUTION;
+import static ru.academit.novikov.gauss.NumberOfSolutions.ONE_SOLUTION;
 
-public class Result {
+public class ResultSystemOfLinearEquations {
 
     private Vector vectorSolution;
-    private Solution numberOfSolutions;
+    private NumberOfSolutions numberOfSolutions;
 
-    public Result(Solution numberOfSolutions) {
-        if (numberOfSolutions == Solution.ONE_SOLUTION) {
+    public ResultSystemOfLinearEquations(NumberOfSolutions numberOfSolutions) {
+        if (this.numberOfSolutions == NumberOfSolutions.ONE_SOLUTION) {
             throw new IllegalArgumentException();
         }
         this.numberOfSolutions = numberOfSolutions;
     }
 
-    public Result(Vector vectorSolution) {
+    public ResultSystemOfLinearEquations(Vector vectorSolution) {
         this.vectorSolution = vectorSolution;
-        this.numberOfSolutions = Solution.ONE_SOLUTION;
+        this.numberOfSolutions = NumberOfSolutions.ONE_SOLUTION;
     }
 
-    public Solution getNumberOfSolutions() {
+    public NumberOfSolutions getNumberOfSolutions() {
         return numberOfSolutions;
     }
 
@@ -29,7 +29,7 @@ public class Result {
         return vectorSolution;
     }
 
-    public void printSolution2(Vector vector, Solution solution) {
+    public void printSolution2(Vector vector, NumberOfSolutions solution) {
         if (solution == ONE_SOLUTION) {
             System.out.println(solution.getMessage());
             System.out.println(vector.toString());
@@ -38,7 +38,7 @@ public class Result {
         }
     }
 
-    public static void printSolution(Vector vector, Solution solution) {
+    public static void printSolution(Vector vector, NumberOfSolutions solution) {
         if (solution == ONE_SOLUTION) {
             System.out.println(solution.getMessage());
             System.out.println(vector.toString());
