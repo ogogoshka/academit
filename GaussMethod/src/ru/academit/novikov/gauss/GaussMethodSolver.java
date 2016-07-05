@@ -85,6 +85,24 @@ public class GaussMethodSolver {
         return vectorSolutions;
     }
 
+    public Result solve2() {
+        if (isMatrixContainZeroLineExceptLastElement(getExtendedMatrix())) {
+            return new Result(Solution.NO_SOLUTION);
+        } else if (isMatrixContainZeroLine(getExtendedMatrix())) {
+            return new Result(Solution.MANY_SOLUTIONS);
+        } else {
+            if (isMatrixContainZeroLineExceptLastElement(bottomTriangular())) {
+                return new Result(Solution.NO_SOLUTION);
+            } else if (isMatrixContainZeroLine(bottomTriangular())) {
+                return new Result(Solution.MANY_SOLUTIONS);
+            } else {
+                Vector vector = getVectorSolution();
+                return new Result(vector, Solution.ONE_SOLUTION);
+            }
+        }
+
+    }
+
     public void solve() {
         //extendedMatrix = getExtendedMatrix();
         if (isMatrixContainZeroLineExceptLastElement(getExtendedMatrix())) {

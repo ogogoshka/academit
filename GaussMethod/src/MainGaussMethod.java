@@ -76,7 +76,7 @@ public class MainGaussMethod {
 
 
         Result.printSolution(vecG4, Solution.MANY_SOLUTIONS);
-
+        gauss4.solve2();
     }
 
 }

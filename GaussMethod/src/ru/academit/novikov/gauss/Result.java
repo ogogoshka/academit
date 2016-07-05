@@ -7,6 +7,10 @@ public class Result {
     private Vector vectorSolution;
     private Solution numberOfSolutions;
 
+    public Result(Solution numberOfSolutions) {
+        this.numberOfSolutions = numberOfSolutions;
+    }
+
     public Result(Vector vectorSolution, Solution numberOfSolutions) {
         this.vectorSolution = vectorSolution;
         this.numberOfSolutions = numberOfSolutions;
