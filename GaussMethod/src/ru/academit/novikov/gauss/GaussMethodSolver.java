@@ -156,13 +156,17 @@ public class GaussMethodSolver {
      */
     //поиск хотя бы одной строки где все элементы НУЛИ кроме последнего элемента
     public static boolean isMatrixContainZeroLineExceptLastElement(Matrix matrix) {
+        int count = 0;
         for (int i = 0; i < matrix.getRowsNumber(); i++) {
             for (int j = 0; j < matrix.getColumnsNumber() - 1; j++) {
                 if (Math.abs(matrix.getVectorLine(i).getComponent(j)) > EPSILON) {
-                    return false;
+                    count = 0;
+                } else {
+                    count++;
                 }
             }
-            if (Math.abs(matrix.getVectorLine(i).getComponent(matrix.getColumnsNumber() - 1)) >= EPSILON) {
+            if (Math.abs(matrix.getVectorLine(i).getComponent(matrix.getColumnsNumber() - 1)) >= EPSILON &&
+                    count == matrix.getColumnsNumber() - 1) {
                 return true;
             }
         }

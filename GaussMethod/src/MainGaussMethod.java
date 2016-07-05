@@ -5,6 +5,7 @@ import ru.academit.novikov.vector.Vector;
 public class MainGaussMethod {
     public static void main(String[] args) {
 
+
         double[][] gaussM = {
                 {1, 1},
                 {2, 2}
@@ -63,7 +64,7 @@ public class MainGaussMethod {
 
         double[][] test = {
                 {0, 1, 1},
-                {0, 1, 1},
+                {0, 0, 1},
                 {2, 1, 0}
         };
 
@@ -72,7 +73,35 @@ public class MainGaussMethod {
         //System.out.println(GaussMethodSolver.isMatrixContainZeroLine(mtest));
         System.out.println(GaussMethodSolver.isMatrixContainZeroLineExceptLastElement(mtest));
 
+        final double EPSILON = 1e-10;
+        Matrix matrix = new Matrix(test);
 
+        //boolean bool = false;
+        int count = 0;
+        //поиск хотя бы одной строки где все элементы НУЛИ кроме последнего элемента
+        //public static boolean isMatrixContainZeroLineExceptLastElement(Matrix matrix) {
+        for (int i = 0; i < matrix.getRowsNumber(); i++) {
+            for (int j = 0; j < matrix.getColumnsNumber() - 1; j++) {
+                if (Math.abs(matrix.getVectorLine(i).getComponent(j)) > EPSILON) {
+                    count = 0;
+                    //return false;
+                } else {
+                    count++;
+                }
+            }
+            if (Math.abs(matrix.getVectorLine(i).getComponent(matrix.getColumnsNumber() - 1)) >= EPSILON &&
+                    count == matrix.getColumnsNumber() - 1) {
+                //return true;
+                boolean bool = true;
+                System.out.println(true);
+            } else {
+                boolean bool = false;
+                System.out.println(false);
+            }
+        }
+        //return false;
+        //}
+        //System.out.println(bool);
 
     }
 

@@ -11,7 +11,7 @@ public class ResultSystemOfLinearEquations {
 
     public ResultSystemOfLinearEquations(NumberOfSolutions numberOfSolutions) {
         if (this.numberOfSolutions == NumberOfSolutions.ONE_SOLUTION) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("данная СЛАУ или не имеет решений, или имеет множество решений");
         }
         this.numberOfSolutions = numberOfSolutions;
     }
