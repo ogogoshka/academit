@@ -17,41 +17,8 @@ public class GaussMethodSolver {
         }
         this.vector = vector;
         this.matrix = matrix;
-        //solve();
     }
 
-    /*
-        //получение расширенной матрицы
-    private Matrix getExtendedMatrix() {
-        Matrix extendedMatrix = new Matrix(this.matrix.getRowsNumber(), this.matrix.getColumnsNumber() + 1);
-        extendedMatrix.add(this.matrix);
-        extendedMatrix.setVectorColumn(extendedMatrix.getColumnsNumber() - 1, this.vector);
-        //replace lines
-        for (int i = 0; i < extendedMatrix.getRowsNumber(); i++) {
-            int max = i;
-            for (int j = i + 1; j < extendedMatrix.getRowsNumber(); j++) {
-                if (Math.abs(extendedMatrix.getComponent(j, i)) > Math.abs(extendedMatrix.getComponent(i, i))) {
-                    max = j;
-                }
-                extendedMatrix.replaceLine(i, max);
-            }
-        }
-        return extendedMatrix;
-    }
-
-    //прямой ход. приведение к нижнетреугольному виду
-    private Matrix bottomTriangular() {
-        Matrix bottomTriangular = getExtendedMatrix();
-        for (int i = 0; i < bottomTriangular.getRowsNumber() - 1; i++) {
-            double diagonalComponent = bottomTriangular.getComponent(i, i);
-            for (int j = i + 1; j < bottomTriangular.getColumnsNumber() - 1; j++) {
-                double k = bottomTriangular.getComponent(j, i) / diagonalComponent;
-                bottomTriangular.setVectorLine(j, bottomTriangular.getVectorLine(j).minus(bottomTriangular.getVectorLine(i).multiplicationByScalar2(k)));
-            }
-        }
-        return bottomTriangular;
-    }
-     */
     //получение расширенной матрицы
     private Matrix getExtendedMatrix() {
         if (extendedMatrix == null) {
@@ -118,19 +85,13 @@ public class GaussMethodSolver {
         return vectorSolutions;
     }
 
-    public void solve2() {
-
-    }
-
     public void solve() {
-        //Matrix extendedMatrix = getExtendedMatrix();
         extendedMatrix = getExtendedMatrix();
         if (isMatrixContainZeroLineExceptLastElement(extendedMatrix)) {
             System.out.println(Solution.NO_SOLUTION.getMessage());
         } else if (isMatrixContainZeroLine(extendedMatrix)) {
             System.out.println(Solution.MANY_SOLUTIONS.getMessage());
         } else {
-            //Matrix bottomTriangular = bottomTriangular();
             bottomTriangular = bottomTriangular();
             if (isMatrixContainZeroLineExceptLastElement(bottomTriangular)) {
                 System.out.println(Solution.NO_SOLUTION.getMessage());
@@ -143,12 +104,6 @@ public class GaussMethodSolver {
             }
         }
     }
-
-
-    public static void printSolution(Vector vector) {
-        System.out.println(vector.toString());
-    }
-
 
     //поиск хотя бы одной нулевой строки
     public static boolean isMatrixContainZeroLine(Matrix matrix) {
