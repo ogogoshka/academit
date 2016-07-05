@@ -1,6 +1,4 @@
 import ru.academit.novikov.gauss.GaussMethodSolver;
-import ru.academit.novikov.gauss.Result;
-import ru.academit.novikov.gauss.Solution;
 import ru.academit.novikov.matrix.Matrix;
 import ru.academit.novikov.vector.Vector;
 
@@ -64,21 +62,16 @@ public class MainGaussMethod {
         System.out.println(m1.toString());
 
         double[][] test = {
-                {0, 0, 3},
-                {0, 5, 0},
+                {0, 1, 1},
+                {0, 1, 1},
                 {2, 1, 0}
         };
 
         Matrix mtest = new Matrix(test);
 
-        System.out.println(GaussMethodSolver.isMatrixContainZeroLine(mtest));
+        //System.out.println(GaussMethodSolver.isMatrixContainZeroLine(mtest));
         System.out.println(GaussMethodSolver.isMatrixContainZeroLineExceptLastElement(mtest));
 
-
-        Result.printSolution(vecG4, Solution.MANY_SOLUTIONS);
-        gauss4.solve2();
-
-        Result res4 = gauss4.solve2();
 
 
     }
