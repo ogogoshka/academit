@@ -86,16 +86,16 @@ public class GaussMethodSolver {
     }
 
     public void solve() {
-        extendedMatrix = getExtendedMatrix();
-        if (isMatrixContainZeroLineExceptLastElement(extendedMatrix)) {
+        //extendedMatrix = getExtendedMatrix();
+        if (isMatrixContainZeroLineExceptLastElement(getExtendedMatrix())) {
             System.out.println(Solution.NO_SOLUTION.getMessage());
-        } else if (isMatrixContainZeroLine(extendedMatrix)) {
+        } else if (isMatrixContainZeroLine(getExtendedMatrix())) {
             System.out.println(Solution.MANY_SOLUTIONS.getMessage());
         } else {
-            bottomTriangular = bottomTriangular();
-            if (isMatrixContainZeroLineExceptLastElement(bottomTriangular)) {
+            //bottomTriangular = bottomTriangular();
+            if (isMatrixContainZeroLineExceptLastElement(bottomTriangular())) {
                 System.out.println(Solution.NO_SOLUTION.getMessage());
-            } else if (isMatrixContainZeroLine(bottomTriangular)) {
+            } else if (isMatrixContainZeroLine(bottomTriangular())) {
                 System.out.println(Solution.MANY_SOLUTIONS.getMessage());
             } else {
                 System.out.println(Solution.ONE_SOLUTION.getMessage());
@@ -131,3 +131,25 @@ public class GaussMethodSolver {
     }
 
 }
+
+/*
+    public void solve() {
+        extendedMatrix = getExtendedMatrix();
+        if (isMatrixContainZeroLineExceptLastElement(extendedMatrix)) {
+            System.out.println(Solution.NO_SOLUTION.getMessage());
+        } else if (isMatrixContainZeroLine(extendedMatrix)) {
+            System.out.println(Solution.MANY_SOLUTIONS.getMessage());
+        } else {
+            bottomTriangular = bottomTriangular();
+            if (isMatrixContainZeroLineExceptLastElement(bottomTriangular)) {
+                System.out.println(Solution.NO_SOLUTION.getMessage());
+            } else if (isMatrixContainZeroLine(bottomTriangular)) {
+                System.out.println(Solution.MANY_SOLUTIONS.getMessage());
+            } else {
+                System.out.println(Solution.ONE_SOLUTION.getMessage());
+                Vector vector = getVectorSolution();
+                System.out.println(vector.toString());
+            }
+        }
+    }
+ */
