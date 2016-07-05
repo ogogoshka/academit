@@ -5,16 +5,15 @@ import ru.academit.novikov.vector.Vector;
 public class Result {
 
     private Vector vectorSolution;
-    private Solution numberOfSolution;
+    private static Solution numberOfSolutions;
 
-    public Result(Solution numberOfSolution, Vector vectorSolution) {
-        this.vectorSolution = vectorSolution;
-        this.numberOfSolution = numberOfSolution;
+    public Result() {
+
     }
 
 
-    public Solution getNumberOfSolution() {
-        return numberOfSolution;
+    public Solution getNumberOfSolutions() {
+        return numberOfSolutions;
     }
 
     public Vector getVectorSolution() {
@@ -22,6 +21,10 @@ public class Result {
     }
 
     public static void printSolution(Vector vector) {
-        System.out.println(vector.toString());
+        if (numberOfSolutions == Solution.ONE_SOLUTION) {
+            System.out.println(Solution.ONE_SOLUTION.getMessage());
+            System.out.println(vector.toString());
+        }
+        System.out.println(numberOfSolutions.getMessage());
     }
 }
