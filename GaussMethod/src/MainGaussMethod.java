@@ -1,4 +1,6 @@
 import ru.academit.novikov.gauss.GaussMethodSolver;
+import ru.academit.novikov.gauss.Result;
+import ru.academit.novikov.gauss.Solution;
 import ru.academit.novikov.matrix.Matrix;
 import ru.academit.novikov.vector.Vector;
 
@@ -71,6 +73,9 @@ public class MainGaussMethod {
 
         System.out.println(GaussMethodSolver.isMatrixContainZeroLine(mtest));
         System.out.println(GaussMethodSolver.isMatrixContainZeroLineExceptLastElement(mtest));
+
+
+        Result.printSolution(vecG4, Solution.ONE_SOLUTION);
 
     }
 
