@@ -29,21 +29,12 @@ public class ResultSystemOfLinearEquations {
         return vectorSolution;
     }
 
-    public void printSolution2(Vector vector, NumberOfSolutions solution) {
-        if (solution == ONE_SOLUTION) {
-            System.out.println(solution.getMessage());
-            System.out.println(vector.toString());
+    public void printSolution() {
+        if (numberOfSolutions == ONE_SOLUTION) {
+            System.out.println(numberOfSolutions.getMessage());
+            System.out.println(vectorSolution.toString());
         } else {
-            System.out.println(solution.getMessage());
-        }
-    }
-
-    public static void printSolution(Vector vector, NumberOfSolutions solution) {
-        if (solution == ONE_SOLUTION) {
-            System.out.println(solution.getMessage());
-            System.out.println(vector.toString());
-        } else {
-            System.out.println(solution.getMessage());
+            System.out.println(numberOfSolutions.getMessage());
         }
     }
 }
