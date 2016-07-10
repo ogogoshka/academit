@@ -175,6 +175,41 @@ public class HashTable<E> implements Collection<E> {
         private Iterator<E> listIterator;
 
         @Override
+        public boolean hasNext() {
+            if (bucketPosition >= hashTable.length) {
+                return false;
+            }
+
+            while (bucketPosition < hashTable.length) {
+                if (hashTable[bucketPosition] == null) {
+                    bucketPosition++;
+                    continue;
+                }
+
+                if (listIterator == null) {
+                    listIterator = hashTable[bucketPosition].iterator();
+                }
+
+                if (listIterator.hasNext()) {
+                    return true;
+                } else {
+                    listIterator = null;
+                    bucketPosition++;
+                }
+            }
+            return false;
+        }
+
+        @Override
+        public E next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException("the end");
+            }
+            return listIterator.next();
+        }
+    }
+}
+
         /*
                 public boolean hasNext() {
 
@@ -203,36 +238,3 @@ public class HashTable<E> implements Collection<E> {
             return result;
         }
          */
-        public boolean hasNext() {
-            if (bucketPosition >= hashTable.length) {
-                return false;
-            }
-
-            while (bucketPosition < hashTable.length) {
-                if (hashTable[bucketPosition] == null) {
-                    bucketPosition++;
-                    continue;
-                }
-
-                if (listIterator == null) {
-                    listIterator = hashTable[bucketPosition].iterator();
-                    if (listIterator.hasNext()) {
-                        return true;
-                    } else {
-                        listIterator = null;
-                        bucketPosition++;
-                    }
-                }
-            }
-            return false;
-        }
-
-        @Override
-        public E next() {
-            if (!hasNext()) {
-                throw new NoSuchElementException("the end");
-            }
-            return listIterator.next();
-        }
-    }
-}
