@@ -11,7 +11,7 @@ public class ResultSystemOfLinearEquations {
 
     public ResultSystemOfLinearEquations(NumberOfSolutions numberOfSolutions) {
         if (this.numberOfSolutions == NumberOfSolutions.ONE_SOLUTION) {
-            throw new IllegalArgumentException("данная СЛАУ или не имеет решений, или имеет множество решений");
+            throw new IllegalArgumentException("В этом конструкторе нельзя использовать значение ONE_SOLUTION, используйте конструктор, принимающий Vector");
         }
         this.numberOfSolutions = numberOfSolutions;
     }
