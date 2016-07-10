@@ -18,10 +18,6 @@ public class HashTable<E> implements Collection<E> {
         this.hashTable = new ArrayList[sizeOfTable];
     }
 
-    public int getLength() {
-        return hashTable.length;
-    }
-
     public int positionInMainArray(Object o) {
         return Math.abs(o.hashCode()) % hashTable.length;
     }
@@ -179,7 +175,8 @@ public class HashTable<E> implements Collection<E> {
         private Iterator<E> listIterator;
 
         @Override
-        public boolean hasNext() {
+        /*
+                public boolean hasNext() {
 
             boolean result = false;
 
@@ -204,6 +201,30 @@ public class HashTable<E> implements Collection<E> {
                 }
             }
             return result;
+        }
+         */
+        public boolean hasNext() {
+            if (bucketPosition >= hashTable.length) {
+                return false;
+            }
+
+            while (bucketPosition < hashTable.length) {
+                if (hashTable[bucketPosition] == null) {
+                    bucketPosition++;
+                    continue;
+                }
+
+                if (listIterator == null) {
+                    listIterator = hashTable[bucketPosition].iterator();
+                    if (listIterator.hasNext()) {
+                        return true;
+                    } else {
+                        listIterator = null;
+                        bucketPosition++;
+                    }
+                }
+            }
+            return false;
         }
 
         @Override
