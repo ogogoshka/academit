@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Lambda {
     public static void main(String[] args) {
 
         Person p1 = new Person("Alex", 11);
-        Person p2 = new Person("Alex", 22);
+        Person p2 = new Person("Alex", 23);
         Person p3 = new Person("Max", 17);
         Person p4 = new Person("Mike", 33);
         Person p5 = new Person("John", 22);
@@ -45,6 +46,11 @@ public class Lambda {
                         person2.getAge()))
                 .map(person -> person.getName())
                 .forEach(person -> System.out.println(person));
+
+        //Г) при помощи группировки получить Map, в котором ключи – имена, а значения – средний возраст
+
+        Map<Integer, List<Person>> personsByAge = personList.stream().collect(Collectors.groupingBy(p -> p.getAge()));
+        System.out.println(personsByAge.toString());
 
 
     }
