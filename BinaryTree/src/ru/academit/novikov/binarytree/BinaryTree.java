@@ -11,6 +11,28 @@ public class BinaryTree {
     //return root == null;
     //}
 
+    private boolean search(BinaryTreeNode node, int x) {
+        boolean isFound = false;
+
+        while (node != null && !isFound) {
+            if (node.getValue() > x) {
+                node = node.leftChild;
+            } else if (node.getValue() < x) {
+                node = node.rightChild;
+            } else {
+                //isFound = true;
+                return true;
+            }
+            isFound = search(node, x);
+        }
+        return isFound;
+    }
+
+    public boolean search(int x) {
+        return search(root, x);
+    }
+
+
     private BinaryTreeNode add(BinaryTreeNode node, int x) {
         if (node == null) {
             node = new BinaryTreeNode(x);
@@ -23,29 +45,12 @@ public class BinaryTree {
     }
 
     public void add(int value) {
+        if (root == null) {
+            root = new BinaryTreeNode(value);
+        }
         root = add(root, value);
     }
 
-    private boolean search(BinaryTreeNode node, int x) {
-        boolean isFound = false;
-
-        while (node != null && !isFound) {
-            if (node.getValue() > x) {
-                node = node.leftChild;
-            } else if (node.getValue() < x) {
-                node = node.rightChild;
-            } else {
-                isFound = true;
-                break;
-            }
-            isFound = search(node, x);
-        }
-        return isFound;
-    }
-
-    public boolean search(int x) {
-        return search(root, x);
-    }
 
     private BinaryTreeNode min(BinaryTreeNode node) {
         if (node.leftChild == null) {

@@ -6,8 +6,6 @@ public class BinaryTreeNode {
     private int value;
 
     public BinaryTreeNode(int value) {
-        leftChild = null;
-        rightChild = null;
         this.value = value;
     }
 
