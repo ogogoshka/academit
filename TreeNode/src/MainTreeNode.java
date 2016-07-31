@@ -25,10 +25,10 @@ public class MainTreeNode {
 
         //BreadthFirstSearch i = new BreadthFirstSearch();
         System.out.println("Breadth First Search : ");
-        BreadthFirstSearch.breadthFirstSearch(root);
+        BreadthFirstSearch.visit(root);
 
         System.out.println();
-        //breadthFirstSearch(root);
+        //visit(root);
 
 
         TreeNode r2 = new TreeNode(20);
@@ -41,7 +41,7 @@ public class MainTreeNode {
         TreeNode root2 = new TreeNode(5, new TreeNode[]{r8, r9});
 
         System.out.println("Breadth First Search : ");
-        BreadthFirstSearch.breadthFirstSearch(root2);
+        BreadthFirstSearch.visit(root2);
         System.out.println();
 
         System.out.println("Depth First Search : ");

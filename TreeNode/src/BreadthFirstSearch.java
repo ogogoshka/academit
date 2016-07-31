@@ -4,7 +4,7 @@ import java.util.Queue;
 
 public class BreadthFirstSearch {
 
-    public static void breadthFirstSearch(TreeNode root) {
+    public static void visit(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<>();
         if (root != null) {
             queue.add(root);
