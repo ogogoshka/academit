@@ -1,5 +1,12 @@
 public class DepthFirstSearch {
 
+    public static void visit(TreeNode node) {
+        System.out.print(node.getValue() + " ");
+        for (int i = 0; i < node.childrenArray.length; i++) {
+            visit(node.childrenArray[i]);
+        }
+    }
+
 /*
     public static boolean depthFirstSearch(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<>();
@@ -17,7 +24,6 @@ public class DepthFirstSearch {
         return false;
     }
  */
-
 
 
 }
