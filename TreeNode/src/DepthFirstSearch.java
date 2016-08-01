@@ -6,10 +6,9 @@ public class DepthFirstSearch {
         if (node == null) {
             throw new NoSuchElementException("дерево пустое");
         }
-
         System.out.print(node.getValue() + " ");
-        for (int i = 0; i < node.childrenArray.length; i++) {
-            visit(node.childrenArray[i]);
+        for (TreeNode child : node.childrenArray) {
+            visit(child);
         }
     }
 
