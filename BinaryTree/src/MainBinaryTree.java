@@ -16,6 +16,9 @@ public class MainBinaryTree {
         binaryTree.add(33);
 
         System.out.println(binaryTree.search(33));
+        BinaryTree.printFindMin(binaryTree);
+        BinaryTree.printMin(binaryTree);
+
 
         bst.add(5);
         bst.add(2);
@@ -28,6 +31,23 @@ public class MainBinaryTree {
 
         bst.delete(5);
         System.out.println(bst.search(5));
+
+
+
+        BinaryTree bst3 = new BinaryTree();
+        bst3.insert(5);
+        bst3.insert(2);
+        bst3.insert(18);
+        bst3.insert(-4);
+        bst3.insert(3);
+
+        System.out.println(bst3.search(33));
+        System.out.println(bst3.search(5));
+        BinaryTree.printFindMin(bst3);
+
+
+        //System.out.println(bst3.delete(5));
+        //System.out.println(bst3.search(5));
 
     }
 }

@@ -33,6 +33,26 @@ public class BinaryTree {
     }
 
 
+    public void insert(int data) {
+        root = insert(root, data);
+    }
+
+    private BinaryTreeNode insert(BinaryTreeNode current, int data) {
+        if (current == null) {
+            current = new BinaryTreeNode(data);
+            //current.setValue(data);
+            current.setLeftChild(null);
+            current.setRightChild(null);
+            //current.setParent(parent);
+        } else if (data < current.getValue()) {
+            current.setLeftChild(insert(current.getLeft(), data));
+        } else {
+            current.setRightChild(insert(current.getRight(), data));
+        }
+        return current;
+    }
+
+
     private BinaryTreeNode add(BinaryTreeNode node, int x) {
         if (node == null) {
             node = new BinaryTreeNode(x);
@@ -51,6 +71,23 @@ public class BinaryTree {
         root = add(root, value);
     }
 
+
+    public BinaryTreeNode findMin() {
+        BinaryTreeNode min = root;
+        if (min == null) return null;
+        while (min.leftChild != null) {
+            min = min.leftChild;
+        }
+        return min;
+    }
+
+    public static void printFindMin(BinaryTree tree) {
+        System.out.println("nodeMin = " + tree.findMin().getValue());
+    }
+
+    public static void printMin(BinaryTree tree) {
+        //System.out.println("nodeMin = " + tree.min(node).getValue());
+    }
 
     private BinaryTreeNode min(BinaryTreeNode node) {
         if (node.leftChild == null) {
@@ -91,5 +128,8 @@ public class BinaryTree {
     public BinaryTreeNode delete(int x) {
         return delete(root, x);
     }
+
+
+
 
 }
