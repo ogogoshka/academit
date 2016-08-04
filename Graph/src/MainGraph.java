@@ -51,7 +51,7 @@ public class MainGraph {
         System.out.println("несвязный граф");
         Graph G9 = new Graph(arrayGraph3);
         G9.breadthFirstSearch();
-
+        System.out.println("\n");
 
         Graph G4 = new Graph(arrayGraph4);
         System.out.println();
@@ -60,6 +60,14 @@ public class MainGraph {
         System.out.println("\n");
         System.out.println("depthFirstSearch-G4");
         G4.depthFirstSearch(0);
+        System.out.println("\n");
 
+        Graph Gbig = new Graph(arrayGraph);
+        System.out.println();
+        System.out.println("breadthFirstSearch-Gbig");
+        Gbig.breadthFirstSearch();
+        System.out.println("\n");
+        System.out.println("depthFirstSearch-Gbig");
+        Gbig.depthFirstSearch(0);
     }
 }
