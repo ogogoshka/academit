@@ -8,9 +8,6 @@ public class Graph {
     private Queue<Integer> queue = new LinkedList<>();
     private Set<Integer> setOfVertices = new HashSet<>();
 
-    public Graph() {
-    }
-
     public Graph(int[][] array) {
         numbersOfVertices = array.length;
         adjacentMatrix = new int[numbersOfVertices][numbersOfVertices];
@@ -50,64 +47,5 @@ public class Graph {
             }
         }
     }
+
 }
-/*
-        for (int j = 0; j < numbersOfVertices; j++) {
-            if (adjacentMatrix[rootNode][j] == 1 && !setOfVertices.contains(j)) {
-                setOfVertices.add(j);
-                System.out.print(j + " ");
-                depthFirstSearch(j);
-            }
-        }
-
-
-        while (rootNode < numbersOfVertices) {
-            for (int j = 0; j < numbersOfVertices; j++) {
-                if (adjacentMatrix[rootNode][j] == 1 && !setOfVertices.contains(j)) {
-                    setOfVertices.add(j);
-                    System.out.print(j + " ");
-                }
-            }
-            rootNode++;
-        }
-
-
-
-    //System.out.print(node.getValue() + " ");
-    //for (TreeNode child : node.childrenArray) {
-    //dfs(child);
-    //}
-
-
-    public void depthFirstSearch(int rootNode) {
-        rootNode = 0;
-        Set<Integer> setOfVertices = new HashSet<>();
-        setOfVertices.add(rootNode);
-        System.out.print(rootNode + " ");
-
-        for (int j = 0; j < numbersOfVertices; j++) {
-            if (adjacentMatrix[rootNode][j] == 1 && !setOfVertices.contains(j)) {
-                setOfVertices.add(j);
-                System.out.print(j + " ");
-                depthFirstSearch(j);
-            }
-        }
-
-
-        while (rootNode < numbersOfVertices) {
-            for (int j = 0; j < numbersOfVertices; j++) {
-                if (adjacentMatrix[rootNode][j] == 1 && !setOfVertices.contains(j)) {
-                    setOfVertices.add(j);
-                    System.out.print(j + " ");
-                }
-            }
-            rootNode++;
-        }
-
-        //System.out.print(node.getValue() + " ");
-        //for (TreeNode child : node.childrenArray) {
-        //dfs(child);
-        //}
-    }
-}
- */
