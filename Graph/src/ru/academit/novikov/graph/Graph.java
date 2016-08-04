@@ -38,22 +38,19 @@ public class Graph {
         setOfVertices.clear();
     }
 
-
-    public void depthFirstSearch2(int rootNode) {
+    public void depthFirstSearch(int rootNode) {
         setOfVertices.add(rootNode);
         System.out.print(rootNode + " ");
-
-        for (int i = 0; i < numbersOfVertices; i++) {
+        for (int i = rootNode; i < numbersOfVertices; i++) {
             for (int j = 0; j < numbersOfVertices; j++) {
                 if (adjacentMatrix[i][j] == 1 && !setOfVertices.contains(j)) {
                     setOfVertices.add(j);
-                    //queue.add(j);
-                    //System.out.print(j + " ");
-                    depthFirstSearch2(j);
+                    depthFirstSearch(j);
                 }
             }
         }
     }
+}
 /*
         for (int j = 0; j < numbersOfVertices; j++) {
             if (adjacentMatrix[rootNode][j] == 1 && !setOfVertices.contains(j)) {
@@ -73,7 +70,7 @@ public class Graph {
             }
             rootNode++;
         }
- */
+
 
 
     //System.out.print(node.getValue() + " ");
@@ -113,3 +110,4 @@ public class Graph {
         //}
     }
 }
+ */

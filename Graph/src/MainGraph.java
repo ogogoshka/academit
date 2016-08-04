@@ -16,6 +16,13 @@ public class MainGraph {
                 {0, 1, 1, 0, 0, 0, 0, 0, 0},
                 {1, 0, 0, 0, 1, 0, 0, 0, 0}};
 
+        int[][] arrayGraph4 = {
+                {0, 1, 0, 0, 1},
+                {1, 0, 1, 1, 0},
+                {0, 1, 0, 0, 0},
+                {0, 1, 0, 0, 0},
+                {1, 0, 0, 0, 0}};
+
         int[][] arrayGraph2 = {
                 {0, 1, 0, 1, 0},
                 {1, 0, 1, 0, 1},
@@ -31,7 +38,7 @@ public class MainGraph {
         G7.breadthFirstSearch();
         System.out.println("\n");
         System.out.println("depthFirstSearch");
-        G7.depthFirstSearch2(0);
+        G7.depthFirstSearch(0);
 
         int[][] arrayGraph3 = {
                 {0, 0, 0, 0, 0},
@@ -44,6 +51,15 @@ public class MainGraph {
         System.out.println("несвязный граф");
         Graph G9 = new Graph(arrayGraph3);
         G9.breadthFirstSearch();
+
+
+        Graph G4 = new Graph(arrayGraph4);
+        System.out.println();
+        System.out.println("breadthFirstSearch-G4");
+        G4.breadthFirstSearch();
+        System.out.println("\n");
+        System.out.println("depthFirstSearch-G4");
+        G4.depthFirstSearch(0);
 
     }
 }
