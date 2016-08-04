@@ -23,13 +23,15 @@ public class MainGraph {
                 {1, 0, 1, 0, 1},
                 {0, 1, 0, 1, 0}};
 
-        System.out.println("\n");
 
         Graph G7 = new Graph(arrayGraph2);
 
         System.out.println();
         System.out.println("breadthFirstSearch");
         G7.breadthFirstSearch();
+        System.out.println("\n");
+        System.out.println("depthFirstSearch");
+        G7.depthFirstSearch2(0);
 
         int[][] arrayGraph3 = {
                 {0, 0, 0, 0, 0},

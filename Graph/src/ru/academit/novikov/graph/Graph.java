@@ -1,4 +1,5 @@
 package ru.academit.novikov.graph;
+
 import java.util.*;
 
 public class Graph {
@@ -34,15 +35,68 @@ public class Graph {
                 }
             }
         }
+        setOfVertices.clear();
     }
 
 
-    public void depthFirstSearch() {
-        int rootNode = 0;
+    public void depthFirstSearch2(int rootNode) {
+        setOfVertices.add(rootNode);
+        System.out.print(rootNode + " ");
 
+        for (int i = 0; i < numbersOfVertices; i++) {
+            for (int j = 0; j < numbersOfVertices; j++) {
+                if (adjacentMatrix[i][j] == 1 && !setOfVertices.contains(j)) {
+                    setOfVertices.add(j);
+                    //queue.add(j);
+                    //System.out.print(j + " ");
+                    depthFirstSearch2(j);
+                }
+            }
+        }
+    }
+/*
+        for (int j = 0; j < numbersOfVertices; j++) {
+            if (adjacentMatrix[rootNode][j] == 1 && !setOfVertices.contains(j)) {
+                setOfVertices.add(j);
+                System.out.print(j + " ");
+                depthFirstSearch(j);
+            }
+        }
+
+
+        while (rootNode < numbersOfVertices) {
+            for (int j = 0; j < numbersOfVertices; j++) {
+                if (adjacentMatrix[rootNode][j] == 1 && !setOfVertices.contains(j)) {
+                    setOfVertices.add(j);
+                    System.out.print(j + " ");
+                }
+            }
+            rootNode++;
+        }
+ */
+
+
+    //System.out.print(node.getValue() + " ");
+    //for (TreeNode child : node.childrenArray) {
+    //dfs(child);
+    //}
+
+
+    public void depthFirstSearch(int rootNode) {
+        rootNode = 0;
         Set<Integer> setOfVertices = new HashSet<>();
         setOfVertices.add(rootNode);
         System.out.print(rootNode + " ");
+
+        for (int j = 0; j < numbersOfVertices; j++) {
+            if (adjacentMatrix[rootNode][j] == 1 && !setOfVertices.contains(j)) {
+                setOfVertices.add(j);
+                System.out.print(j + " ");
+                depthFirstSearch(j);
+            }
+        }
+
+
         while (rootNode < numbersOfVertices) {
             for (int j = 0; j < numbersOfVertices; j++) {
                 if (adjacentMatrix[rootNode][j] == 1 && !setOfVertices.contains(j)) {
