@@ -16,10 +16,10 @@ public class Graph {
     }
 
     public void breadthFirstSearch() {
-        int rootNode = 0;
-        queue.add(rootNode);
-        setOfVertices.add(rootNode);
-        System.out.print(rootNode + " ");
+        int rootVertex = 0;
+        queue.add(rootVertex);
+        setOfVertices.add(rootVertex);
+        System.out.print(rootVertex + " ");
         while (!queue.isEmpty()) {
             queue.remove();
             for (int i = 0; i < numbersOfVertices; i++) {
@@ -35,10 +35,10 @@ public class Graph {
         setOfVertices.clear();
     }
 
-    public void depthFirstSearch(int rootNode) {
-        setOfVertices.add(rootNode);
-        System.out.print(rootNode + " ");
-        for (int i = rootNode; i < numbersOfVertices; i++) {
+    public void depthFirstSearch(int rootVertex) {
+        setOfVertices.add(rootVertex);
+        System.out.print(rootVertex + " ");
+        for (int i = rootVertex; i < numbersOfVertices; i++) {
             for (int j = 0; j < numbersOfVertices; j++) {
                 if (adjacentMatrix[i][j] == 1 && !setOfVertices.contains(j)) {
                     setOfVertices.add(j);
@@ -46,6 +46,9 @@ public class Graph {
                 }
             }
         }
+        //if (setOfVertices.size() == adjacentMatrix.length) {
+        //setOfVertices.clear();
+        //}
     }
 
 }

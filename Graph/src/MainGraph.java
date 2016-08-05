@@ -1,5 +1,8 @@
 import ru.academit.novikov.graph.Graph;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class MainGraph {
     public static void main(String[] args) {
 
@@ -69,5 +72,17 @@ public class MainGraph {
         System.out.println("\n");
         System.out.println("depthFirstSearch-Gbig");
         Gbig.depthFirstSearch(0);
+        System.out.println("\n");
+
+        Set<Integer> setOfVertices = new HashSet<>();
+        setOfVertices.add(1);
+        setOfVertices.add(2);
+        setOfVertices.add(3);
+        setOfVertices.add(4);
+        setOfVertices.add(5);
+        System.out.println("size = " + setOfVertices.size());
+        System.out.println("length = " + arrayGraph3.length);
+
+
     }
 }
