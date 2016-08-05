@@ -35,20 +35,23 @@ public class Graph {
         setOfVertices.clear();
     }
 
-    public void depthFirstSearch(int rootVertex) {
+    private void visit(int rootVertex) {
         setOfVertices.add(rootVertex);
         System.out.print(rootVertex + " ");
         for (int i = rootVertex; i < numbersOfVertices; i++) {
             for (int j = 0; j < numbersOfVertices; j++) {
                 if (adjacentMatrix[i][j] == 1 && !setOfVertices.contains(j)) {
                     setOfVertices.add(j);
-                    depthFirstSearch(j);
+                    visit(j);
                 }
             }
         }
-        //if (setOfVertices.size() == adjacentMatrix.length) {
-        //setOfVertices.clear();
-        //}
     }
+
+    public void depthFirstSearch(int x) {
+        setOfVertices.clear();
+        visit(x);
+    }
+
 
 }

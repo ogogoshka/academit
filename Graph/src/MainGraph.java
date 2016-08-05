@@ -1,8 +1,5 @@
 import ru.academit.novikov.graph.Graph;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class MainGraph {
     public static void main(String[] args) {
 
@@ -25,6 +22,8 @@ public class MainGraph {
                 {0, 1, 0, 0, 0},
                 {0, 1, 0, 0, 0},
                 {1, 0, 0, 0, 0}};
+/*
+
 
         int[][] arrayGraph2 = {
                 {0, 1, 0, 1, 0},
@@ -56,14 +55,7 @@ public class MainGraph {
         G9.breadthFirstSearch();
         System.out.println("\n");
 
-        Graph G4 = new Graph(arrayGraph4);
-        System.out.println();
-        System.out.println("breadthFirstSearch-G4");
-        G4.breadthFirstSearch();
-        System.out.println("\n");
-        System.out.println("depthFirstSearch-G4");
-        G4.depthFirstSearch(0);
-        System.out.println("\n");
+
 
         Graph Gbig = new Graph(arrayGraph);
         System.out.println();
@@ -82,6 +74,26 @@ public class MainGraph {
         setOfVertices.add(5);
         System.out.println("size = " + setOfVertices.size());
         System.out.println("length = " + arrayGraph3.length);
+
+
+ */
+
+
+        Graph G4 = new Graph(arrayGraph4);
+        System.out.println();
+        System.out.println("breadthFirstSearch-G4");
+        G4.breadthFirstSearch();
+        System.out.println("\n");
+        System.out.println("breadthFirstSearch-G4");
+        G4.breadthFirstSearch();
+        System.out.println("\n");
+        System.out.println("depthFirstSearch-G4");
+        G4.depthFirstSearch(0);
+        System.out.println("\n");
+        System.out.println("depthFirstSearch-G4");
+        G4.depthFirstSearch(0);
+        System.out.println("\n");
+
 
 
     }
