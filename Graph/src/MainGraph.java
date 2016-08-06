@@ -88,10 +88,10 @@ public class MainGraph {
         G4.breadthFirstSearch();
         System.out.println("\n");
         System.out.println("depthFirstSearch-G4");
-        G4.depthFirstSearch(0);
+        G4.depthFirstSearch();
         System.out.println("\n");
         System.out.println("depthFirstSearch-G4");
-        G4.depthFirstSearch(0);
+        G4.depthFirstSearch();
         System.out.println("\n");
 
 
