@@ -45,6 +45,7 @@ public class Graph {
 
             for (int j = 0; j < numbersOfVertices; j++) {
                 if (adjacentMatrix[child][j] == 1 && !setOfVertices.contains(j)) {
+                    setOfVertices.add(j);
                     queue.add(j);
                 }
             }
