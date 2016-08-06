@@ -15,7 +15,7 @@ public class Graph {
             System.arraycopy(array[i], 0, adjacentMatrix[i], 0, numbersOfVertices);
         }
     }
-    
+
     private void visitDepth(int rootVertex) {
         setOfVertices.add(rootVertex);
         System.out.print(rootVertex + " ");
@@ -27,28 +27,25 @@ public class Graph {
     }
 
     public void depthFirstSearch() {
-        int x = 0;
         setOfVertices.clear();
-        visitDepth(x);
-        while (setOfVertices.size() < numbersOfVertices) {
-            x++;
-            visitDepth(x);
+        for (int i = 0; i < numbersOfVertices; i++) {
+            if (!setOfVertices.contains(i)) {
+                visitDepth(i);
+            }
         }
     }
 
     private void visitBreadth(int rootVertex) {
-        if (!setOfVertices.contains(rootVertex)) {
-            queue.add(rootVertex);
-            setOfVertices.add(rootVertex);
-            System.out.print(rootVertex + " ");
-        }
+        queue.add(rootVertex);
+
         while (!queue.isEmpty()) {
             int child = queue.remove();
+            System.out.print(child + " ");
+            setOfVertices.add(child);
+
             for (int j = 0; j < numbersOfVertices; j++) {
                 if (adjacentMatrix[child][j] == 1 && !setOfVertices.contains(j)) {
-                    setOfVertices.add(j);
                     queue.add(j);
-                    System.out.print(j + " ");
                 }
             }
         }
@@ -57,7 +54,9 @@ public class Graph {
     public void breadthFirstSearch() {
         setOfVertices.clear();
         for (int i = 0; i < numbersOfVertices; i++) {
-            visitBreadth(i);
+            if (!setOfVertices.contains(i)) {
+                visitBreadth(i);
+            }
         }
     }
 
