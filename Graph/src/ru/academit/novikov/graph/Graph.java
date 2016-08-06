@@ -37,12 +37,10 @@ public class Graph {
 
     private void visitBreadth(int rootVertex) {
         queue.add(rootVertex);
-
+        setOfVertices.add(rootVertex);
         while (!queue.isEmpty()) {
             int child = queue.remove();
             System.out.print(child + " ");
-            setOfVertices.add(child);
-
             for (int j = 0; j < numbersOfVertices; j++) {
                 if (adjacentMatrix[child][j] == 1 && !setOfVertices.contains(j)) {
                     setOfVertices.add(j);
