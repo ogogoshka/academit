@@ -17,21 +17,4 @@ public class BinaryTreeNode {
         return value;
     }
 
-    public void setLeftChild(BinaryTreeNode leftChild) {
-        this.leftChild = leftChild;
-    }
-
-    public void setRightChild(BinaryTreeNode rightChild) {
-        this.rightChild = rightChild;
-    }
-
-    public BinaryTreeNode getRight() {
-        return this.rightChild;
-    }
-
-    public BinaryTreeNode getLeft() {
-        return this.leftChild;
-    }
-
-
 }

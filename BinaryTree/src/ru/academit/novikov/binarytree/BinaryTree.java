@@ -32,62 +32,33 @@ public class BinaryTree {
         return search(root, x);
     }
 
-
-    public void insert(int data) {
-        root = insert(root, data);
-    }
-
-    private BinaryTreeNode insert(BinaryTreeNode current, int data) {
-        if (current == null) {
-            current = new BinaryTreeNode(data);
-            //current.setValue(data);
-            current.setLeftChild(null);
-            current.setRightChild(null);
-            //current.setParent(parent);
-        } else if (data < current.getValue()) {
-            current.setLeftChild(insert(current.getLeft(), data));
+    private void add(BinaryTreeNode node, int x) {
+        if (x < node.getValue()) {
+            if (node.leftChild == null) {
+                node.leftChild = new BinaryTreeNode(x);
+            } else {
+                add(node.leftChild, x);
+            }
         } else {
-            current.setRightChild(insert(current.getRight(), data));
+            if (node.rightChild == null) {
+                node.rightChild = new BinaryTreeNode(x);
+            } else {
+                add(node.rightChild, x);
+            }
         }
-        return current;
-    }
-
-
-    private BinaryTreeNode add(BinaryTreeNode node, int x) {
-        if (node == null) {
-            node = new BinaryTreeNode(x);
-        } else if (x < node.getValue()) {
-            node.leftChild = add(node.leftChild, x);
-        } else if (x > node.getValue()) {
-            node.rightChild = add(node.rightChild, x);
-        }
-        return node;
     }
 
     public void add(int value) {
         if (root == null) {
             root = new BinaryTreeNode(value);
+        } else {
+            add(root, value);
         }
-        root = add(root, value);
     }
 
 
-    public BinaryTreeNode findMin() {
-        BinaryTreeNode min = root;
-        if (min == null) return null;
-        while (min.leftChild != null) {
-            min = min.leftChild;
-        }
-        return min;
-    }
 
-    public static void printFindMin(BinaryTree tree) {
-        System.out.println("nodeMin = " + tree.findMin().getValue());
-    }
 
-    public static void printMin(BinaryTree tree) {
-        //System.out.println("nodeMin = " + tree.min(node).getValue());
-    }
 
     private BinaryTreeNode min(BinaryTreeNode node) {
         if (node.leftChild == null) {
@@ -99,10 +70,12 @@ public class BinaryTree {
 
     private BinaryTreeNode deleteMin(BinaryTreeNode node) {
         if (node.leftChild == null) {
-            return node.rightChild;
+            node = node.rightChild;
+            return node;
+        } else {
+            node.leftChild = deleteMin(node.leftChild);
+            return node;
         }
-        node.leftChild = deleteMin(node.leftChild);
-        return node;
     }
 
     private BinaryTreeNode delete(BinaryTreeNode node, int x) {
@@ -110,26 +83,27 @@ public class BinaryTree {
             node.rightChild = delete(node.rightChild, x);
         } else if (node.getValue() > x) {
             node.leftChild = delete(node.leftChild, x);
-        } else {
-            if (node.rightChild == null) {
-                return node.leftChild;
-            }
-            if (node.leftChild == null) {
-                return node.rightChild;
-            }
+        } else if (node.leftChild != null && node.rightChild != null) {
             BinaryTreeNode temp = node;
             node = min(temp.rightChild);
             node.rightChild = deleteMin(temp.rightChild);
             node.leftChild = temp.leftChild;
+        } else {
+            if (node.leftChild != null) {
+                return node.leftChild;
+            } else {
+                return node.rightChild;
+            }
         }
         return node;
     }
 
     public BinaryTreeNode delete(int x) {
-        return delete(root, x);
+        if (root == null) {
+            return null;
+        } else {
+            return delete(root, x);
+        }
     }
-
-
-
 
 }
