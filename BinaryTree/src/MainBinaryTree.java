@@ -110,10 +110,13 @@ public class MainBinaryTree {
         bst5.add(16);
         bst5.add(22);
 
-
+        System.out.println(bst5.search(9));
+        System.out.println(bst5.search(22));
 
         bst5.delete(9);
         System.out.println(bst5.search(9));
 
+        bst5.delete(22);
+        System.out.println(bst5.search(22));
     }
 }
