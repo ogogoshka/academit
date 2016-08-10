@@ -96,5 +96,24 @@ public class MainBinaryTree {
 
         bst4.delete(9);
         System.out.println(bst4.search(9));
+
+
+
+        BinaryTree bst5 = new BinaryTree();
+        bst5.add(9);
+        //bst4.add(7);
+        //bst4.add(5);
+        //bst4.add(8);
+        bst5.add(15);
+        bst5.add(11);
+        bst5.add(17);
+        bst5.add(16);
+        bst5.add(22);
+
+
+
+        bst5.delete(9);
+        System.out.println(bst5.search(9));
+
     }
 }

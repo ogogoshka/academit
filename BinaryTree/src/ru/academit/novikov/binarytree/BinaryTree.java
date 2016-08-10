@@ -13,14 +13,12 @@ public class BinaryTree {
 
     private boolean search(BinaryTreeNode node, int x) {
         boolean isFound = false;
-
-        while (node != null && !isFound) {
+        if (node != null) {
             if (node.getValue() > x) {
                 node = node.leftChild;
             } else if (node.getValue() < x) {
                 node = node.rightChild;
             } else {
-                //isFound = true;
                 return true;
             }
             isFound = search(node, x);
@@ -57,9 +55,6 @@ public class BinaryTree {
     }
 
 
-
-
-
     private BinaryTreeNode min(BinaryTreeNode node) {
         if (node.leftChild == null) {
             return node;
@@ -79,6 +74,14 @@ public class BinaryTree {
     }
 
     private BinaryTreeNode delete(BinaryTreeNode node, int x) {
+        if (this.root.getValue() == x) {
+            BinaryTreeNode temp = this.root;
+            this.root = min(temp.rightChild);
+            this.root.rightChild = deleteMin(temp.rightChild);
+            this.root.leftChild = temp.leftChild;
+            return this.root;
+        }
+
         if (node.getValue() < x) {
             node.rightChild = delete(node.rightChild, x);
         } else if (node.getValue() > x) {
