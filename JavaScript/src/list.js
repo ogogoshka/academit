@@ -36,3 +36,11 @@ for (i = 0; i < list.length; i++) {
     }
 }
 console.log("sumOfEvenNumbers = " + sumOfEvenNumbers);
+
+
+
+
+
+
+
+
