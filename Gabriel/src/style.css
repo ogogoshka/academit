@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    background: linear-gradient(to bottom right, #CFEAFB, #6FADFA);
+
+    font-family: Calibri;
+    color: #7B7B7B;
+    padding: 30px;
+}
+
+.et {
+    width: 30px;
+}
+
+/*
+input[type="button"] {
+    border: 2px solid #647D43;
+    background: linear-gradient(to top, #7DA32A, #BEDC86);
+    width: 175px;
+    height: 45px;
+    color: white;
+    font-size: 16px;
+    margin: 40px;
+}
+*/
+
+.main-form {
+    /*
+        margin: 40px;
+        padding: 20%;
+    */
+
+    background-color: #E1E1E1;
+    border: 2px solid #9BACB6;
+    border-radius: 5px;
+}
+
+/*
+#flowtabs {
+
+    width: 100%;
+    margin: 0 !important;
+    padding: 0;
+    position: relative;
+    top: -3px;
+
+
+    _margin-bottom: -2px;
+}
+
+
+#flowtabs li {
+    float: left;
+    height: 50px;
+    background-color: #FED82D;
+    border-left: 1px solid #bbb;
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+    list-style-type: none;
+    width: 10%;
+}
+
+
+#flowtabs li a {
+    position: relative;
+    right: 5px;
+    display: block;
+    height: 31px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+
+    color: black;
+    font-size: 25px;
+    line-height: 29px;
+    height: 28px;
+    text-align: center;
+    text-decoration: none;
+
+}
+*/
+li:first-child {
+    border: none;
+}
+
+ul {
+    width: 100%;
+
+    font-size: 20px;
+    text-align: center;
+
+}
+
+li {
+
+    background-color: #FED82D;
+
+    width: 10%;
+    display: inline-block;
+
+}
+
+li:first-child {
+    border: none;
+}
+
+ul li {
+
+    float: left;
+    border-left: 1px solid #bbb;
+    list-style-type: none;
+    width: 14%;
+
+    margin-top: 15px;
+}
+
+ul li a {
+    color: grey;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    color: grey;
+    text-decoration: underline;
+}
+
+ul li a:visited {
+    color: #AC2200;
+    text-decoration: underline;
+}
+
+.header {
+    background-color: #FED82D;
+    width: auto;
+    height: 55px;
+}
+
+td {
+
+}
+
+tr {
+
+}
+
+.first {
+    width: 98%;
+    border-collapse: collapse;
+    margin-left: 10px;
+
+    padding: 10px;
+}
+
+.first tr:nth-child(1) {
+    border-bottom: 1px solid grey;
+}
+
+.first td {
+    border: 1px dotted #DEF4FB;
+    padding: 10px;
+}
+
+.first tr {
+
+}
+
+#second {
+
+}
+
+/*
+th {
+    background-color: #FED82D;
+    height: 30px;
+}
+*/
+
+.second {
+
+    width: 100%;
+    height: auto;
+
+    border-collapse: collapse;
+    background-color: #E1E1E1;
+    border: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.second tr:nth-child(1) {
+    background-color: #FED82D;
+    height: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.second tr:nth-child(2) {
+    background-color: #B0CFF5;
+}
+
+.second tr:nth-child(3) {
+    background-color: #B0CFF5;
+}
+
+.second td {
+    border: 1px dotted #DEF4FB;
+    padding: 5px;
+    padding-right: 10px;
+}
+
+.second tr {
+    border: 1px dotted #DEF4FB;
+}
+
+.order {
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-left: 25px;
+    font-weight: bold;
+    font-family: Calibri;
+    color: #7B7B7B;
+}
+
+.archive-button {
+    margin-top: 30px;
+    margin-bottom: 55px;
+    margin-left: 25px;
+    border: 2px solid #647D43;
+    background: linear-gradient(to top, #7DA32A, #BEDC86);
+    width: 175px;
+    height: 45px;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
+.cancel-button {
+    margin-left: 25px;
+    border: 2px solid #647D43;
+    background: linear-gradient(to top, #7DA32A, #BEDC86);
+    width: 175px;
+    height: 45px;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    position: absolute;
+    margin-top: 30px;
+    right: 290px;
+}
+
+.send-button {
+    margin-left: 25px;
+    border: 2px solid #B0B0B0;
+    background: linear-gradient(to top, #C7C7C7, #FEFEFE);
+    width: 175px;
+    height: 45px;
+    color: #909090;
+    font-size: 16px;
+    text-align: center;
+    position: absolute;
+    right: 100px;
+    margin-top: 30px;
+
+}
+
+.main-menu {
+    background-color: #FED82D;
+    width: 100%;
+    height: 60px;
+}
