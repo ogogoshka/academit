@@ -9,7 +9,7 @@ console.log("sortedList = " + list.join(", "));
 var list2 = list.slice(0, 5);
 console.log("list2 = " + list2.join(", "));
 
-var list5 = list.reverse().slice(0, 5).reverse();
+var list5 = list.slice(list.length - 5, list.length);
 console.log("list5 = " + list5.join(", "));
 
 var totalList = list2.concat(list5);
