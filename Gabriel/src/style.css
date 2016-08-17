@@ -38,51 +38,7 @@ input[type="button"] {
     border-radius: 5px;
 }
 
-/*
-#flowtabs {
 
-    width: 100%;
-    margin: 0 !important;
-    padding: 0;
-    position: relative;
-    top: -3px;
-
-
-    _margin-bottom: -2px;
-}
-
-
-#flowtabs li {
-    float: left;
-    height: 50px;
-    background-color: #FED82D;
-    border-left: 1px solid #bbb;
-    margin: 0;
-    padding: 0;
-    text-indent: 0;
-    list-style-type: none;
-    width: 10%;
-}
-
-
-#flowtabs li a {
-    position: relative;
-    right: 5px;
-    display: block;
-    height: 31px;
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
-
-    color: black;
-    font-size: 25px;
-    line-height: 29px;
-    height: 28px;
-    text-align: center;
-    text-decoration: none;
-
-}
-*/
 li:first-child {
     border: none;
 }
