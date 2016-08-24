@@ -1,0 +1,164 @@
+
+body, html {
+    font-family: Arial, serif;
+}
+
+[type="button"] {
+    border: none;
+    outline: none;
+}
+
+.ButtonForAddUser {
+    width: 100px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    background-color: black;
+    margin: 0;
+}
+
+.ButtonForDeleteUser {
+    width: 100px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    background-color: black;
+    margin: 0;
+}
+
+.addUser {
+    width: 100px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    background-color: black;
+    margin: 0;
+}
+
+.inputField {
+    width: 180px;
+    height: 30px;
+    font-size: 24px;
+    padding-left: 5px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.mainForm input:focus {
+    outline: none;
+    border-color: #07a6e6;
+    border-radius: 10px;
+}
+
+.empty_field {
+    border-color: #d8512d;
+}
+
+.delete {
+    font-size: 24px;
+    font-weight: normal;
+    /*
+    color: #CE7BE5;
+    */
+    color: black;
+}
+
+.buttons {
+    padding-left: 25px;
+}
+
+.field {
+    clear: both;
+    text-align: right;
+    line-height: 25px;
+    padding: 5px;
+}
+
+label {
+    float: left;
+    padding-right: 10px;
+    font-size: 24px;
+}
+
+.main {
+    padding-left: 25px;
+    float: left
+}
+
+/*
+.ButtonForRemoveUser {
+    background-color: white;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    font-weight: normal;
+    color: black;
+    background-color: #D0D8E8;
+}
+*/
+
+.removeUser {
+    /*background-color: white;
+    */
+
+    border: none;
+    outline: none;
+    font-size: 28px;
+    font-weight: normal;
+    color: red;
+    background-color: #D0D8E8;
+    /*
+    border: 1px solid black;
+    border-radius: 11px;
+    background-color: black;
+    */
+}
+
+tr {
+    background-color: #D0D8E8;
+    padding: 15px;
+    margin: 15px;
+}
+
+th {
+    padding: 15px;
+    margin: 15px;
+}
+
+td {
+    padding: 15px;
+    margin: 15px;
+}
+
+tr:nth-child(1) {
+    background-color: #4F81BD;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+table {
+    border: 0;
+    border-spacing: 3px 6px;
+}
+
+.mainTable {
+    border: 0;
+    margin-left: 25px;
+    margin-top: 50px;
+    margin-bottom: 35px;
+    border-spacing: 3px 6px;
+}
+
+.errorMessage {
+    margin-left: 25px;
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
+}
