@@ -3,13 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>PhoneBook</title>
-    <script src="jquery-3.1.0.min.js"></script>
-    <script src="phonebook.js"></script>
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="js/phonebook.js"></script>
+
+    <!--<link href="css/reset.css" media="screen" rel="stylesheet" type="text/css"/>-->
+    <link href="css/css.css" media="screen" rel="stylesheet" type="text/css"/>
+
+
+    <script type="text/javascript" src='codebase/message.js'></script>
+
+    <link rel="stylesheet" type="text/css" href="codebase/themes/message_default.css" title="Default">
+    <link rel="stylesheet" type="text/css" href="codebase/themes/message_growl_dark.css" title="Growl - dark">
+    <link rel="stylesheet" type="text/css" href="codebase/themes/message_growl_shiny.css" title="Growl - shiny">
+    <link rel="stylesheet" type="text/css" href="codebase/themes/message_solid.css" title="Solid">
+    <link rel="stylesheet" type="text/css" href="codebase/themes/message_skyblue.css" title="SkyBlue">
+
 
 </head>
 <body>
 
-<table border="2" id="mainTable">
+<table class="mainTable">
     <tr>
         <th>№</th>
         <th>Фамилия</th>
@@ -17,36 +30,54 @@
         <th>Номер телефона</th>
         <th></th>
     </tr>
-    <tr id="1">
+    <tr>
         <td>1</td>
         <td>Иванов</td>
         <td>Иван</td>
         <td>8-923-234-1567</td>
-        <td><input type="button" value="X" class="removeUser" user_id="1" onclick="return confirmDelete();"/></td>
+        <td><input type="button" value="&times;" class="removeUser" onclick="return confirmDelete();"/></td>
     </tr>
-
 </table>
 
-<br><br><br><br>
+<br><br>
+<div class="errorMessage">
+
+</div>
+<br><br>
 
 <div class="main">
     <form class="mainForm" name="mainForm">
         <div class="field">
             <label for="my-surname">Фамилия</label>
-            <input type="text" class="inputField" id="my-surname"/>
-        </div><br>
+            <input type="text" class="inputField" id="my-surname" placeholder="Фамилия"/>
+        </div>
+        <br>
         <div class="field">
             <label for="my-name">Имя</label>
-            <input type="text" id="my-name" class="inputField"/>
-        </div><br>
+            <input type="text" id="my-name" class="inputField" placeholder="Имя"/>
+        </div>
+        <br>
         <div class="field">
             <label for="my-phone">Номер телефона</label>
-            <input type="text" id="my-phone" class="inputField"/>
-        </div><br>
+            <input type="text" id="my-phone" class="inputField" placeholder="Телефон"/>
+        </div>
+        <br>
     </form>
 </div>
 
-<br>
+<br><br><br><br><br><br>
+
+
+<br><br><br><br><br><br>
+
+<div class="buttons">
+    <input type="button" class="addUser" id="addButton" value="добавить">
+    <input type="button" class="ButtonForDeleteUser" id="deleteButton" value="удалить">
+</div>
+
+<br><br><br><br><br>
+<!--
+<button class="addUser">добавить</button>
 
 <input type="button" value="Добавить" class="addUser"/>
 
@@ -54,6 +85,6 @@
 
 
 <br><br><br><br>
-
+-->
 </body>
 </html>
