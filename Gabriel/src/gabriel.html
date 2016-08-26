@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Макет Gabriel</title>
-
-
-    <link rel="stylesheet" type="text/css" href="style.css">
-
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 
 <div class="main-form">
     <div class="main-menu">
         <ul>
-            <li><a href="">Gabriel</a></li>
-            <li><a href="">Gabriel блоки</a></li>
-            <li><a href="">Сирена</a></li>
-            <li><a href="">Amadeus</a></li>
-            <li><a href="">Sabre</a></li>
-            <li><a href="">Galileo</a></li>
-            <li><a href="">Бумажные</a></li>
+            <li><a href="#">Gabriel</a></li>
+            <li><a href="#">Gabriel блоки</a></li>
+            <li><a href="#">Сирена</a></li>
+            <li><a href="#">Amadeus</a></li>
+            <li><a href="#">Sabre</a></li>
+            <li><a href="#">Galileo</a></li>
+            <li><a href="#">Бумажные</a></li>
         </ul>
     </div>
 
-    <table class="first">
+    <table class="first-table">
         <tr>
             <td>Валидатор</td>
             <td>Буква</td>
@@ -33,16 +31,15 @@
             <td></td>
             <td>Комментарий</td>
         </tr>
-        <hr>
         <tr>
             <td>421-7176-1</td>
-            <td>A</td>
+            <td class="letter-column">A</td>
             <td>РФ, г.Москва</td>
-            <td>10</td>
+            <td class="et-balance-column">10</td>
             <td></td>
             <td>
                 <label>
-                    <input type="text" value="200" class="et">
+                    <input type="text" value="200" class="et-field">
                 </label>
             </td>
             <td>
@@ -59,7 +56,7 @@
             <td></td>
             <td>
                 <label>
-                    <input type="text" value="100" class="et">
+                    <input type="text" value="100" class="et-field">
                 </label>
             </td>
             <td>
@@ -76,7 +73,7 @@
             <td></td>
             <td>
                 <label>
-                    <input type="text" value="20" class="et">
+                    <input type="text" value="20" class="et-field">
                 </label>
             </td>
             <td>
@@ -93,7 +90,7 @@
             <td></td>
             <td>
                 <label>
-                    <input type="text" value="200" class="et">
+                    <input type="text" value="200" class="et-field">
                 </label>
             </td>
             <td>
@@ -110,7 +107,7 @@
             <td></td>
             <td>
                 <label>
-                    <input type="text" value="1000" class="et">
+                    <input type="text" value="1000" class="et-field">
                 </label>
             </td>
             <td>
@@ -120,14 +117,14 @@
             </td>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>421-3476-1</td>
+            <td class="letter-column">A</td>
+            <td>г. Кишинев бульвар Штефан чел Маре, 3</td>
+            <td class="et-balance-column">100</td>
             <td></td>
             <td>
                 <label>
-                    <input type="text" value="20" class="et">
+                    <input type="text" value="20" class="et-field">
                 </label>
             </td>
             <td>
@@ -144,16 +141,16 @@
     <input class="send-button" type="button" value="Отправить"><br>
 
 
-    <div class="order">Предыдущие заявки</div>
+    <div class="order-title">Предыдущие заявки</div>
 
 
-    <table class="second">
+    <table class="second-table">
         <tr>
-            <td>Дата, время заявки</td>
-            <td>Номер заявки</td>
-            <td>Статус</td>
-            <td>Система бронирования</td>
-            <td>Заказано</td>
+            <td class="date-order-column">Дата, время заявки</td>
+            <td class="number-order-column">Номер заявки</td>
+            <td class="status-column">Статус</td>
+            <td class="system-reservation-column">Система бронирования</td>
+            <td class="count-order">Заказано</td>
         </tr>
         <tr>
             <td>21.12.2012, 08:04</td>

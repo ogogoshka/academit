@@ -3,16 +3,77 @@
     padding: 0;
 }
 
+[type="button"] {
+    border: none;
+    outline: none;
+}
+
 body, html {
     background: linear-gradient(to bottom right, #CFEAFB, #6FADFA);
-
-    font-family: Calibri;
+    font-family: Calibri, serif;
     color: #7B7B7B;
     padding: 30px;
 }
 
-.et {
-    width: 30px;
+.main-form {
+    background-color: #E1E1E1;
+    border: 2px solid #9BACB6;
+    border-radius: 5px;
+    margin: 2px;
+    padding: 0;
+
+}
+
+.main-menu {
+    background-color: #FED82D;
+    width: 100%;
+    height: 55px;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+li {
+    background-color: #FED82D;
+    width: 10%;
+    display: inline-block;
+}
+
+*/
+
+.main-menu li:first-child {
+    border: none;
+}
+
+.main-menu ul {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.main-menu ul li {
+    float: left;
+    border-left: 1px solid #bbb;
+    list-style-type: none;
+    width: 14%;
+    margin-top: 15px;
+}
+
+.main-menu ul li a:hover {
+    color: grey;
+    text-decoration: underline;
+}
+
+/*
+.main-menu ul li a:visited {
+    color: #AC2200;
+    text-decoration: underline;
+}
+*/
+
+.main-menu ul li a {
+    color: grey;
+    text-decoration: none;
 }
 
 /*
@@ -25,69 +86,7 @@ input[type="button"] {
     font-size: 16px;
     margin: 40px;
 }
-*/
 
-.main-form {
-    /*
-        margin: 40px;
-        padding: 20%;
-    */
-
-    background-color: #E1E1E1;
-    border: 2px solid #9BACB6;
-    border-radius: 5px;
-}
-
-
-li:first-child {
-    border: none;
-}
-
-ul {
-    width: 100%;
-
-    font-size: 20px;
-    text-align: center;
-
-}
-
-li {
-
-    background-color: #FED82D;
-
-    width: 10%;
-    display: inline-block;
-
-}
-
-li:first-child {
-    border: none;
-}
-
-ul li {
-
-    float: left;
-    border-left: 1px solid #bbb;
-    list-style-type: none;
-    width: 14%;
-
-    margin-top: 15px;
-}
-
-ul li a {
-    color: grey;
-    text-decoration: none;
-}
-
-ul li a:hover {
-    color: grey;
-    text-decoration: underline;
-}
-
-ul li a:visited {
-    color: #AC2200;
-    text-decoration: underline;
-}
 
 .header {
     background-color: #FED82D;
@@ -102,25 +101,38 @@ td {
 tr {
 
 }
-
-.first {
+*/
+.first-table {
     width: 98%;
     border-collapse: collapse;
     margin-left: 10px;
-
     padding: 10px;
 }
 
-.first tr:nth-child(1) {
+.first-table td {
+    /*border: 1px dotted #DEF4FB;
+    */
+    padding: 10px;
+    border: none;
+}
+
+td.et-balance-column {
+    font-weight: bold;
+    text-align: center;
+    width: 75px;
+}
+
+td.letter-column {
+    text-align: center;
+    width: 15px;
+}
+
+.first-table tr:nth-child(1) {
     border-bottom: 1px solid grey;
 }
 
-.first td {
-    border: 1px dotted #DEF4FB;
-    padding: 10px;
-}
-
-.first tr {
+/*
+.first-table tr {
 
 }
 
@@ -128,57 +140,80 @@ tr {
 
 }
 
-/*
+
 th {
     background-color: #FED82D;
     height: 30px;
 }
 */
 
-.second {
-
+.second-table {
     width: 100%;
-    height: auto;
-
     border-collapse: collapse;
     background-color: #E1E1E1;
     border: none;
+    /*
+    height: auto;
+    margin-left: 10px;
     padding: 0;
+    */
     margin-bottom: 20px;
 }
 
-.second tr:nth-child(1) {
+.second-table tr:nth-child(1) {
     background-color: #FED82D;
     height: 30px;
-    text-align: center;
+    text-align: left;
     font-weight: bold;
 }
 
-.second tr:nth-child(2) {
+.second-table tr:nth-child(2) {
     background-color: #B0CFF5;
 }
 
-.second tr:nth-child(3) {
+.second-table tr:nth-child(3) {
     background-color: #B0CFF5;
 }
 
-.second td {
+.second-table td {
     border: 1px dotted #DEF4FB;
-    padding: 5px;
-    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 30px;
 }
 
-.second tr {
+.second-table tr {
     border: 1px dotted #DEF4FB;
+    padding: 15px;
 }
 
-.order {
+.date-order-column {
+    width: 13%;
+}
+
+.number-order-column {
+    width: 12%;
+}
+
+.status-column {
+    width: 12%;
+}
+
+.system-reservation-column {
+    width: 15%;
+}
+
+.count-order {
+
+}
+
+.order-title {
     font-size: 20px;
     text-align: left;
     margin-bottom: 20px;
     margin-left: 25px;
     font-weight: bold;
-    font-family: Calibri;
+    font-family: Calibri, serif;
     color: #7B7B7B;
 }
 
@@ -224,8 +259,14 @@ th {
 
 }
 
-.main-menu {
-    background-color: #FED82D;
-    width: 100%;
-    height: 60px;
+.et-field {
+    width: 30px;
 }
+
+.small-font {
+    word-wrap: normal;
+    font-size: 75%;
+}
+
+
+
