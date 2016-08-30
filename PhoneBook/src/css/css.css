@@ -9,7 +9,7 @@ body, html {
 }
 
 .ButtonForAddUser {
-    width: 100px;
+    width: 120px;
     height: 40px;
     border: 2px solid black;
     border-radius: 10px;
@@ -20,7 +20,7 @@ body, html {
 }
 
 .ButtonForDeleteUser {
-    width: 100px;
+    width: 120px;
     height: 40px;
     border: 2px solid black;
     border-radius: 10px;
@@ -28,16 +28,25 @@ body, html {
     font-size: 18px;
     background-color: black;
     margin: 0;
+    cursor: pointer;
+}
+
+.ButtonForDeleteUser:hover {
+    background-color: #1F90E2;
 }
 
 .addUser {
-    width: 100px;
+    width: 120px;
     height: 40px;
+    /*
     border: 2px solid #4F81BD;
+        background-color: #4F81BD;
+    */
+    border: 2px solid black;
     border-radius: 10px;
     color: white;
     font-size: 18px;
-    background-color: #4F81BD;
+    background-color: black;
     margin: 0;
     cursor: pointer;
 }
@@ -55,18 +64,16 @@ body, html {
     border-radius: 10px;
 }
 
-/*.mainForm input:focus {
+.mainForm input:focus {
     outline: none;
     border-color: #07a6e6;
     border-radius: 10px;
 }
-*/
-.mainForm input:focus {
-    outline: none;
-}
 
 .empty_field {
-    border-color: #d8512d;
+
+    /*border-color: #d8512d;*/
+    border: 2px solid red;
 }
 
 .delete {
@@ -80,6 +87,7 @@ body, html {
 
 .buttons {
     padding-left: 25px;
+    padding-top: 200px;
 }
 
 .field {
@@ -196,3 +204,65 @@ table {
     background-color:red;
 }
 */
+.filter-header {
+    margin: 25px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.filter-field-block {
+
+}
+
+.filter-field {
+    width: 280px;
+    height: 30px;
+    font-size: 24px;
+    margin-left: 25px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.filter-field-block .inputField {
+    margin-left: 25px;
+    width: 300px;
+}
+
+.filter-field-block input:focus {
+    outline: none;
+    border-color: #07a6e6;
+    border-radius: 10px;
+}
+
+.filter-buttons {
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.apply-button {
+    width: 120px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    background-color: black;
+    margin: 0;
+    cursor: pointer;
+}
+
+.reset-button {
+    width: 120px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    background-color: black;
+    margin: 0;
+    cursor: pointer;
+}
+
+.apply-button:hover, .reset-button:hover {
+    background-color: #1F90E2;
+}
