@@ -14,98 +14,33 @@ $(document).ready(function () {
 
     $(".ButtonForDeleteUser").on('click', function () {
         var checked = $("input:checkbox:checked").map(function () {
-            //var checked = $("#check").is(":checked").map(function () {
+
             return this.value;
         }).get();
 
 
-        //var deleteList = $("#check:checked").closest("tr").find("td").eq(2).get();
-        //console.log("deleteList = " + deleteList);
 
         if (confirm("Вы действительно хотите удалить эти контакты?")) {
             $("#check:checked").parents("tr").remove();
             reordersRow();
         }
 
-        //$("#check").is(":checked").parents("tr").remove();
-        //$("input:checkbox:checked").parents("tr").remove();
-
-
-        //$("#all").attr("checked","checked");
-        //$(".mainTable tr:first-child").find("input#all").removeAttr("checked");
 
     });
 
     function confirmDelete(deleteCell) {
-        //row.closest("tr").find("td").eq(3);
-        //console.log(row.closest("tr").find("td").eq(3));
-        //var familia  = row.closest("tr").find("td")[3];
-        //var imya  = row.closest("tr").find("td")[4];
-
-        //var ff = row.closest("tr").find("td")[2];
-        //console.log($("td").text(ff));
-        //$(row).(function () {
-
-
-        //var isMarried = $("#check").is(":checked");
-        //console.log(isMarried);
-
-
-        //$(".mainTable tr").find("#check").each(function () {
-        //if ($(this).attr("checked")) {
-        //$(this).attr("checked", true);
-        //console.log("allilyia");
-
-        //}
-        //});
-        $(".mainTable tr").each(function () {
-            //var ff = $(this).find("td").eq(0).html();
-            //var ff = $(this).find("td").eq(0);
-            //var isMarried = $("#check").is(":checked");
-            var isMarried = $(this).find("#check").is(":checked");
-            //ff.find("span");
-            //console.log(ff);
-            //console.log(ff.find("span"));
-            if (isMarried) {
-                console.log(isMarried);
-            }
-        });
-
-
-        /*
-         $(".mainTable tr").each(function () {
-         //var ff = $(this).find("td").eq(0);
-         //            $(this).find("#check").attr("checked",false)
-         //ff.attr("checked", true);
-         //console.log("ff = " + ff);
-         if ($(this).find("#check").attr("checked", true)) {
-         console.log("allilyia");
-         //console.log("ff = " + ff);
-         }
-         });
-         */
 
 
         var currentSurname = deleteCell.closest("tr").find("td").eq(2).html();
         var currentName = deleteCell.closest("tr").find("td").eq(3).html();
 
-        //console.log("row = " + row.closest("tr").find("td").eq(2).html());
 
-        //var ff = row.closest("tr").find("td")[2];
-
-        //console.log("ff = " + ff);
-        //console.log(row.closest("tr").find("td")[2]);
-        //console.log(row.closest("tr").find("td")[3]);
         var res = confirm("Вы действительно  хотите удалить контакт : " + currentSurname + " " + currentName);
         if (res) {
             deleteCell.closest("tr").remove();
             reordersRow();
         }
     }
-
-    //var surname = "";
-    //var name = "";
-    //var phoneNumber = "";
 
 
     function checkDuplicateNumbers(phoneNumber) {
@@ -141,15 +76,6 @@ $(document).ready(function () {
         }
         else {
             $(".inputField").removeClass("empty_field");
-            //$("form").addClass(".inputField");
-            //$("input").addClass(".inputField input:focus");
-            //$(".inputField").css("border", "2px solid black");
-            //$(".mainForm input:focus").css("border-color", "#07a6e6");
-            //$(".inputField input:focus").css("border-color", "#07a6e6");
-
-            //outline: none;
-            //border-color: #07a6e6;
-            //border-radius: 10px;
 
         }
 
@@ -190,27 +116,8 @@ $(document).ready(function () {
         });
 
 
-        //cells.eq(1).text;
-        //cells.eq(2);
-        //cells.eq(3);
-        //cells.eq(4);
-        //cells.eq(5);
-
 
         if (checkInputFields()) {
-            /*
-             var row = '<tr id=' + userNumber
-             + '><td><span><input type="checkbox" /></span></td><td>'
-             + userNumber + '</td><td>'
-             + surname + '</td><td>' + name + '</td><td>'
-             + phoneNumber
-             + '</td><td><input type="button" onclick ="confirmDelete($(this))" value="&times;" class="removeUser" /></td></tr>';
-
-             */
-
-            //onclick ="confirmDelete($(this))"
-            //user_id="' + userNumber + '"
-            //text = $(row).text();
 
 
             console.log("row = " + newRow);
@@ -231,37 +138,6 @@ $(document).ready(function () {
                 $("#my-phone").val("");     //SETTER
                 ++userNumber;
 
-                //$(".mainTable").click(function () {
-
-
-                //$(".mainTable").find(".removeUser").click(function () {
-                //var res = confirm("Вы действительно хотите удалить этого пользователя?");
-                //if (res) {
-                //$(this).closest("tr").remove();
-                //row.closest('tr').remove();
-                //reordersRow();
-                //}
-
-                //});
-                //});
-
-
-                //$(".removeUser").click(function () {
-
-
-                //var res = confirm("Вы действительно хотите удалить этого пользователя?");
-                //console.log("res=" + res);
-
-                //if (res) {
-                //$(this).closest("tr").remove();
-                //row.closest('tr').remove();
-                //reordersRow();
-                //return false;
-                //}
-                //confirmDelete($(this));
-                //$(this).closest("tr").remove();
-                //});
-
             }
 
 
@@ -272,10 +148,6 @@ $(document).ready(function () {
         }
     });
 
-
-});
-
-$(document).ready(function () {
     var table = $('.mainTable');
     table
         .on('change', '> tbody input:checkbox', function () {
@@ -284,4 +156,9 @@ $(document).ready(function () {
         .on('change', '#all', function () {
             $('> tbody input:checkbox', table).prop('checked', $(this).is(':checked')).trigger('change');
         });
+
+});
+
+$(document).ready(function () {
+
 });
