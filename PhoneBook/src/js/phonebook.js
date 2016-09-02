@@ -1,6 +1,15 @@
 $(document).ready(function () {
 
-    var userNumber = 1;
+var userNumber = 1;
+
+    var table = $('.main-table');
+    table
+        .on('change', '> tbody input:checkbox', function () {
+            $(this).closest('span').toggleClass('checked', $(this).is(':checked'));
+        })
+        .on('change', '#all', function () {
+            $('> tbody input:checkbox', table).prop('checked', $(this).is(':checked')).trigger('change');
+        });
 
     var reorderRows = function () {
         var rows = $(".main-table").find("tbody").find("tr");
@@ -123,15 +132,6 @@ $(document).ready(function () {
             phoneNumber = "";
         }
     });
-
-    var table = $(".main-table");
-    table
-        .on("change", "> tbody input:checkbox", function () {
-            $(this).closest("span").toggleClass("checked", $(this).is(":checked"));
-        })
-        .on("change", "all", function () {
-            $("> tbody input:checkbox", table).prop("checked", $(this).is(":checked")).trigger("change");
-        });
 
     $(".apply-filter-button").click(function () {
         var filter = $(".filter-field").val().toLowerCase();
