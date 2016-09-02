@@ -144,17 +144,19 @@ var userNumber = 1;
                     $(this).show();
                 });
             } else {
+                var searchingSurname = $(this).find("td:nth-child(3)").text().toLowerCase();
+                var searchingName = $(this).find("td:nth-child(4)").text().toLowerCase();
+                var searchingPhone = $(this).find("td:nth-child(5)").text().toLowerCase();
 
-                if ($(this).find("td:nth-child(3)").text().search(filter) < 0) {
-                    if ($(this).find("td:nth-child(4)").text().search(filter) < 0) {
-                        if ($(this).find("td:nth-child(5)").text().search(filter) < 0) {
+                if (searchingSurname.toLowerCase().indexOf(filter) < 0) {
+                    if (searchingName.toLowerCase().indexOf(filter) < 0) {
+                        if (searchingPhone.toLowerCase().indexOf(filter) < 0) {
                             $(this).hide();
                         }
                     }
                 } else {
-                    $(this).show()
+                    $(this).show();
                 }
-
             }
 
         });
