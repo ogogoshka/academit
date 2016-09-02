@@ -1,6 +1,5 @@
 $(document).ready(function () {
-
-var userNumber = 1;
+    var userNumber = 1;
 
     var table = $('.main-table');
     table
@@ -19,31 +18,64 @@ var userNumber = 1;
         })
     };
 
-
-    $(".delete-user-from-table").on("click", function () {
+    $('.delete-user-from-table').click(function () {
         var checked = $("input:checkbox:checked").map(function () {
             //var checked = $("#check").is(":checked").map(function () {
             return this.value;
         }).get();
 
-        if (confirm("Вы действительно хотите удалить эти контакты?")) {
-            $("#check:checked").parents("tr").remove();
-            reorderRows();
-        }
+        var deletedContacts = "";
+        $("#check:checked").each(function () {
+            var deletedSurname = $(this).parents("tr").find("td:nth-child(3)").text();
+            var deletedName = $(this).parents("tr").find("td:nth-child(4)").text();
+            deletedContacts += deletedSurname + " " + deletedName + "<br>";
+        });
 
+        $.confirm({
+            'title': 'Подтверждение',
+            'message': 'Вы действительно хотите удалить эти контакты?<br>' + deletedContacts,
+            'buttons': {
+                'ДА': {
+                    'class': 'blue',
+                    'action': function () {
+                        $("#check:checked").parents("tr").remove();
+                        reorderRows();
+                    }
+                },
+                'НЕТ': {
+                    'class': 'gray',
+                    'action': function () {
+                    }
+                }
+            }
+        });
     });
 
     function confirmDelete(deleteCell) {
+        $(".main-table tr").each(function () {
 
         var currentSurname = deleteCell.closest("tr").find("td").eq(2).html();
         var currentName = deleteCell.closest("tr").find("td").eq(3).html();
 
-        if (confirm("Вы действительно  хотите удалить контакт : " + currentSurname + " " + currentName)) {
-
-            deleteCell.closest("tr").remove();
-            reorderRows();
-        }
-    }
+        $.confirm({
+            'title': 'Подтверждение',
+            'message': 'Вы действительно  хотите удалить контакт : <br>' + currentSurname + " " + currentName,
+            'buttons': {
+                'ДА': {
+                    'class': 'blue',
+                    'action': function () {
+                        deleteCell.closest("tr").remove();
+                        reorderRows();
+                    }
+                },
+                'НЕТ': {
+                    'class': 'gray',
+                    'action': function () {
+                    }
+                }
+            }
+        });
+   }
 
     function checkDuplicateNumbers(phoneNumber) {
         var isHasDuplicates = false;
@@ -77,7 +109,6 @@ var userNumber = 1;
         }
         else {
             $(".input-fields").removeClass("empty-fields");
-
         }
 
         $("b.err").remove();
@@ -158,11 +189,10 @@ var userNumber = 1;
                     $(this).show();
                 }
             }
-
         });
-
     });
 
+//сброс фильтра - очистка поля
     $(".reset-filter-button").click(function () {
         $(".filter-field").val("");
         $(".main-table").find("thead").find("tr").show();
