@@ -5,7 +5,6 @@
     <title>PhoneBook</title>
     <link href="css/reset.css" media="screen" rel="stylesheet" type="text/css"/>
     <link href="css/css.css" media="screen" rel="stylesheet" type="text/css"/>
-    <!--<link rel="stylesheet" href="ui.css" type="text/css"/>-->
 </head>
 <body>
 
@@ -18,11 +17,11 @@
 </div>
 
 <div class="filter-buttons">
-    <input type="button" class="apply-button" value="Применить">
-    <input type="button" class="reset-button" value="Сбросить">
+    <input type="button" class="apply-filter-button" value="Применить">
+    <input type="button" class="reset-filter-button" value="Сбросить">
 </div>
 
-<table class="mainTable">
+<table class="main-table">
     <thead>
     <tr>
         <td><span><input type="checkbox" id="all"/></span></td>
@@ -38,37 +37,39 @@
     </tbody>
 </table>
 
+<div class="error-message">
 
-<div class="errorMessage">
 </div>
 
 <div class="main">
-    <form class="mainForm" name="mainForm">
+    <form class="main-form" name="main-form">
         <div class="field">
             <label for="my-surname">Фамилия</label>
-            <input type="text" class="inputField" id="my-surname" placeholder="Фамилия"/>
+            <input type="text" class="input-fields" id="my-surname" placeholder="Фамилия"/>
+
         </div>
         <br>
         <div class="field">
             <label for="my-name">Имя</label>
-            <input type="text" id="my-name" class="inputField" placeholder="Имя"/>
+            <input type="text" id="my-name" class="input-fields" placeholder="Имя"/>
+
         </div>
         <br>
         <div class="field">
             <label for="my-phone">Номер телефона</label>
-            <input type="text" id="my-phone" class="inputField" placeholder="Телефон"/>
+            <input type="text" id="my-phone" class="input-fields" placeholder="Телефон"/>
+
         </div>
         <br>
     </form>
 </div>
 
-<div class="buttons">
-    <input type="button" class="addUser" id="addButton" value="добавить">
-    <input type="button" class="ButtonForDeleteUser" id="deleteButton" value="удалить">
+<div class="add-delete-buttons">
+    <input type="button" class="add-user-to-table" id="add-button" value="добавить">
+    <input type="button" class="delete-user-from-table" id="delete-button" value="удалить">
 </div>
 
 <script src="js/jquery-3.1.0.min.js"></script>
-<!--<script src="dist/jquery-confirm.min.js"></script>-->
 <script src="js/phonebook.js"></script>
 
 </body>

@@ -8,6 +8,7 @@ body, html {
     outline: none;
 }
 
+/*
 .ButtonForAddUser {
     width: 120px;
     height: 40px;
@@ -18,8 +19,9 @@ body, html {
     background-color: black;
     margin: 0;
 }
+*/
 
-.ButtonForDeleteUser {
+.delete-user-from-table {
     width: 120px;
     height: 40px;
     border: 2px solid black;
@@ -31,11 +33,11 @@ body, html {
     cursor: pointer;
 }
 
-.ButtonForDeleteUser:hover {
+.delete-user-from-table:hover {
     background-color: #1F90E2;
 }
 
-.addUser {
+.add-user-to-table {
     width: 120px;
     height: 40px;
     /*
@@ -51,11 +53,11 @@ body, html {
     cursor: pointer;
 }
 
-.addUser:hover {
+.add-user-to-table:hover {
     background-color: #1F90E2;
 }
 
-.inputField {
+.input-fields {
     width: 180px;
     height: 30px;
     font-size: 24px;
@@ -64,14 +66,13 @@ body, html {
     border-radius: 10px;
 }
 
-.mainForm input:focus {
+.main-form input:focus {
     outline: none;
     border-color: #07a6e6;
     border-radius: 10px;
 }
 
-.empty_field {
-
+.empty-fields {
     /*border-color: #d8512d;*/
     border: 2px solid red;
 }
@@ -79,13 +80,12 @@ body, html {
 .delete {
     font-size: 24px;
     font-weight: normal;
-    /*
-    color: #CE7BE5;
-    */
+    /*    color: #CE7BE5;    */
     color: black;
 }
 
-.buttons {
+.add-delete-buttons {
+    padding-bottom: 50px;
     padding-left: 25px;
     padding-top: 200px;
 }
@@ -120,10 +120,8 @@ label {
 }
 */
 
-.removeUser {
-    /*background-color: white;
-    */
-
+.remove-user-cell {
+    /*background-color: white;    */
     border: none;
     outline: none;
     font-size: 28px;
@@ -134,8 +132,7 @@ label {
     /*
     border: 1px solid black;
     border-radius: 11px;
-    background-color: black;
-    */
+    background-color: black;    */
 }
 
 tr {
@@ -165,7 +162,7 @@ table {
     border-spacing: 3px 6px;
 }
 
-.mainTable {
+.main-table {
     border: 0;
     margin-left: 25px;
     margin-top: 50px;
@@ -174,7 +171,7 @@ table {
     border-collapse: separate;
 }
 
-.mainTable tbody tr {
+.main-table tbody tr {
     background-color: #D0D8E8;
     padding: 15px;
     margin: 15px;
@@ -182,14 +179,14 @@ table {
     font-weight: normal;
 }
 
-.mainTable thead tr {
+.main-table thead tr {
     background-color: #4F81BD;
     color: white;
     font-weight: bold;
     font-size: 16px;
 }
 
-.errorMessage {
+.error-message {
     margin-left: 30px;
     color: red;
     font-weight: bold;
@@ -204,6 +201,7 @@ table {
     background-color:red;
 }
 */
+
 .filter-header {
     margin: 25px;
     font-weight: bold;
@@ -215,6 +213,7 @@ table {
 }
 
 .filter-field {
+    padding-left: 5px;
     width: 280px;
     height: 30px;
     font-size: 24px;
@@ -223,7 +222,7 @@ table {
     border-radius: 10px;
 }
 
-.filter-field-block .inputField {
+.filter-field-block .input-fields {
     margin-left: 25px;
     width: 300px;
 }
@@ -239,7 +238,7 @@ table {
     margin-top: 20px;
 }
 
-.apply-button {
+.apply-filter-button {
     width: 120px;
     height: 40px;
     border: 2px solid black;
@@ -251,7 +250,7 @@ table {
     cursor: pointer;
 }
 
-.reset-button {
+.reset-filter-button {
     width: 120px;
     height: 40px;
     border: 2px solid black;
@@ -263,6 +262,6 @@ table {
     cursor: pointer;
 }
 
-.apply-button:hover, .reset-button:hover {
+.apply-filter-button:hover, .reset-filter-button:hover {
     background-color: #1F90E2;
 }
