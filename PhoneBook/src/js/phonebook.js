@@ -52,8 +52,6 @@ $(document).ready(function () {
     });
 
     function confirmDelete(deleteCell) {
-        $(".main-table tr").each(function () {
-
         var currentSurname = deleteCell.closest("tr").find("td").eq(2).html();
         var currentName = deleteCell.closest("tr").find("td").eq(3).html();
 
@@ -75,7 +73,7 @@ $(document).ready(function () {
                 }
             }
         });
-   }
+    }
 
     function checkDuplicateNumbers(phoneNumber) {
         var isHasDuplicates = false;
@@ -127,10 +125,6 @@ $(document).ready(function () {
         name = $.trim(name);
         phoneNumber = $.trim(phoneNumber);
 
-        console.log("surname = " + surname);
-        console.log("name = " + name);
-        console.log("phoneNumber = " + phoneNumber);
-
         var newRow = $("<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
 
         newRow.find("td").eq(0).html("<span><input type='checkbox' id='check'/></span>");
@@ -152,6 +146,7 @@ $(document).ready(function () {
                 $("div.error-message").append("<b class='err'>Некорректный телефон. В поле телефон нужно вводить цифры!!!</b>");
             } else {
                 $(".main-table").append(newRow);
+
                 $("#my-surname").val("");   //SETTER
                 $("#my-name").val("");      //SETTER
                 $("#my-phone").val("");     //SETTER
@@ -175,13 +170,13 @@ $(document).ready(function () {
                     $(this).show();
                 });
             } else {
-                var searchingSurname = $(this).find("td:nth-child(3)").text().toLowerCase();
-                var searchingName = $(this).find("td:nth-child(4)").text().toLowerCase();
-                var searchingPhone = $(this).find("td:nth-child(5)").text().toLowerCase();
+                var findSurname = $(this).find("td:nth-child(3)").text().toLowerCase();
+                var findName = $(this).find("td:nth-child(4)").text().toLowerCase();
+                var findPhone = $(this).find("td:nth-child(5)").text().toLowerCase();
 
-                if (searchingSurname.toLowerCase().indexOf(filter) < 0) {
-                    if (searchingName.toLowerCase().indexOf(filter) < 0) {
-                        if (searchingPhone.toLowerCase().indexOf(filter) < 0) {
+                if (findSurname.toLowerCase().indexOf(filter) < 0) {
+                    if (findName.toLowerCase().indexOf(filter) < 0) {
+                        if (findPhone.toLowerCase().indexOf(filter) < 0) {
                             $(this).hide();
                         }
                     }
@@ -201,4 +196,5 @@ $(document).ready(function () {
         });
     });
 
-});
+})
+;
