@@ -20,7 +20,14 @@ $(document).ready(function () {
 
     $('.delete-user-from-table').click(function () {
 
-        if (isAnyChecked()) {
+        var isAnyChecked = false;
+        $(".main-table").find("span").each(function () {
+            if ($(this).hasClass("checked")) {
+                isAnyChecked = true;
+            }
+        });
+
+        if (isAnyChecked) {
         var checked = $("input:checkbox:checked").map(function () {
             //var checked = $("#check").is(":checked").map(function () {
             return this.value;
@@ -199,7 +206,7 @@ $(document).ready(function () {
         });
     });
 
-
+/*
     function isAnyChecked() {
         var isAnyChecked = false;
         if ($(".main-table").find("#check").is(':checked')) {
@@ -209,7 +216,7 @@ $(document).ready(function () {
             $('#delete-button').attr('disabled');
         }
         return isAnyChecked;
-    }
+    }*/
 
 })
 ;
