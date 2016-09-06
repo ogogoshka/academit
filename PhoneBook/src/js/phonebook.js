@@ -19,6 +19,8 @@ $(document).ready(function () {
     };
 
     $('.delete-user-from-table').click(function () {
+
+        if (isAnyChecked()) {
         var checked = $("input:checkbox:checked").map(function () {
             //var checked = $("#check").is(":checked").map(function () {
             return this.value;
@@ -49,6 +51,7 @@ $(document).ready(function () {
                 }
             }
         });
+        }
     });
 
     function confirmDelete(deleteCell) {
@@ -195,6 +198,18 @@ $(document).ready(function () {
             $(this).show();
         });
     });
+
+
+    function isAnyChecked() {
+        var isAnyChecked = false;
+        if ($(".main-table").find("#check").is(':checked')) {
+            isAnyChecked = true;
+            $('#delete-button').removeAttr('disabled');
+        } else {
+            $('#delete-button').attr('disabled');
+        }
+        return isAnyChecked;
+    }
 
 })
 ;
