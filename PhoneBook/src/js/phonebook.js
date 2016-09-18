@@ -1,15 +1,6 @@
 $(document).ready(function () {
     var userNumber = 1;
 
-    var table = $('.main-table');
-    table
-        .on('change', '> tbody input:checkbox', function () {
-            $(this).closest('span').toggleClass('checked', $(this).is(':checked'));
-        })
-        .on('change', '#all', function () {
-            $('> tbody input:checkbox', table).prop('checked', $(this).is(':checked')).trigger('change');
-        });
-
     var reorderRows = function () {
         var rows = $(".main-table").find("tbody").find("tr");
         userNumber = rows.length + 1;
@@ -18,47 +9,56 @@ $(document).ready(function () {
         })
     };
 
+    $(".main-table").find("#select-all-checkboxes").click(function () {
+        var selectedCheckboxes = $(".main-table").find("tbody").find(".select-row").filter(":visible");
+        selectedCheckboxes.prop('checked', $(this).prop("checked"));
+        var visibleCheckboxes = selectedCheckboxes.filter(":checked").filter(":visible");
+        $("#delete-button").prop("disabled", false);
+        $('#delete-button').removeClass('non-active-button');
+
+        if ($("#select-all-checkboxes").is(":not(:checked)") && visibleCheckboxes.length === 0) {
+            $("#delete-button").prop("disabled", true);
+            $('#delete-button').addClass('non-active-button');
+        }
+
+    });
+
+
     $('.delete-user-from-table').click(function () {
-
-        var isAnyChecked = false;
-        $(".main-table").find("span").each(function () {
-            if ($(this).hasClass("checked")) {
-                isAnyChecked = true;
-            }
-        });
-
-        if (isAnyChecked) {
-        var checked = $("input:checkbox:checked").map(function () {
-            //var checked = $("#check").is(":checked").map(function () {
-            return this.value;
-        }).get();
+        var selectedCheckboxes = $(".main-table").find("tbody").find(".select-row");
+        var visibleCheckboxes = selectedCheckboxes.filter(":checked").filter(":visible");
 
         var deletedContacts = "";
-        $("#check:checked").each(function () {
+        $(visibleCheckboxes).each(function () {
             var deletedSurname = $(this).parents("tr").find("td:nth-child(3)").text();
             var deletedName = $(this).parents("tr").find("td:nth-child(4)").text();
             deletedContacts += deletedSurname + " " + deletedName + "<br>";
         });
 
-        $.confirm({
-            'title': 'Подтверждение',
-            'message': 'Вы действительно хотите удалить эти контакты?<br>' + deletedContacts,
-            'buttons': {
-                'ДА': {
-                    'class': 'blue',
-                    'action': function () {
-                        $("#check:checked").parents("tr").remove();
-                        reorderRows();
-                    }
-                },
-                'НЕТ': {
-                    'class': 'gray',
-                    'action': function () {
+        if (visibleCheckboxes.length > 0) {
+            $.confirm({
+                'title': 'Подтверждение',
+                'message': 'Вы действительно хотите удалить эти контакты?<br>' + deletedContacts,
+                'buttons': {
+                    'ДА': {
+                        'class': 'blue',
+                        'action': function () {
+                            $(visibleCheckboxes).closest("tr").remove();
+                            $("#select-all-checkboxes").prop("checked", false);
+                            $('#delete-button').addClass('non-active-button');
+                            $("#delete-button").prop("disabled", true);
+                            reorderRows();
+                        }
+                    },
+                    'НЕТ': {
+                        'class': 'gray',
+                        'action': function () {
+                        }
                     }
                 }
-            }
-        });
+            });
         }
+
     });
 
     function confirmDelete(deleteCell) {
@@ -137,7 +137,7 @@ $(document).ready(function () {
 
         var newRow = $("<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
 
-        newRow.find("td").eq(0).html("<span><input type='checkbox' id='check'/></span>");
+        newRow.find("td").eq(0).html("<input type='checkbox' class='select-row'/>");
         newRow.find("td").eq(1).text(userNumber);
         newRow.find("td").eq(2).text(surname);
         newRow.find("td").eq(3).text(name);
@@ -167,6 +167,19 @@ $(document).ready(function () {
             name = "";
             phoneNumber = "";
         }
+
+        $(".main-table").find("tbody").find("input:checkbox").change(function () {
+            var selectedCheckboxes = $(".main-table").find(".select-row").filter(":checked").filter(":visible");
+            $("#select-all-checkboxes").prop("checked", false);
+            if (selectedCheckboxes.length > 0) {
+                $("#delete-button").prop("disabled", false);
+                $('#delete-button').removeClass('non-active-button');
+            } else {
+                $("#delete-button").prop("disabled", true);
+                $('#delete-button').addClass('non-active-button');
+            }
+        });
+
     });
 
     $(".apply-filter-button").click(function () {
@@ -206,17 +219,4 @@ $(document).ready(function () {
         });
     });
 
-/*
-    function isAnyChecked() {
-        var isAnyChecked = false;
-        if ($(".main-table").find("#check").is(':checked')) {
-            isAnyChecked = true;
-            $('#delete-button').removeAttr('disabled');
-        } else {
-            $('#delete-button').attr('disabled');
-        }
-        return isAnyChecked;
-    }*/
-
-})
-;
+});

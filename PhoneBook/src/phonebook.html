@@ -26,7 +26,7 @@
 <table class="main-table">
     <thead>
     <tr>
-        <td><span><input type="checkbox" id="all"/></span></td>
+        <td><input type="checkbox" id="select-all-checkboxes"/></td>
         <td>№</td>
         <td>Фамилия</td>
         <td>Имя</td>
@@ -68,13 +68,12 @@
 
 <div class="add-delete-buttons">
     <input type="button" class="add-user-to-table" id="add-button" value="добавить">
-    <input type="button" class="delete-user-from-table" id="delete-button" value="удалить">
+    <input type="button" class="delete-user-from-table non-active-button" id="delete-button" value="удалить" disabled>
 </div>
 
 <script src="js/jquery-3.1.0.min.js"></script>
 <script src="js/phonebook.js"></script>
 <script src="jquery.confirm/jquery.confirm/jquery.confirm.js"></script>
-<!--<script src="jquery.confirm/js/script.js"></script>-->
 
 </body>
 </html>

@@ -228,3 +228,18 @@ body, html {
 .apply-filter-button:hover, .reset-filter-button:hover {
     background-color: #1F90E2;
 }
+
+.non-active-button {
+    width: 120px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    background-color: gray;
+    margin: 0;
+}
+
+.non-active-button:hover {
+    background-color: gray;
+}
