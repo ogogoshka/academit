@@ -20,7 +20,6 @@ $(document).ready(function () {
             $("#delete-button").prop("disabled", true);
             $('#delete-button').addClass('non-active-button');
         }
-
     });
 
 
@@ -201,10 +200,12 @@ $(document).ready(function () {
                     if (findName.toLowerCase().indexOf(filter) < 0) {
                         if (findPhone.toLowerCase().indexOf(filter) < 0) {
                             $(this).hide();
+                            enableDisableDeleteButton();
                         }
                     }
                 } else {
                     $(this).show();
+                    enableDisableDeleteButton();
                 }
             }
         });
@@ -216,7 +217,19 @@ $(document).ready(function () {
         $(".main-table").find("thead").find("tr").show();
         $(".main-table").find("tbody").find("tr").each(function () {
             $(this).show();
+            enableDisableDeleteButton();
         });
     });
+
+    function enableDisableDeleteButton() {
+        var selectedCheckboxes = $(".main-table").find(".select-row").filter(":checked").filter(":visible");
+        if (selectedCheckboxes.length > 0) {
+            $("#delete-button").prop("disabled", false);
+            $('#delete-button').removeClass('non-active-button');
+        } else {
+            $("#delete-button").prop("disabled", true);
+            $('#delete-button').addClass('non-active-button');
+        }
+    }
 
 });
