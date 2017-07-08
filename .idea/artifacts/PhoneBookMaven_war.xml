@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="PhoneBookMaven:war">
+    <output-path>$PROJECT_DIR$/PhoneBookMaven/target</output-path>
+    <root id="archive" name="PhoneBookMaven.war">
+      <element id="artifact" artifact-name="PhoneBookMaven:war exploded" />
+    </root>
+  </artifact>
+</component>
