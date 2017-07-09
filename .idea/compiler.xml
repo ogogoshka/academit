@@ -10,7 +10,7 @@
         <module name="PhoneBookMaven" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="HelloWorldMaven" target="1.5" />
       <module name="PhoneBookMaven" target="1.8" />
     </bytecodeTargetLevel>
